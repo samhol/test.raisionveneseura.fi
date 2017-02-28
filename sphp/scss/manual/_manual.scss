@@ -1,0 +1,188 @@
+/**
+ * _manual.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+$sphp6-topbar-bg: #121212; 
+$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
+$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
+$sphp6-topbar-font-color: #efefef;
+$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-root-border-color: #4e4e4e;
+
+$default-left-margin: rem-calc(35);
+$default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
+$error-bg: rgba(255,127,80, 0.40);
+
+
+@import "api-links";
+@import "f6-manual-accordion";
+@import "form-submission-viewer";
+@import "footer";
+@import "error-pages";
+@import 'topbar';
+
+@mixin default-margin($margin: all) { 
+  @if $margin == all or map-has-key($default-margins, $margin) {
+    @if $margin == all {
+      margin: map-get($default-margins, top) 
+        map-get($default-margins, right) 
+        map-get($default-margins, bottom) 
+        map-get($default-margins, left);
+    } else {
+      margin-#{$margin}: map-get($default-margins, $margin);
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$margin}`. "
+    + "Please make sure it is defined in `$default-margins` map.";
+  }
+}
+@import "logo-area"; 
+
+.sphp-sidenav {
+  margin-top: rem-calc(20);
+}
+.manual .mainContent { 
+  border: solid 1px #888;
+  @include border-radius(4px);
+  //@include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  padding: rem-calc(0 0 20 0);// top right bottom left
+  margin: rem-calc(5 0 20 0); // top right bottom left
+  background: #fafafa;
+  >.intro {
+    @include default-margin(left);
+    .callout{
+      @include box-shadow(#ddd 0px 2px 3px 2px);
+      border: solid 1px #ccc;
+      @include border-radius(4px);
+      h5, dt {
+        font-weight: bold;
+        border-bottom: dotted 1px #ccc;
+      }
+      p {
+        text-align: justify;
+      }
+    } 
+  }
+  @import "html-ref-tables"; 
+  @import "breadcrumbs";
+  > p, > ul, > ol > .callout, > .sphp-single-accordion {
+    margin-left: rem-calc(5);
+    margin-right: rem-calc(5); 
+  }
+
+  > p:not([class]), > blockquote:not([class]) {
+    @include default-margin();
+    //margin: rem-calc(5 25 15 35); // top right bottom left
+    text-align: justify;
+    padding: 0;
+  }
+  > ul:not([class]), > ul:not([class]) ul, > ol:not([class]) ul {
+    list-style-type: none;
+    li:before {
+      position: relative;
+      content: "\00BB \0020";
+      font-weight: bold;
+      margin-right: rem-calc(10); 
+      list-style-type: none;
+    }
+  }
+  > ul:not([class]), > ol:not([class]) { 
+    //margin: rem-calc(6 25 10 55);
+    @include default-margin();
+    list-style-position: inside;
+    ul, ol {
+      margin-left: rem-calc(15);
+      list-style-position: inside;
+    }
+  }
+  @import "headings"; 
+  p:not([class]), ol:not([class]), ul:not([class]), dl:not([class]) {
+    a:not([class]) {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  } 
+  p a.api, ul a.api, ol a.api {
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+
+    &:hover {
+      color: #8c1111;
+    }
+    &.phpman, &.apigen {
+      border: solid 1px #bbb;
+      @include border-radius(2px);
+      text-decoration: none;
+      font-weight: normal;
+    }
+    &.apigen {
+      color: #006aeb;
+      border-color: rgba(51, 153, 255, .3);
+      background-color: rgba(210, 210, 210, .5); 
+      &:hover {
+        color: #8c1111;
+        border-color: rgba(51, 153, 255, .6);
+        background-color: rgba(210, 210, 210, 1); 
+      }
+    }
+    &.phpman {
+      color: #369;
+      border-color: #bbb;
+      background-color: #F2F2F2;
+      &:hover {
+        color: #8c1111;
+        border-color: #c66;
+        background-color: rgba(204, 224, 255, 0.3); 
+      }
+    }
+  }
+  @import "technologies"; 
+  .grid-example {
+    .row {
+      border: solid 1px #aaa;
+      margin-bottom: 3px;
+    }
+    .column {
+      text-align: center;
+      //border: solid 1px #aaa;
+      background: #eee;
+      line-height: 2;
+    }
+    .column:nth-child(even) {
+      background-color: #ddd;
+    }
+  }
+
+  .plain.sphp-syntax-highlighter {
+    border: solid 1px #666;
+    @include border-radius(4px);
+    @include default-margin();
+    .syntax {
+      padding: rem-calc(10);  
+    }
+  }
+  > div.wrapper {
+    @include default-margin();
+  }
+  @import "orbit-intro";
+}
+
+@import "body";
+@import "pagination";
+.is-drilldown {
+  background-color: #fafafa;
+  ul, li {
+    background-color: #fafafa;
+  }
+}

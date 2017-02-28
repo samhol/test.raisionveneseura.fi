@@ -1,0 +1,9 @@
+## YAML Menu Template.
+--- 
+items:
+ - link: Yhteystiedot
+   page: yhteystiedot
+ - link: Jäsenyys
+   page: jasenyys
+ - link: Kausiohjelma
+   page: kausiohjelma
