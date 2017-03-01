@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 use Sphp\Stdlib\CsvFile;
 
 $reader = new CsvFile(Path::get()->local('yhteystiedot/katsastajat.csv'));
