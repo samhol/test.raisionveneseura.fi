@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Manual\MVC\Errors;
+namespace Sphp\MVC\Errors;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Stdlib\Path;
