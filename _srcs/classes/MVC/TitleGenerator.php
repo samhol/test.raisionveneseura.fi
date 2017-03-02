@@ -42,7 +42,7 @@ class TitleGenerator {
   }
 
   public function createTitleFor($page) {
-    $title = 'SPHP Framework';
+    $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {
       if ($pair['page'] === $page) {
         $title .= ': ' . $pair['link'];

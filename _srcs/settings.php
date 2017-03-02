@@ -19,5 +19,5 @@ $handler->attach((new ExceptionPrinter())->showTrace());
         ->setEncoding('UTF-8')
         ->setExceptionHandler($handler)
         ->init();
-
+require_once ('menuArrays.php');
 require_once('constants.php');

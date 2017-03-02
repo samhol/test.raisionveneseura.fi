@@ -1,7 +1,6 @@
 ## YAML Menu Template.
 ---
-menu: 
- items:
+items:
   - link: Etusivu
     page: index
   - menu: Yleistä 
@@ -10,6 +9,8 @@ menu:
       page: yhteystiedot
     - link: Jäsenyys
       page: jasenyys
+    - link: Jäsen hakemus
+      page: jasenlomake
     - link: Jäsenrekisteriseloste
       page: jasenrekisteriseloste
   - menu: Kausi 2017
