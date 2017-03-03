@@ -1,10 +1,10 @@
 <?php
 
-use Sphp\Core\Path;
-use Sphp\Core\Util\FileUtils;
+use Sphp\Stdlib\Path;
+use Sphp\Stdlib\Filesystem;
 
 $pathFinder = Path::get();
-$jolla = FileUtils:: dirToArray($pathFinder->local('jolla'));
+$jolla = Filesystem:: dirToArray($pathFinder->local('jolla'));
 $jolla = array_reverse($jolla);
 ?>
 <div>

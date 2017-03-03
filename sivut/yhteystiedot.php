@@ -9,6 +9,8 @@
   </div>
 </div>
 
+ Yhteydenotot: toimisto@raisionveneseura.fi
+
 ##Hallitus
 <?php include HALLITUS ?>
 

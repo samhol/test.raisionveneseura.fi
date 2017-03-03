@@ -3,6 +3,8 @@
 items:
   - link: Etusivu
     page: index
+  - link: Tiedotteet
+    page: tiedotteet
   - menu: Yleistä 
     items: 
     - link: Yhteystiedot

@@ -5,6 +5,7 @@
     "php" : "^5.5 || ^7.0",
     "erusev/parsedown-extra": "^0.7.0",
     "zurb/foundation": ">=6.2",
+    "zendframework/zend-mail": "*",
     "symfony/yaml": ">=3"
   },
   "license": "GNU",
