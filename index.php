@@ -15,7 +15,6 @@ use Sphp\Stdlib\Path;
       <?php include ('_srcs/templates/offcanvasDrilldown.php'); ?>
     </div>
 
-
     <!-- original content goes in this container -->
     <div data-sticky-container id="top">
       <div  data-sticky data-options="marginTop:0;" style="width:100%">

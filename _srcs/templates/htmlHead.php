@@ -29,7 +29,6 @@ if ($errorCode !== null) {
 
 use Sphp\Html\Head\Meta;
 
-//$html->enableSPHP();
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()

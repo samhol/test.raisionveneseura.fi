@@ -5,11 +5,11 @@ items:
     page: index
   - link: Tiedotteet
     page: tiedotteet
-  - menu: Yleistä 
+  - link: Yhteystiedot
+    page: yhteystiedot
+  - menu: Jäsenyys 
     items: 
-    - link: Yhteystiedot
-      page: yhteystiedot
-    - link: Jäsenyys
+    - link: Yleistä
       page: jasenyys
     - link: Jäsen hakemus
       page: jasenlomake

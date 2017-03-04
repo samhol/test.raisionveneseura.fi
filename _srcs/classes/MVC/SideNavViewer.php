@@ -27,6 +27,11 @@ class SideNavViewer implements ContentInterface {
    * @var array 
    */
   private $data;
+
+  /**
+   *
+   * @var string
+   */
   private $currentPage;
 
   /**
@@ -35,6 +40,11 @@ class SideNavViewer implements ContentInterface {
    */
   private $nav;
 
+  /**
+   * 
+   * @param array $data
+   * @param string $currentPage
+   */
   public function __construct($data, $currentPage = '') {
     $this->data = $data;
     $this->currentPage = $currentPage;
@@ -49,11 +59,16 @@ class SideNavViewer implements ContentInterface {
     return $this->nav;
   }
 
+  /**
+   * 
+   * @return self
+   */
   protected function buildMenu() {
     $this->nav = new AccordionMenu();
-    $this->nav->addCssClass('')->appendText('Documentation');
+    $this->nav->addCssClass('sidenav');
     $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));
     $builder->buildMenu($this->data, $this->nav);
+    return $this;
   }
 
   public function getHtml() {

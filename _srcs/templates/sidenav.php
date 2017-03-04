@@ -1,8 +1,5 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Navigation;
+namespace Sphp\MVC;
 
-$nav = new AccordionMenu();
-$nav->addCssClass('sidenav');
-$menuBuilder = new MenuBuilder();
-echo $menuBuilder->buildMenu($mainLinks, $nav);
+$sidenav = (new SideNavViewer($mainLinks, filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING)))->printHtml();
