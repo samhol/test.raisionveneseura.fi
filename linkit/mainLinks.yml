@@ -29,6 +29,14 @@ items:
       page: katsastajat   
   - link: Jolla-lehti (Huom! latautuu hitaasti)
     page: jollalehdet
+  - menu: Kilpailut
+    items:
+    - menu: Purjehdukipailut
+      items:
+      - dir: sivut/kilpailut/purjehduskilpailut
+    - menu: Kalastuskipailut
+      items:
+      - dir: sivut/kilpailut/kalastuskipailut
   - link: <span>Eksymälaskenta</span><i class="float-right fa fa-file-excel-o"></i>
     href: dokumentit/eksymalaskenta.xls
     target: _blank

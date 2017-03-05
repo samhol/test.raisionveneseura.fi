@@ -26,9 +26,6 @@ class TitleGenerator {
   public function parseTitles() {
     // print_r($this->data);
     $arrIt = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($this->data));
-    $f = function () {
-      
-    };
     $outputArray = [];
     foreach ($arrIt as $sub) {
       $subArray = $arrIt->getSubIterator();

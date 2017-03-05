@@ -19,4 +19,14 @@ $load = function($page) {
   ob_end_clean();
   echo $content;
 };
+if (Sphp\Stdlib\Strings::startsWith($page, 'kilpailut.purjehdus')) {
+  $seed = __DIR__ . '/../../' . str_replace('.', '/', $page) . '.php';
+  echo $seed;
+  if (is_file($seed)) {
+    (new Sphp\Html\MdContainer())->appendFile($seed)->printHtml();
+  } else {
+    (new ExceptionCallout(new \Sphp\Html\HtmlException('Purjehduskilpailua ei löytynyt')))->printHtml();
+  }
+}
+
 $load($page);
