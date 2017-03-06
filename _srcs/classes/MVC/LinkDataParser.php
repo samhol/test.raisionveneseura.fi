@@ -21,12 +21,21 @@ class linkDataParser {
    */
   private $traversed;
 
+  /**
+   * 
+   * @param array $data
+   */
   public function __construct(array $data) {
     $this->traversed = [];
     $this->titleData = $this->parseTitles();
     $this->traverseData($data);
   }
 
+  /**
+   * 
+   * @param array $data
+   * @return type
+   */
   private function traverseData(array $data) {
 
     foreach ($data as $key => $item) {
