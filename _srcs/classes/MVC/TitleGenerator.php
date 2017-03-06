@@ -23,7 +23,7 @@ class TitleGenerator {
     $this->parseTitles();
   }
 
-  public function parseTitles() {
+  protected function parseTitles() {
     // print_r($this->data);
     $arrIt = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($this->data));
     $outputArray = [];
