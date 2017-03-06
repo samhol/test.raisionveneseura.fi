@@ -40,15 +40,7 @@
       <p class="cleanuphtml-3">
         80 g
       </p>
-      <p class="cleanuphtml-3">
 
-      </p>
-      <p class="cleanuphtml-3">
-
-      </p>
-      <p class="cleanuphtml-3">
-
-      </p>
       <p class="cleanuphtml-3">
         40 g
       </p>
@@ -63,9 +55,6 @@
         Isabella Sorjasaari
       </p>
       <p>
-
-      </p>
-      <p>
         <i>Heittousitinsarja</i><i>, miehet</i>
       </p>
       <p>
@@ -75,15 +64,6 @@
     <td valign="top">
       <p>
         740 g
-      </p>
-      <p>
-
-      </p>
-      <p>
-
-      </p>
-      <p>
-
       </p>
       <p>
         1780 g
