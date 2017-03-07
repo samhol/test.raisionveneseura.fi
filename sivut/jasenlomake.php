@@ -18,30 +18,29 @@
       <label>Sähköpostiosoite <small class="alert">Vaadittu kenttä</small>
         <input type="email" name="email" placeholder="sähköpostiosoite" aria-describedby="exampleHelpTex" required pattern="email">
       </label>
-      <span class="form-error">
-          Anna sähköpostiosoitteesi
-        </span>
+      <span class="form-error">Anna sähköpostiosoitteesi</span>
     </div>
   </div>
   <div class="row">
-    <fieldset class="large-6 columns align-right">
-      <button class="button" type="submit" value="Submit">Lähetä</button>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <button class="button" type="reset" value="Reset">Tyhjennä</button>
+    <fieldset class="small-12 columns">
+      <div class="button-group">
+        <button class="button" type="submit" value="Submit">Lähetä</button>
+        <button class="button" type="reset" value="Reset">Tyhjennä</button>
+      </div>
     </fieldset>
   </div>
 </form>
 
 <?php
+
 use Sphp\Stdlib\Path;
-/* 
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 require_once(Path::get()->local('_srcs/templates/jasenlomake.php'));
 
-print_r($_POST); 
-
+print_r($_POST);
 ?>
