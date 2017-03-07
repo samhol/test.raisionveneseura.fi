@@ -34,10 +34,6 @@ class HttpErrorViewer implements ContentInterface {
   public function __construct(HttpCode $code) {
     $this->code = $code;
   }
-  
-  protected function d($param) {
-    
-  }
 
   public function getHtml() {
     $cont = new \Sphp\Html\MdContainer();

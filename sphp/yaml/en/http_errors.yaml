@@ -17,8 +17,8 @@
   description: The request was a legal request, but the server is refusing to respond to it
 404:
   type: client
-  message: Ei löydy
-  description: Sivua ei löytynyt palvelimelta
+  message: Not Found
+  description: The requested page could not be found but may be available again in the future
 405:
   type: client
   message: Method Not Allowed
@@ -73,7 +73,7 @@
   description: The server cannot meet the requirements of the Expect request-header field
 500:
   type: server
-  message: Sisäinen palvelinvirhe
+  message: Internal Server Error
   description: A generic error message, given when no more specific message is suitable
 501:
   type: server

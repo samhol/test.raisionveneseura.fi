@@ -42,7 +42,11 @@ class TitleGenerator {
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {
       if ($pair['page'] === $page) {
-        $title .= ': ' . $pair['link'];
+        if (array_key_exists('page_title', $pair)) {
+          $title .= ': ' . $pair['page_title'];
+        } else {
+          $title .= ': ' . $pair['link'];
+        }
         break;
       }
     }

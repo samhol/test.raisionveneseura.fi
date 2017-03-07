@@ -1,4 +1,5 @@
 <?php
+namespace Sphp\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Container;
@@ -6,11 +7,15 @@ use Sphp\Html\Container;
 $load = function($page) {
   try {
     ob_start();
+    
+    
+    
+    $page = str_replace(['.', 'sivut/'], ['/', ''], $page);
     $examplePath = "sivut/" . $page . ".php";
     if (is_file($examplePath)) {
       (new Container)->appendMdFile($examplePath)->printHtml();
     } else {
-      throw new \InvalidArgumentException("the path $examplePath contains no executable PHP script");
+      throw new \InvalidArgumentException("the path $page points to no executable PHP script");
     }
     $content = ob_get_contents();
   } catch (\Exception $e) {
@@ -19,7 +24,15 @@ $load = function($page) {
   ob_end_clean();
   echo $content;
 };
-if (Sphp\Stdlib\Strings::startsWith($page, 'kilpailut.purjehdus')) {
+$pageData = new PageData();
+if ($pageData->isValid()) {
+  $load($pageData->getPage());
+} else {
+  echo $errorCode . ': ' . $pageData->getErrorCode()->getMessage();
+  
+}
+
+/*if (\Sphp\Stdlib\Strings::startsWith($page, 'kilpailut.purjehdus')) {
   $seed = __DIR__ . '/../../' . str_replace('.', '/', $page) . '.php';
   echo $seed;
   if (is_file($seed)) {
@@ -29,4 +42,4 @@ if (Sphp\Stdlib\Strings::startsWith($page, 'kilpailut.purjehdus')) {
   }
 }
 
-$load($page);
+//$load($page);*/

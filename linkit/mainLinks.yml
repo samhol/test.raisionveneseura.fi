@@ -11,7 +11,7 @@ items:
     items: 
     - link: Yleistä
       page: jasenyys
-    - link: Jäsen hakemus
+    - link: Jäsenhakemus
       page: jasenlomake
     - link: Jäsenrekisteriseloste
       page: jasenrekisteriseloste

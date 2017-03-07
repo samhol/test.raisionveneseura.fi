@@ -125,7 +125,7 @@ class LinkDataParser {
     //$result['page'] = $fileinfo->getFilename();
     $page = $data['relative_dir'] . '/' . $fileinfo->getFilename();
     //$result['link'] = $fileinfo->getBasename('.php');
-    $result['page'] = str_replace('/', '.', $page);
+    $result['page'] = str_replace(['/', '.php'], ['.', ''], $page);
     $result['relative'] = $page;
     $result['fullPath'] = $fileinfo->getPathname();
     $result[SplFileInfo::class] = $fileinfo;
