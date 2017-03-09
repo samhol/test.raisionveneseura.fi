@@ -7,11 +7,12 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Core\I18n\PrioritizedMessageList;
+use Sphp\Core\I18n\MessageInterface;
+use Sphp\Core\I18n\MessageList;
 use Sphp\Core\I18n\Message;
 
 /**
- * Abstract superclass for a single value validation
+ * Abstract superclass for validation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
@@ -20,12 +21,20 @@ use Sphp\Core\I18n\Message;
  */
 abstract class AbstractValidator implements ValidatorInterface {
 
+  const INVALID = '_invalid_';
+
   /**
    * stores error messages if not valid
    *
-   * var PrioritizedMessageList
+   * @var MessageList
    */
   private $errors;
+
+  /**
+   *
+   * @var MessageInterface[] 
+   */
+  private $messageTemplates = [];
 
   /**
    *
@@ -38,20 +47,18 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $m container for the error messages
    */
-  public function __construct(MessageList $m = null) {
-    if ($m === null) {
-      $this->errors = new PrioritizedMessageList();
-    } else {
-      $this->errors = $m;
-    }
+  public function __construct(array $messageTemplates = []) {
+    $this->messageTemplates = $messageTemplates;
+    $this->errors = new MessageList();
   }
 
   public function __destruct() {
-    unset($this->errors, $this->value);
+    unset($this->messageTemplates, $this->errors, $this->value);
   }
 
   public function __clone() {
-    unset($this->errors, $this->value);
+    $this->errors = clone $this->errors;
+    $this->messageTemplates = clone $this->messageTemplates;
   }
 
   /**
@@ -62,6 +69,45 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function __invoke($value) {
     return $this->isValid($value);
+  }
+
+  /**
+   * 
+   * @param  string $id
+   * @return MessageInterface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
+   */
+  public function getMessageTemplate($id) {
+    if (!array_key_exists($id, $this->messageTemplates)) {
+      throw new \Sphp\Exceptions\InvalidArgumentException("Template with id: '$id' does not exist");
+    }
+    return $this->messageTemplates[$id];
+  }
+
+  /**
+   * 
+   * @param  string $id
+   * @param  string|MessageInterface $messageTemplate
+   * @return self for a fluent interface
+   */
+  public function setMessageTemplate($id, $messageTemplate) {
+    if (is_string($messageTemplate)) {
+      $messageTemplate = new Message($messageTemplate);
+    }
+    $this->messageTemplates[$id] = $messageTemplate;
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array|\Traversable $messageTemplates
+   * @return self for a fluent interface
+   */
+  public function setMessageTemplates($messageTemplates) {
+    foreach ($messageTemplates as $id => $messageTemplate) {
+      $this->setMessageTemplate($id, $messageTemplate);
+    }
+    return $this;
   }
 
   /**
@@ -92,7 +138,6 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   protected function createErrorMessage($msg, array $args = [], $priority = 0) {
-    //echo "createErrorMessage:$msg";
     $this->errors->insert(new Message($msg, $args), $priority);
     return $this;
   }
@@ -105,7 +150,6 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   protected function addErrorMessage(Message $msg, $priority = 0) {
-    //echo "addErrorMessage:$msg";
     $this->errors->insert($msg, $priority);
     return $this;
   }
