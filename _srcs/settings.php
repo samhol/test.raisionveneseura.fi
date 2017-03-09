@@ -23,3 +23,6 @@ require_once ('menuArrays.php');
 require_once('constants.php');
 
 session_start();
+
+use Sphp\Stdlib\Parser;
+$config = new Config(Parser::fromFile(__DIR__ . '/settings.yml'));

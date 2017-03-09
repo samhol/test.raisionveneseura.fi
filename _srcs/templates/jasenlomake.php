@@ -23,8 +23,8 @@ if ($email !== null) {
   $mailBody .= "\tEtunimi: $fname\n\n";
   $mailBody .= "\tSukunimi: $lname\n\n";
   $mailBody .= "\tOsoite: \n";
-  $mailBody .= "\t$street\n";
-  $mailBody .= "\t$zipcode $city\n\n";
+  $mailBody .= "\t\t$street\n";
+  $mailBody .= "\t\t$zipcode $city\n\n";
   $mailBody .= "\tSähköpostiosoite: $email\n";
   $mailBody .= "\tLahetetty: $currentDate\n";
   $mail->setBody($mailBody);
@@ -32,8 +32,9 @@ if ($email !== null) {
   $transport->send($mail);
   //  25rMxq~1VVtn
   $_SESSION['send'] = ['fname' => $fname, 'lname' => $lname, 'email' => $email];
-  $location = $_SERVER['HTTP_REFERER'];
-  header("Location: $location");
+  //$location = $_SERVER['HTTP_REFERER'];
+  $referef = filter_input(INPUT_SERVER, 'HTTP_REFERER', FILTER_VALIDATE_URL);
+  header("Location: $referef");
 }
 ?>
 </pre>

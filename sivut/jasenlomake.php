@@ -11,6 +11,9 @@ if (array_key_exists('send', $_SESSION)) {
   $callout->printHtml();
   unset($_SESSION['send']);
 }
+use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
+$ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
+$ageMenu->prepend(new Sphp\Html\Forms\Inputs\Menus\Option('18', 'Aikuinen',true));
 ?>
 
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/_srcs/templates/jasenlomake.php">
@@ -18,26 +21,35 @@ if (array_key_exists('send', $_SESSION)) {
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>
   <div class="row">
-    <div class="small-12 large-6 columns">
-      <label>Etunimi <small class="alert">Vaadittu kenttä</small>
+    <div class="small-12 large-2 columns">
+      <label>Ikä
+        <?php $ageMenu->printHtml() ?>
+        <span class="form-error">
+          Anna etunimesi
+        </span>
+      </label>
+    </div>
+    <div class="small-12 large-5 columns">
+      <label>Etunimi <small class="alert">(pakollinen)</small>
         <input name="fname" type="text" placeholder="Etunimi" required>
         <span class="form-error">
           Anna etunimesi
         </span>
       </label>
     </div>
-    <div class="small-12 large-6 columns">
-      <label>Sukunimi <small class="alert">Vaadittu kenttä</small>
+    <div class="small-12 large-5 columns">
+      <label>Sukunimi <small class="alert">(pakollinen)</small>
         <input name="lname" type="text" placeholder="Sukunimi" required>
         <span class="form-error">
           Anna sukunimesi
         </span>
       </label>
     </div>
+  </div>
     
   <div class="row">
     <div class="small-12 large-5 columns">
-      <label>Katuosoite <small class="alert">Vaadittu kenttä</small>
+      <label>Katuosoite <small class="alert">(pakollinen)</small>
         <input name="street" type="text" placeholder="Katuosoite" required>
         <span class="form-error">
           Anna etunimesi
@@ -45,7 +57,7 @@ if (array_key_exists('send', $_SESSION)) {
       </label>
     </div>
     <div class="small-12 medium-4 large-3 columns">
-      <label>Postinumero <small class="alert">Vaadittu kenttä</small>
+      <label>Postinumero <small class="alert">(pakollinen)</small>
         <input name="zipcode" type="text" placeholder="Postinumero" required>
         <span class="form-error">
           Anna sukunimesi
@@ -53,18 +65,23 @@ if (array_key_exists('send', $_SESSION)) {
       </label>
     </div>
     <div class="small-12 medium-8 large-4 columns">
-      <label>Kunta <small class="alert">Vaadittu kenttä</small>
+      <label>Kunta <small class="alert">(pakollinen)</small>
         <input name="city" type="text" placeholder="Kunta" required>
         <span class="form-error">
           Anna sukunimesi
         </span>
       </label>
     </div>
-    <div class="small-12 columns">
-      <label>Sähköpostiosoite <small class="alert">Vaadittu kenttä</small>
-        <input type="email" name="email" placeholder="sähköpostiosoite" aria-describedby="exampleHelpTex" required pattern="email">
+    <div class="small-12 medium-8 columns">
+      <label>Sähköpostiosoite <small class="alert">(pakollinen)</small>
+        <input type="email" name="email" placeholder="hakijan sähköpostiosoite" required pattern="email">
       </label>
       <span class="form-error">Anna sähköpostiosoitteesi</span>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <label>Puhelinnumero <small class="alert">(vapaaehtoinen)</small>
+        <input type="text" name="phone" placeholder="012-1234567 tms.">
+      </label>
     </div>
   </div>
   <div class="row">

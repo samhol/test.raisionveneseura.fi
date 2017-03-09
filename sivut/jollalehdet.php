@@ -6,6 +6,7 @@ use Sphp\Stdlib\Filesystem;
 $pathFinder = Path::get();
 $jolla = Filesystem:: dirToArray($pathFinder->local('jolla'));
 $jolla = array_reverse($jolla);
+
 ?>
 <div>
   <div class="orbit" role="region" aria-label="Jolla lehdet" data-orbit data-auto-play="false">
