@@ -1,4 +1,5 @@
 <?php
+
 namespace Sphp\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
@@ -7,16 +8,20 @@ use Sphp\Html\Container;
 $load = function($page) {
   try {
     ob_start();
-    
-    
-    
-    $page = str_replace(['.', 'sivut/'], ['/', ''], $page);
-    $examplePath = "sivut/" . $page . ".php";
-    if (is_file($examplePath)) {
-      (new Container)->appendMdFile($examplePath)->printHtml();
+    if (empty($page)) {
+      (new Container)->appendMdFile("sivut/index.php")->printHtml();
     } else {
-      throw new \InvalidArgumentException("the path $page points to no executable PHP script");
+      $page = str_replace(['.', 'sivut/'], ['/', ''], $page);
+      $examplePath = "sivut/" . $page . ".php";
+      if (is_file($examplePath)) {
+        (new Container)->appendMdFile($examplePath)->printHtml();
+      } else {
+        throw new \InvalidArgumentException("the path $page points to no executable PHP script");
+      }
     }
+
+
+
     $content = ob_get_contents();
   } catch (\Exception $e) {
     $content .= new ExceptionCallout($e);
@@ -29,7 +34,6 @@ if ($pageData->isValid()) {
   $load($pageData->getPage());
 } else {
   echo $errorCode . ': ' . $pageData->getErrorCode()->getMessage();
-  
 }
 
 /*if (\Sphp\Stdlib\Strings::startsWith($page, 'kilpailut.purjehdus')) {

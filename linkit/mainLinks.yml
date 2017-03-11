@@ -27,16 +27,7 @@ items:
       page: katsastusinfo
     - link: Katsastajien yhteystiedot
       page: katsastajat   
-  - link: Jolla-lehti (Huom! latautuu hitaasti)
-    page: jollalehdet
-  - menu: Purjehdukipailut
-    dir: sivut/kilpailut/purjehdus
-    file_prefix: "Vuosi "
-    remove_filetype: true
-  - menu: Kalastuskipailut
-    dir: sivut/kilpailut/kalastus
-  - link: <span>Eksymälaskenta</span><i class="float-right fa fa-file-excel-o"></i>
-    href: dokumentit/eksymalaskenta.xls
-    target: _blank
-    datatype: excel
-    download:
+  - link: Ladattavat dokumentit
+    page: dokumentit
+  - link: Kipailut
+    page: kilpailut
