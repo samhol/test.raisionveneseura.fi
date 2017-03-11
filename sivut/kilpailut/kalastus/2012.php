@@ -1,8 +1,9 @@
-#KALASTUSKILPAILU 3.9.2016
+#KALASTUSKILPAILU 8.9.2012
 
 ##"Matosarja"
  
-1. Anne Kaijankoski: 80 g
+1. Aila Sauvolainen: 300 g
+2. Isabella Sorjasaari: 80 g
 
 ##Heittouistinsarja (naiset)
 
@@ -10,16 +11,17 @@
 
 ##Heittouistinsarja (miehet)
 
-1. Kari Sorjasaari: 1780 g
+1. Stefan Kaapro: 4550 g
+2. Mikko Vuolahti: 1850 g
+3. Kari sorjasaari: 1100 g
+4. Matti Niemelä: 720 g
 
 ##Lastensarja
 
-1. Arttu Kaijankoski: 40 g
+Kaksi osallistujaa – ei saalista
 
 ##Yhteenveto
 
-Kiertopalkinnon voittaja: **Kari Sorjasaari**
+Kiertopalkinnon voittaja: **Stefan Kaapro**
 
-Koko kilpailun yhteenlaskettu saalismäärä oli 2 kg 640 g 
-
-Suurin kala **Kari Sorjasaari** 1400 g
+Koko kilpailun yhteenlaskettu saalismäärä oli 8 kg 600 g
