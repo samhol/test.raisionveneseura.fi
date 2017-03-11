@@ -72,7 +72,7 @@ foreach ($fishingArr as $item) {
       $linkText = '<span class="badge alert" title="PDF-tiedosto"><i class="fa fa-file-pdf-o"></i></span> Vuosi ' . $name;
     }
     $link = new \Sphp\Html\Navigation\Hyperlink($path, $linkText, $target);
-    echo " $link ($size)\n\n";
+    echo " $link\n\n";
   }
 }
 ?>
