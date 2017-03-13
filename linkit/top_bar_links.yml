@@ -2,10 +2,10 @@
 --- 
 items:
  - link: Yhteystiedot
-   page: yhteystiedot
+   href: yhteystiedot
  - link: Jäsenyys
-   page: jasenyys
+   href: jasenyys
  - link: Kausiohjelma
-   page: kausiohjelma
+   href: kausiohjelma
  - link: Tiedotteet
-   page: tiedotteet
+   href: tiedotteet

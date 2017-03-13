@@ -2,32 +2,32 @@
 ---
 items:
   - link: Etusivu
-    page: index
+    href: etusivu
   - link: Tiedotteet
-    page: tiedotteet
+    href: tiedotteet
   - link: Yhteystiedot
-    page: yhteystiedot
+    href: yhteystiedot
   - menu: Jäsenyys 
     items: 
     - link: Yleistä
-      page: jasenyys
+      href: jasenyys
     - link: Jäsenhakemus
-      page: jasenlomake
+      href: jasenlomake
     - link: Jäsenrekisteriseloste
-      page: jasenrekisteriseloste
+      href: jasenrekisteriseloste
   - menu: Kausi 2017
     items:
     - link: Kausiohjelma
-      page: kausiohjelma
+      href: kausiohjelma
     - link: Hallitus
-      page: hallitus
+      href: hallitus
   - menu: Katsastustoiminta
     items:
     - link: Tietoa katsastuksesta
-      page: katsastusinfo
+      href: katsastusinfo
     - link: Katsastajien yhteystiedot
-      page: katsastajat   
+      href: katsastajat   
   - link: Ladattavat dokumentit
-    page: dokumentit
+    href: dokumentit
   - link: Kipailut
-    page: kilpailut
+    href: kilpailut

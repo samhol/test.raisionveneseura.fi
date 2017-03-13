@@ -32,7 +32,7 @@ $root = 'sphp/viewerjs/#../../';
         $path = Path::get()->http();
         if ($extension === 'php') {
           $name = $item->getBasename('.php');
-          $path .= '?page=sivut.kilpailut.purjehdus.' . $name;
+          $path .= 'kilpailut/purjehdus/' . $name;
           $linkText = '<span class="badge alert" title="HTML-sivu"><i class="fa fa-html5"></i></span> Vuosi ' . $name;
           $target = '_self';
         } else if ($extension === 'pdf') {
@@ -65,7 +65,7 @@ $root = 'sphp/viewerjs/#../../';
         $path = Path::get()->http();
         if ($extension === 'php') {
           $name = $item->getBasename('.php');
-          $path .= '?page=sivut.kilpailut.kalastus.' . $name;
+          $path .= 'kilpailut/kalastus/' . $name;
           $linkText = '<span class="badge alert" title="HTML-sivu"><i class="fa fa-html5"></i></span> Vuosi ' . $name;
           $target = '_self';
           $link = new Hyperlink($path, $linkText, $target);

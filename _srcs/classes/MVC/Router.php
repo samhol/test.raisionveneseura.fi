@@ -1,31 +1,17 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Router.php (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\MVC;
 
-/**
- * Igniter Router
- *
- * This it the Igniter URL Router, the layer of a web application between the
- * URL and the function executed to perform a request. The router determines
- * which function to execute for a given URL.
- *
- * @package    Igniter
- * @subpackage Router
- * @author     Brandon Wamboldt <brandon.wamboldt@gmail.com>
- * @license    MIT
- */
-// Using the Igniter namespace, you can access the router using \Igniter\Router
-
+use Sphp\Exceptions\RuntimeException;
 use Exception;
 
 /**
- * Igniter Router Class
+ * Simple URL router
  *
  * This it the Igniter URL Router, the layer of a web application between the
  * URL and the function executed to perform a request. The router determines
@@ -64,8 +50,6 @@ use Exception;
  * // Run the router
  * $router->execute();
  * </code>
- *
- * @since 2.0.0
  */
 class Router {
 
@@ -83,14 +67,6 @@ class Router {
    * @var atring|array
    */
   private $default_route = null;
-
-  /**
-   * Contains the last route executed, used when chaining methods calls in
-   * the route() function (Such as for put(), post(), and delete()).
-   *
-   * @var pointer
-   */
-  private $last_route = null;
 
   /**
    * An array containing the parameters to pass to the callback function,
@@ -117,14 +93,6 @@ class Router {
   private $routes_original = array();
 
   /**
-   * Whether or not to display errors for things like malformed routes or
-   * conflicting routes.
-   *
-   * @var boolean
-   */
-  private $show_errors = true;
-
-  /**
    * A sanitized version of the URL, excluding the domain and base component
    *
    * @var string
@@ -132,58 +100,31 @@ class Router {
   private $url_clean = '';
 
   /**
-   * The dirty URL, direct from $_SERVER['REQUEST_URI']
-   *
-   * @var string
-   */
-  private $url_dirty = '';
-
-  /**
+   * Constructs a new instance
+   * 
    * Initializes the router by getting the URL and cleaning it.
    *
-   * @param string $url
+   * @param string|null $url optional URL to route
    */
   public function __construct($url = null) {
-    if ($url == null) {
+    if ($url === null) {
       // Get the current URL, differents depending on platform/server software
       if (!empty($_SERVER['REQUEST_URL'])) {
         $url = $_SERVER['REQUEST_URL'];
-   // echo "$url\n";
+        // echo "$url\n";
       } else {
         $url = $_SERVER['REQUEST_URI'];
-   // echo "$url\n";
+        // echo "$url\n";
       }
     }
-   // echo "$url\n";
+    // echo "$url\n";
     //echo $url;
     // Store the dirty version of the URL
-    $this->url_dirty = $url;
+    // $this->url_dirty = $url;
     // Clean the URL, removing the protocol, domain, and base directory if there is one
-    $this->url_clean = $this->getCleanUrl($this->url_dirty);
-    
-   // echo $this->url_clean;
-  }
+    $this->url_clean = $this->getCleanUrl($url);
 
-  /**
-   * Enables the display of errors such as malformed URL routing rules or
-   * conflicting routing rules. Not recommended for production sites.
-   *
-   * @return self
-   */
-  public function show_errors() {
-    $this->show_errors = true;
-    return $this;
-  }
-
-  /**
-   * Disables the display of errors such as malformed URL routing rules or
-   * conflicting routing rules. Not recommended for production sites.
-   *
-   * @return self
-   */
-  public function hide_errors() {
-    $this->show_errors = false;
-    return $this;
+    // echo $this->url_clean;
   }
 
   /**
@@ -230,13 +171,18 @@ class Router {
           $this->params = $params;
           $this->callback = $callback;
           // Return the callback and params, useful for unit testing
-          return array('callback' => $callback, 'params' => $params, 'route' => $route, 'original_route' => $this->routes_original[$priority][$route]);
+          //return array('callback' => $callback, 'params' => $params, 'route' => $route, 'original_route' => $this->routes_original[$priority][$route]);
         }
       }
     }
     // Was a match found or should we execute the default callback?
     if (!$matched_route && $this->default_route !== null) {
-      return array('params' => $this->url_clean, 'callback' => $this->default_route, 'route' => false, 'original_route' => false);
+      $this->callback = $this->default_route;
+
+
+        $this->params = [$this->url_clean];
+      
+      //return array('params' => $this->url_clean, 'callback' => $this->default_route, 'route' => false, 'original_route' => false);
     }
   }
 
@@ -247,9 +193,9 @@ class Router {
    * @return boolean
    */
   public function dispatch() {
-    if ($this->callback == null || $this->params == null) {
-      throw new Exception('No callback or parameters found, please run $router->run() before $router->dispatch()');
-      return false;
+      //var_dump($this->callback, $this->params);
+    if ($this->callback === null || $this->params === null) {
+      throw new RuntimeException('No callback or parameters found, please run $router->run() before $router->dispatch()');
     }
     call_user_func_array($this->callback, $this->params);
     return true;
@@ -295,10 +241,7 @@ class Router {
     // Does this URL routing rule already exist in the routing table?
     if (isset($this->routes[$priority][$route])) {
       // Trigger a new error and exception if errors are on
-      if ($this->show_errors) {
-        throw new Exception('The URI "' . htmlspecialchars($route) . '" already exists in the router table');
-      }
-      return false;
+      throw new RuntimeException('The URI "' . htmlspecialchars($route) . '" already exists in the router table');
     }
     // Add the route to our routing array
     $this->routes[$priority][$route] = $callback;
@@ -331,12 +274,12 @@ class Router {
     $query_string = strpos($url, '?');
     if ($query_string !== false) {
       $url = substr($url, 0, $query_string);
-    //echo "$url\n";
+      //echo "$url\n";
     }
     // If the URL looks like http://localhost/index.php/path/to/folder remove /index.php
     if (substr($url, 1, strlen(basename($_SERVER['SCRIPT_NAME']))) == basename($_SERVER['SCRIPT_NAME'])) {
       $url = substr($url, strlen(basename($_SERVER['SCRIPT_NAME'])) + 1);
-    //echo "$url\n";
+      //echo "$url\n";
     }
     // Make sure the URI ends in a /
     $url = rtrim($url, '/') . '/';
@@ -346,5 +289,5 @@ class Router {
     //echo "$url\n";
     return $url;
   }
-  
+
 }

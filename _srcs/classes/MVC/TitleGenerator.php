@@ -29,7 +29,7 @@ class TitleGenerator {
     $outputArray = [];
     foreach ($arrIt as $sub) {
       $subArray = $arrIt->getSubIterator();
-      if ($subArray->key() === 'page') {
+      if ($subArray->key() === 'href') {
         $outputArray[] = iterator_to_array($subArray);
       }
     }
@@ -41,7 +41,7 @@ class TitleGenerator {
   public function createTitleFor($page) {
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {
-      if ($pair['page'] === $page) {
+      if ($pair['href'] === $page) {
         if (array_key_exists('page_title', $pair)) {
           $title .= ': ' . $pair['page_title'];
         } else {

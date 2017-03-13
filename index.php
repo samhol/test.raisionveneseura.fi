@@ -2,16 +2,22 @@
 require_once('_srcs/settings.php');
 include ('_srcs/templates/htmlHead.php');
 $foo = function($vr =4) {
-  echo "VAR: $vr\n";
+  echo "Polusta $vr ei löytynyt mitään";
 };
+require_once '_srcs/templates/loaders.php';
 $router = new Sphp\MVC\Router();
-$router->route('/<#user_id> ', $foo);
-$router->setDefaultRoute($foo);
+$router->route('/', $loadIndex);
+$router->route('/<:username>', $loadPage);
+$router->route('/<#user_id>', $seasonSchedule);
+$router->route('/kilpailut/kalastus/<#year>', $loadFishingCompetition);
+$router->route('/kilpailut/purjehdus/<#year>', $loadSailingCompetition);
+//$router->route('/kilpailut/<*categories>', $loadCompetition);
+$router->setDefaultRoute($loadNotFound);
 use Sphp\Stdlib\Path;
 ?>
 
 <body>
- <?php $router->execute(); ?>
+ 
   <div class="off-canvas-wrapper wrapper">
     <!-- off-canvas left menu -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
@@ -56,11 +62,11 @@ use Sphp\Stdlib\Path;
       <div class="body">
         <div class="row expanded">
           <div class="column show-for-large large-3 xxlarge-3">
-<?php include '_srcs/templates/sidenav.php'; ?>
+            <?php include '_srcs/templates/sidenav.php'; ?>
           </div>
           <div class="column small-12 large-9 xlarge-8 end">
             <div class="page">
-<?php include '_srcs/templates/pageLoader.php'; ?>
+              <?php $router->execute(); ?>
             </div>
           </div>
         </div>
