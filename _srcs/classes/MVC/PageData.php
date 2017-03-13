@@ -22,7 +22,7 @@ class PageData {
   }
 
   public function isValid() {
-    return $this->errorCode === null;
+    return $this->errorCode === null || $this->errorCode < 400;
   }
 
   public function getPage() {

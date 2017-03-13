@@ -1,11 +1,17 @@
 <?php
 require_once('_srcs/settings.php');
 include ('_srcs/templates/htmlHead.php');
-
+$foo = function($vr =4) {
+  echo "VAR: $vr\n";
+};
+$router = new Sphp\MVC\Router();
+$router->route('/<#user_id> ', $foo);
+$router->setDefaultRoute($foo);
 use Sphp\Stdlib\Path;
 ?>
 
 <body>
+ <?php $router->execute(); ?>
   <div class="off-canvas-wrapper wrapper">
     <!-- off-canvas left menu -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>

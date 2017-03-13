@@ -10,10 +10,12 @@ Document::setHtmlVersion(Document::HTML5);
 $errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
 if ($errorCode === null) {
   $errorCode = filter_input(INPUT_GET, 'error_code', FILTER_SANITIZE_NUMBER_INT);
+} if ($errorCode === null){
+  
 }
-
+$title = 'foo';
 $html = Document::html();
-if ($errorCode !== null) {
+if ($errorCode !== null && $errorCode >= 400) {
   $p = new HttpCodeCollection();
   if ($p->contains($errorCode)) {
     $title = $errorCode . ': ' . $p->getMessage($errorCode);
