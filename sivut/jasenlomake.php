@@ -6,6 +6,7 @@ if (array_key_exists('send', $_SESSION)) {
   $name  = '<u>'.$_SESSION['send']['fname'] .' '. $_SESSION['send']['lname'].'</u>';
   $callout = new  Callout();
   $callout->setClosable();
+  $callout->setColor('success');
   $callout->appendMd('##Kiitos! ');
   $callout->appendMd("Käsittelemme henkilön $name jäsenhakemuksen mahdollisimman pian");
   $callout->printHtml();
@@ -15,7 +16,7 @@ use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
 $ageMenu->prepend(new Sphp\Html\Forms\Inputs\Menus\Option('18', 'Aikuinen',true));
 ?>
-
+<div class="callout alert"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/_srcs/templates/jasenlomake.php">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>

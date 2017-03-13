@@ -30,7 +30,7 @@ if ($errorCode !== null && $errorCode >= 400) {
 }
 
 use Sphp\Html\Head\Meta;
-
+$html->setLanguage('fi');
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
