@@ -8,7 +8,6 @@
 namespace Sphp\MVC;
 
 use Sphp\Exceptions\RuntimeException;
-use Exception;
 
 /**
  * Simple URL router
@@ -50,6 +49,11 @@ use Exception;
  * // Run the router
  * $router->execute();
  * </code>
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2017-03-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Router {
 
@@ -74,7 +78,7 @@ class Router {
    *
    * @var array
    */
-  private $params = array();
+  private $params = [];
 
   /**
    * An array containing the list of routing rules and their callback
@@ -82,49 +86,25 @@ class Router {
    *
    * @var array
    */
-  private $routes = array();
-
-  /**
-   * An array containing the list of routing rules before they are parsed
-   * into their regex equivalents, used for debugging and test cases
-   *
-   * @var array
-   */
-  private $routes_original = array();
+  private $routes = [];
 
   /**
    * A sanitized version of the URL, excluding the domain and base component
    *
    * @var string
    */
-  private $url_clean = '';
+  private $url = '';
 
   /**
    * Constructs a new instance
    * 
    * Initializes the router by getting the URL and cleaning it.
    *
-   * @param string|null $url optional URL to route
+   * @param  string|null $url optional URL to route
+   * @throws RuntimeException
    */
   public function __construct($url = null) {
-    if ($url === null) {
-      // Get the current URL, differents depending on platform/server software
-      if (!empty($_SERVER['REQUEST_URL'])) {
-        $url = $_SERVER['REQUEST_URL'];
-        // echo "$url\n";
-      } else {
-        $url = $_SERVER['REQUEST_URI'];
-        // echo "$url\n";
-      }
-    }
-    // echo "$url\n";
-    //echo $url;
-    // Store the dirty version of the URL
-    // $this->url_dirty = $url;
-    // Clean the URL, removing the protocol, domain, and base directory if there is one
-    $this->url_clean = $this->getCleanUrl($url);
-
-    // echo $this->url_clean;
+    $this->url = static::getCleanUrl($url);
   }
 
   /**
@@ -132,8 +112,8 @@ class Router {
    * the function passed to this method will be executed instead. This would
    * be useful for displaying a 404 page for example.
    *
-   * @param  Callable $callback
-   * @return self
+   * @param  callable $callback
+   * @return self for a fluent interface
    */
   public function setDefaultRoute($callback) {
     $this->default_route = $callback;
@@ -144,9 +124,9 @@ class Router {
    * Tries to match one of the URL routes to the current URL, otherwise
    * execute the default function and return false.
    *
-   * @return boolean
+   * @return self for a fluent interface
    */
-  public function run() {
+  protected function run() {
     // Whether or not we have matched the URL to a route
     $matched_route = false;
     // Sort the array by priority
@@ -156,11 +136,11 @@ class Router {
       // Loop through each route for this priority level
       foreach ($routes as $route => $callback) {
         // Does the routing rule match the current URL?
-        if (preg_match($route, $this->url_clean, $matches)) {
+        if (preg_match($route, $this->url, $matches)) {
           // A routing rule was matched
           $matched_route = TRUE;
           // Parameters to pass to the callback function
-          $params = array($this->url_clean);
+          $params = array($this->url);
           // Get any named parameters from the route
           foreach ($matches as $key => $match) {
             if (is_string($key)) {
@@ -170,46 +150,41 @@ class Router {
           // Store the parameters and callback function to execute later
           $this->params = $params;
           $this->callback = $callback;
-          // Return the callback and params, useful for unit testing
-          //return array('callback' => $callback, 'params' => $params, 'route' => $route, 'original_route' => $this->routes_original[$priority][$route]);
         }
       }
     }
     // Was a match found or should we execute the default callback?
     if (!$matched_route && $this->default_route !== null) {
       $this->callback = $this->default_route;
-
-
-        $this->params = [$this->url_clean];
-      
-      //return array('params' => $this->url_clean, 'callback' => $this->default_route, 'route' => false, 'original_route' => false);
+      $this->params = [$this->url];
     }
+    return $this;
   }
 
   /**
    * Calls the appropriate callback function and passes the given parameters
    * given by Router::run()
    *
-   * @return boolean
+   * @return self for a fluent interface
    */
-  public function dispatch() {
-      //var_dump($this->callback, $this->params);
+  protected function dispatch() {
+    //var_dump($this->callback, $this->params);
     if ($this->callback === null || $this->params === null) {
       throw new RuntimeException('No callback or parameters found, please run $router->run() before $router->dispatch()');
     }
     call_user_func_array($this->callback, $this->params);
-    return true;
+    return $this;
   }
 
   /**
    * Runs the router matching engine and then calls the dispatcher
    *
-   * @uses Router::run()
-   * @uses Router::dispatch()
+   * @return self for a fluent interface
    */
   public function execute() {
     $this->run();
     $this->dispatch();
+    return $this;
   }
 
   /**
@@ -220,6 +195,7 @@ class Router {
    * @param  Callable $callback
    * @param  integer  $priority
    * @return boolean
+   * @throws RuntimeException
    */
   public function route($route, $callback, $priority = 10) {
     // Keep the original routing rule for debugging/unit tests
@@ -245,7 +221,6 @@ class Router {
     }
     // Add the route to our routing array
     $this->routes[$priority][$route] = $callback;
-    $this->routes_original[$priority][$route] = $original_route;
     return true;
   }
 
@@ -261,10 +236,20 @@ class Router {
    * /users/view/1/
    * </code>
    *
-   * @param  string $url
+   * @param  string|null $url optional URL to to parse
    * @return string
+   * @throws RuntimeException
    */
-  protected function getCleanUrl($url) {
+  public static function getCleanUrl($url = null) {
+    if ($url === null) {
+      // Get the current URL, differents depending on platform/server software
+      $url = filter_input(\INPUT_SERVER, 'REQUEST_URL', FILTER_SANITIZE_URL);
+      if ($url === null) {
+        $url = filter_input(\INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+      } else {
+        throw new RuntimeException('URL cannot be resolved for routing');
+      }
+    }
     // The request url might be /project/index.php, this will remove the /project part
     //echo "$url\n";
     //echo "SCRIPT_NAME:". $_SERVER['SCRIPT_NAME']."\n";

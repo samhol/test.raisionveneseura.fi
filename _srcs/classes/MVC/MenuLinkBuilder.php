@@ -27,13 +27,22 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
 
   public function __construct($currentPage = null) {
     parent::__construct();
-    $this->currentPage = $currentPage;
+    $this->currentPage = trim($currentPage, '/');
   }
 
   public function parseLink(array $linkData) {
     $link = parent::parseLink($linkData);
-    if (array_key_exists('hrf', $linkData) && $this->currentPage === $linkData['href']) {
-      $link->setActive(true);
+    // echo trim($this->currentPage, '/') . "\n";
+    // echo $linkData['href'] . "\n";
+    if (array_key_exists('href', $linkData)) {
+
+
+      if (\Sphp\Stdlib\Strings::startsWith($this->currentPage, $linkData['href'])) {
+        $link->setActive(true);
+      }
+      else if ($this->currentPage === $linkData['href']) {
+        $link->setActive(true);
+      }
     }
     return $link;
   }

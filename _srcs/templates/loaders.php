@@ -8,20 +8,16 @@ use Sphp\Html\Container;
 $loadNotFound = function () {
   (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
 };
-$loadPage = function ($par) use($loadNotFound) {
+$loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
+  //print_r(func_get_args());
   try {
     ob_start();
-    $page = 'sivut/' . str_replace(['/'], [''], $par) . '.php';
-    if ($par === '/') {
-      (new Container)->appendMdFile("sivut/index.php")->printHtml();
-    } else if (is_file($page)) {
+    $page = "sivut/$file.php";
+    if (is_file($page)) {
       (new Container)->appendMdFile($page)->printHtml();
     } else {
       $loadNotFound($par);
     }
-
-
-
     $content = ob_get_contents();
   } catch (\Exception $e) {
     $content .= new ExceptionCallout($e);
@@ -30,7 +26,7 @@ $loadPage = function ($par) use($loadNotFound) {
   echo $content;
 };
 $seasonSchedule = function ($par) use ($loadPage) {
-  $page = str_replace(['/'], [''], $par);
+  $page = str_replace('/', '', $par);
   if ($page === date('Y')) {
     $loadPage('kausiohjelma');
   }
@@ -39,15 +35,22 @@ $seasonSchedule = function ($par) use ($loadPage) {
 $loadIndex = function () use ($loadPage) {
   $loadPage('etusivu');
 };
-$loadFishingCompetition = function ($path) {
-  $parts = explode('/', trim($path, '/'));
-  //$loadPage('kilpailut/kalastus/' . array_pop($parts).".php");
-  (new Container)->appendMdFile("sivut/kilpailut/kalastus/" . array_pop($parts) . ".php")->printHtml();
+$loadFishingCompetition = function ($path, $year) use($loadNotFound) {
+  $path = "sivut/kilpailut/kalastus/$year.php";
+  if (is_file($path)) {
+    (new Container)->appendMdFile($path)->printHtml();
+  } else {
+    $loadNotFound($year);
+  }
 };
-$loadSailingCompetition = function ($path) {
-  $parts = explode('/', trim($path, '/'));
-  //$loadPage('kilpailut/kalastus/' . array_pop($parts).".php");
-  (new Container)->appendMdFile("sivut/kilpailut/purjehdus/" . array_pop($parts) . ".php")->printHtml();
+$loadSailingCompetition = function ($path, $year) use($loadNotFound) {
+  $path = "sivut/kilpailut/purjehdus/$year.php";
+  if (is_file($path)) {
+    (new Container)->appendMdFile($path)->printHtml();
+  } else {
+    $loadNotFound($year);
+  }
+  (new Container)->appendMdFile($path)->printHtml();
 };
 $loadCompetition = function ($param) use ($loadPage) {
   echo $param;
