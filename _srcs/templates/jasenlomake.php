@@ -27,20 +27,27 @@ $street = filter_input(INPUT_POST, 'street', FILTER_SANITIZE_STRING);
 $zipcode = filter_input(INPUT_POST, 'zipcode', FILTER_SANITIZE_STRING);
 $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
 $currentDate = date('m.d.Y h:i.s e');
 if ($email !== null) {
-  //echo 'erger';
   $mail = new Message();
   $mail->setFrom('jasenhakemus@raisionveneseura.fi');
   $mail->addTo('samiholck@gmail.com');
   $mail->setSubject("Raision veneseuran jäsenhakemus ($fname $lname)");
-  $mailBody = "Raision veneseuran jäsenhakemus:\n\n";
-  $mailBody .= "\tEtunimi: $fname\n\n";
-  $mailBody .= "\tSukunimi: $lname\n\n";
+  $mailBody = "Raision veneseuran jäsenhakemus:\n----------------------\n";
+  $mailBody .= "HAKIJAN HENKILÖTIEDOT\n";
+  $mailBody .= "\tNimi: $fname $lname\n";
+  if ($age < 18) {
+    $age = "\tJuniori: $age-vuotias\n";
+  } else {
+    $age = "\tAikuinen\n";
+  }
+  $mailBody .= $age;
   $mailBody .= "\tOsoite: \n";
   $mailBody .= "\t\t$street\n";
-  $mailBody .= "\t\t$zipcode $city\n\n";
+  $mailBody .= "\t\t$zipcode $city\n";
   $mailBody .= "\tSähköpostiosoite: $email\n";
+  $mailBody .= "\tPuhelinnumero: $phone\n----------------------\n";
   $mailBody .= "\tLahetetty: $currentDate\n";
   $mail->setBody($mailBody);
   $transport = new Transport\Sendmail();

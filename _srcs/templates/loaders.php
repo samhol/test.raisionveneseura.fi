@@ -5,7 +5,10 @@ namespace Sphp\MVC;
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Container;
 
-$loadPage = function ($par) {
+$loadNotFound = function () {
+  (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
+};
+$loadPage = function ($par) use($loadNotFound) {
   try {
     ob_start();
     $page = 'sivut/' . str_replace(['/'], [''], $par) . '.php';
@@ -14,7 +17,7 @@ $loadPage = function ($par) {
     } else if (is_file($page)) {
       (new Container)->appendMdFile($page)->printHtml();
     } else {
-      throw new \InvalidArgumentException("the path $page points to no executable PHP script");
+      $loadNotFound($par);
     }
 
 
@@ -27,7 +30,6 @@ $loadPage = function ($par) {
   echo $content;
 };
 $seasonSchedule = function ($par) use ($loadPage) {
-  echo $par;
   $page = str_replace(['/'], [''], $par);
   if ($page === date('Y')) {
     $loadPage('kausiohjelma');
@@ -37,12 +39,12 @@ $seasonSchedule = function ($par) use ($loadPage) {
 $loadIndex = function () use ($loadPage) {
   $loadPage('etusivu');
 };
-$loadFishingCompetition = function ($path) use ($loadPage) {
+$loadFishingCompetition = function ($path) {
   $parts = explode('/', trim($path, '/'));
   //$loadPage('kilpailut/kalastus/' . array_pop($parts).".php");
   (new Container)->appendMdFile("sivut/kilpailut/kalastus/" . array_pop($parts) . ".php")->printHtml();
 };
-$loadSailingCompetition = function ($path) use ($loadPage) {
+$loadSailingCompetition = function ($path) {
   $parts = explode('/', trim($path, '/'));
   //$loadPage('kilpailut/kalastus/' . array_pop($parts).".php");
   (new Container)->appendMdFile("sivut/kilpailut/purjehdus/" . array_pop($parts) . ".php")->printHtml();
@@ -52,7 +54,4 @@ $loadCompetition = function ($param) use ($loadPage) {
   $loadPage('kilpailut');
 };
 
-$loadNotFound = function ($param) use ($loadPage) {
-  (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
-};
 
