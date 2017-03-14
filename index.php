@@ -1,9 +1,6 @@
 <?php
 require_once('_srcs/settings.php');
 include ('_srcs/templates/htmlHead.php');
-$foo = function($vr = 4) {
-  echo "Polusta $vr ei löytynyt mitään";
-};
 
 use Sphp\Stdlib\Path;
 ?>
@@ -54,7 +51,7 @@ use Sphp\Stdlib\Path;
       <div class="body">
         <div class="row expanded">
           <div class="column show-for-large large-3 xxlarge-3">
-            <?php include '_srcs/templates/sidenav.php'; ?>
+            <?php include ('_srcs/templates/sidenav.php'); ?>
           </div>
           <div class="column small-12 large-9 xlarge-8 end">
             <div class="page">

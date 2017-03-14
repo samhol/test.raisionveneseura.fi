@@ -7,6 +7,8 @@
 
 namespace Sphp\MVC;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Generates a page title for the given page
  *
@@ -39,6 +41,7 @@ class TitleGenerator {
   }
 
   public function createTitleFor($page) {
+    $page = trim($page, '/');
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {
       if ($pair['href'] === $page) {
@@ -47,7 +50,15 @@ class TitleGenerator {
         } else {
           $title .= ': ' . $pair['link'];
         }
-        break;
+        //break;
+        return $title;
+      }
+    }
+    if (Strings::startsWith($page, 'kilpailut/')) {
+      //echo $page;
+      if (is_file("sivut/$page.php")) {
+        $parts = explode('/', $page);
+        $title .= ': ' . Strings::toTitleCase($parts[1]) . $parts[0] . " vuonna " . $parts[2];
       }
     }
     return $title;

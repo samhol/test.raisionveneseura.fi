@@ -1,20 +1,29 @@
+<?php
+
+namespace Sphp\Html\Foundation\Sites\Containers;
+?>
 #Jäsenhakemus lomake
 
 <?php
-use Sphp\Html\Foundation\Sites\Containers\Callout;
-if (array_key_exists('send', $_SESSION)) {
-  $name  = '<u>'.$_SESSION['send']['fname'] .' '. $_SESSION['send']['lname'].'</u>';
-  $callout = new  Callout();
+
+use Sphp\MVC\MemberData;
+
+if (array_key_exists(MemberData::class, $_SESSION)) {
+  $data = $_SESSION[MemberData::class];
+  $name = '<u>' . $data->getFname() . ' ' . $data->getLname() . '</u>';
+  $callout = new Callout();
   $callout->setClosable();
   $callout->setColor('success');
-  $callout->appendMd('##Kiitos! ');
+  $callout->appendMd('##Kiitos hakemuksestasi');
   $callout->appendMd("Käsittelemme henkilön $name jäsenhakemuksen mahdollisimman pian");
   $callout->printHtml();
-  unset($_SESSION['send']);
+  unset($_SESSION[MemberData::class]);
 }
-use Sphp\Html\Forms\Inputs\Menus\MenuFactory;
+
+namespace Sphp\Html\Forms\Inputs\Menus;
+
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
-$ageMenu->prepend(new Sphp\Html\Forms\Inputs\Menus\Option('18', 'Aikuinen',true));
+$ageMenu->prepend(new Option('18', 'Aikuinen', true));
 ?>
 <div class="callout alert"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/_srcs/templates/jasenlomake.php">
@@ -47,7 +56,7 @@ $ageMenu->prepend(new Sphp\Html\Forms\Inputs\Menus\Option('18', 'Aikuinen',true)
       </label>
     </div>
   </div>
-    
+
   <div class="row">
     <div class="small-12 large-5 columns">
       <label>Katuosoite <small class="alert">(pakollinen)</small>
@@ -96,11 +105,7 @@ $ageMenu->prepend(new Sphp\Html\Forms\Inputs\Menus\Option('18', 'Aikuinen',true)
 </form>
 
 <?php
-
 //use Sphp\Stdlib\Path;
-
-
 //require_once(Path::get()->local('_srcs/templates/jasenlomake.php'));
-
 //print_r($_POST);
-?>
+

@@ -50,7 +50,6 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   } else {
     $loadNotFound($year);
   }
-  (new Container)->appendMdFile($path)->printHtml();
 };
 $loadCompetition = function ($param) use ($loadPage) {
   echo $param;

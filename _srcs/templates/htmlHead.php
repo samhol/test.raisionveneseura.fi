@@ -4,7 +4,7 @@ namespace Sphp\Html;
 
 use Sphp\Core\Http\HttpCodeCollection;
 use Sphp\Stdlib\Path;
-
+use Sphp\MVC\Router;
 Document::setHtmlVersion(Document::HTML5);
 
 $errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
@@ -23,7 +23,7 @@ if ($errorCode !== null && $errorCode >= 400) {
   Document::html()->setDocumentTitle($title);
   $html->body()->addCssClass('error-page');
 } else {
-  $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+  $page = Router::getCleanUrl();
   $titleGenerator = new \Sphp\MVC\TitleGenerator($mainLinks);
   $title = $titleGenerator->createTitleFor($page);
   Document::html()->setDocumentTitle($title);

@@ -28,13 +28,13 @@ use Sphp\Stdlib\Parser;
 $config = new Config(Parser::fromFile(__DIR__ . '/settings.yml'));
 
 namespace Sphp\MVC;
-require_once '_srcs/templates/loaders.php';
+require_once 'templates/loaders.php';
 
 $router = new Router();
 $router->route('/', $loadIndex);
-$router->route('/<:pagename>', $loadPage);
-$router->route('/' . date('Y'), $seasonSchedule);
 $router->route('/kilpailut/kalastus/<#year>', $loadFishingCompetition);
 $router->route('/kilpailut/purjehdus/<#year>', $loadSailingCompetition);
+$router->route('/<:pagename>', $loadPage);
+$router->route('/' . date('Y'), $seasonSchedule);
 //$router->route('/kilpailut/<*categories>', $loadCompetition);
 $router->setDefaultRoute($loadNotFound);

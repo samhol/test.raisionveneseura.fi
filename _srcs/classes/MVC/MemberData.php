@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * MemberData.php (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\MVC;
@@ -15,20 +14,23 @@ namespace Sphp\MVC;
  */
 class MemberData {
 
+  private $age;
   private $fname;
   private $lname;
   private $email;
+  private $phoneNumber;
   private $street;
   private $zipcode;
   private $city;
 
-  public function __construct($fname, $lname, $email, $street, $zipcode, $city) {
-    $this->fname = $fname;
-    $this->lname = $lname;
-    $this->email = $email;
-    $this->street = $street;
-    $this->zipcode = $zipcode;
-    $this->city = $city;
+  public function __construct($data) {
+    foreach ($data as $k => $v) {
+      $this->{$k} = $v;
+    }
+  }
+
+  public function getAge() {
+    return $this->age;
   }
 
   public function getFname() {
@@ -41,6 +43,18 @@ class MemberData {
 
   public function getEmail() {
     return $this->email;
+  }
+
+  /**
+   * 
+   * @return boolean
+   */
+  public function hasPhoneNumber() {
+    return is_string($this->phoneNumber);
+  }
+
+  public function getPhoneNumber() {
+    return $this->phoneNumber;
   }
 
   public function getStreet() {
