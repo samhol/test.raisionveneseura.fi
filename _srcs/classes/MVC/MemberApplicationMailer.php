@@ -33,7 +33,8 @@ class MemberApplicationMailer {
 
   /**
    * 
-   * @param MemberData $data
+   * @param  MemberData $data
+   * @return self for a fluent interface
    */
   public function send(MemberData $data) {
     $mail = new Message();
@@ -49,7 +50,7 @@ class MemberApplicationMailer {
   /**
    * 
    * @param  MemberData $data
-   * @return string mail body
+   * @return string mail body as a string
    */
   protected function createMailBody(MemberData $data) {
     $mailBody = "Raision veneseuran jäsenhakemus:\n";
@@ -60,8 +61,8 @@ class MemberApplicationMailer {
     } else {
       $age = "\tAikuinen\n";
     }
-    $mailBody .= "\tNimi: {$data->getFname()} {$data->getLname()}\n";
     $mailBody .= $age;
+    $mailBody .= "\tNimi: {$data->getFname()} {$data->getLname()}\n";
     $mailBody .= "\tOsoite: \n";
     $mailBody .= "\t\t{$data->getStreet()}\n";
     $mailBody .= "\t\t{$data->getZipcode()} {$data->getCity()}\n";

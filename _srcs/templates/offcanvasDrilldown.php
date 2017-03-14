@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
+use Sphp\MVC\Router;
 
-$menuBuilder = new MenuBuilder();
-echo $menuBuilder->buildMenu($mainLinks, new DrilldownMenu())->addCssClass('vertical');
+$menuBuilder = new MenuBuilder(new MenuLinkBuilder(Router::getCleanUrl()));
+echo $menuBuilder->buildMenu($mainLinks, new DrilldownMenu());
