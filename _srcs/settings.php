@@ -17,6 +17,7 @@ $handler->attach((new ExceptionPrinter())->showTrace());
         ->setErrorReporting(E_ALL)
         ->setDefaultTimezone('Europe/Helsinki')
         ->setEncoding('UTF-8')
+        ->setMessageLocale('fi_FI')
         ->setExceptionHandler($handler)
         ->init();
 require_once ('menuArrays.php');

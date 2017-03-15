@@ -10,19 +10,10 @@
 
 @include foundation-everything;
 
-$sphp6-topbar-bg: #121212; 
-$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
-$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
-$sphp6-topbar-font-color: #efefef;
-$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
-$sphp6-root-border-color: #4e4e4e;
-
-
-@import "app/sphp-back-to-top-button";
+@import "../../sphp/scss/app/sphp-back-to-top-button";
 
 .body {
-  margin-top: rem-calc(10); 
+  margin-top: rem-calc(10);
 }
 .top-row {
   @include opacity(0.95);
@@ -32,7 +23,7 @@ $sphp6-root-border-color: #4e4e4e;
   span {
     margin-left: rem-calc(20);
   }
-}
+} 
 .top-bar {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
@@ -54,16 +45,15 @@ html, body {
 
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -50px;
+  margin-bottom: -60px;
 }
 .footer {
   border-top: solid 1px #999;
   background-color: #eee;
   padding:rem-calc(5);
 }
-.footer,
-.push {
-  height: 50px;
+.footer, .push {
+  height: 60px;
 }
 
 
@@ -77,7 +67,7 @@ html, body {
     background: $accordion-bg;
     color: #fff;
     &:hover {
-      background: $accordion-hover;
+      background: scale-color($accordion-bg, $lightness:-30%);
     }
   }
 
@@ -92,11 +82,22 @@ html, body {
         border-color: #fff transparent transparent;
       }
     }
+    & ul li {
+      background-color: #111;
+    }
+    & ul li:not(.menu-text) > a {
+      padding: rem-calc(15 15 15 25);
+      background: scale-color($accordion-bg, $lightness:-10%);
+      &:hover {
+        background: scale-color($accordion-bg, $lightness:-30%);
+      }
+    }
   }
+
 
   // padding for each list item
   &  li:not(.menu-text) > a {
-    padding: 1.2rem 1rem;
+    padding: rem-calc(15 15 15 15);
   }
 
 }

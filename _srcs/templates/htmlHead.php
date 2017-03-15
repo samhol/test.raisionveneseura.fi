@@ -34,7 +34,7 @@ $html->setLanguage('fi');
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
-        ->addCssSrc('sphp/css/base.css')
+        ->addCssSrc('_scrs/css/base.css')
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
