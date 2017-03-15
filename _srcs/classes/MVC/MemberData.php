@@ -23,7 +23,7 @@ class MemberData {
   private $zipcode;
   private $city;
 
-  public function __construct($data) {
+  public function __construct(array $data) {
     foreach ($data as $k => $v) {
       $this->{$k} = $v;
     }

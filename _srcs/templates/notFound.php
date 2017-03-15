@@ -2,6 +2,6 @@
 
 Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 
-##Voit kokeilla seuraavia:
+##Voit kokeilla esimerkiksi seuraavia:
 
  Etusivu; 

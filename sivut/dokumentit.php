@@ -27,10 +27,10 @@ $link = new \Sphp\Html\Navigation\Hyperlink($root . 'dokumentit/turvallisuusasia
 echo " $link ($size)\n\n";
 ?>
 <?php
-$eksymalaskenta = new \SplFileInfo('dokumentit/Eksymalaskenta.xls');
+$eksymalaskenta = new \SplFileInfo('dokumentit/eksymalaskenta.xls');
 $filename = $eksymalaskenta->getFilename();
 $size = formatBytes($eksymalaskenta->getSize());
-$link = new \Sphp\Html\Navigation\Hyperlink('dokumentit/Eksymalaskenta.xls', '<span class="badge" title="XLS-tiedosto"><i class="fa fa-file-excel-o "></i></span> Eksymälaskenta');
+$link = new \Sphp\Html\Navigation\Hyperlink('dokumentit/eksymalaskenta.xls', '<span class="badge" title="XLS-tiedosto"><i class="fa fa-file-excel-o "></i></span> Eksymälaskenta');
 echo " $link ($size)\n\n";
 ?>
 

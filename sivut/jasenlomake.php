@@ -26,7 +26,7 @@ $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
 $ageMenu->prepend(new Option('18', 'Aikuinen', true));
 ?>
 <div class="callout alert"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
-<form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/_srcs/templates/jasenlomake.php">
+<form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>
