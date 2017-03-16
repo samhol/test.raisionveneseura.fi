@@ -1,6 +1,17 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
+function generateFormToken($form) {
+    
+       // generate a token from an unique value
+    	$token = md5(uniqid(microtime(), true));  
+    	
+    	// Write the generated token to the session variable to check it against the hidden field when the form is sent
+    	$_SESSION[$form.'_token'] = $token; 
+    	
+    	return $token;
+
+}
 ?>
 #Jäsenhakemus lomake
 
@@ -30,7 +41,8 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>
-  <div class="row">
+  <fieldset class="row">
+    <label>Henkilötiedot</label>
     <div class="small-12 large-2 columns">
       <label>Ikä
         <?php $ageMenu->printHtml() ?>
@@ -55,14 +67,15 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
         </span>
       </label>
     </div>
-  </div>
+  </fieldset>
 
-  <div class="row">
+  <fieldset class="row">
+    <label>Osoitetiedot</label>
     <div class="small-12 large-5 columns">
       <label>Katuosoite <small class="alert">(pakollinen)</small>
         <input name="street" type="text" placeholder="Katuosoite" required>
         <span class="form-error">
-          Anna etunimesi
+          Anna latuosoitteesi
         </span>
       </label>
     </div>
@@ -70,21 +83,24 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
       <label>Postinumero <small class="alert">(pakollinen)</small>
         <input name="zipcode" type="text" placeholder="Postinumero" required>
         <span class="form-error">
-          Anna sukunimesi
+          Anna Postinumerosi
         </span>
       </label>
     </div>
     <div class="small-12 medium-8 large-4 columns">
-      <label>Kunta <small class="alert">(pakollinen)</small>
-        <input name="city" type="text" placeholder="Kunta" required>
+      <label>Kotikunta <small class="alert">(pakollinen)</small>
+        <input name="city" type="text" placeholder="Kotikunta" required>
         <span class="form-error">
-          Anna sukunimesi
+          Anna kotikuntasi nimi
         </span>
       </label>
     </div>
+  </fieldset>
+  <fieldset class="row">
+    <label>Muut yhteystiedot</label>
     <div class="small-12 medium-8 columns">
       <label>Sähköpostiosoite <small class="alert">(pakollinen)</small>
-        <input type="email" name="email" placeholder="hakijan sähköpostiosoite" required pattern="email">
+        <input type="email" name="email" placeholder="Sähköpostiosoite" required pattern="email">
       </label>
       <span class="form-error">Anna sähköpostiosoitteesi</span>
     </div>
@@ -93,7 +109,8 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
         <input type="text" name="phone" placeholder="012-1234567 tms.">
       </label>
     </div>
-  </div>
+  </fieldset>
+
   <div class="row">
     <fieldset class="small-12 columns">
       <div class="button-group">

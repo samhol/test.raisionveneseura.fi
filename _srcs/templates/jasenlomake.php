@@ -38,7 +38,7 @@ $validator->set('email', new RequiredValueValidator());
 
 namespace Sphp\MVC;
 
-$currentDate = date('m.d.Y h:i.s e');
+//$currentDate = date('m.d.Y h:i.s e');
 if ($validator->isValid($inputs)) {
   $memberData = new MemberData($inputs);
   $applicantData = new MemberData($inputs);
