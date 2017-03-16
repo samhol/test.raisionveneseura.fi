@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Http\HttpCodeCollection;
+use Sphp\Http\HttpCodeCollection;
 use Sphp\Stdlib\Path;
 use Sphp\MVC\Router;
 Document::setHtmlVersion(Document::HTML5);
@@ -34,7 +34,7 @@ $html->setLanguage('fi');
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
-        ->addCssSrc('_scrs/css/base.css')
+        ->addCssSrc('_srcs/css/base.css')
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')

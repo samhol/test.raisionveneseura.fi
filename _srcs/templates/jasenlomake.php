@@ -2,8 +2,11 @@
 
 namespace Sphp\Validators;
 
-require_once ('../settings.php');
+use Sphp\Http\Headers\Location;
+use Sphp\Stdlib\Path;
 
+require_once ('../settings.php');
+$httpRoot = Path::get()->http();
 $args = [
     'fname' => FILTER_SANITIZE_STRING,
     'lname' => FILTER_SANITIZE_STRING,
@@ -18,6 +21,9 @@ $args = [
 ];
 
 $inputs = filter_input_array(INPUT_POST, $args);
+if (!is_array($inputs)) {
+  (new Location($httpRoot."jasenlomake"))->execute();
+}
 //print_r($inputs);
 //namespace Sphp\Validators;
 //print_r($_POST);
@@ -32,12 +38,9 @@ $validator->set('email', new RequiredValueValidator());
 
 namespace Sphp\MVC;
 
-$memberData = new MemberData($inputs);
-
-namespace Sphp\MVC;
-
 $currentDate = date('m.d.Y h:i.s e');
 if ($validator->isValid($inputs)) {
+  $memberData = new MemberData($inputs);
   $applicantData = new MemberData($inputs);
   $mailer = new MemberApplicationMailer();
   $mailer->send($applicantData);
@@ -55,4 +58,4 @@ if ($validator->isValid($inputs)) {
 }
 header("Location: $referef");
 ?>
-</pre>
+
