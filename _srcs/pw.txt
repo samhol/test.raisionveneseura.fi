@@ -1,2 +1,13 @@
-user: rvs@raisionveneseura.fi
-pw:   ]%p*]vDPR1{[
+ftp accounts:
+  user: rvs@raisionveneseura.fi
+  pw:   ]%p*]vDPR1{[
+
+email:
+  webadmin@raisionveneseura.fi
+  pw: T$qOf[^1aTkl
+  
+  jasenhakemus@raisionveneseura.fi
+  pw: 25rMxq~1VVtn
+
+  toimisto@raisionveneseura.fi
+  pw: TN~PW?^Ed.EP

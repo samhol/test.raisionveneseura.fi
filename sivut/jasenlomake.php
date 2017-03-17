@@ -1,17 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
-function generateFormToken($form) {
-    
-       // generate a token from an unique value
-    	$token = md5(uniqid(microtime(), true));  
-    	
-    	// Write the generated token to the session variable to check it against the hidden field when the form is sent
-    	$_SESSION[$form.'_token'] = $token; 
-    	
-    	return $token;
 
-}
 ?>
 #Jäsenhakemus lomake
 
@@ -29,15 +19,28 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->appendMd("Käsittelemme henkilön $name jäsenhakemuksen mahdollisimman pian");
   $callout->printHtml();
   unset($_SESSION[MemberData::class]);
+} else if (array_key_exists('invalidForm', $_SESSION)) {
+  $callout = new Callout();
+  $callout->setClosable();
+  $callout->setColor('alert');
+  $callout->appendMd('##Hakemuksen lähettäminen epäonnistui');
+  $callout->appendMd('Yritä uudelleen');
+  $callout->printHtml();
+  unset($_SESSION['invalidForm']);
 }
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use Sphp\Security\CRSFToken;
+
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
 $ageMenu->prepend(new Option('18', 'Aikuinen', true));
+
+$newToken = CRSFToken::instance()->generateToken('membership_token');
 ?>
-<div class="callout alert"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
+<div class="callout warning"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
+  <input type="hidden" name="token" value="<?php echo $newToken; ?>645645">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>

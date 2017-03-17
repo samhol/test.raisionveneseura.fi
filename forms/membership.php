@@ -4,10 +4,25 @@ namespace Sphp\Validators;
 
 require_once ('../_srcs/settings.php');
 
-use Sphp\Stdlib\Strings;
+use Sphp\Http\Headers\Location;
+use Sphp\Stdlib\Path;
+use Sphp\Security\CRSFToken;
 
+$httpRoot = Path::get()->http();
 $referef = filter_input(INPUT_SERVER, 'HTTP_REFERER', FILTER_VALIDATE_URL);
-//if (Strings::startsWith($referef, $needle))
+if ($referef !== 'http://test.raisionveneseura.fi/jasenlomake') {
+  echo 'unknown referer';
+} else {
+  echo "OK:" . $referef;
+}
+if (!CRSFToken::instance()->verifyPostToken('membership_token')) {
+  //echo "rvgba<s";
+  $_SESSION['invalidForm'] = 'CRSF error';
+  (new Location($httpRoot . "jasenlomake"))->execute();
+  exit();
+} else {
+  print_r($_POST);
+}
 $args = [
     'fname' => FILTER_SANITIZE_STRING,
     'lname' => FILTER_SANITIZE_STRING,
@@ -22,6 +37,10 @@ $args = [
 ];
 
 $inputs = filter_input_array(INPUT_POST, $args);
+if (!is_array($inputs)) {
+  $_SESSION['invalidForm'] = 'CRSF error';
+  (new Location($httpRoot . "jasenlomake"))->execute();
+}
 //print_r($inputs);
 //namespace Sphp\Validators;
 //print_r($_POST);
@@ -36,11 +55,9 @@ $validator->set('email', new RequiredValueValidator());
 
 namespace Sphp\MVC;
 
-namespace Sphp\MVC;
-
-$currentDate = date('m.d.Y h:i.s e');
+//$currentDate = date('m.d.Y h:i.s e');
 if ($validator->isValid($inputs)) {
-  //$memberData = new MemberData($inputs);
+  $memberData = new MemberData($inputs);
   $applicantData = new MemberData($inputs);
   $mailer = new MemberApplicationMailer();
   $mailer->send($applicantData);
@@ -58,4 +75,4 @@ if ($validator->isValid($inputs)) {
 }
 header("Location: $referef");
 ?>
-</pre>
+
