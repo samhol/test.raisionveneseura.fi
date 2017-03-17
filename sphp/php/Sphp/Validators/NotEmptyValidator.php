@@ -40,8 +40,8 @@ class NotEmptyValidator extends AbstractValidator {
   /**
    * Constructs a new validator
    *
-   * @param int $min minimum length of the valid string
-   * @param int $max maximum length of the valid string
+   * @param type $type
+   * @param type $message
    */
   public function __construct($type= 'scalar', $message = "Value is required and can't be empty") {
     parent::__construct();
