@@ -11,7 +11,7 @@ namespace Sphp\Core\Filters;
  * Filter converts a numeric input value to a corresponding roman numeral
  * 
  * * All non negative integer values remain unchanged. 
- * * value is consideserd as an integer if it contains only numbers
+ * * value is considered as an integer if it contains only numbers
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
@@ -31,7 +31,7 @@ class ArrayFilter extends AbstractFilter {
    *
    * @var boolean
    */
-  private $add_empty;
+  private $addEmpty;
 
   /**
    * Constructs a new instance
@@ -43,14 +43,40 @@ class ArrayFilter extends AbstractFilter {
    */
   public function __construct(array $definition = [], $add_empty = true) {
     $this->definition = $definition;
-    $this->add_empty = $add_empty;
+    $this->addEmpty = $add_empty;
+  }
+  public function getDefinition() {
+    return $this->definition;
+  }
+
+  public function getAddEmpty() {
+    return $this->addEmpty;
+  }
+
+  public function setDefinition($definition) {
+    $this->definition = $definition;
+    return $this;
+  }
+
+  public function setAddEmpty($addEmpty) {
+    $this->addEmpty = $addEmpty;
+    return $this;
+  }
+
+    public function setFilter($key, $filter) {
+    if (is_callable($filter)) {
+      $definition = array('filter' => FILTER_CALLBACK,
+          'flags' => $filter,);
+      $this->definition[$key] = $definition;
+    }
+    return $this;
   }
 
   public function filter($variable) {
     if (!is_array($variable)) {
       $variable = [];
     }
-    return filter_var_array($variable, $this->definition, $this->add_empty);
+    return filter_var_array($variable, $this->definition, $this->addEmpty);
   }
 
 }

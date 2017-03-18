@@ -10,7 +10,7 @@ namespace Sphp\Security;
 use Sphp\Exceptions\RuntimeException;
 
 /**
- * Implements a CRSF token generator and validator
+ * Implements a `CRSF` token generator and validator
  *
  * 
  * **First:** generate a new token and put it in a hidden field
@@ -44,6 +44,7 @@ use Sphp\Exceptions\RuntimeException;
 class CRSFToken {
 
   /**
+   * the singleton instance of a `CRSF` token generator
    *
    * @var self
    */
@@ -63,10 +64,10 @@ class CRSFToken {
   }
 
   /**
-   * Creates a CRSF token to use
+   * Creates a `CRSF` token to use
    * 
-   * @param  string $tokenName the CRSF token name
-   * @return string the CRSF token generated
+   * @param  string $tokenName the `CRSF` token name
+   * @return string the `CRSF` token generated
    */
   public function generateToken($tokenName) {
     $token = md5(uniqid(microtime(), true));
@@ -76,9 +77,9 @@ class CRSFToken {
   }
 
   /**
-   * Verifies a named CRSF token from the input data
+   * Verifies a named `CRSF` token from the input data
    * 
-   * @param  string $tokenName the CRSF token name
+   * @param  string $tokenName the `CRSF` token name
    * @param  int $type
    * @return boolean true if the token value matches
    */
@@ -95,7 +96,7 @@ class CRSFToken {
   }
 
   /**
-   * Verifies a named CRSF token from the POST data
+   * Verifies a named `CRSF` token from the POST data
    * 
    * @param  string $tokenName the CRSF token name
    * @return boolean true if the token value matches
@@ -115,7 +116,7 @@ class CRSFToken {
   }
   
   /**
-   * Returns the singleton instance of a CRSF token generator
+   * Returns the singleton instance of a `CRSF` token generator
    * 
    * @return self singleton instance
    */

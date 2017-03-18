@@ -10,7 +10,7 @@ use Sphp\Security\CRSFToken;
 
 $httpRoot = Path::get()->http();
 $referef = filter_input(INPUT_SERVER, 'HTTP_REFERER', FILTER_VALIDATE_URL);
-if ($referef !== 'http://test.raisionveneseura.fi/jasenlomake') {
+if ($referef !== $httpRoot . 'jasenlomake') {
   echo 'unknown referer';
 } else {
   echo "OK:" . $referef;
