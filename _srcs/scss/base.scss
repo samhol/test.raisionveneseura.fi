@@ -57,7 +57,13 @@ html, body {
 }
 
 
-.sidenav, .top-bar {
+.sidenav, .top-bar, .is-drilldown {
+  .js-drilldown-back {
+  // ...
+  
+    content: "Takaisin:";
+  
+}
   $accordion-bg: #4d5158;
   $accordion-hover: #35383d;
   $accordion-separator: #41444a;
