@@ -1,7 +1,6 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
-
 ?>
 #Jäsenhakemus lomake
 
@@ -24,6 +23,8 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->setClosable();
   $callout->setColor('alert');
   $callout->appendMd('##Hakemuksen lähettäminen epäonnistui');
+  $callout->appendMd('invalidForm');
+  $callout->append($_SESSION['invalidForm']);
   $callout->appendMd('Yritä uudelleen');
   $callout->printHtml();
   unset($_SESSION['invalidForm']);
@@ -40,7 +41,7 @@ $newToken = CRSFToken::instance()->generateToken('membership_token');
 ?>
 <div class="callout warning"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
-  <input type="hidden" name="token" value="<?php echo $newToken; ?>645645">
+  <input type="hidden" name="membership_token" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>
