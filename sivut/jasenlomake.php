@@ -23,8 +23,12 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->setClosable();
   $callout->setColor('alert');
   $callout->appendMd('##Hakemuksen lähettäminen epäonnistui');
-  $callout->appendMd('invalidForm');
-  $callout->append($_SESSION['invalidForm']);
+  $callout->appendMd('Lokakkeessa on virheitä');
+  $v = unserialize($_SESSION['invalidForm']);
+  foreach ($v->getErrors() as $err) {
+    $callout->appendMd(" * Virhe: $err\n");
+  }
+  //$callout->append($_SESSION['invalidForm']->getErrors());
   $callout->appendMd('Yritä uudelleen');
   $callout->printHtml();
   unset($_SESSION['invalidForm']);
@@ -40,7 +44,7 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
 $newToken = CRSFToken::instance()->generateToken('membership_token');
 ?>
 <div class="callout warning"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
-<form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
+<form novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
   <input type="hidden" name="membership_token" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>

@@ -21,12 +21,8 @@ items:
       href: kausiohjelma
     - link: Hallitus
       href: hallitus
-  - menu: Katsastustoiminta
-    items:
-    - link: Tietoa katsastuksesta
-      href: katsastusinfo
-    - link: Katsastajien yhteystiedot
-      href: katsastajat   
+  - link: Katsastustoiminta
+    href: katsastustoiminta
   - link: Ladattavat dokumentit
     href: dokumentit
   - link: Kilpailut

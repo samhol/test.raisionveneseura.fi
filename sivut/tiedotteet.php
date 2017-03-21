@@ -2,7 +2,7 @@
 <?php
 $it = new FilesystemIterator('sivut/ilmoitukset');
 $arr = iterator_to_array($it);
-$cal = new Sphp\Core\I18n\Calendar(new \Sphp\Core\I18n\Gettext\Translator());
+$cal = new Sphp\I18n\Calendar(new \Sphp\I18n\Gettext\Translator());
 krsort($arr);
 foreach ($arr as $item) {
   //print_r($item);

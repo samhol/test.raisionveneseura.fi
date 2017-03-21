@@ -1,9 +1,13 @@
 /**
- * sphp6.styles.all.scss (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ * _base.scss (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */ 
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+$menu-bg: #4d5158;
+$menu-area-bg: #4d5158;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import "compass/css3"; 
 @import "base-settings";
 @import "../../vendor/zurb/foundation/scss/foundation";
@@ -14,9 +18,12 @@
 
 .body {
   margin-top: rem-calc(10);
+  .callout, form {
+    margin: rem-calc(3 5 3 5);
+  }
 }
 .top-row {
-  @include opacity(0.95);
+  @include opacity(0.90);
   color: #1044ba;
   background-color: #fff;
   font-size: rem-calc(20);
@@ -25,20 +32,29 @@
   }
 } 
 .top-bar {
-  border-top: 1px solid #252525;
-  border-bottom: 1px solid #252525;
-  border-left: 1px solid #252525;
+  @include box-shadow(rgba(blue, 0.2) 0px 5px 6px 2px);
+  border-top: 2px solid #0099ff;
+  border-bottom: 2px solid #0099ff;
+  //border-left: 1px solid #252525;
   &:last-child {
-    border-right: 1px solid #252525;
+    //border-right: 1px solid #6666ff;
   }
   &:hover {
-    border-color: #333;
+    @include box-shadow(rgba(blue, 0.3) 0px 6px 6px 0px);
+    //background: #666;
   }
 }
 
 html, body {
   height: 100%;
   margin: 0;
+}
+body {
+  background-color: #fefefe;
+  background-image: url('http://raisionveneseura.fi/_srcs/img/background.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
 }
 .wrapper {
   min-height: 100%;
@@ -56,65 +72,44 @@ html, body {
   height: 60px;
 }
 
-
-.sidenav, .top-bar, .is-drilldown {
-  .js-drilldown-back {
-  // ...
-  
-    content: "Takaisin:";
-  
+$menu-item-hover: #35383d;
+$menu-separator: #41444a;
+.sidenav {
+  background: $menu-area-bg
 }
-  $accordion-bg: #4d5158;
-  $accordion-hover: #35383d;
-  $accordion-separator: #41444a;
-  background: $accordion-bg;
-  // background for main accordion items
-  a {
-    background: $accordion-bg;
+.menu {
+  li:not(.active) > a {
+    background: $menu-bg;
     color: #fff;
     &:hover {
-      background: scale-color($accordion-bg, $lightness:-30%);
-    }
-  }
-
-  &[data-accordion-menu] {
-    a {
-      color: #fff;
-      // sets accodion item separator color
-      box-shadow: inset 0 -1px $accordion-separator;
-
-      &::after {
-        // sets accodion arrow color and direction
-        border-color: #fff transparent transparent;
-      }
-    }
-    & ul li {
-      background-color: #111;
-    }
-    & ul li:not(.menu-text) > a {
-      padding: rem-calc(15 15 15 25);
-      background: scale-color($accordion-bg, $lightness:-10%);
-      &:hover {
-        background: scale-color($accordion-bg, $lightness:-30%);
-      }
+      background: scale-color($menu-bg, $lightness:-30%);
     }
   }
 
 
-  // padding for each list item
-  &  li:not(.menu-text) > a {
+  li:not(.menu-text) > a {
     padding: rem-calc(15 15 15 15);
   }
-
+  & ul { 
+    li:not(.menu-text) > a {
+      padding: rem-calc(15 15 15 25);
+    }
+    li:not(.active) > a {
+      background: scale-color($menu-bg, $lightness:-10%);
+      &:hover {
+        background: scale-color($menu-bg, $lightness:-30%);
+      }
+    }
+  }
+  background: $menu-bg;
 }
-
-body {
-  background-color: #fefefe;
-  background-image: url('http://raisionveneseura.fi/_srcs/img/background.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
+.off-canvas.position-left {
+  div.is-drilldown {
+    margin-top: rem-calc(40);
+  }
 }
+// background for main accordion items
+
 .page {
   //margin: rem-calc(0 0 0 2);  
   border: solid 1px #999;

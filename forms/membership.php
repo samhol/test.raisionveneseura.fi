@@ -13,11 +13,11 @@ use Sphp\MVC\MemberApplicationMailer;
 $httpRoot = Path::get()->http();
 if (!CRSFToken::instance()->verifyPostToken('membership_token')) {
   //echo "rvgba<s";
-  $_SESSION['invalidForm'] = 'CRSF error';
+  //$_SESSION['invalidForm'] = 'CRSF error';
 } else {
   $inputs = require_once('formFilter.php');
   if (!is_array($inputs)) {
-    $_SESSION['invalidForm'] = 'no formdata found';
+    //$_SESSION['invalidForm'] = 'no formdata found';
     //(new Location($httpRoot . "jasenlomake"))->execute();
   } else {
     $validator = require_once('formValidator.php');
@@ -29,7 +29,7 @@ if (!CRSFToken::instance()->verifyPostToken('membership_token')) {
       //  25rMxq~1VVtn
       $_SESSION[MemberData::class] = $applicantData;
     } else {
-      $_SESSION['invalidForm'] = $validator;
+      $_SESSION['invalidForm'] = serialize($validator);
     }
   }
 }
