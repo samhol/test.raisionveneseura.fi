@@ -1,8 +1,8 @@
 <?php
 
 /**
- * URL.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * MenuLinkBuilder.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
@@ -12,13 +12,37 @@ use Sphp\Stdlib\Path;
 /**
  * Description of MenuLinkBuilder
  *
- * @author Sami
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-03-11
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class MenuLinkBuilder {
 
+  /**
+   *
+   * @var type 
+   */
   private $defaultTarget = null;
+
+  /**
+   *
+   * @var type 
+   */
   private $currentPage;
+
+  /**
+   *
+   * @var type 
+   */
   private $activator;
+
+  /**
+   *
+   * @var type 
+   */
   private $menuType = Menu::class;
 
   public function __construct() {
@@ -35,10 +59,19 @@ class MenuLinkBuilder {
     return $this;
   }
 
+  /**
+   * 
+   * @return type
+   */
   public function getCurrentPage() {
     return $this->currentPage;
   }
 
+  /**
+   * 
+   * @param type $currentPage
+   * @return $this
+   */
   public function setCurrentPage($currentPage) {
     $this->currentPage = $currentPage;
     return $this;
@@ -54,6 +87,10 @@ class MenuLinkBuilder {
     return $this;
   }
 
+  /**
+   * 
+   * @return type
+   */
   public function getDefaultTarget() {
     return $this->defaultTarget;
   }
@@ -62,6 +99,11 @@ class MenuLinkBuilder {
     return $this->activator;
   }
 
+  /**
+   * 
+   * @param type $activator
+   * @return $this
+   */
   public function setActivator($activator) {
     $this->activator = $activator;
     return $this;
@@ -82,7 +124,6 @@ class MenuLinkBuilder {
   protected function parseTarget(array $link) {
     return array_key_exists('target', $link) ? $link['target'] : $this->getDefaultTarget();
   }
-  
 
   /**
    * 
