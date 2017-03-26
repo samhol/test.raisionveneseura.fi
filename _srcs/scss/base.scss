@@ -159,8 +159,8 @@ $menu-separator: #41444a;
   }
   table {
     font-size: rem-calc(14);
-    //table-layout : fixed;
-    th, td {
+    @include breakpoint(large) {
+      table-layout : fixed;
     }
   }
 }
