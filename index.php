@@ -49,7 +49,7 @@ use Sphp\Stdlib\Path;
         </div>
       </div>
       <div class="body">
-        <div class="row expanded">
+        <div class="row expanded small-collapse large-uncollapse">
           <div class="column show-for-large large-3 xxlarge-3">
             <?php include ('_srcs/templates/sidenav.php'); ?>
           </div>
@@ -66,7 +66,7 @@ use Sphp\Stdlib\Path;
   <footer class="footer">
     <div class="row expanded">
       <div class="column small-12 large-6">
-        &copy; Raision Veneseura r.y. 
+        &copy; Raision Veneseura r.y.
       </div>
       <div class="column small-12 large-6">
 

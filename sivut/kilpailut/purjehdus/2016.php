@@ -5,262 +5,260 @@
 <table>
   <tr>
     <td>
-      
-        Purje Nro
-      
+      Purje Nro
     </td>
     <td>
-      
-        Veneen nimi
-      
+
+      Veneen nimi
+
     </td>
     <td>
-      
-        Kippari
-      
+
+      Kippari
+
     </td>
     <td>
-      
-        Veneen tyyppi
-      
+
+      Veneen tyyppi
+
     </td>
     <td>
-      
-        lys
-      
+
+      lys
+
     </td>
     <td>
-      
-        lähtöaika
-      
+
+      lähtöaika
+
     </td>
     <td>
-      
-        maalissa
-      
+
+      maalissa
+
     </td>
     <td>
-      
-        purj.aika
-      
+
+      purj.aika
+
     </td>
     <td>
-      
-        tas.aika
-      
+
+      tas.aika
+
     </td>
     <td>
-      
-        sija
-      
+
+      sija
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        3204
-      
+
+      3204
+
     </td>
     <td>
-      
-        Meie
-      
+
+      Meie
+
     </td>
     <td>
-      
-        J. Jyrkkiö
-      
+
+      J. Jyrkkiö
+
     </td>
     <td>
-      
-        Avnce 33
-      
+
+      Avnce 33
+
     </td>
     <td>
-      
-        1,12
-      
+
+      1,12
+
     </td>
     <td>
-      
-        11.15.00
-      
+
+      11.15.00
+
     </td>
     <td>
-      
-        13.27.14
-      
+
+      13.27.14
+
     </td>
     <td>
-      
-        2.12.14
-      
+
+      2.12.14
+
     </td>
     <td>
-      
-        2.28.06
-      
+
+      2.28.06
+
     </td>
     <td>
-      
-        1
-      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      
-        2295
-      
-    </td>
-    <td>
-      
-        Felina
-      
-    </td>
-    <td>
-      
-        M. Niemelä
-      
-    </td>
-    <td>
-      
-        FE83
-      
-    </td>
-    <td>
-      
-        1,05
-      
-    </td>
-    <td>
-      
-        11.15.00
-      
-    </td>
-    <td>
-      
-        13.39.56
-      
-    </td>
-    <td>
-      
-        2.24.56
-      
-    </td>
-    <td>
-      
-        2.32.11
-      
-    </td>
-    <td>
-      
-        2
-      
+
+      1
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        10688
-      
+
+      2295
+
     </td>
     <td>
-      
-        Crista
-      
+
+      Felina
+
     </td>
     <td>
-      
-        E. Miceklsson
-      
+
+      M. Niemelä
+
     </td>
     <td>
-      
-        Elan 37
-      
+
+      FE83
+
     </td>
     <td>
-      
-        1,23
-      
+
+      1,05
+
     </td>
     <td>
-      
-        11.15.00
-      
+
+      11.15.00
+
     </td>
     <td>
-      
-        13.24.15
-      
+
+      13.39.56
+
     </td>
     <td>
-      
-        2.09.15
-      
+
+      2.24.56
+
     </td>
     <td>
-      
-        2.38.59
-      
+
+      2.32.11
+
     </td>
     <td>
-      
-        3
-      
+
+      2
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        6033
-      
+
+      10688
+
     </td>
     <td>
-      
-        Zaida
-      
+
+      Crista
+
     </td>
     <td>
-      
-        M. Kemppainen
-      
+
+      E. Miceklsson
+
     </td>
     <td>
-      
-        Artina 33
-      
+
+      Elan 37
+
     </td>
     <td>
-      
-        1,12
-      
+
+      1,23
+
     </td>
     <td>
-      
-        11.15.00
-      
+
+      11.15.00
+
     </td>
     <td>
-      
-        13.43.21
-      
+
+      13.24.15
+
     </td>
     <td>
-      
-        2.28.21
-      
+
+      2.09.15
+
     </td>
     <td>
-      
-        2.46.09
-      
+
+      2.38.59
+
     </td>
     <td>
-      
-        4
-      
+
+      3
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+      6033
+
+    </td>
+    <td>
+
+      Zaida
+
+    </td>
+    <td>
+
+      M. Kemppainen
+
+    </td>
+    <td>
+
+      Artina 33
+
+    </td>
+    <td>
+
+      1,12
+
+    </td>
+    <td>
+
+      11.15.00
+
+    </td>
+    <td>
+
+      13.43.21
+
+    </td>
+    <td>
+
+      2.28.21
+
+    </td>
+    <td>
+
+      2.46.09
+
+    </td>
+    <td>
+
+      4
+
     </td>
   </tr>
 </table>
@@ -271,1131 +269,906 @@
   <thead>
     <tr>
       <td>
-        
-          Purje Nro
-        
+
+        Purje Nro
+
       </td>
       <td>
-        
-          Veneen nimi
-        
+
+        Veneen nimi
+
       </td>
       <td>
-        
-          Kippari
-        
+
+        Kippari
+
       </td>
       <td>
-        
-          Veneen tyyppi
-        
+
+        Veneen tyyppi
+
       </td>
       <td>
-        
-          lys
-        
+
+        lys
+
       </td>
       <td>
-        
-          lähtöaika
-        
+
+        lähtöaika
+
       </td>
       <td>
-        
-          maalissa
-        
+
+        maalissa
+
       </td>
       <td>
-        
-          purj.aika
-        
+
+        purj.aika
+
       </td>
       <td>
-        
-          tas.aika
-        
+
+        tas.aika
+
       </td>
       <td>
-        
-          sija
-        
+
+        sija
+
       </td>
     </tr>
   </thead>
   <tr>
     <td>
-      
-        3204
-      
+
+      3204
+
     </td>
     <td>
-      
-        Meie
-      
+
+      Meie
+
     </td>
     <td>
-      
-        Jouko Jyrkkiö
-      
+
+      Jouko Jyrkkiö
+
     </td>
     <td>
-      
-        Avance 33
-      
+
+      Avance 33
+
     </td>
     <td>
-      
-        1,12
-      
+
+      1,12
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        14:55:35
-      
+      14:55:35
     </td>
     <td>
-      
-        3:25:35
-      
+      3:25:35
     </td>
     <td>
-      
-        3:50:15
-      
+      3:50:15
     </td>
     <td>
-      
-        1.
-      
+      1.
     </td>
   </tr>
   <tr>
     <td>
-      
-        2880
-      
+      2880
     </td>
     <td>
-      
-        Lill Marie
-      
+      Lill Marie
     </td>
     <td>
-      
-        Matti Arpalahti
-      
+      Matti Arpalahti
     </td>
     <td>
-      
-        Sirena 38
-      
+      Sirena 38
     </td>
     <td>
-      
-        1,20
-      
+      1,20
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        14:49:42
-      
+
+      14:49:42
+
     </td>
     <td>
-      
-        3:19:42
-      
+
+      3:19:42
+
     </td>
     <td>
-      
-        3:59:38
-      
+
+      3:59:38
+
     </td>
     <td>
-      
-        2.
-      
+
+      2.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        10263
-      
+
+      10263
+
     </td>
     <td>
-      
-        Wilma
-      
+
+      Wilma
+
     </td>
     <td>
-      
-        Tapio Fegerström
-      
+
+      Tapio Fegerström
+
     </td>
     <td>
-      
-        Bavaria 36 Match
-      
+
+      Bavaria 36 Match
+
     </td>
     <td>
-      
-        1,24
-      
+
+      1,24
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        14:46:40
-      
+
+      14:46:40
+
     </td>
     <td>
-      
-        3:16:40
-      
+
+      3:16:40
+
     </td>
     <td>
-      
-        4:03:52
-      
+
+      4:03:52
+
     </td>
     <td>
-      
-        3.
-      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      
-        31
-      
-    </td>
-    <td>
-      
-        Rosa III
-      
-    </td>
-    <td>
-      
-        Jarmo Rosama
-      
-    </td>
-    <td>
-      
-        Avance 36
-      
-    </td>
-    <td>
-      
-        1,14
-      
-    </td>
-    <td>
-      
-        11:30:00
-      
-    </td>
-    <td>
-      
-        15:05:10
-      
-    </td>
-    <td>
-      
-        3:35:10
-      
-    </td>
-    <td>
-      
-        4:05:17
-      
-    </td>
-    <td>
-      
-        4.
-      
+
+      3.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        11453
-      
+
+      31
+
     </td>
     <td>
-      
-        Line
-      
+
+      Rosa III
+
     </td>
     <td>
-      
-        Pertti Koskinen
-      
+
+      Jarmo Rosama
+
     </td>
     <td>
-      
-        Bavaria 36 Match
-      
+
+      Avance 36
+
     </td>
     <td>
-      
-        1,24
-      
+
+      1,14
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        14:49:17
-      
+
+      15:05:10
+
     </td>
     <td>
-      
-        3:19:17
-      
+
+      3:35:10
+
     </td>
     <td>
-      
-        4:07:07
-      
+
+      4:05:17
+
     </td>
     <td>
-      
-        5.
-      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      
-        2295
-      
-    </td>
-    <td>
-      
-        Felina
-      
-    </td>
-    <td>
-      
-        Matti Niemelä
-      
-    </td>
-    <td>
-      
-        FE 83
-      
-    </td>
-    <td>
-      
-        1,08
-      
-    </td>
-    <td>
-      
-        11:30:00
-      
-    </td>
-    <td>
-      
-        15:22:26
-      
-    </td>
-    <td>
-      
-        3:52:26
-      
-    </td>
-    <td>
-      
-        4:11:02
-      
-    </td>
-    <td>
-      
-        6.
-      
+
+      4.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        6643
-      
+
+      11453
+
     </td>
     <td>
-      
-        Venda
-      
+
+      Line
+
     </td>
     <td>
-      
-        Pertti Johansson
-      
+      Pertti Koskinen
     </td>
     <td>
-      
-        Sunwind 31
-      
+      Bavaria 36 Match
     </td>
     <td>
-      
-        1,06
-      
+
+      1,24
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        15:27:39
-      
+
+      14:49:17
+
     </td>
     <td>
-      
-        3:57:39
-      
+
+      3:19:17
+
     </td>
     <td>
-      
-        4:11:55
-      
+
+      4:07:07
+
     </td>
     <td>
-      
-        7.
-      
+
+      5.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        11269
-      
+
+      2295
+
     </td>
     <td>
-      
-        Ishtar
-      
+
+      Felina
+
     </td>
     <td>
-      
-        Aki Tuominen
-      
+
+      Matti Niemelä
+
     </td>
     <td>
-      
-        Sun Odyssey 37.2
-      
+
+      FE 83
+
     </td>
     <td>
-      
-        1,15
-      
+
+      1,08
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        15:14:22
-      
+
+      15:22:26
+
     </td>
     <td>
-      
-        3:44:22
-      
+
+      3:52:26
+
     </td>
     <td>
-      
-        4:18:01
-      
+
+      4:11:02
+
     </td>
     <td>
-      
-        8.
-      
+
+      6.
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+      6643
+
+    </td>
+    <td>
+
+      Venda
+
+    </td>
+    <td>
+
+      Pertti Johansson
+
+    </td>
+    <td>
+
+      Sunwind 31
+
+    </td>
+    <td>
+
+      1,06
+
+    </td>
+    <td>
+
+      11:30:00
+
+    </td>
+    <td>
+
+      15:27:39
+
+    </td>
+    <td>
+
+      3:57:39
+
+    </td>
+    <td>
+
+      4:11:55
+
+    </td>
+    <td>
+
+      7.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        4542
-      
+
+      11269
+
     </td>
     <td>
-      
-        Joy
-      
+
+      Ishtar
+
     </td>
     <td>
-      
-        Kai Toivonen
-      
+
+      Aki Tuominen
+
     </td>
     <td>
-      
-        Arcona 32
-      
+
+      Sun Odyssey 37.2
+
     </td>
     <td>
-      
-        1,12
-      
+
+      1,15
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        15:28:13
-      
+
+      15:14:22
+
     </td>
     <td>
-      
-        3:58:13
-      
+
+      3:44:22
+
     </td>
     <td>
-      
-        4:26:48
-      
+
+      4:18:01
+
     </td>
     <td>
-      
-        9.
-      
+      8.
     </td>
   </tr>
   <tr>
-    <td></td>
     <td>
-      
-        Carpe Diem
-      
+      4542
     </td>
     <td>
-      
-        Stefan Kaapro
-      
+
+      Joy
+
     </td>
     <td>
-      
-        Sun Odyssey 36
-      
+
+      Kai Toivonen
+
     </td>
     <td>
-      
-        1,10
-      
+
+      Arcona 32
+
     </td>
     <td>
-      
-        11:30:00
-      
+
+      1,12
+
     </td>
     <td>
-      
-        15:36:51
-      
+
+      11:30:00
+
     </td>
     <td>
-      
-        4:06:51
-      
+
+      15:28:13
+
     </td>
     <td>
-      
-        4:31:32
-      
+
+      3:58:13
+
     </td>
     <td>
-      
-        10.
-      
+
+      4:26:48
+
+    </td>
+    <td>
+
+      9.
+
+    </td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>
+
+      Carpe Diem
+
+    </td>
+    <td>
+
+      Stefan Kaapro
+
+    </td>
+    <td>
+
+      Sun Odyssey 36
+
+    </td>
+    <td>
+
+      1,10
+
+    </td>
+    <td>
+
+      11:30:00
+
+    </td>
+    <td>
+
+      15:36:51
+
+    </td>
+    <td>
+
+      4:06:51
+
+    </td>
+    <td>
+
+      4:31:32
+
+    </td>
+    <td>
+
+      10.
+
     </td>
   </tr>
 </table>
 
-##RVS-Ranking2016 (vain RVS:n jäsenille)
+##RVS-Ranking 2016 (vain RVS:n jäsenille)
 
 <table>
   <tr>
     <td>
-      
-        Veneen nimi
-      
-    </td>
-    <td>
-      
-        Kippari
-      
-    </td>
-    <td>
-      
 
-      
+      Veneen nimi
+
     </td>
-    <td colspan="2">
-      
-        Veneen tyyppi
-      
+    <td>Kippari</td>
+    <td>Veneen tyyppi</td>
+    <td>Hirsiluoto Race</td>
+    <td>Virutholmin purj.</td>
+    <td>Yht.</td>
+    <td>Rank</td>
+  </tr>
+  <tr>
+    <td>Meie
     </td>
-    <td>
-      
-        HirsiluotoRace
-      
-    </td>
-    <td>
-      
-        Virutholmin purj.
-      
+    <td>Jouko Jyrkkiö
     </td>
     <td>
-      
-        Yhteensä
-      
+
+      Avance 33
+
     </td>
     <td>
-      
-        Ranking
-      
+
+      5
+
+    </td>
+    <td>
+
+      12
+
+    </td>
+    <td>
+
+      17
+
+    </td>
+    <td>
+
+      1.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Meie
-      
-    </td>
-    <td colspan="2">
-      
-        Jouko Jyrkkiö
-      
-    </td>
-    <td colspan="2">
-      
-        Avance 33
-      
+
+      LillMarie
+
     </td>
     <td>
-      
-        5
-      
+
+      Matti Arpalahti
+
     </td>
     <td>
-      
-        12
-      
+
+      Sirena 38
+
     </td>
     <td>
-      
-        17
-      
+
+
+
     </td>
     <td>
-      
-        1.
-      
+
+      10
+
+    </td>
+    <td>
+
+      10
+
+    </td>
+    <td>
+
+      2.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        LillMarie
-      
-    </td>
-    <td colspan="2">
-      
-        Matti Arpalahti
-      
-    </td>
-    <td>
-      
-        Sirena 38
-      
-    </td>
-    <td>
-      
 
-      
-    </td>
-    <td>
-      
+      Wilma
 
-      
     </td>
     <td>
-      
-        10
-      
+
+      Tapio Fagerström
+
     </td>
     <td>
-      
-        10
-      
+
+      Bavaria 36 Match
+
     </td>
     <td>
-      
-        2.
-      
+
+
+
+    </td>
+    <td>
+
+      9
+
+    </td>
+    <td>
+
+      9
+
+    </td>
+    <td>
+
+      3.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Wilma
-      
-    </td>
-    <td colspan="2">
-      
-        Tapio Fagerström
-      
-    </td>
-    <td colspan="2">
-      
-        Bavaria 36 Match
-      
-    </td>
-    <td>
-      
 
-      
+      Felina
+
     </td>
     <td>
-      
-        9
-      
+
+      Matti Niemelä
+
     </td>
     <td>
-      
-        9
-      
+
+      FinnExpress 83
+
     </td>
     <td>
-      
-        3.
-      
+
+      3
+
+    </td>
+    <td>
+
+      6
+
+    </td>
+    <td>
+
+      9
+
+    </td>
+    <td>
+
+      4.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Felina
-      
-    </td>
-    <td colspan="2">
-      
-        Matti Niemelä
-      
-    </td>
-    <td colspan="2">
-      
-        FinnExpress 83
-      
+
+      Rosa III
+
     </td>
     <td>
-      
-        3
-      
+
+      Jarmo Rosama
+
     </td>
     <td>
-      
-        6
-      
+
+      Avance 36
+
     </td>
     <td>
-      
-        9
-      
+
+
+
     </td>
     <td>
-      
-        4.
-      
+
+      8
+
+    </td>
+    <td>
+
+      8
+
+    </td>
+    <td>
+
+      5.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Rosa III
-      
-    </td>
-    <td colspan="2">
-      
-        Jarmo Rosama
-      
-    </td>
-    <td colspan="2">
-      
-        Avance 36
-      
-    </td>
-    <td>
-      
 
-      
+      Line
+
     </td>
     <td>
-      
-        8
-      
+
+      Pertti Koskinen
+
     </td>
     <td>
-      
-        8
-      
+
+      Bavaria 36 Match
+
     </td>
     <td>
-      
-        5.
-      
+
+
+
+    </td>
+    <td>
+
+      7
+
+    </td>
+    <td>
+
+      7
+
+    </td>
+    <td>
+
+      6.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Line
-      
-    </td>
-    <td colspan="2">
-      
-        Pertti Koskinen
-      
-    </td>
-    <td>
-      
-        Bavaria 36 Match
-      
-    </td>
-    <td>
-      
 
-      
-    </td>
-    <td>
-      
+      Venda
 
-      
     </td>
     <td>
-      
-        7
-      
+
+      Pertti Johansson
+
     </td>
     <td>
-      
-        7
-      
+
+      Sunwind 31
+
     </td>
     <td>
-      
-        6.
-      
+
+
+
+    </td>
+    <td>
+
+      5
+
+    </td>
+    <td>
+
+      5
+
+    </td>
+    <td>
+
+      7.
+
     </td>
   </tr>
   <tr>
     <td>
-      
-        Venda
-      
-    </td>
-    <td colspan="2">
-      
-        Pertti Johansson
-      
-    </td>
-    <td colspan="2">
-      
-        Sunwind 31
-      
-    </td>
-    <td>
-      
 
-      
+      Ishtar
+
     </td>
     <td>
-      
-        5
-      
+
+      Aki Tuominen
+
     </td>
     <td>
-      
-        5
-      
+      Sun Odyssey 37.2
     </td>
     <td>
-      
-        7.
-      
+    </td>
+    <td>
+      4
+    </td>
+    <td>
+      4
+    </td>
+    <td>
+      8.
     </td>
   </tr>
   <tr>
     <td>
-      
-        Ishtar
-      
-    </td>
-    <td colspan="2">
-      
-        Aki Tuominen
-      
+
+      Joy
+
     </td>
     <td>
-      
-        Sun Odyssey 37.2
-      
+
+      Kai Toivonen
+
     </td>
+    <td>Arcona 32</td>
     <td></td>
     <td>
-      
+      3
 
-      
     </td>
     <td>
-      
-        4
-      
+
+      3
+
     </td>
     <td>
-      
-        4
-      
-    </td>
-    <td>
-      
-        8.
-      
+
+      9.
+
     </td>
   </tr>
   <tr>
-    <td>
-      
-        Joy
-      
-    </td>
-    <td colspan="2">
-      
-        Kai Toivonen
-      
-    </td>
-    <td>
-      
-        Arcona 32
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        3
-      
-    </td>
-    <td>
-      
-        3
-      
-    </td>
-    <td>
-      
-        9.
-      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      
-        Carpe Diem
-      
-    </td>
-    <td>
-      
-        Stefan Kaapro
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td colspan="2">
-      
-        Sun Odyssey 36
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        2
-      
-    </td>
-    <td>
-      
-        2
-      
-    </td>
-    <td>
-      
-        10.
-      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      
-        Crista
-      
-    </td>
-    <td colspan="2">
-      
-        Esko Mickelsson
-      
-    </td>
-    <td>
-      
-        Elan 37
-      
-    </td>
+    <td>Carpe Diem</td>
+    <td>Stefan Kaapro</td>
+    <td>Sun Odyssey 36</td>
     <td></td>
-    <td>
-      
-        2
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        2
-      
-    </td>
-    <td>
-      
-        11.
-      
-    </td>
+    <td>2</td>
+    <td>2</td>
+    <td>10.</td>
   </tr>
   <tr>
-    <td>
-      
-        Kopra II
-      
-    </td>
-    <td colspan="2">
-      
-        Timo Päivärinta
-      
-    </td>
-    <td>
-      
-        Netta
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        1
-      
-    </td>
-    <td>
-      
-        1
-      
-    </td>
-    <td>
-      
-        12.
-      
-    </td>
+    <td>Crista</td>
+    <td>Esko Mickelsson</td>
+    <td>Elan 37</td>
+    <td>2</td>
+    <td></td>
+    <td>2</td>
+    <td>11.</td>
   </tr>
   <tr>
-    <td>
-      
-        Zaida
-      
-    </td>
-    <td colspan="2">
-      
-        Mikko Kemppainen
-      
-    </td>
-    <td>
-      
-        Artina 33
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        1
-      
-    </td>
-    <td>
-      
-
-      
-    </td>
-    <td>
-      
-        1
-      
-    </td>
-    <td>
-      
-        13.
-      
-    </td>
+    <td>Kopra II</td>
+    <td> Timo Päivärinta</td>
+    <td>Netta</td>
+    <td></td>
+    <td>1</td>
+    <td>1</td>
+    <td>12.</td>
+  </tr>
+  <tr>
+    <td>Zaida</td>
+    <td>Mikko Kemppainen</td>
+    <td>Artina 33</td>
+    <td>1</td>
+    <td></td>
+    <td>1</td>
+    <td>13.</td>
   </tr>
 </table>

@@ -159,8 +159,13 @@ $menu-separator: #41444a;
   }
   table {
     font-size: rem-calc(14);
-    @include breakpoint(large) {
-      table-layout : fixed;
+    &.contacts {
+      @include breakpoint(large) {
+        table-layout : fixed;
+      }
+    }
+    td, th {
+      //word-break: break-all;
     }
   }
 }
