@@ -34,7 +34,7 @@
       tas.aika
     </td>
     <td>
-      sija
+      #
     </td>
   </tr>
   <tr>
@@ -291,7 +291,7 @@
         tas.aika
       </td>
       <td>
-        sija
+       #
       </td>
     </tr>
   </thead>
@@ -488,7 +488,7 @@
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>-</td>
     <td>
       Carpe Diem
     </td>
@@ -654,16 +654,16 @@
       Veneen tyyppi
     </td>
     <td>
-      Hirsiluoto-Race
+      Hirsiluoto Race
     </td>
     <td>
-      Viruthol-purjehdus
+      Virutholmin purjehdus
     </td>
     <td>
-      Yhteensä
+      Yht.
     </td>
     <td>
-      Ranking
+      #
     </td>
   </tr>
   <tr>
