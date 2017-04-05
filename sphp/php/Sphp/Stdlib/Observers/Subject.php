@@ -4,9 +4,11 @@
  * Subject.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
+
 namespace Sphp\Stdlib\Observers;
 
 /**
+ * Defines the subject part of the Observer Design Pattern
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-01-12

@@ -65,7 +65,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * Invoke validator as command
    *
    * @param  mixed $value
-   * @return bool
+   * @return boolean
    */
   public function __invoke($value) {
     return $this->isValid($value);
@@ -90,10 +90,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  string $messageTemplate
    * @return self for a fluent interface
    */
-  public function setMessageTemplate($id, $messageTemplate) {
-    if (is_string($messageTemplate)) {
-      $messageTemplate = new Message($messageTemplate);
-    }
+  public function setMessageTemplate($id, \Sphp\I18n\MessageTemplate $messageTemplate) {
     $this->messageTemplates[$id] = $messageTemplate;
     return $this;
   }
@@ -103,10 +100,10 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  array|\Traversable $messageTemplates
    * @return self for a fluent interface
    */
-  public function setMessageTemplates($messageTemplates) {
-    foreach ($messageTemplates as $id => $messageTemplate) {
-      $this->setMessageTemplate($id, $messageTemplate);
-    }
+  public function createMessageTemplate($id, $singular, $plural = null) {
+
+    $this->setMessageTemplate($id, new \Sphp\I18n\MessageTemplate($singular, $plural));
+
     return $this;
   }
 

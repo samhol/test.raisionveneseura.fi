@@ -7,12 +7,12 @@
 
 namespace Sphp\Html;
 
-use DateTime;
+use DateTimeInterface;
 
 /**
  * Defines an HTML &lt;time&gt; tag
  *
- * * a human-readable date/time
+ * This implements a human-readable date/time
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-03-06
@@ -27,16 +27,16 @@ interface TimeTagInterface extends TagInterface {
    * 
    * **Important:** Sets also the `datetime` attribute
    *
-   * @param  DateTime $dateTime the datetime object
+   * @param  DateTimeInterface $dateTime the datetime object
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
-  public function setDateTime(DateTime $dateTime);
+  public function setDateTime(DateTimeInterface $dateTime);
 
   /**
    * Returns the datetime object stored to the component
    *
-   * @return DateTime the datetime object
+   * @return DateTimeInterface the datetime object
    */
   public function getDateTime();
 }

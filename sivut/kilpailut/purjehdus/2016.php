@@ -1,4 +1,5 @@
-#Purjehduskilpailut 2016##Hirsiluoto-Race 18.6.
+#Purjehduskilpailut 2016
+##Hirsiluoto-Race 18.6.
 <table>
   <thead>
     <tr>

@@ -104,7 +104,8 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage($language) {
-    return $this->attrs()->set('lang', $language);
+    $this->attrs()->set('lang', $language);
+    return $this;
   }
 
   /**
@@ -119,7 +120,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   }
 
   /**
-   * Sets up the SPHP framework related Javascript and CSS files
+   * Sets up the SPHP framework related JavaScript and CSS files
    *
    * @return self for a fluent interface
    */
@@ -139,8 +140,32 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->scripts($c);
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getOpeningTag() {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
+  }
+
+  /**
+   * 
+   * @return string
+   */
+  public function getBodyStart() {
+    $output = $this->getOpeningTag();
+    $output .= $this->head->getHtml();
+    $output .= $this->body->getOpeningTag();
+    return $output;
+  }
+
+  /**
+   * 
+   * @return self for a fluent interface
+   */
+  public function startBody() {
+    echo $this->getBodyStart();
+    return $this;
   }
 
   /**

@@ -18,16 +18,15 @@ use Sphp\Html\TraversableTrait;
  *
  * The graphical control element {@link self} is a navigation aid used in user 
  * interfaces. It allows users to keep track of their locations 
- * within programs or documents. The term comes from the trail of breadcrumbs 
- * left by Hansel and Gretel in the popular fairytale.
+ * within programs or documents.
  * 
  * {@link self} component shows a navigation trail for users clicking through a 
  * site or app. They'll fill out 100% of the width of their parent container.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation 6 Breadcrumbs
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -45,8 +44,8 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
     $ul->cssClasses()->lock('breadcrumbs');
     parent::__construct('nav', null, $ul);
     $this->cssClasses()->lock('breadcrumbs');
-    $this->attrs()->lock('role', 'navigation')
-            ->set('aria-label', 'breadcrumbs');
+    //$this->attrs()->lock('role', 'navigation');
+    $this->attrs()->set('aria-label', 'breadcrumbs');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $breadcrumb) {
         $this->append($breadcrumb);
@@ -108,7 +107,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
   }
 
   /**
-   * Appends a {@link BreadCrumb} component to the container
+   * Appends a BreadCrumb to the container
    *
    * @param  BreadCrumb $breadcrumb component to append
    * @return self for a fluent interface

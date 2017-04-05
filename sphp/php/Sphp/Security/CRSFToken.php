@@ -12,7 +12,6 @@ use Sphp\Exceptions\RuntimeException;
 /**
  * Implements a CRSF token generator and validator
  *
- * 
  * **First:** generate a new token and put it in a hidden field
  * 
  * <code>
@@ -48,7 +47,7 @@ class CRSFToken {
    * @var self
    */
   private static $instance;
-
+  
   /**
    * Constructs a new instance
    * 
@@ -83,7 +82,7 @@ class CRSFToken {
    * @return boolean true if the token value matches
    */
   public function verifyInputToken($tokenName, $type) {
-    $token = filter_input($type, $tokenName, FILTER_SANITIZE_STRING);
+    $token = filter_input($type, FILTER_SANITIZE_STRING);
     if (!isset($_SESSION[$tokenName . '_token'])) {
       return false;
     }
@@ -113,7 +112,7 @@ class CRSFToken {
   public function verifyGetToken($tokenName) {
     return $this->verifyInputToken($tokenName, \INPUT_GET);
   }
-
+  
   /**
    * Returns the singleton instance of a CRSF token generator
    * 

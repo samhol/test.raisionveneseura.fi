@@ -109,20 +109,30 @@ class MenuLinkBuilder {
     return $this;
   }
 
-  protected function parseHref(array $link) {
-    if (array_key_exists('href', $link)) {
-      $href = $link['href'];
+  /**
+   * 
+   * @param  array $linkData
+   * @return string
+   */
+  protected function parseHref(array $linkData) {
+    if (array_key_exists('href', $linkData)) {
+      $href = $linkData['href'];
     } else {
       $href = Path::get()->http();
-      if (array_key_exists('page', $link)) {
-        $href .= '?page=' . $link['page'];
+      if (array_key_exists('page', $linkData)) {
+        $href .= '?page=' . $linkData['page'];
       }
     }
     return $href;
   }
 
-  protected function parseTarget(array $link) {
-    return array_key_exists('target', $link) ? $link['target'] : $this->getDefaultTarget();
+  /**
+   * 
+   * @param array $linkData
+   * @return type
+   */
+  protected function parseTarget(array $linkData) {
+    return array_key_exists('target', $linkData) ? $linkData['target'] : $this->getDefaultTarget();
   }
 
   /**
