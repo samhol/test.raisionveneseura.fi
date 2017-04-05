@@ -2,13 +2,20 @@
 
 namespace Sphp\MVC;
 
+use Sphp\Html\Tables\TableBuilder;
+use Sphp\Stdlib\CsvFile;
+
+$csvTaulu = function($polku) {
+  echo TableBuilder::fromCsvFile(new CsvFile($polku));
+};
+
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Container;
 
 $loadNotFound = function () {
   (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
 };
-$loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
+$loadPage = function ($par, $file = 'etusivu') use($loadNotFound, $csvTaulu) {
   //print_r(func_get_args());
   try {
     ob_start();
@@ -43,7 +50,7 @@ $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
     $loadNotFound($year);
   }
 };
-$loadSailingCompetition = function ($path, $year) use($loadNotFound) {
+$loadSailingCompetition = function ($path, $year) use($loadNotFound, $csvTaulu) {
   $path = "sivut/kilpailut/purjehdus/$year.php";
   if (is_file($path)) {
     (new Container)->appendMdFile($path)->printHtml();
@@ -51,7 +58,7 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
     $loadNotFound($year);
   }
 };
-$loadCompetition = function ($param) use ($loadPage) {
+$loadCompetition_del = function ($param) use ($loadPage,$csvTaulu) {
   echo $param;
   $loadPage('kilpailut');
 };

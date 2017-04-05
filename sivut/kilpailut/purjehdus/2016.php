@@ -1,18 +1,29 @@
 #Purjehduskilpailut 2016
-##Hirsiluoto-Race 18.6.
+##Hirsiluoto-Race 18.6.: <small>Lähtöaika: 11:15.00</small>
+
+<?php 
+use Sphp\Html\Tables\TableBuilder;
+use Sphp\Stdlib\CsvFile;
+
+$csvTaulu = function($polku) {
+  echo TableBuilder::fromCsvFile(new CsvFile($polku));
+};
+$csvTaulu('sivut/kilpailut/purjehdus/2016/virutholm-purjehdus.csv') 
+        
+        ?>
 <table>
   <thead>
     <tr>
-      <td>Purje Nro</td>
-      <td>Veneen nimi</td>
-      <td>Kippari</td>
-      <td>Veneen tyyppi</td>
-      <td>lys</td>
-      <td>lähtöaika</td>
-      <td>maalissa</td>
-      <td>purj.aika</td>
-      <td>tas.aika</td>
-      <td>#</td>
+      <th>Purje Nro</th>
+      <th>Veneen nimi</th>
+      <th>Kippari</th>
+      <th>Veneen tyyppi</th>
+      <th>lys</th>
+      <th>lähtöaika</th>
+      <th>maalissa</th>
+      <th>purj.aika</th>
+      <th>tas.aika</th>
+      <th>#</th>
     </tr>
   </thead>
   <tbody>
@@ -66,7 +77,7 @@
     </tr>
   </tbody>
 </table>
-##Virutholm-purjehdus 6.8.
+##Virutholm-purjehdus 6.8.: <small>Lähtöaika: 11:30:00</small>
 <table>
   <thead>
     <tr>
@@ -204,7 +215,7 @@
     </tr>
   </tbody>
 </table>
-##RVS-Ranking 2016 (vain RVS:n jäsenille)
+##RVS-Ranking 2016 <small>vain seuran jäsenille</small>
 <table>
   <tr>
     <td>Veneen nimi</td>

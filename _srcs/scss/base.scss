@@ -158,14 +158,24 @@ $menu-separator: #41444a;
     }
   }
   table {
+    border-collapse: collapse;
+    border-color: #ccc;
     font-size: rem-calc(14);
     &.contacts {
       @include breakpoint(large) {
         table-layout : fixed;
       }
     }
+    thead, tfoot {
+      th {
+        background-color: #1779ba;
+        color: #fefefe;
+      }
+    }
     td, th {
       //word-break: break-all;
+      text-align: left;
+      border-bottom: solid 1px #ccc;
     }
   }
 }

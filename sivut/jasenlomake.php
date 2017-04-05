@@ -7,9 +7,10 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 <?php
 
 use Sphp\MVC\MemberData;
-
+ print_r($_SESSION);
 if (array_key_exists(MemberData::class, $_SESSION)) {
   $data = $_SESSION[MemberData::class];
+ 
   $name = '<u>' . $data->getFname() . ' ' . $data->getLname() . '</u>';
   $callout = new Callout();
   $callout->setClosable();
@@ -24,9 +25,14 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->setColor('alert');
   $callout->appendMd('##Hakemuksen lähettäminen epäonnistui');
   $callout->appendMd('Lokakkeessa on virheitä');
-  $v = unserialize($_SESSION['invalidForm']);
-  foreach ($v->getErrors() as $err) {
-    $callout->appendMd(" * Virhe: $err\n");
+  $v = $_SESSION['invalidForm'];
+  if ($v instanceof \Sphp\Validators\FormValidator) {
+    foreach ($v->getErrors() as $err) {
+      $callout->appendMd(" * Virhe: $err\n");
+    }
+  }
+  if (is_string($v)) {
+    $callout->appendMd($v);
   }
   //$callout->append($_SESSION['invalidForm']->getErrors());
   $callout->appendMd('Yritä uudelleen');
@@ -41,11 +47,11 @@ use Sphp\Security\CRSFToken;
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
 $ageMenu->prepend(new Option('18', 'Aikuinen', true));
 
-$newToken = CRSFToken::instance()->generateToken('membership_token');
+$newToken = CRSFToken::instance()->generateToken('membership');
 ?>
 <div class="callout warning"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
 <form novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
-  <input type="hidden" name="membership_token" value="<?php echo $newToken; ?>">
+  <input type="hidden" name="membership" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
   </div>
