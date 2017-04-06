@@ -5,8 +5,6 @@ include ('_srcs/templates/htmlHead.php');
 use Sphp\Stdlib\Path;
 ?>
 
-<body>
-
   <div class="off-canvas-wrapper wrapper">
     <!-- off-canvas left menu -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
@@ -74,15 +72,14 @@ use Sphp\Stdlib\Path;
       </div>
     </div>
   </footer>
-  <script
-    src="https://code.jquery.com/jquery-2.2.4.min.js"
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-  <script src="vendor/zurb/foundation/dist/js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-</body>
-</html>
+
+
 <?php
-//$html->documentClose();
+
+use Sphp\Html\Apps\BackToTopButton;
+
+(new BackToTopButton())
+        ->setTitle('Takaisin sivun yläosaan')
+        ->printHtml();
+$html->documentClose();
+

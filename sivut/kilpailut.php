@@ -1,4 +1,5 @@
 #Raision veneseuran järjestämät kilpailut
+
 <div class="row">
   <div class="column small-12 medium-6" markdown="1">
 
@@ -35,18 +36,21 @@ $root = 'sphp/viewerjs/#../../';
           $path .= 'kilpailut/purjehdus/' . $name;
           $linkText = '<span class="badge alert" title="HTML-sivu"><i class="fa fa-html5"></i></span> Vuosi ' . $name;
           $target = '_self';
+          $link = new Hyperlink($path, $linkText, $target);
+          echo " $link\n\n";
         } else if ($extension === 'pdf') {
           $path .= $root . $item->getPathname();
           $target = '_blank';
           $linkText = '<span class="badge alert" title="PDF-tiedosto"><i class="fa fa-file-pdf-o"></i></span> Vuosi ' . $name;
+
+          $link = new Hyperlink($path, $linkText, $target);
+          echo " $link ($size)\n\n";
         }
-        $link = new Hyperlink($path, $linkText, $target);
-        echo " $link ($size)\n\n";
       }
     }
     ?>
-</div>
-<div class="column small-12 medium-6" markdown="1">
+  </div>
+  <div class="column small-12 medium-6" markdown="1">
 
 ##Kalastuskilpailut
 

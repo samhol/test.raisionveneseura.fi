@@ -15,6 +15,7 @@ if ($errorCode === null) {
 }
 $title = 'foo';
 $html = Document::html();
+
 if ($errorCode !== null && $errorCode >= 400) {
   $p = new HttpCodeCollection();
   if ($p->contains($errorCode)) {
@@ -43,4 +44,5 @@ $html->head()
         ->addMeta(Meta::keywords(['raisio', 'veneseura', 'veneily', 'laituripaikka']))
         ->addMeta(Meta::description('Raision veneseuran kotisivut'));
 
-echo $html->getOpeningTag() . $html->head();
+$html->startBody();
+$html->enableSPHP();
