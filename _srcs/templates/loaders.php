@@ -4,7 +4,7 @@ namespace Sphp\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Container;
-
+use Sphp\Html\Div;
 $loadNotFound = function () {
   (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
 };
@@ -14,7 +14,7 @@ $loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
     ob_start();
     $page = "sivut/$file.php";
     if (is_file($page)) {
-      (new Container)->appendMdFile($page)->printHtml();
+      (new Div)->appendMdFile($page)->addCssClass('page')->printHtml();
     } else {
       $loadNotFound($par);
     }
@@ -38,7 +38,7 @@ $loadIndex = function () use ($loadPage) {
 $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
   $path = "sivut/kilpailut/kalastus/$year.php";
   if (is_file($path)) {
-    (new Container)->appendMdFile($path)->printHtml();
+    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])->addCssClass('competitions page')->printHtml();
   } else {
     $loadNotFound($year);
   }
@@ -46,7 +46,7 @@ $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
 $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   $path = "sivut/kilpailut/purjehdus/$year.php";
   if (is_file($path)) {
-    (new Container)->appendMdFile(['_srcs/templates/tools.php',$path])->printHtml();
+    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])->addCssClass('competitions page')->printHtml();
   } else {
     $loadNotFound($year);
   }

@@ -1,12 +1,12 @@
-#Purjehduskilpailut 2014
+#Purjehduskilpailut <small> vuonna 2014</small>
 
-##Hirsiluoto-Race 7.6.: <small>Lähtöaika: 12.30.00</small>
+##Hirsiluoto-Race 7.6. <small>Lähtöaika: 12.30.00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2014/hirsiluoto.csv') ?>
 
 [Takaisin kilpailuvalikkoon](/kilpailut)
 
-##Virutholm-purjehdus 9.8.: <small>Lähtöaika: 11:30:00</small>
+##Virutholm-purjehdus 9.8. <small>Lähtöaika: 11:30:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2014/virutholm.csv') ?>
 
@@ -38,7 +38,7 @@
 
 [Takaisin kilpailuvalikkoon](/kilpailut)
 
-##RVS-Ranking 2016 <small>vain seuran jäsenille</small>
+##RVS-Ranking 2014 <small>vain seuran jäsenille</small>
 **Lyhenteet:**
 * `Hir.`: Hirsiluoto-Race
 * `Vir.`: Virutholm-purjehdus

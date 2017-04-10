@@ -102,7 +102,7 @@ $menu-separator: #41444a;
   background: $menu-bg;
 }
 .off-canvas.position-left {
-  div[data-accordion-menu] {
+  div.is-drilldown {
     margin-top: rem-calc(40);
   }
 }
@@ -140,17 +140,11 @@ $menu-separator: #41444a;
     margin-left: rem-calc(30);
   }
   ul, ol {
-    //list-style-position: inside;
+    list-style-position: inside;
   }
   dl{
     dd {
       margin-left: rem-calc(10);
-    }
-  }
-  &.competitions ul {
-    list-style: none;
-    ol {
-      list-style-position: outside;
     }
   }
   .row.board {

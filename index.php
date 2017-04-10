@@ -3,75 +3,80 @@ require_once('_srcs/settings.php');
 include ('_srcs/templates/htmlHead.php');
 
 use Sphp\Stdlib\Path;
+
 ?>
 
-  <div class="off-canvas-wrapper wrapper">
-    <!-- off-canvas left menu -->
-    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <?php include ('_srcs/templates/offcanvasDrilldown.php'); ?>
-    </div>
+<div class="off-canvas-wrapper wrapper">
+  <!-- off-canvas left menu -->
+  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-content-overlay="true" data-content-scroll="false">
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <?php include ('_srcs/templates/offcanvasDrilldown.php'); ?>
+  </div>
 
-    <!-- original content goes in this container -->
-    <div data-sticky-container id="top">
-      <div  data-sticky data-options="marginTop:0;" style="width:100%">
-        <div class="top-row">
-          <div class="row column expanded">
+  <!-- original content goes in this container -->
+  <div data-sticky-container>
+    <div  data-sticky class="sticky" data-options="marginTop:0;stickyOn:large" style="width:100%">
+      <div class="top-row show-for-large">
+        <div class="row column expanded">
 
-            <a href="<?php echo Path::get()->http() ?>" title="Etusivulle">
-              <img src="_srcs/img/logo.png" alt="Raision veneseuran logo">
-              <span>Raision Veneseura ry</span></a>
+          <a href="<?php echo Path::get()->http() ?>" title="Etusivulle">
+            <img src="_srcs/img/logo.png" alt="Raision veneseuran logo">
+            <span>Raision Veneseura ry</span></a>
 
-          </div>
-        </div>
-        <!-- "wider" top-bar menu for 'medium' and up -->
-        <div id="widemenu" class="top-bar">
-          <div class="top-bar-left">
-            <?php echo $menuBuilder->buildMenu($topbarLinks)->addCssClass('') ?>
-          </div>
-          <div class="top-bar-right">
-          </div>
         </div>
       </div>
-    </div>
-    <div class="off-canvas-content" data-off-canvas-content>
-      <!-- off-canvas title bar for 'small' screen -->
-      <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="large">
-        <div class="title-bar-left">
-          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-          <span class="title-bar-title">Menu</span>
+      <!-- "wider" top-bar menu for 'medium' and up -->
+      <div id="widemenu" class="top-bar">
+        <div class="top-bar-left">
+          <?php echo $menuBuilder->buildMenu($topbarLinks)->addCssClass('') ?>
         </div>
-        <div class="title-bar-right">
+        <div class="top-bar-right">
         </div>
       </div>
-      <div class="body">
-        <div class="row expanded small-collapse large-uncollapse">
-          <div class="column show-for-large large-3 xxlarge-3">
-            <?php include ('_srcs/templates/sidenav.php'); ?>
-          </div>
-          <div class="column small-12 large-9 xlarge-8 end">
-            <div class="page">
-              <?php $router->execute(); ?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="push"></div>
     </div>
   </div>
-  <footer class="footer">
-    <div class="row expanded">
-      <div class="column small-12 large-6">
-        &copy; Raision Veneseura r.y.
-      </div>
-      <div class="column small-12 large-6">
-
-
+  <div class="off-canvas-content" data-off-canvas-content>
+    <div data-sticky-container>
+      <div class="sticky" data-sticky data-margin-top="0" style="width:100%">
+        <!-- off-canvas title bar for 'small' screen -->
+        <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="large">
+          <div class="title-bar-left">
+            <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+            <span class="title-bar-title">Raision Veneseura RY</span>
+          </div>
+          <div class="title-bar-right">
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="body">
+      <div class="row expanded small-collapse large-uncollapse">
+        <div class="column show-for-large large-3 xxlarge-3">
+          <?php include ('_srcs/templates/sidenav.php'); ?>
+        </div>
+        <div class="column small-12 large-9 xlarge-8 end">
+          
+            <?php $router->execute(); ?>
+         
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="row expanded">
+    <div class="column small-12 large-6">
+      &copy; Raision Veneseura r.y.
+    </div>
+    <div class="column small-12 large-6">
+
+
+    </div>
+  </div>
+</footer>
 
 
 <?php
