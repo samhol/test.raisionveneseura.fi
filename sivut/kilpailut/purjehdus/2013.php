@@ -4,13 +4,13 @@
 
 <?php $csvTaulu('purjehduskilpailut/2013/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 27.7. <small>Lähtöaika: 13:15:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2013/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ###Virutholmin etappikisa
 
@@ -23,7 +23,7 @@
 7. Pertti Johansson
 8. Timo Päivärinta
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##RVS-Ranking 2013 <small>vain seuran jäsenille</small>
 **Lyhenteet:**
@@ -31,5 +31,3 @@
 * `Vir.`: Virutholm-purjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2013/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)

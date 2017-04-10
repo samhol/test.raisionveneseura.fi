@@ -4,13 +4,13 @@
 
 <?php $csvTaulu('purjehduskilpailut/2014/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 9.8. <small>Lähtöaika: 11:30:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2014/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ###Virutholmin etappikisa 1
 
@@ -36,7 +36,7 @@
 8. Timo Päivärinta
 9. Arttu Erfe
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##RVS-Ranking 2014 <small>vain seuran jäsenille</small>
 **Lyhenteet:**
@@ -44,5 +44,3 @@
 * `Vir.`: Virutholm-purjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2014/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)

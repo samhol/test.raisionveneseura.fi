@@ -7,7 +7,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 <?php
 
 use Sphp\MVC\MemberData;
- print_r($_SESSION);
+// print_r($_SESSION);
 if (array_key_exists(MemberData::class, $_SESSION)) {
   $data = $_SESSION[MemberData::class];
  
@@ -27,6 +27,8 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->appendMd('Lokakkeessa on virheitä');
   $v = $_SESSION['invalidForm'];
   if ($v instanceof \Sphp\Validators\FormValidator) {
+   
+    var_dump($v->getErrors());
     foreach ($v->getErrors() as $err) {
       $callout->appendMd(" * Virhe: $err\n");
     }

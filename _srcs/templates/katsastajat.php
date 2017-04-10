@@ -14,4 +14,12 @@ foreach ($hallitus as $member) {
   $thallitus->tbody()->appendBodyRow($member);
 }
 
-$thallitus->addCssClass('contacts')->printHtml();
+//$thallitus->addCssClass('contacts')->printHtml();
+
+TableBuilder::fromCsvFile(new CsvFile('yhteystiedot/katsastajat.csv', ';'))
+        ->setLineNumbers(1, 'none')
+        ->buildTable()
+        ->addCssClass('contacts')
+        ->printHtml();
+echo 'heahehaehe';
+echo $a;

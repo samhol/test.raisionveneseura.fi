@@ -4,13 +4,13 @@
 
 <?php $csvTaulu('purjehduskilpailut/2007/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 31.7.
 
 <?php $csvTaulu('purjehduskilpailut/2007/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Syyspurjehdus 30.8. <small>Lähtöaika: 12:00.00</small>
 
@@ -23,5 +23,3 @@
 * `Syys.`: Syyspurjehdus 
 
 <?php $csvTaulu('purjehduskilpailut/2007/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)

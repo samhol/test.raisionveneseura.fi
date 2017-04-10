@@ -38,7 +38,10 @@ $loadIndex = function () use ($loadPage) {
 $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
   $path = "sivut/kilpailut/kalastus/$year.php";
   if (is_file($path)) {
-    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])->addCssClass('competitions page')->printHtml();
+    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
+            ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
+            ->addCssClass('competitions page')
+            ->printHtml();
   } else {
     $loadNotFound($year);
   }
@@ -46,7 +49,10 @@ $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
 $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   $path = "sivut/kilpailut/purjehdus/$year.php";
   if (is_file($path)) {
-    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])->addCssClass('competitions page')->printHtml();
+    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
+            ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
+            ->addCssClass('competitions page')
+            ->printHtml();
   } else {
     $loadNotFound($year);
   }

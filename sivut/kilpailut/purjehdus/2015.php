@@ -4,13 +4,13 @@
 
 <?php $csvTaulu('purjehduskilpailut/2015/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 8.8. <small>Lähtöaika: 11:15:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2015/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 
 ###Virutholmin etappikisa 1
@@ -37,7 +37,7 @@
   9. E. Mickelsson
   10. E. Salminen
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##RVS-Ranking 2015 <small>vain seuran jäsenille</small>
 **Lyhenteet:**
@@ -45,5 +45,3 @@
 * `Vir.`: Virutholm-purjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2015/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)

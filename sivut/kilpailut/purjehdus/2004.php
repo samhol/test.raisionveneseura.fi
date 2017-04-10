@@ -4,19 +4,19 @@
 
 <?php $csvTaulu('purjehduskilpailut/2004/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 31.7. <small>Lähtöaika: 11:46:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2004/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Syyspurjehdus 4.9. <small>Lähtöaika: 11:30:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2004/syys.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##RVS-Ranking <small>vain seuran jäsenille</small>
 **Lyhenteet:**
@@ -25,5 +25,3 @@
 * `Syys.`: Syyspurjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2004/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)

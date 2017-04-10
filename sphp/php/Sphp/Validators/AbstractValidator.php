@@ -47,8 +47,8 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $m container for the error messages
    */
-  public function __construct(array $messageTemplates = []) {
-    $this->messageTemplates = $messageTemplates;
+  public function __construct() {
+    $this->messageTemplates = [];
     $this->errors = new MessageList();
   }
 
@@ -101,6 +101,18 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   public function createMessageTemplate($id, $singular, $plural = null) {
+
+    $this->setMessageTemplate($id, new \Sphp\I18n\MessageTemplate($singular, $plural));
+
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array|\Traversable $messageTemplates
+   * @return self for a fluent interface
+   */
+  public function fromMessageTemplate($id, $attrs = null) {
 
     $this->setMessageTemplate($id, new \Sphp\I18n\MessageTemplate($singular, $plural));
 

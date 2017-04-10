@@ -4,13 +4,13 @@
 
 <?php $csvTaulu('purjehduskilpailut/2012/hirsiluoto.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##Virutholm-purjehdus 28.7.: <small>Lähtöaika: 13:00:00</small>
 
 <?php $csvTaulu('purjehduskilpailut/2012/virutholm.csv') ?>
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ###Etappikisa 1
 
@@ -30,7 +30,7 @@
 5. Crista
 6. Fröökynä
 
-[Takaisin kilpailuvalikkoon](/kilpailut)
+<?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
 ##RVS-Ranking 2012 <small>vain seuran jäsenille</small>
 **Lyhenteet:**
@@ -38,5 +38,3 @@
 * `Vir.`: Virutholm-purjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2012/yht.csv') ?>
-
-[Takaisin kilpailuvalikkoon](/kilpailut)
