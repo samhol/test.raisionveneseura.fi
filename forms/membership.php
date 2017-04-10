@@ -26,7 +26,7 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
     if ($validator->isValid($inputs)) {
       $memberData = new MemberData($inputs);
       $applicantData = new MemberData($inputs);
-      $mailer = new MemberApplicationMailer();
+      $mailer = new MemberApplicationMailer(TOIMISTO_EMAIL);
       $mailer->send($applicantData);
       //  25rMxq~1VVtn
       $_SESSION[MemberData::class] = $applicantData;

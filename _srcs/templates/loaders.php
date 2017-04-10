@@ -5,8 +5,11 @@ namespace Sphp\MVC;
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Container;
 use Sphp\Html\Div;
+
 $loadNotFound = function () {
-  (new Container)->appendMdFile("_srcs/templates/notFound.php")->printHtml();
+  (new Div)->addCssClass('page')
+          ->appendMdFile("_srcs/templates/notFound.php")
+          ->printHtml();
 };
 $loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
   //print_r(func_get_args());
@@ -62,4 +65,8 @@ $loadCompetition_del = function ($param) use ($loadPage) {
   $loadPage('kilpailut');
 };
 
-
+$loadBulletingBoard = function () {
+  (new Div)->appendMdFile(['_srcs/templates/bulletingBoard.php'])
+          ->addCssClass('competitions page')
+          ->printHtml();
+};

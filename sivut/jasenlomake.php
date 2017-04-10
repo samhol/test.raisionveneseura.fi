@@ -7,10 +7,11 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 <?php
 
 use Sphp\MVC\MemberData;
+
 // print_r($_SESSION);
 if (array_key_exists(MemberData::class, $_SESSION)) {
   $data = $_SESSION[MemberData::class];
- 
+
   $name = '<u>' . $data->getFname() . ' ' . $data->getLname() . '</u>';
   $callout = new Callout();
   $callout->setClosable();
@@ -27,9 +28,9 @@ if (array_key_exists(MemberData::class, $_SESSION)) {
   $callout->appendMd('Lokakkeessa on virheitä');
   $v = $_SESSION['invalidForm'];
   if ($v instanceof \Sphp\Validators\FormValidator) {
-   
-    var_dump($v->getErrors());
-    foreach ($v->getErrors() as $err) {
+
+    //var_dump($v->getErrors());
+    foreach ($v->getInputErrors() as $err) {
       $callout->appendMd(" * Virhe: $err\n");
     }
   }
@@ -51,8 +52,8 @@ $ageMenu->prepend(new Option('18', 'Aikuinen', true));
 
 $newToken = CRSFToken::instance()->generateToken('membership');
 ?>
-<div class="callout warning"><h2>LOMAKE EI OLE VIELÄ KÄYTÖSSÄ!</h2></div>
-<form novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
+
+<form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
   <input type="hidden" name="membership" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
@@ -61,7 +62,7 @@ $newToken = CRSFToken::instance()->generateToken('membership');
     <label>Henkilötiedot</label>
     <div class="small-12 large-2 columns">
       <label>Ikä
-        <?php $ageMenu->printHtml() ?>
+<?php $ageMenu->printHtml() ?>
         <span class="form-error">
           Anna etunimesi
         </span>

@@ -65,18 +65,19 @@ use Sphp\Stdlib\Path;
     </div>
     <div class="push"></div>
   </div>
-</div>
-<footer class="footer">
+  <footer class="footer">
   <div class="row expanded">
     <div class="column small-12 large-6">
       &copy; Raision Veneseura r.y.
     </div>
     <div class="column small-12 large-6">
 
-
+      <a href="https://www.facebook.com/groups/763725060384903/?fref=ts" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
     </div>
   </div>
 </footer>
+</div>
+
 
 
 <?php

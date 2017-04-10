@@ -19,16 +19,16 @@ class MemberApplicationMailer {
 
   /**
    *
-   * @var MemberData 
+   * @var string 
    */
-  private $data;
+  private $receiver;
 
   /**
    * 
-   * @param MemberData $data
+   * @param string $receiver
    */
-  public function __construct() {
-    
+  public function __construct($receiver = 'toimisto@raisionveneseura.fi') {
+    $this->receiver = $receiver;
   }
 
   /**
@@ -39,9 +39,10 @@ class MemberApplicationMailer {
   public function send(MemberData $data) {
     $mail = new Message();
     $mail->setFrom('jasenhakemus@raisionveneseura.fi');
-    $mail->addTo('samiholck@gmail.com');
+    $mail->addTo($this->receiver);
     $mail->setSubject("Raision veneseuran jäsenhakemus ({$data->getFname()} {$data->getLname()})");
     $mail->setBody($this->createMailBody($data));
+    $mail->setEncoding('UTF-8');
     $transport = new Sendmail();
     $transport->send($mail);
     return $this;

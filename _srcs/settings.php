@@ -3,7 +3,6 @@
 namespace Sphp\Config;
 
 require_once(__DIR__ . '/../sphp/settings.php');
-
 use Sphp\Config\ErrorHandling\ExceptionHandler;
 use Sphp\Config\ErrorHandling\ExceptionLogger;
 use Sphp\Config\ErrorHandling\ExceptionPrinter;
@@ -33,9 +32,15 @@ require_once 'templates/loaders.php';
 
 $router = new Router();
 $router->route('/', $loadIndex);
+$router->route('/bb', $loadBulletingBoard, 11);
 $router->route('/kilpailut/kalastus/<#year>', $loadFishingCompetition);
 $router->route('/kilpailut/purjehdus/<#year>', $loadSailingCompetition);
 $router->route('/<:pagename>', $loadPage);
 $router->route('/' . date('Y'), $seasonSchedule);
 //$router->route('/kilpailut/<*categories>', $loadCompetition);
 $router->setDefaultRoute($loadNotFound);
+
+
+use Sphp\Config\Config;
+use Sphp\Stdlib\Parser;
+//$conf = Config::instance(0, Parser::fromFile('_srcs/settings.yml'));

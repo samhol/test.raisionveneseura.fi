@@ -7,3 +7,5 @@ use Sphp\Stdlib\Path;
 $kilpailut = (new Hyperlink(Path::get()->http() . 'kilpailut', 'Takaisin kilpailuvalikkoon', '_self'))->getHtml();
 
 define('TAKAISIN_KILPAILUVALIKKOON', $kilpailut);
+
+const TOIMISTO_EMAIL = 'toimisto@raisionveneseura.fi';
