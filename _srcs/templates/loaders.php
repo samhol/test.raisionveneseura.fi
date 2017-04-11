@@ -3,7 +3,6 @@
 namespace Sphp\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
-use Sphp\Html\Container;
 use Sphp\Html\Div;
 
 $loadNotFound = function () {
@@ -67,6 +66,6 @@ $loadCompetition_del = function ($param) use ($loadPage) {
 
 $loadBulletingBoard = function () {
   (new Div)->appendMdFile(['_srcs/templates/bulletingBoard.php'])
-          ->addCssClass('competitions page')
+          ->addCssClass('bulletingboard page')
           ->printHtml();
 };
