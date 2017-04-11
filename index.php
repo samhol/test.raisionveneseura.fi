@@ -65,7 +65,10 @@ use Sphp\Stdlib\Path;
     </div>
     <div class="push"></div>
   </div>
-  <footer class="footer">
+  
+</div>
+
+<footer class="footer">
   <div class="row expanded">
     <div class="column small-12 large-6">
       &copy; Raision Veneseura r.y.
@@ -76,9 +79,6 @@ use Sphp\Stdlib\Path;
     </div>
   </div>
 </footer>
-</div>
-
-
 
 <?php
 
