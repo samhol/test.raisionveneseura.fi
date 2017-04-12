@@ -14,7 +14,10 @@ try {
   foreach ($arr as $img) {
     $o->appendFigure(Img::scaleToFit($img, $size));
   }
-  $o->printHtml();
+  //$o->printHtml();
 } catch (\Exception $ex) {
   (new ExceptionCallout($ex, true, true))->printHtml();
 }
+?>
+
+<img src="kuvarulla/purjehdus.jpg" alt="">

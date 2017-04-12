@@ -27,10 +27,13 @@ $menu-area-bg: #4d5158;
   color: #1044ba;
   background-color: #fff;
   font-size: rem-calc(20);
+  img {
+    margin: rem-calc(2);
+  }
   span {
     margin-left: rem-calc(20);
   }
-} 
+}
 .top-bar {
   @include box-shadow(rgba(blue, 0.2) 0px 5px 6px 2px);
   border-top: 2px solid #0099ff;
@@ -173,7 +176,7 @@ $menu-separator: #41444a;
     border-color: #ccc;
     font-size: rem-calc(14);
     &.contacts {
-      @include breakpoint(large) {
+      @include breakpoint(xlarge) {
         table-layout : fixed;
       }
     }
