@@ -9,16 +9,16 @@
 
     use Sphp\Stdlib\Path;
     use Sphp\Html\Navigation\Hyperlink;
-
-$root = 'sphp/viewerjs/#../../';
-    $sailing = new FilesystemIterator('sivut/kilpailut/purjehdus');
-
-    function formatBytes($size, $precision = 2) {
+function formatBytes($size, $precision = 2) {
       $base = log($size, 1024);
       $suffixes = array('', 'K', 'M', 'G', 'T');
 
       return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
     }
+$root = 'sphp/viewerjs/#../../';
+    $sailing = new FilesystemIterator('sivut/kilpailut/purjehdus');
+
+    
 
     $arr = iterator_to_array($sailing);
 //print_r($arr);

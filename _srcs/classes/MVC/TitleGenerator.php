@@ -41,6 +41,7 @@ class TitleGenerator {
   }
 
   public function createTitleFor($page) {
+    
     $page = trim($page, '/');
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {

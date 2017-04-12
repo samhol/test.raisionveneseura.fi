@@ -1,17 +1,20 @@
 <?php
 
-$urls = array();  
+namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-$DomDocument = new DOMDocument();
-$DomDocument->preserveWhiteSpace = false;
-$DomDocument->load('sitemap.xml');
-$DomNodeList = $DomDocument->getElementsByTagName('loc');
+use Sphp\Html\Media\Img;
+use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+try {
+  $sailing = new \FilesystemIterator('kuvarulla');
+  $arr = iterator_to_array($sailing);
 
-foreach($DomNodeList as $url) {
-    $urls[] = $url->nodeValue;
+  $o = new Orbit();
+//$o->accessibility(false);
+  $size = new \Sphp\Html\Media\Size(null, null);
+  foreach ($arr as $img) {
+    $o->appendFigure(Img::scaleToFit($img, $size));
+  }
+  $o->printHtml();
+} catch (\Exception $ex) {
+  (new ExceptionCallout($ex, true, true))->printHtml();
 }
-
-//display it
-echo "<pre>";
-print_r($urls);
-echo "</pre>";

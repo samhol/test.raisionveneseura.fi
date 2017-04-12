@@ -28,7 +28,7 @@ const DEFAULT_DOMAIN = "Sphp.Defaults";
 /**
  * Http root folder path
  */
-const HTTP_ROOT = 'http://playground.samiholck.com/';
+const HTTP_ROOT = 'http://test.raisionveneseura.fi/';
 
 namespace Sphp\js;
 

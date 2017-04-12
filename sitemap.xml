@@ -52,12 +52,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://raisionveneseura.fi/katsastusinfo</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://raisionveneseura.fi/katsastajat</loc>
+  <loc>http://raisionveneseura.fi/katsastustoiminta</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>

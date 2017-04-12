@@ -5,12 +5,13 @@ namespace Sphp\Html;
 use Sphp\Http\HttpCodeCollection;
 use Sphp\Stdlib\Path;
 use Sphp\MVC\Router;
+
 Document::setHtmlVersion(Document::HTML5);
 
 $errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
 if ($errorCode === null) {
   $errorCode = filter_input(INPUT_GET, 'error_code', FILTER_SANITIZE_NUMBER_INT);
-} if ($errorCode === null){
+} if ($errorCode === null) {
   
 }
 $title = 'foo';
@@ -31,10 +32,12 @@ if ($errorCode !== null && $errorCode >= 400) {
 }
 
 use Sphp\Html\Head\Meta;
+
 $html->setLanguage('fi');
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
+        ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
         ->addCssSrc('_srcs/css/base.css')
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')

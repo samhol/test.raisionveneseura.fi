@@ -131,7 +131,7 @@ $menu-separator: #41444a;
     color: #666;
     padding: rem-calc(4 10 5 10);
   }
-  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+  >h1:first-child, >h2:first-child, >h3:first-child, >h4:first-child, >h5:first-child, >h6:first-child {
     border-bottom: solid 1px #999;
     background-color: #efefef;
     @include background-image(linear-gradient(to right, #eaeaea, #fafafa));
