@@ -27,7 +27,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @var callable 
    */
   private $filter;
-
+  
   /**
    *
    * @var SplFileObject 
@@ -179,10 +179,18 @@ class CsvFile implements Arrayable, \Iterator {
     return $result;
   }
 
+  public function addOutputFilter($filter) {
+    $this->filter = $filter;
+    return $this;
+  }
+  
   public function toArray() {
     $arr = [];
     $file = $this->createSplFileObject();
     while (!$file->eof() && ($row = $file->fgetcsv()) && $row[0] !== null) {
+      if (is_callable($this->filter )) {
+        $row = array_map($this->filter, $row);
+      }
       $arr[] = $row;
     }
     return $arr;

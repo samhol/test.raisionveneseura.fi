@@ -59,10 +59,9 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
     $loadNotFound($year);
   }
 };
-$loadContents = function () {
-  (new Div)->appendMdFile(['_srcs/templates/contents.php'])
-          ->addCssClass('contests page')
-          ->printHtml();
+$loadCompetition_del = function ($param) use ($loadPage) {
+  echo $param;
+  $loadPage('kilpailut');
 };
 
 $loadBulletingBoard = function () {

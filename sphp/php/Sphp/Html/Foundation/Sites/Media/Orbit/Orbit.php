@@ -44,12 +44,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   private $next;
 
   /**
-   *
-   * @var boolean 
-   */
-  private $navButtonsVisible = true;
-
-  /**
    * the slide container
    *
    * @var Ul
@@ -64,12 +58,6 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   private $bullets;
 
   /**
-   *
-   * @var boolean 
-   */
-  private $bulletsVisible = true;
-
-  /**
    * Constructs a new instance
    *
    * **Notes:**
@@ -78,25 +66,25 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    * 
-   * @param  null|mixed|mixed[] $slides optional slide(s) or null for none
+   * @param  mixed|mixed[] $slides slide(s)
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($slides = null, $ariaLabel = '') {
+  public function __construct($slides = null, $ariaLabel = "") {
     parent::__construct('div');
     $this->slides = new Ul();
     $this->slides->cssClasses()
-            ->lock('orbit-container');
+            ->lock("orbit-container");
     $this->bullets = new Nav();
     $this->bullets->cssClasses()
-            ->lock('orbit-bullets');
+            ->lock("orbit-bullets");
     $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
     $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
-            ->lock('orbit');
+            ->lock("orbit");
     $this->attrs()
-            ->lock('role', 'region')
-            ->setAria('label', $ariaLabel)
-            ->demand('data-orbit');
+            ->lock("role", "region")
+            ->setAria("label", $ariaLabel)
+            ->demand("data-orbit");
     if ($slides !== null) {
       foreach (is_array($slides) ? $slides : [$slides] as $slide) {
         $this->append($slide);
@@ -137,45 +125,11 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the amount of time, in ms, between slide transitions
    * 
    * @precondition $value =&gt; 0
-   * @param  bolean $visible true for autoplay and false otherwise
-   * @return self for a fluent interface
-   */
-  public function showBullets($visible = true) {
-    $this->bulletsVisible = (boolean) $visible;
-    if ($this->bulletsVisible) {
-      $this->attrs()->set('data-bullets', 'true');
-    } else {
-      $this->attrs()->set('data-bullets', 'false');
-    }
-    return $this;
-  }
-  
-  
-  /**
-   * Sets the amount of time, in ms, between slide transitions
-   * 
-   * @precondition $value =&gt; 0
-   * @param  bolean $visible true for autoplay and false otherwise
-   * @return self for a fluent interface
-   */
-  public function showNavigationButtons($visible = true) {
-    $this->navButtonsVisible = (boolean) $visible;
-    if ($this->navButtonsVisible) {
-      $this->attrs()->set('data-nav-buttons', 'true');
-    } else {
-      $this->attrs()->set('data-nav-buttons', 'false');
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the amount of time, in ms, between slide transitions
-   * 
-   * @param  bolean $autoplay true for autoplay and false otherwise
+   * @param  bolean $autoplay true for autoplay and falseotherwise
    * @return self for a fluent interface
    */
   public function autoplay($autoplay = true) {
-    $this->attrs()->set('data-auto-play', $autoplay ? 'true' : 'false');
+    $this->attrs()->set("data-auto-play", $autoplay ? "true" : "false");
     return $this;
   }
 
@@ -187,7 +141,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for a fluent interface
    */
   public function setTimerDelay($value = 5000) {
-    $this->attrs()->set('data-timer-delay', $value);
+    $this->attrs()->set("data-timer-delay", $value);
     return $this;
   }
 
@@ -198,7 +152,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for a fluent interface
    */
   public function loop($loop = true) {
-    $this->attrs()->set('data-infinite-wrap', $loop ? 'true' : 'false');
+    $this->attrs()->set("data-infinite-wrap", $loop ? "true" : "false");
     return $this;
   }
 
@@ -209,7 +163,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for a fluent interface
    */
   public function accessibility($accessible = true) {
-    $this->attrs()->set('data-accessible', $accessible ? 'true' : 'false');
+    $this->attrs()->set("data-accessible", $accessible ? "true" : "false");
     return $this;
   }
 
@@ -220,7 +174,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for a fluent interface
    */
   public function pauseOnHover($pause = true) {
-    $this->attrs()->set('data-pause-on-hover', $pause ? 'true' : 'false');
+    $this->attrs()->set("data-pause-on-hover", $pause ? "true" : "false");
     return $this;
   }
 
@@ -232,8 +186,8 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
-  public function setAnimInFromLeft($effect = 'fade-in') {
-    $this->attrs()->set('data-anim-in-from-left', $effect);
+  public function setAnimInFromLeft($effect = "fade-in") {
+    $this->attrs()->set("data-anim-in-from-left", $effect);
     return $this;
   }
 
@@ -245,8 +199,8 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
-  public function setAnimInFromRight($effect = 'fade-in') {
-    $this->attrs()->set('data-anim-in-from-right', $effect);
+  public function setAnimInFromRight($effect = "fade-in") {
+    $this->attrs()->set("data-anim-in-from-right", $effect);
     return $this;
   }
 
@@ -258,7 +212,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
-  public function setAnimIn($effect = 'fade-in') {
+  public function setAnimIn($effect = "fade-in") {
     $this->setAnimInFromLeft($effect)
             ->setAnimInFromRight($effect);
     return $this;
@@ -272,8 +226,8 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
-  public function setAnimOutFromLeft($effect = 'fade-out') {
-    $this->attrs()->set('data-anim-out-from-left', $effect);
+  public function setAnimOutFromLeft($effect = "fade-out") {
+    $this->attrs()->set("data-anim-out-from-left", $effect);
     return $this;
   }
 
@@ -286,7 +240,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
   public function setAnimOutFromRight($effect = "fade-out") {
-    $this->attrs()->set('data-anim-out-from-right', $effect);
+    $this->attrs()->set("data-anim-out-from-right", $effect);
     return $this;
   }
 
@@ -298,7 +252,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
-  public function setAnimOut($effect = 'fade-out') {
+  public function setAnimOut($effect = "fade-out") {
     $this->setAnimOutFromLeft($effect)
             ->setAnimOutFromRight($effect);
     return $this;
@@ -416,12 +370,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
   }
 
   public function contentToString() {
-    $output = '';
-    $output .= $this->prev . $this->next . $this->slides;
-    if ($this->bulletsVisible) {
-      $output .= $this->bullets;
-    }
-    return $output;
+    return $this->prev . $this->next . $this->slides . $this->bullets;
   }
 
 }

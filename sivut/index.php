@@ -1,25 +1,23 @@
-#Raision veneseura
+<?php
 
-<div class="orbit-wrapper"><?php include KUVAT; ?></div>
+namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-Raision Veneseura ry on perustettu vuonna 1970. Seuran toiminnan tarkoituksena on edistää 
-vesillä liikkumisen turvallisuutta sekä kehittää purje- ja moottoriveneilyharrastusta 
-Raisiossa ja lähipaikkakunnilla. Raision Veneseura on 
-<a href="http://www.spv.fi/" target="spv">Suomen Purjehdus ja Veneily ry:n</a> jäsen, ja 
-sillä on oma Kauppa- ja teollisuusministeriön hyväksymä virallinen lippu. 
-<a href = "kuvat/seuranlippu.jpg">(kuva)</a>
+use Sphp\Html\Media\Img;
+use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+try {
+  $sailing = new \FilesystemIterator('kuvarulla');
+  $arr = iterator_to_array($sailing);
 
-Veneseuran jäsenyys on perhekohtainen. Seuraan kuluu sekä purje- että 
-moottoriveneilijöitä yhteensä noin 230 jäsenperhettä.
+  $o = new Orbit();
+//$o->accessibility(false);
+  $size = new \Sphp\Html\Media\Size(null, null);
+  foreach ($arr as $img) {
+    $o->appendFigure(Img::scaleToFit($img, $size));
+  }
+  //$o->printHtml();
+} catch (\Exception $ex) {
+  (new ExceptionCallout($ex, true, true))->printHtml();
+}
+?>
 
-Raision Veneseuralla on vuokrattuna Korppoon Norrskatassa kaksi
-saaritukikohtaa, joissa kesän aikana järjestetään erilaisia yhteisiä
-tilaisuuksia. Tukikohdissa on myös mökit ja saunat, joihin polttopuut tehdään
-talkoilla. Saaritukikohdissa on lisäksi laiturit, kaivot, grillipaikat,
-puuseet ja generaattorit syksyn pimeitä iltoja varten. Molempien edellä mainittujen 
-saarialueiden palvelut ovat jäsenien vapaassa käytössä.
-
-Raision Veneseuran toiminta käsittää koulutustilaisuuksia, vapaa-ajan viettoon liittyviä
-tilaisuuksia, matkoja, tutustumiskäyntejä, ym., ym. Toiminta on aktiivista
-ympäri vuoden. Seuran katsastustoiminta käsittää vuosittain suoritettavat katsastukset purje- ja moottoriveneille.
-Kilpailutoimintana seuralla on mm. purjehdus-, kalastus- ja&nbsp; valokuvauskilpailuja.
+<img src="kuvarulla/purjehdus.jpg" alt="">

@@ -32,7 +32,6 @@ require_once 'templates/loaders.php';
 
 $router = new Router();
 $router->route('/', $loadIndex);
-$router->route('/kilpailut', $loadContents, 11);
 $router->route('/bb', $loadBulletingBoard, 11);
 $router->route('/kilpailut/kalastus/<#year>', $loadFishingCompetition);
 $router->route('/kilpailut/purjehdus/<#year>', $loadSailingCompetition);

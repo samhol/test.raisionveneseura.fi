@@ -116,13 +116,9 @@ $menu-separator: #41444a;
   //margin: rem-calc(0 0 0 2);  
   min-height: 100%;
   border: solid 1px #999;
-  @include border-radius(4px);
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
- 
-  
-  
   h1, h2, h3, h4, h5, h6 {
     color: #333;
   }
@@ -139,8 +135,6 @@ $menu-separator: #41444a;
     padding: rem-calc(4 10 5 10);
   }
   >h1:first-child, >h2:first-child, >h3:first-child, >h4:first-child, >h5:first-child, >h6:first-child {
-    @include border-top-radius(5px);
-    border-top: solid 1px #efefef;
     border-bottom: solid 1px #999;
     background-color: #efefef;
     @include background-image(linear-gradient(to right, #eaeaea, #fafafa));
@@ -150,20 +144,13 @@ $menu-separator: #41444a;
   }
   p {
     text-align: justify;
-    margin: rem-calc(10 40 20 30);
+    margin: rem-calc(10 30);
   }
-  dl, ul:not([class]), ol {
+  dl, ul, ol {
     margin-left: rem-calc(30);
   }
   ul, ol {
     //list-style-position: inside;
-  } 
-  &.contests {
-    ul{
-      li{
-        padding: rem-calc(6 10 6 40);
-      }
-    }
   }
   dl{
     dd {
@@ -217,13 +204,6 @@ $menu-separator: #41444a;
         padding:  rem-calc(12);
       }
     }
-  }
-  
-  div.orbit-wrapper {
-    margin-left: rem-calc(2);
-    margin-right: rem-calc(2);
-    border: solid 1px #666;
-    margin-bottom: rem-calc(30);
   }
 
 }

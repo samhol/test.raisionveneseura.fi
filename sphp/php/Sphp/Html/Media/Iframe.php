@@ -12,7 +12,7 @@ use Sphp\Html\AbstractComponent;
 /**
  * Implements an HTML &lt;iframe&gt; tag (an inline frame).
  *
- * This component represents a nested browsing context.
+ * The {@link self} component represents a nested browsing context.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-07-14

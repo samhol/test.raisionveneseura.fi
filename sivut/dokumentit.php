@@ -34,7 +34,7 @@ $link = new \Sphp\Html\Navigation\Hyperlink('dokumentit/eksymalaskenta.xls', '<s
 echo " $link ($size)\n\n";
 ?>
 
-##Jolla-lehdet
+##Jolla lehdet
 
 <?php
 $it = new FilesystemIterator('dokumentit/jolla');
