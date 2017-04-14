@@ -70,3 +70,8 @@ $loadBulletingBoard = function () {
           ->addCssClass('bulletingboard page')
           ->printHtml();
 };
+$loadDocLists = function () {
+  (new Div)->appendMdFile(['_srcs/templates/docList.php'])
+          ->addCssClass('docs page')
+          ->printHtml();
+};

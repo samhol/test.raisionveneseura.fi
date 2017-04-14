@@ -221,7 +221,9 @@ $accordionmenu-arrow-size: 6px;
 $badge-background: $primary-color;
 $badge-color: $white;
 $badge-color-alt: $black;
-$badge-palette: $foundation-palette;
+$badge-palette: map-merge($foundation-palette, (
+    html5: rgba(37, 117, 197, 0.6)
+)) !default;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;
