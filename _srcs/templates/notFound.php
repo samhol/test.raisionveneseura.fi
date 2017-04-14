@@ -5,6 +5,27 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 ##Voit kokeilla esimerkiksi seuraavia:
 
 Etusivu; 
+
+<!-- start of freefind search box html -->
+<form style="margin:0px; margin-top:4px;" action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+        <input type="hidden" name="si" value="56613594">
+        <input type="hidden" name="pid" value="r">
+        <input type="hidden" name="n" value="0">
+        <input type="hidden" name="_charset_" value="">
+        <input type="hidden" name="bcd" value="&#247;">
+        <input type="text" name="query" size="15"> 
+        <input type="submit" value="search">
+</form>
+
+<a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
+<span style="color: #606060;">freefind</span></a>
+
+<a href="http://search.freefind.com/find.html?si=56613594&amp;pid=a">advanced</a>
+<div class="responsive-embed">
+<iframe name="search"></iframe>
+</div>
+<!-- end of freefind search box html -->
+
 <pre>
   <?php
   include '_srcs/menuArrays.php';
@@ -61,8 +82,6 @@ $index = array('0' => '1', '1' => '4', '2' => '7');
 
     //$index = array('0' => '1', '1' => '4', '2' => '7');
     // $where = &$l;
-
-   
     //$where = $url;
     $ul->appendLink($url, $titleGenerator->createTitleFor($path), '_self');
   }

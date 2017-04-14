@@ -11,3 +11,7 @@ email:
 
   toimisto@raisionveneseura.fi
   pw: TN~PW?^Ed.EP
+
+https://control.freefind.com/servlet/interactive/control.html
+
+pw: erab89hap_R
