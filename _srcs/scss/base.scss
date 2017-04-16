@@ -15,6 +15,7 @@ $menu-area-bg: #4d5158;
 @include foundation-everything;
 
 @import "../../sphp/scss/app/sphp-back-to-top-button";
+@import "../../sphp/scss/app/fa-social-media-buttons";
 
 .body {
   margin-top: rem-calc(10);
@@ -23,7 +24,7 @@ $menu-area-bg: #4d5158;
   }
 }
 .top-row {
-  @include opacity(0.90);
+  @include opacity(0.75);
   color: #1044ba;
   background-color: #fff;
   font-size: rem-calc(20);
@@ -53,25 +54,38 @@ html, body {
 }
 body {
   background-color: #fefefe;
-  background-image: url('http://raisionveneseura.fi/_srcs/img/background.jpg');
+  background-image: url('http://raisionveneseura.fi/kuvat/tausta/background.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed;
 }
-.wrapper {
-  min-height: 100%;
 
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -60px;
-}
-.footer {
-  border-top: solid 1px #999;
-  background-color: #eee;
-  padding:rem-calc(5);
-}
-.footer, .push {
-  height: 60px;
+footer {
+  color: #fff;
+  border: solid 1px #666;
+  @include border-radius(4px);
+  background: $menu-area-bg;
+  padding: rem-calc(5);
+  margin-top: rem-calc(20);
+  margin-bottom: rem-calc(20);
+  .social-icons {
+    display: inline-block;
+    &.techs {
+      margin-left: rem-calc(20);
+    }
+    .fa-facebook, .fa-html5, .fa-css3 {
+      border: solid 1px #fff;
+    }
+  }
+  .copyright {
+    background: scale-color($menu-area-bg, $lightness:-30%);
+    padding: rem-calc(5 15);
+    margin: rem-calc(0 5 5 5);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #aaa #bbb #999 #777;
+    @include border-radius(4px);
+  }
 }
 
 $menu-item-hover: #35383d;
@@ -106,16 +120,16 @@ $menu-separator: #41444a;
   background: $menu-bg;
 }
 .off-canvas.position-left {
-  div[data-accordion-menu] {
+  ul[data-accordion-menu] {
     margin-top: rem-calc(40);
+    margin-bottom: rem-calc(40);
   }
 }
-// background for main accordion items
 
 .page {
   //margin: rem-calc(0 0 0 2);  
-  min-height: 100%;
-  border: solid 1px #999;
+  min-height: rem-calc(400);
+  border: solid 1px #666;
   @include border-radius(4px);
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);

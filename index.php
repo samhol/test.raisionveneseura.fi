@@ -6,7 +6,7 @@ use Sphp\Stdlib\Path;
 
 ?>
 
-<div class="off-canvas-wrapper wrapper">
+<div class="off-canvas-wrapper">
   <!-- off-canvas left menu -->
   <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-content-overlay="true" data-content-scroll="false">
     <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -57,28 +57,15 @@ use Sphp\Stdlib\Path;
           <?php include ('_srcs/templates/sidenav.php'); ?>
         </div>
         <div class="column small-12 large-9 xlarge-8 end">
-          
-            <?php $router->execute(); ?>
-         
+
+          <?php $router->execute(); ?>
+          <?php include ('_srcs/templates/footer.php'); ?>
+
         </div>
       </div>
     </div>
-    <div class="push"></div>
   </div>
-  
 </div>
-
-<footer class="footer">
-  <div class="row expanded">
-    <div class="column small-12 large-6">
-      &copy; Raision Veneseura r.y.
-    </div>
-    <div class="column small-12 large-6">
-
-      <a href="https://www.facebook.com/groups/763725060384903/?fref=ts" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-    </div>
-  </div>
-</footer>
 
 <?php
 

@@ -36,7 +36,7 @@ use Sphp\Html\Head\Meta;
 $html->setLanguage('fi');
 $html->head()
         ->useFontAwesome()
-        ->useFoundationIcons()
+        //->useFoundationIcons()
         ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
         ->addCssSrc('_srcs/css/base.css')
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')

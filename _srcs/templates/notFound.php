@@ -1,29 +1,31 @@
-#Hakemaasi Sivua ei löytynyt
+#404: <small>Hakemaasi Sivua ei löytynyt</small>
 
 Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 
-##Voit kokeilla esimerkiksi seuraavia:
-
-Etusivu; 
+##Voit Suorittaa hakuja sivuston sisällöstä
 
 <!-- start of freefind search box html -->
-<form style="margin:0px; margin-top:4px;" action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
-        <input type="hidden" name="si" value="56613594">
-        <input type="hidden" name="pid" value="r">
-        <input type="hidden" name="n" value="0">
-        <input type="hidden" name="_charset_" value="">
-        <input type="hidden" name="bcd" value="&#247;">
-        <input type="text" name="query" size="15"> 
-        <input type="submit" value="search">
+<form action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+  <input type="hidden" name="si" value="56613594">
+  <input type="hidden" name="pid" value="r">
+  <input type="hidden" name="n" value="0">
+  <input type="hidden" name="_charset_" value="">
+  <input type="hidden" name="bcd" value="&#247;">
+
+  <div class="input-group">
+    <span class="input-group-label">Hakusanat:</span>
+    <input class="input-group-field" type="text" name="query" size="15">
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Hae">
+    </div>
+  </div>
 </form>
 
 <a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
-<span style="color: #606060;">freefind</span></a>
+  <span style="color: #606060;">freefind</span></a>
 
-<a href="http://search.freefind.com/find.html?si=56613594&amp;pid=a">advanced</a>
-<div class="responsive-embed">
-<iframe name="search"></iframe>
-</div>
+<a href="http://search.freefind.com/find.html?si=56613594&amp;pid=a">Mukautettu haku</a>
+
 <!-- end of freefind search box html -->
 
 <pre>
@@ -56,8 +58,7 @@ $index = array('0' => '1', '1' => '4', '2' => '7');
 
   //print_r($update);
   $f = Sphp\Stdlib\Arrays::createKeyChain($index, $update, 'new data in');
-  echo "f:\n";
-  print_r($f);
+  //echo "f:\n";
   $l = [];
   $k = [];
   foreach ($queue as $url) {
@@ -66,7 +67,7 @@ $index = array('0' => '1', '1' => '4', '2' => '7');
     $parts = explode('/', $path);
     $num = function ($part) {
       if (is_numeric($part)) {
-        echo "wrgae $part";
+        //echo "wrgae $part";
         $part = (int) $part;
       }
       return $part;
@@ -77,23 +78,15 @@ $index = array('0' => '1', '1' => '4', '2' => '7');
     $f = Sphp\Stdlib\Arrays::createKeyChain($parts, $url);
     $k = array_merge_recursive($k, $f);
     //$k = $f + $k;
-    print_r($k);
-
-
     //$index = array('0' => '1', '1' => '4', '2' => '7');
     // $where = &$l;
     //$where = $url;
     $ul->appendLink($url, $titleGenerator->createTitleFor($path), '_self');
   }
-  $ul->printHtml();
   foreach ($DomNodeList as $url) {
     $urls[] = $url->nodeValue;
   }
 
-//display it
-  echo "<pre>";
-  print_r($urls);
-  echo "</pre>";
   ?>
 
 </pre>

@@ -104,6 +104,7 @@ class FileLinkGenerator implements ContentInterface {
         $path = $this->urlPath . $name;
         $linkText = '<span class="badge html5" title="HTML-sivu"><i class="fa fa-html5"></i></span> Vuosi ' . $name;
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
+        $target = $this->getTarget();
       } else if ($extension === 'pdf') {
         $name = $this->file->getBasename('.pdf');
         $path = $root . $this->file->getPathname();
@@ -111,9 +112,10 @@ class FileLinkGenerator implements ContentInterface {
         $linkText = '<span class="badge alert" title="PDF-tiedosto"><i class="fa fa-file-pdf-o"></i></span> Vuosi ' . $name;
         $linkText .= " <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
+        $target = $name . $size;
       }
       $link = new $this->linkType;
-      $link->setHref($path)->setTarget($this->getTarget())->replaceContent($linkText);
+      $link->setHref($path)->setTarget($target)->replaceContent($linkText);
     } else {
       throw new \Sphp\Exceptions\RuntimeException();
     }
