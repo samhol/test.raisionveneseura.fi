@@ -16,7 +16,7 @@ $loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
     ob_start();
     $page = "sivut/$file.php";
     if (is_file($page)) {
-      (new Div)->appendMdFile($page)->addCssClass('page')->printHtml();
+      (new Div)->appendMdFile($page)->addCssClass(['page', $file])->printHtml();
     } else {
       $loadNotFound($par);
     }

@@ -1,9 +1,6 @@
 #KATSASTUSTOIMINTA
 
-<a href="http://www.raisionveneseura.fi/dokumentit/turvallisuusasiaa.pdf" target="_blank" class="button-group">
-  <span class="button">Lataa turvallisuustietoa tästä linkistä</span>
-  <i class="button fa fa-file-pdf-o"></i>
-</a>
+Rasion venseuran katsastajien [yhteystiedot](http://www.raisionveneseura.fi/yhteystiedot#katsastajat)
 
 Veneseurojen jäsenillä on mahdollisuus katsastuttaa veneensä vuosittain. Raision veneseuran
 piirissä venekatsastus on seuran veneille vapaaehtoinen, muitten veneseurojen
@@ -34,11 +31,7 @@ avomeriosuuksia käyttäen.
 
 ###Venekatsastuksien ajankohdasta
 
-Raision
-veneseuran venekatsastukset alkavat tuttuun tapaan huhtikuussa Raision
-Haahdenniemen venesatamassa. Katsastustoiminnan aloittaa erityinen
-runkokatsastuspäivä lauantaina 18.4.2015 klo 10 alkaen. Silloin on ensimmäinen
-mahdollisuus katsastuttaa veneen runko kuivalla maalla, ja se tulee toteuttaa
+Runkokatsastus tulee suorittaa
 vähintään viiden vuoden välein tai silloin, kun runkokatsastukseen on jokin
 erityinen syy kuten veneen omistajan vaihdos, merkittävä korjaus- tai muutostyö
 yms.
@@ -46,14 +39,7 @@ yms.
 Vuosikatsastus tulee toteuttaa nimensä mukaisesti vuosittain, ja se tulee toteuttaa vedessä
 käyttökuntoiselle ja kaikin puolin valmiiksi varustellulle veneelle.
 
-Toukokuussa runko- ja vuosikatsastukset jatkuvat säännöllisesti viikon välein
-tiistai-iltaisin klo 18 alkaen, ensimmäisen kerran 12.5. ja viimeisen kerran
-23.6. eli aina juhannuksen kynnykselle saakka. Katsastuspäivät löytyvät aina
-myös seuran kotisivuilta.
-
-kohdasta
-”Kauden ohjelma”. Venekatsastusasioista on siellä myös erityinen alasivusto
-”Katsastukset”. Katsastuspäivinä Raision venesatamassa on tarjolla myös
+Katsastuspäivinä Raision venesatamassa on tarjolla myös
 sammuttimien ja nestekaasujärjestelmän tarkistuspalvelua.
 
 ###Kuka voi katsastaa

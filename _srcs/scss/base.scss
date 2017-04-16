@@ -229,5 +229,30 @@ $menu-separator: #41444a;
     border: solid 1px #666;
     margin-bottom: rem-calc(30);
   }
+  &.kausiohjelma {
+    h2{
+
+      color: #333;
+      padding: rem-calc(2 10 2 10);
+      margin: 0;
+    }
+    dl {
+      margin: rem-calc(0 20 0 30);
+      dt {
+        font-weight: bold;
+        //text-decoration: underline;
+        display: inline-block;
+        border: solid 1px #aaa;
+        background-color: #eee;
+        @include border-radius(3px);
+        padding: rem-calc(1 5 1 5);
+        //margin: rem-calc(0 20 0 30);
+      }
+      dd {
+        display: list-item;
+        list-style: none;
+      }
+    }
+  }
 
 }

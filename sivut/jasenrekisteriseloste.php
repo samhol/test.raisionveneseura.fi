@@ -5,21 +5,22 @@ Rekisterin pitäjä ja rekisteriasioita hoitava henkilö
 : c/o Mikko Kemppainen
 : Puh: 045 139 4325
 
-###Rekisterin nimi
+##Rekisterin nimi
 
 Raision Veneseura ry:n jäsenrekisteri
 
 ###Rekisterin pitämisen peruste
+
 RVS kerää tiedot jäsenistään jäsenien oman ilmoituksen perusteella.
 
-##Rekisterin käyttötarkoitus:
+##Rekisterin käyttötarkoitus
 
 Rekisterillä pidetään yllä lakien määräämät tiedot RVS:n jäsenistä.
 Rekisteriä hyödynnetään RVS:n postituksissa (jäsentiedotteet, oma lehti,
 jäsenmaksut yms.) sekä tiedotuksissa liitoille.
 Rekisteritietoja ei saa käyttää markkinointiin.
 
-###Rekisteröinnin yhteydessä jäsenestä talletettavat tiedot:
+##Rekisteröinnin yhteydessä jäsenestä talletettavat tiedot
 
 1. Etu- ja sukunimi 
 2. Lähiosoite 
@@ -31,7 +32,7 @@ Rekisteritietoja ei saa käyttää markkinointiin.
 8. Jaos (moottorivene = 1, purjevene = 2, nuorisojäsen = 3)
 9. Lisäksi voidaan tallentaa tiedot eri postitusryhmiin kuulumisesta, kuten hallituksenjäsen, muu vastaava ryhmä.
 
-###Henkilötietojen suojauksen periaatteet:
+##Henkilötietojen suojauksen periaatteet
 
 Rekisteri säilytetään lukitussa tilassa. Tietotekninen tallennus on suojatun
 yhteyden takana.

@@ -12,7 +12,7 @@
 <?php include HALLITUS ?>
 
 
-##Katsastajat
+##Katsastajat{#katsastajat}
 <?php include KATSASTAJAT ?>
 
 Myös seuramme nykyisellä kommodorilla Esko Mickelssonilla

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 ?>
-#Jäsenhakemus lomake
+#Jäsenhakemus
 
 <?php
 
@@ -56,7 +56,7 @@ $newToken = CRSFToken::instance()->generateToken('membership');
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
   <input type="hidden" name="membership" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
-    <p><i class="fi-alert"></i> Jäsenhakemuksesi sisältää virheitä</p>
+    <p>Jäsenhakemuksesi sisältää virheitä</p>
   </div>
   <fieldset class="row">
     <label>Henkilötiedot</label>
