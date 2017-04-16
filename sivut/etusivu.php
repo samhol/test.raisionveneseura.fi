@@ -5,7 +5,7 @@
 Raision Veneseura ry on perustettu vuonna 1970. Seuran toiminnan tarkoituksena on edistää 
 vesillä liikkumisen turvallisuutta sekä kehittää purje- ja moottoriveneilyharrastusta 
 Raisiossa ja lähipaikkakunnilla. Raision Veneseura on 
-<a href="http://www.spv.fi/" target="spv">Suomen Purjehdus ja Veneily ry:n</a> jäsen, ja 
+<a href="http://spv.fi/" target="spv">Suomen Purjehdus ja Veneily ry:n</a> jäsen, ja 
 sillä on oma Kauppa- ja teollisuusministeriön hyväksymä virallinen lippu. 
 <a href = "kuvat/seuranlippu.jpg">(kuva)</a>
 

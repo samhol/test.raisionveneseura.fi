@@ -17,6 +17,9 @@ $menu-area-bg: #4d5158;
 @import "../../sphp/scss/app/sphp-back-to-top-button";
 @import "../../sphp/scss/app/fa-social-media-buttons";
 
+
+@import "../../sphp/scss/vendor/jquery.qtip";
+
 .body {
   margin-top: rem-calc(10);
   .callout, form {
