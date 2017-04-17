@@ -1,5 +1,9 @@
+<div class="sidenav">
 <?php
 
-namespace Sphp\MVC;
+use Sphp\MVC\SideNavViewer;
+use Sphp\MVC\Router;
 
 $sidenav = (new SideNavViewer($mainLinks, Router::getCleanUrl()))->printHtml();
+?>
+</div>

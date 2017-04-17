@@ -74,7 +74,7 @@ footer {
   .social-icons {
     display: inline-block;
     &.techs {
-      margin-left: rem-calc(20);
+      margin-left: rem-calc(40);
     }
     .fa-facebook, .fa-html5, .fa-css3 {
       border: solid 1px #fff;
@@ -93,8 +93,12 @@ footer {
 
 $menu-item-hover: #35383d;
 $menu-separator: #41444a;
-.sidenav {
-  background: $menu-area-bg
+div.sidenav {
+  padding: rem-calc(4 3 5 3);
+  background: $menu-area-bg;
+  @include border-radius(4px);
+  border: solid 1px #999;
+   @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
 }
 .menu {
   li:not(.active) > a {

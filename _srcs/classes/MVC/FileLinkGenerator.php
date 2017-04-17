@@ -32,7 +32,12 @@ class FileLinkGenerator implements ContentInterface {
   private $file;
   private $urlPath;
   private $target = '_self';
-  private $filenameText;
+
+  /**
+   *
+   * @var callable|string
+   */
+  private $displayName;
   private $linkType = Hyperlink::class;
 
   public function __construct(SplFileInfo $file = null) {
@@ -48,12 +53,25 @@ class FileLinkGenerator implements ContentInterface {
     return $this;
   }
 
-  public function getFilenameText() {
-    return $this->filenameText;
+  public function getDisplayName() {
+    if (is_string($this->displayName)) {
+      $name = $this->displayName;
+    } else if (is_callable($this->displayName)) {
+      $f = $this->displayName;
+      $name = $f($this->getFile());
+    } else {
+      $name = $this->getFile()->getFilename();
+    }
+    return $name;
   }
 
-  public function setFilenameText($filenameText) {
-    $this->filenameText = $filenameText;
+  /**
+   * 
+   * @param  callable|string $filenameText
+   * @return $this
+   */
+  public function setDisplayName($filenameText) {
+    $this->displayName = $filenameText;
     return $this;
   }
 
@@ -97,20 +115,29 @@ class FileLinkGenerator implements ContentInterface {
    */
   public function buildLink() {
     $root = 'sphp/viewerjs/#../../';
+    $badge = new \Sphp\Html\Foundation\Sites\Media\FiletypeBadge($this->file);
+    $dpName = $this->getDisplayName();
+    $linkText = "$badge $dpName";
     if ($this->file->isFile()) {
       $extension = $this->file->getFileInfo()->getExtension();
       if ($extension === 'php') {
         $name = $this->file->getBasename('.php');
         $path = $this->urlPath . $name;
-        $linkText = '<span class="badge html5" title="HTML-sivu"><i class="fa fa-html5"></i></span> Vuosi ' . $name;
+        //$linkText = "$badge $dpName";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $this->getTarget();
       } else if ($extension === 'pdf') {
         $name = $this->file->getBasename('.pdf');
         $path = $root . $this->file->getPathname();
         $size = $this->formatBytes();
-        $linkText = '<span class="badge alert" title="PDF-tiedosto"><i class="fa fa-file-pdf-o"></i></span> Vuosi ' . $name;
         $linkText .= " <small>($size)</small>";
+        //$link = new Hyperlink($path, $linkText, $this->getTarget());
+        $target = $name . $size;
+      } else if ($extension === 'xls') {
+        $name = $this->file->getBasename('.xls');
+        $path = $root . $this->file->getPathname();
+        $size = $this->formatBytes();
+        $linkText = "$badge Vuosi $name <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
       }

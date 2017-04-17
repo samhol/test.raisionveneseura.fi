@@ -33,6 +33,15 @@ $filename = $eksymalaskenta->getFilename();
 $size = formatBytes($eksymalaskenta->getSize());
 $link = new \Sphp\Html\Navigation\Hyperlink('dokumentit/eksymalaskenta.xls', '<span class="badge" title="XLS-tiedosto"><i class="fa fa-file-excel-o "></i></span> Eksymälaskenta');
 echo " * $link ($size)\n";
+
+use Sphp\MVC\FileLinkGenerator;
+
+$flg = new FileLinkGenerator();
+$flg->setFile(new \SplFileInfo('dokumentit/eksymalaskenta.xls'));
+$flg->setDisplayName('Eksymälaskenta');
+echo " * " . $flg->buildLink() . "\n";
+
+//echo new Sphp\Html\Foundation\Sites\Media\FiletypeBadge(new \SplFileInfo('dokumentit/eksymalaskenta.xls'));
 ?>
 
 ##Jolla-lehdet
@@ -41,10 +50,14 @@ echo " * $link ($size)\n";
 
 use Sphp\MVC\LinkListGenerator;
 
+
 $files = iterator_to_array(new FilesystemIterator('dokumentit/jolla'));
 krsort($files);
 $gen = new LinkListGenerator($files);
+$gen->getLinkGen()->setDisplayName(function(SplFileInfo $file) {
+  $year = $file->getBasename('.' . $file->getExtension());
+  return "Vuosi $year";
+});
 $gen->getLinkGen()->setUrlPath('dokumentit/jolla/');
-echo $gen;
+echo "$gen\n";
 
-?>
