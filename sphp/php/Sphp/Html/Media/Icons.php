@@ -50,7 +50,8 @@ class Icons {
       'docx' => 'file-word-o',
       'css' => 'css3',
       'html' => 'html5',
-      'htm' => 'html5'
+      'htm' => 'html5',
+      'php' => 'html5'
   ];
 
   /**
