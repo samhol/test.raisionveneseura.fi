@@ -118,14 +118,14 @@ class FileLinkGenerator implements ContentInterface {
     $badge = new \Sphp\Html\Foundation\Sites\Media\FiletypeBadge($this->file);
     $dpName = $this->getDisplayName();
     $linkText = "$badge $dpName";
+    $target = $this->getTarget();
     if ($this->file->isFile()) {
       $extension = $this->file->getFileInfo()->getExtension();
       if ($extension === 'php') {
         $name = $this->file->getBasename('.php');
         $path = $this->urlPath . $name;
         //$linkText = "$badge $dpName";
-        //$link = new Hyperlink($path, $linkText, $this->getTarget());
-        $target = $this->getTarget();
+        //$link = new Hyperlink($path, $linkText, $this->getTarget());      
       } else if ($extension === 'pdf') {
         $name = $this->file->getBasename('.pdf');
         $path = $root . $this->file->getPathname();
@@ -135,9 +135,9 @@ class FileLinkGenerator implements ContentInterface {
         $target = $name . $size;
       } else if ($extension === 'xls') {
         $name = $this->file->getBasename('.xls');
-        $path = $root . $this->file->getPathname();
+        $path = $this->file->getPathname();
         $size = $this->formatBytes();
-        $linkText = "$badge Vuosi $name <small>($size)</small>";
+        $linkText .= " <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
       }

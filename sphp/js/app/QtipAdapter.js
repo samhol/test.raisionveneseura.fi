@@ -21,6 +21,10 @@
       $classes = $this.attr('data-sphp-qtip-classes');
       function parsePosition(obj) {
         obj.position = {};
+        obj.position.viewport = $('footer');
+        obj.position.adjust = {
+            method: 'shift none'
+        };
         if ($this.attr('data-sphp-qtip-my')) {
           obj.position.my = $this.attr('data-sphp-qtip-my');
         } else {

@@ -1,7 +1,9 @@
 <footer class="footer">
   <div class="row columns">
       <ul class="social-icons icon-zoom icon-rounded"> 
-        <li><a href="https://www.facebook.com/groups/763725060384903/?fref=ts" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+        <li data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom center" title="Löydät meidät myös Facebookista">
+          <a href="https://www.facebook.com/groups/763725060384903/?fref=ts" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </li> 
       </ul>
       <ul class="social-icons icon-zoom icon-rounded techs"> 
         <li data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom center" title="CSS3">
