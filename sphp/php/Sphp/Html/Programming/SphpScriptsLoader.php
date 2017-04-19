@@ -96,19 +96,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendVideojs() {
-    $this->appendSrc('http://vjs.zencdn.net/5.11.6/video.js');
-    return $this;
-  }
-
-  /**
-   * Appends JavaScript files for ZeroClipboard
-   *
-   * @return self for a fluent interface
-   * @link   http://zeroclipboard.org/ ZeroClipboard
-   */
-  public function appendZeroClipboard() {
-    $this->appendJQuery()
-            ->appendSrc($this->paths['vendor'] . 'ZeroClipboard.min.js');
+    $this->appendSrc('http://vjs.zencdn.net/5.18.4/video.js');
     return $this;
   }
 
@@ -149,6 +137,17 @@ class SphpScriptsLoader extends ScriptsContainer {
   }
 
   /**
+   * Appends JavaScript files for `clipboard.js` to copy text to clipboard
+   *
+   * @return self for a fluent interface
+   * @link   https://clipboardjs.com/ clipboard.js
+   */
+  public function appendClipboard() {
+    $this->appendSrc($this->paths['vendor'] . 'clipboard.js');
+    return $this;
+  }
+
+  /**
    * Appends JavaScript files for the entire SPHP framework
    *
    * @return self for a fluent interface
@@ -156,14 +155,12 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendSPHP() {
     $this->appendFoundation()
             ->appendLazyload()
-            ->appendZeroClipboard()
+            ->appendClipboard()
             ->appendAnyTime()
             ->appendVideojs()
-            // ->appendPhotoAlbum()
             ->appendIonRangeSlider()
             ->appendSrc($this->paths['vendor'] . 'jquery.qtip.min.js')
             ->appendSrc($this->paths['app'] . 'commonJqueryPlugins.js')
-            ->appendSrc($this->paths['app'] . 'sphp.form.validation.js')
             ->appendSrc($this->paths['app'] . 'QtipAdapter.js')
             ->appendSrc($this->paths['app'] . 'sphp.TechLinks.js')
             ->appendSrc($this->paths['js_root'] . "sphp.all.js")

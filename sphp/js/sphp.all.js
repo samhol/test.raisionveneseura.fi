@@ -210,6 +210,25 @@ if (!window.console.log) {
 
   };
 
+  sphp.initClipboard = function () {
+    if (Clipboard.isSupported()) {
+      var clipboard = new Clipboard('[data-clipboard-target]');
+      clipboard.on('success', function (e) {
+       var  $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);    
+        $container.sphpPopper({content: "Code is copied to the clipboard"});
+        e.clearSelection();
+      });
+      clipboard.on('error', function (e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+      });
+    }
+    return this;
+  };
+
   /**
    * Initializes all sph functionality
    *
@@ -222,12 +241,13 @@ if (!window.console.log) {
     //sphp.enableConsole(false);
     console.log("sphp.initialize(" + http_root + ")");
     sphp.setHttpRoot(http_root);
-    $.fn.sphpImageResizer.IMAGE_APP = http_root + "image.php";
+    //$.fn.sphpImageResizer.IMAGE_APP = http_root + "image.php";
     //stickyFooter();
     //intBackToTop();
     //$(document).ready(function () {
-    console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
-    ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
+    //console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
+    //ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
+    sphp.initClipboard();
     var $ajaxLoaders = $("[data-sphp-ajax-url]");
     console.log("loaded");
     //alert($(document) + "init Foundation");
@@ -240,6 +260,7 @@ if (!window.console.log) {
     $(document).foundation();
 
     console.log("Foundation loaded...");
+    console.log(AnyTime.version);
     $ajaxLoaders.sphpAjaxLoader();
     $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
       console.log("SPHP Ajax loader finished loaded...");
@@ -249,18 +270,10 @@ if (!window.console.log) {
     $(".sphp-viewport-size-viewer").viewportSizeViewer();
 
     $("[data-sphp-qtip]").qtips();
-    //  if ($(document).foundation()) {
-    // $(document).foundation();
-    //handleFoundationSliders();
-    //}
-    //$(".footer").stickToBottom();
     $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").dateTimeInput();
-    //syntaxHighlighterAccordion();
-    //$("[data-sph-load]").sphLoadContent();
     $("[data-ion-rangeslider]").initIonRangeSlider();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
-    $("[data-sphp-single-accordion='syntaxHighlighter']").syntaxHighLighterAccordion();
     $("[data-reveal]").sphpPopup();
     /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {
      $(this).lazyLoadXT();
@@ -269,7 +282,7 @@ if (!window.console.log) {
       console.log('Foundation Accordion opened!');
       $(this).lazyLoadXT();
     });
-    $("[data-clipboard-target]").copyToClipboardButton();
+    //$("[data-clipboard-target]").copyToClipboardButton();
     $("[data-src]").lazyLoadXT();
     $("img[data-sphp-img-resize]").sphpImageResizer();
     sphp.enableConsole(true);
