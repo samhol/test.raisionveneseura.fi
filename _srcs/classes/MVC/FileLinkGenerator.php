@@ -140,6 +140,8 @@ class FileLinkGenerator implements ContentInterface {
         $linkText .= " <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
+      } else {
+        
       }
       $link = new $this->linkType;
       $link->setHref($path)->setTarget($target)->replaceContent($linkText);

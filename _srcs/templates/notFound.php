@@ -5,7 +5,7 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 ##Voit Suorittaa hakuja sivuston sisällöstä
 
 <!-- start of freefind search box html -->
-<form action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+<form data-abide novalidate action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self" id="freefind">
   <input type="hidden" name="si" value="56613594">
   <input type="hidden" name="pid" value="r">
   <input type="hidden" name="n" value="0">
@@ -13,18 +13,19 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
   <input type="hidden" name="bcd" value="&#247;">
 
   <div class="input-group">
-    <span class="input-group-label">Hakusanat:</span>
-    <input class="input-group-field" type="text" name="query" size="15">
+    <span class="input-group-label">Anna Hakusanat:</span>
+    <input class="input-group-field" type="text" name="query" size="15" required>
     <div class="input-group-button">
-      <input type="submit" class="button" value="Hae">
+      <button type="submit" class="button" value="Hae" data-sphp-qtip-viewport="#freefind" data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" title="Löydät meidät myös Facebookista"><i class="fa fa-search" aria-hidden="true"></i></button>
     </div>
   </div>
 </form>
+<div class="row column">
+  <a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
+    <span style="color: #606060;">freefind</span></a>
+  | <a href="http://search.freefind.com/find.html?si=56613594&amp;pid=a">Mukautettu haku</a>
+</div>
 
-<a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
-  <span style="color: #606060;">freefind</span></a>
-
-<a href="http://search.freefind.com/find.html?si=56613594&amp;pid=a">Mukautettu haku</a>
 
 <!-- end of freefind search box html -->
 
@@ -86,7 +87,6 @@ $index = array('0' => '1', '1' => '4', '2' => '7');
   foreach ($DomNodeList as $url) {
     $urls[] = $url->nodeValue;
   }
-
   ?>
 
 </pre>

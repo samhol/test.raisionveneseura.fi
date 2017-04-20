@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Div;
 
 $loadNotFound = function () {
-  (new Div)->addCssClass('page')
+  (new Div)->addCssClass('page show-logo')
           ->appendMdFile("_srcs/templates/notFound.php")
           ->printHtml();
 };
@@ -42,7 +42,7 @@ $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
   if (is_file($path)) {
     (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
             ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
-            ->addCssClass('competitions page')
+            ->addCssClass('competitions page show-logo')
             ->printHtml();
   } else {
     $loadNotFound($year);
@@ -61,7 +61,7 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
 };
 $loadContents = function () {
   (new Div)->appendMdFile(['_srcs/templates/contents.php'])
-          ->addCssClass('contests page')
+          ->addCssClass('contests page show-logo')
           ->printHtml();
 };
 
@@ -72,6 +72,6 @@ $loadBulletingBoard = function () {
 };
 $loadDocLists = function () {
   (new Div)->appendMdFile(['_srcs/templates/docList.php'])
-          ->addCssClass('docs page')
+          ->addCssClass('docs page show-logo')
           ->printHtml();
 };

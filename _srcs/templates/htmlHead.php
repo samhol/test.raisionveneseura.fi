@@ -2,39 +2,21 @@
 
 namespace Sphp\Html;
 
-use Sphp\Http\HttpCodeCollection;
 use Sphp\Stdlib\Path;
 use Sphp\MVC\Router;
+use Sphp\MVC\TitleGenerator;
 
 Document::setHtmlVersion(Document::HTML5);
 
-$errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
-if ($errorCode === null) {
-  $errorCode = filter_input(INPUT_GET, 'error_code', FILTER_SANITIZE_NUMBER_INT);
-} if ($errorCode === null) {
-  
-}
-$title = 'foo';
 $html = Document::html();
-
-if ($errorCode !== null && $errorCode >= 400) {
-  $p = new HttpCodeCollection();
-  if ($p->contains($errorCode)) {
-    $title = $errorCode . ': ' . $p->getMessage($errorCode);
-  }
-  Document::html()->setDocumentTitle($title);
-  $html->body()->addCssClass('error-page');
-} else {
-  $page = Router::getCleanUrl();
-  $titleGenerator = new \Sphp\MVC\TitleGenerator($mainLinks);
-  $title = $titleGenerator->createTitleFor($page);
-  Document::html()->setDocumentTitle($title);
-}
+$titleGenerator = new TitleGenerator($mainLinks);
+$title = $titleGenerator->createTitleFor(Router::getCleanUrl());
+Document::html()->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;
 
-$html->setLanguage('fi');
-$html->head()
+Document::html()->setLanguage('fi')
+      ->head()
         ->useFontAwesome()
         //->useFoundationIcons()
         ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
@@ -47,5 +29,5 @@ $html->head()
         ->addMeta(Meta::keywords(['raisio', 'veneseura', 'veneily', 'laituripaikka']))
         ->addMeta(Meta::description('Raision veneseuran kotisivut'));
 
-$html->startBody();
-$html->enableSPHP();
+Document::html()->startBody();
+Document::html()->enableSPHP();
