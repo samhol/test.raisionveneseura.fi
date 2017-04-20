@@ -75,3 +75,8 @@ $loadDocLists = function () {
           ->addCssClass('docs page show-logo')
           ->printHtml();
 };
+$loadMembershipForm = function () {
+  (new Div)->appendMdFile(['_srcs/templates/docList.php'])
+          ->addCssClass('docs page show-logo')
+          ->printHtml();
+};
