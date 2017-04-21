@@ -6,7 +6,7 @@ items:
   - link: Tiedotteet
     href: tiedotteet
   - link: Yhteystiedot
-    href: yht.tiedot
+    href: yhteystiedot.html
   - menu: Jäsenyys 
     items: 
     - link: Yleistä

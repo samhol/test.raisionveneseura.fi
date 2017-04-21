@@ -4,6 +4,9 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 
 ##Voit Suorittaa hakuja sivuston sisällöstä
 
+
+
+
 <!-- start of freefind search box html -->
 <form data-abide novalidate action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self" id="freefind">
   <input type="hidden" name="si" value="56613594">
@@ -16,7 +19,7 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
     <span class="input-group-label">Anna Hakusanat:</span>
     <input class="input-group-field" type="text" name="query" size="15" required>
     <div class="input-group-button">
-      <button type="submit" class="button" value="Hae" data-sphp-qtip-viewport="#freefind" data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" title="Löydät meidät myös Facebookista"><i class="fa fa-search" aria-hidden="true"></i></button>
+      <button type="submit" class="button" value="Hae" data-sphp-qtip-viewport="#freefind" data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" title="Suorita haku"><i class="fa fa-search" aria-hidden="true"></i></button>
     </div>
   </div>
 </form>

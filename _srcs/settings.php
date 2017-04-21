@@ -42,8 +42,3 @@ $router->route('/<!pagename>', $loadPage);
 $router->route('/' . date('Y'), $seasonSchedule);
 //$router->route('/kilpailut/<*categories>', $loadCompetition);
 $router->setDefaultRoute($loadNotFound);
-
-
-use Sphp\Config\Config;
-use Sphp\Stdlib\Parser;
-//$conf = Config::instance(0, Parser::fromFile('_srcs/settings.yml'));

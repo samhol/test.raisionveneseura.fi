@@ -6,7 +6,8 @@ use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Div;
 
 $loadNotFound = function () {
-  (new Div)->addCssClass('page show-logo')
+  $div = new Div();
+  $div->addCssClass(['page', 'show-logo'])
           ->appendMdFile("_srcs/templates/notFound.php")
           ->printHtml();
 };
@@ -14,7 +15,8 @@ $loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
   //print_r(func_get_args());
   try {
     ob_start();
-    $page = "sivut/$file.php";
+    $filename = pathinfo($file, PATHINFO_FILENAME);
+    $page = "sivut/$filename.php";
     if (is_file($page)) {
       (new Div)->appendMdFile($page)->addCssClass(['page', $file])->printHtml();
     } else {
@@ -42,7 +44,7 @@ $loadFishingCompetition = function ($path, $year) use($loadNotFound) {
   if (is_file($path)) {
     (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
             ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
-            ->addCssClass('competitions page show-logo')
+            ->addCssClass('fishing competitions page show-logo')
             ->printHtml();
   } else {
     $loadNotFound($year);

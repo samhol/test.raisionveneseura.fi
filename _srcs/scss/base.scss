@@ -140,7 +140,7 @@ div.sidenav {
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
-  &.show-logo, &.katsastustoiminta {
+  &.show-logo, &.katsastustoiminta, &.fishing {
     background-image: url('http://raisionveneseura.fi/kuvat/tausta/logo.png');
     background-repeat: no-repeat;
     background-size:auto;
@@ -148,6 +148,19 @@ div.sidenav {
     background-position: right 30px bottom 30px;
   }
 
+  &.fishing {
+    ol, dl, ul {
+      margin-left: rem-calc(60);
+    }
+    ol {
+      li:first-child {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-left: rem-calc(-10);
+        padding-bottom: rem-calc(10);
+      }
+    }
+  }
   h1, h2, h3, h4, h5, h6 {
     color: #333;
   }
