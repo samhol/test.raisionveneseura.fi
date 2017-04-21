@@ -32,12 +32,13 @@ require_once 'templates/loaders.php';
 
 $router = new Router();
 $router->route('/', $loadIndex);
+$router->route('/jasenhakemus.html', $loadMembershipForm, 11);
 $router->route('/kilpailut', $loadContents, 11);
 $router->route('/bb', $loadBulletingBoard, 11);
 $router->route('/dokumentit', $loadDocLists, 11);
 $router->route('/kilpailut/kalastus/<#year>', $loadFishingCompetition);
 $router->route('/kilpailut/purjehdus/<#year>', $loadSailingCompetition);
-$router->route('/<:pagename>', $loadPage);
+$router->route('/<!pagename>', $loadPage);
 $router->route('/' . date('Y'), $seasonSchedule);
 //$router->route('/kilpailut/<*categories>', $loadCompetition);
 $router->setDefaultRoute($loadNotFound);

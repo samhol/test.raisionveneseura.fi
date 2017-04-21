@@ -6,13 +6,13 @@ items:
   - link: Tiedotteet
     href: tiedotteet
   - link: Yhteystiedot
-    href: yhteystiedot
+    href: yht.tiedot
   - menu: Jäsenyys 
     items: 
     - link: Yleistä
       href: jasenyys
     - link: Jäsenhakemus
-      href: jasenlomake
+      href: jasenhakemus.html
     - link: Jäsenrekisteriseloste
       href: jasenrekisteriseloste
   - menu: Kausi 2017

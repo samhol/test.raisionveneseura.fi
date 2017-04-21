@@ -76,7 +76,7 @@ $loadDocLists = function () {
           ->printHtml();
 };
 $loadMembershipForm = function () {
-  (new Div)->appendMdFile(['_srcs/templates/docList.php'])
-          ->addCssClass('docs page show-logo')
+  (new Div)->appendMdFile(['_srcs/templates/membershipForm.php'])
+          ->addCssClass('docs page form')
           ->printHtml();
 };
