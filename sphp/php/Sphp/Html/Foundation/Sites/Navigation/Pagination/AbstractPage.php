@@ -52,6 +52,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     $this->hyperlink->setContent($content);
     return $this;
   }
+
   /**
    * 
    * @param  string $label
