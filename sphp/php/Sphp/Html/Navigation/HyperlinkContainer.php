@@ -67,14 +67,6 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getHyperlink()->getTarget();
   }
 
-  public function urlEquals($currentUrl = null) {
-    return $this->getHyperlink()->urlEquals($currentUrl);
-  }
-
-  public function isCurrentUrl() {
-    return $this->getHyperlink()->isCurrentUrl();
-  }
-
   /**
    * Sets the value of the title attribute
    *
