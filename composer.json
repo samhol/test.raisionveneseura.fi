@@ -6,6 +6,7 @@
     "erusev/parsedown-extra": "^0.7.0",
     "zurb/foundation": ">=6.3",
     "zendframework/zend-mail": "*",
+    "zendframework/zend-di": "*",
     "imagine/imagine": "*",
     "symfony/yaml": ">=3"
   },

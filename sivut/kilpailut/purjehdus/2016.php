@@ -18,3 +18,6 @@
 * `Vir.`: Virutholm-purjehdus
 
 <?php $csvTaulu('purjehduskilpailut/2016/yht.csv') ?>
+
+<?php $kalastusKilpailut(2016); ?>
+

@@ -25,3 +25,4 @@ Koko kilpailun yhteenlaskettu saalismäärä oli 2 kg 640 g
 Suurin kala **Kari Sorjasaari** 1400 g
 
 <?php include('_srcs/templates/contests/paginator.php'); 
+

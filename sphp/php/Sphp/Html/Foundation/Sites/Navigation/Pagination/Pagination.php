@@ -14,6 +14,7 @@ use ArrayIterator;
 use Sphp\Html\Container;
 use Sphp\Html\Lists\Li as Li;
 use Sphp\Stdlib\Arrays;
+use Sphp\Exceptions\OutOfRangeException;
 
 /**
  * Implements a Pagination component
@@ -49,7 +50,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @precondition $before >= 0 && $after >= 0
    * @var int
    */
-  private $before = PHP_INT_MAX, $after = PHP_INT_MAX;
+  private $before = true, $after = true;
 
   /**
    *
@@ -108,7 +109,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
-   * Sets the pattern for the default target of each pagination links
+   * Sets the default target of each pagination links
    *
    * **Notes:**
    *
@@ -129,25 +130,27 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   /**
    * 
-   * @param  int $index
+   * @param  int $index 
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\OutOfRangeException
    */
-  public function setCurrent($index) {
-    if (array_key_exists($index, $this->pages)) {
-      $this->current = $index;
-      foreach ($this->pages as $id => $page) {
-        if ($id !== $index) {
-          $page->setCurrent(false);
-        } else {
-          $page->setCurrent(true);
-        }
+  public function setCurrentPage($index) {
+    if (!array_key_exists($index, $this->pages)) {
+      throw new OutOfRangeException("Index '$index' does not exist in the pagination");
+    }
+    $this->current = $index;
+    foreach ($this->pages as $id => $page) {
+      if ($id !== $index) {
+        $page->setCurrent(false);
+      } else {
+        $page->setCurrent(true);
       }
     }
     return $this;
   }
 
   /**
-   * Sets a page into the paginator
+   * Sets a page
    * 
    * @param  int|string $index the index of the page
    * @param  Page|string $page the page object or an URL string
@@ -159,7 +162,11 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     }
     $this->pages[$index] = $page;
     if ($this->current === null) {
+      $page->setCurrent(true);
+    }
+    if ($page->isCurrent()) {
       $this->current = $index;
+      $this->setCurrentPage($index);
     }
     return $this;
   }
@@ -245,8 +252,20 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param  int $num number of visible pagination items before active page
    * @return self for a fluent interface
    */
+  public function showAll() {
+    $this->before = true;
+    $this->after = true;
+    return $this;
+  }
+
+  /**
+   * Sets the number of visible pagination items before active page
+   * 
+   * @param  int $num number of visible pagination items before active page
+   * @return self for a fluent interface
+   */
   public function visibleBeforeCurrent($num) {
-    $this->before = $num;
+    $this->before = (int) $num;
     return $this;
   }
 
@@ -257,7 +276,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return self for a fluent interface
    */
   public function visibleAfterCurrent($num) {
-    $this->after = $num;
+    $this->after = (int) $num;
     return $this;
   }
 

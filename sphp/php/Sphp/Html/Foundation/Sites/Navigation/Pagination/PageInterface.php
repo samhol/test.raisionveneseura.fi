@@ -34,7 +34,7 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
   /**
    * Sets or unsets the hyperlink component as active
    * 
-   * @param  boolean $active true foor activation and false for deactivation
+   * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
   public function setCurrent($active = true);
