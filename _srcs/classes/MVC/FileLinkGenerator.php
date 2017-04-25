@@ -9,7 +9,6 @@ namespace Sphp\MVC;
 
 use Sphp\Html\ContentInterface;
 use SplFileInfo;
-use Sphp\Stdlib\Path;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Navigation\Hyperlink;
 
@@ -30,7 +29,6 @@ class FileLinkGenerator implements ContentInterface {
    * @var SplFileInfo
    */
   private $file;
-  private $urlPath;
   private $target = '_self';
 
   /**
@@ -88,17 +86,8 @@ class FileLinkGenerator implements ContentInterface {
     return $this->file;
   }
 
-  public function getUrlPath() {
-    return $this->urlPath;
-  }
-
   public function setFile(SplFileInfo $file) {
     $this->file = $file;
-    return $this;
-  }
-
-  public function setUrlPath($urlPath) {
-    $this->urlPath = $urlPath;
     return $this;
   }
 
@@ -114,28 +103,29 @@ class FileLinkGenerator implements ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function buildLink() {
-    $root = 'sphp/viewerjs/#../../';
+    //$root = 'sphp/viewerjs/#../../';
     $badge = new \Sphp\Html\Foundation\Sites\Media\FiletypeBadge($this->file);
     $dpName = $this->getDisplayName();
     $linkText = "$badge $dpName";
     $target = $this->getTarget();
     if ($this->file->isFile()) {
+      $path = UrlGenerator::generate($this->file);
       $extension = $this->file->getFileInfo()->getExtension();
       if ($extension === 'php') {
         $name = $this->file->getBasename('.php');
-        $path = $this->urlPath . $name;
+        //$path = $this->urlPath . $name;
         //$linkText = "$badge $dpName";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());      
       } else if ($extension === 'pdf') {
         $name = $this->file->getBasename('.pdf');
-        $path = $root . $this->file->getPathname();
+        //$path = $root . $this->file->getPathname();
         $size = $this->formatBytes();
         $linkText .= " <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
       } else if ($extension === 'xls') {
         $name = $this->file->getBasename('.xls');
-        $path = $this->file->getPathname();
+        //$path = $this->file->getPathname();
         $size = $this->formatBytes();
         $linkText .= " <small>($size)</small>";
         //$link = new Hyperlink($path, $linkText, $this->getTarget());

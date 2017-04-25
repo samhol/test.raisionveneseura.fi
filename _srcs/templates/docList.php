@@ -1,7 +1,8 @@
 
 #Ladattavat dokumentit
 
-**Huom.** Jolla-lehdet ja muut PDF-sokumentit avautuvat uuteen välilehteen. Näiden dokumenttien avautuminen saattaa kestää pienen hetken, joten odota rauhassa.
+**Huom.** Jolla-lehdet ja muut PDF-sokumentit avautuvat uuteen välilehteen. Näiden 
+dokumenttien avautuminen saattaa kestää pienen hetken, joten odota rauhassa.
 
 ##Säännöt ohjeet ja työkalut
 
@@ -22,7 +23,6 @@ $flg->setFile(new \SplFileInfo('dokumentit/eksymalaskenta.xls'));
 $flg->setDisplayName('Eksymälaskenta');
 echo " * " . $flg->buildLink() . "\n";
 
-//echo new Sphp\Html\Foundation\Sites\Media\FiletypeBadge(new \SplFileInfo('dokumentit/eksymalaskenta.xls'));
 ?>
 
 ##Jolla-lehdet
@@ -39,6 +39,6 @@ $gen->getLinkGen()->setDisplayName(function(SplFileInfo $file) {
   $year = $file->getBasename('.' . $file->getExtension());
   return "Vuosi $year";
 });
-$gen->getLinkGen()->setUrlPath('dokumentit/jolla/');
+$gen->getLinkGen();//->setUrlPath('dokumentit/jolla/');
 echo "$gen\n";
 

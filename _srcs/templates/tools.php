@@ -42,19 +42,19 @@ $kalastusKilpailut = function($vuosi) use ($parseFiles) {
   echo "\n";
 };
 
-$purjehdusKilpailut = function($vuosi) use ($parseFiles) {
+$purjehdusKilpailutLinkit = function() use ($parseFiles) {
+  $year = getenv('year');
+  if (!$year) {
+    $year = date('Y');
+  }
   $paginator = new FilePaginator();
   $paginator->setPageParser(function(\SplFileInfo $file, $index) {
-    $path = "kilpailut/purjehdus/$index";
+    $path = Sphp\MVC\UrlGenerator::generate($file);
     return new Page($path, $file->getBasename('.' . $file->getExtension()));
   });
   $paginator->setFiles($parseFiles('sivut/kilpailut/purjehdus'));
   $pagination = $paginator->createPagination();
-  try {
-    $pagination->setCurrentPage($vuosi);
-  } catch (\Exception $ex) {
-    echo $ex;
-  }
+  $pagination->setCurrentPage($year);
   $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
   $pagination->getNextPageButton()->setContent('Seuraava vuosi');
   echo "\n";

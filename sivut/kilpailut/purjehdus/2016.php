@@ -17,7 +17,5 @@
 * `Hir.`: Hirsiluoto-Race
 * `Vir.`: Virutholm-purjehdus
 
-<?php $csvTaulu('purjehduskilpailut/2016/yht.csv') ?>
-
-<?php $kalastusKilpailut(2016); ?>
-
+<?php $csvTaulu('purjehduskilpailut/2016/yht.csv'); ?>
+<?php $purjehdusKilpailutLinkit(); ?>

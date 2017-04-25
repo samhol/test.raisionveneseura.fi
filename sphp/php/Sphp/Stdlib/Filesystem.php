@@ -85,7 +85,7 @@ class Filesystem {
       }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
-      throw new RuntimeException("PHP parsing failed", 0, $e);
+      throw new RuntimeException("PHP parsing failed for $e", 0, $e);
     }
     ob_end_clean();
     return $content;

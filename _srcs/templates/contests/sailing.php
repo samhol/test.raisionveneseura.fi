@@ -12,5 +12,5 @@ $gen->getLinkGen()->setDisplayName(function(SplFileInfo $file) {
   $year = $file->getBasename('.' . $file->getExtension());
   return "Vuosi $year";
 });
-$gen->getLinkGen()->setUrlPath('kilpailut/purjehdus/');
+$gen->getLinkGen();//->setUrlPath('kilpailut/purjehdus/');
 echo $gen;
