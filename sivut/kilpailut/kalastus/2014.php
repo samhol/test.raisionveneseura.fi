@@ -1,4 +1,4 @@
-#KALASTUSKILPAILU 6.9.2014
+#KALASTUSKILPAILU <small>6.9.2014</small>
 
   
 ##"Matosarja"
@@ -27,3 +27,5 @@ Kiertopalkinnon voittaja: **Stefan Kaapro** 4650 g
 Koko kilpailun yhteenlaskettu saalismäärä oli 10 kg 240 g 
 
 Suurin kala **Joona Suominen** 2680 g
+
+<?php $kalastusKilpailut(); ?>

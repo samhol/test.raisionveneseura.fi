@@ -5,12 +5,13 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\MVC;
+namespace Sphp\MVC\Filesystem;
 
 use Sphp\Html\ContentInterface;
 use SplFileInfo;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Foundation\Sites\Media\FiletypeBadge;
 
 /**
  * Description of FileLinkGenerator
@@ -20,7 +21,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileLinkGenerator implements ContentInterface {
+class HyperlinkGenerator implements ContentInterface {
 
   use \Sphp\Html\ContentTrait;
 
@@ -104,7 +105,7 @@ class FileLinkGenerator implements ContentInterface {
    */
   public function buildLink() {
     //$root = 'sphp/viewerjs/#../../';
-    $badge = new \Sphp\Html\Foundation\Sites\Media\FiletypeBadge($this->file);
+    $badge = new FiletypeBadge($this->file);
     $dpName = $this->getDisplayName();
     $linkText = "$badge $dpName";
     $target = $this->getTarget();

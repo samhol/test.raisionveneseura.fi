@@ -1,4 +1,4 @@
-#KALASTUSKILPAILU 8.9.2013
+#KALASTUSKILPAILU <small>8.9.2013</small>
 
 ##"Matosarja"
  
@@ -19,3 +19,5 @@ Kaksi osallistujaa: ei saalista
 Kiertopalkinnon voittaja: **Stefan Kaapro** 9050 g
 
 Koko kilpailun yhteenlaskettu saalismäärä oli 12 kg 830 g 
+
+<?php $kalastusKilpailut(); ?>

@@ -39,10 +39,11 @@ $seasonSchedule = function ($par) use ($loadPage) {
 $loadIndex = function () use ($loadPage) {
   $loadPage('etusivu');
 };
-$loadFishingCompetition = function ($path, $year) use($loadNotFound) {  
+$loadFishingCompetition = function ($path, $year) use($loadNotFound) {
   $filename = pathinfo($path, PATHINFO_FILENAME);
   $path = "sivut/kilpailut/kalastus/$filename.php";
   if (is_file($path)) {
+    putenv("year=$filename");
     (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
             ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
             ->addCssClass(['fishing', 'competitions', 'page', 'show-logo'])
@@ -55,7 +56,7 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   $filename = pathinfo($path, PATHINFO_FILENAME);
   $path = "sivut/kilpailut/purjehdus/$filename.php";
   if (is_file($path)) {
-    putenv("year=$year");
+    putenv("year=$filename");
     (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
             ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
             ->addCssClass(['competitions', 'page'])

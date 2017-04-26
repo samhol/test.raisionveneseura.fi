@@ -23,6 +23,11 @@ class MemberData {
   private $zipcode;
   private $city;
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param array $data
+   */
   public function __construct(array $data) {
     foreach ($data as $k => $v) {
       $this->{$k} = $v;

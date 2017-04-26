@@ -1,16 +1,14 @@
 <?php
 
-namespace Sphp\MVC;
+namespace Sphp\MVC\Filesystem;
 
-use FilesystemIterator;
 use SplFileInfo;
 
-$files = iterator_to_array(new FilesystemIterator('sivut/kilpailut/kalastus'));
-krsort($files);
-$gen = new LinkListGenerator($files);
+$gen = new LinkListGenerator();
+$gen->loadFiles('sivut/kilpailut/kalastus');
 $gen->getLinkGen()->setDisplayName(function(SplFileInfo $file) {
   $year = $file->getBasename('.' . $file->getExtension());
   return "Vuosi $year";
 });
-$gen->getLinkGen();//->setUrlPath('kilpailut/kalastus/');
+$gen->getLinkGen();
 echo $gen;

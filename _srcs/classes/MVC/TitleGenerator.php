@@ -19,6 +19,11 @@ use Sphp\Stdlib\Strings;
  */
 class TitleGenerator {
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param array $data
+   */
   public function __construct(array $data) {
     $this->data = $data;
     $this->titleData = $this->parseTitles();
@@ -41,7 +46,7 @@ class TitleGenerator {
   }
 
   public function createTitleFor($page) {
-    
+
     $page = trim($page, '/');
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {

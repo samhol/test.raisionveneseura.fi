@@ -7,7 +7,6 @@
 
 namespace Sphp\MVC;
 
-use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
@@ -18,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SideNavViewer implements ContentInterface {
+class SideNavViewer extends AbstractComponentGenerator {
 
   use \Sphp\Html\ContentTrait;
 
@@ -35,12 +34,7 @@ class SideNavViewer implements ContentInterface {
   private $currentPage;
 
   /**
-   *
-   * @var AccordionMenu 
-   */
-  private $nav;
-
-  /**
+   * Constructs a new instance
    * 
    * @param array $data
    * @param string $currentPage
@@ -48,31 +42,15 @@ class SideNavViewer implements ContentInterface {
   public function __construct($data, $currentPage = '') {
     $this->data = $data;
     $this->currentPage = $currentPage;
-    $this->buildMenu();
   }
 
   /**
    * 
-   * @return AccordionMenu
+   * @return \Sphp\Html\ContentInterface
    */
-  public function getMenu() {
-    return $this->nav;
-  }
-
-  /**
-   * 
-   * @return self
-   */
-  protected function buildMenu() {
-    $this->nav = new AccordionMenu();
-    //$this->nav->addCssClass('sidenav');
+  public function generate() {
     $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));
-    $builder->buildMenu($this->data, $this->nav);
-    return $this;
-  }
-
-  public function getHtml() {
-    return $this->nav->getHtml();
+    return $builder->buildMenu($this->data, new AccordionMenu());
   }
 
 }

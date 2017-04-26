@@ -65,17 +65,23 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
   }
 
   public function setCurrent($active = true) {
-    if ($active) {
+    if ((boolean) $active) {
       return $this->addCssClass('current');
     } else {
       return $this->removeCssClass('current');
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isCurrent() {
     return $this->hasCssClass('current');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function disable($disabled = true) {
     if ($disabled) {
       $this->cssClasses()->set('disabled');
@@ -85,10 +91,16 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isEnabled() {
     return !$this->cssClasses()->contains('disabled');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     $output = '';
     if (!$this->isEnabled()) {
@@ -99,19 +111,31 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $output;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getHref() {
     return $this->hyperlink->getHref();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getTarget() {
     return $this->hyperlink->getTarget();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setHref($href, $encode = true) {
     $this->hyperlink->setHref($href, $encode);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setTarget($target) {
     $this->hyperlink->setTarget($target);
     return $this;

@@ -7,54 +7,50 @@ $csvTaulu = function($polku) {
   echo TableBuilder::fromCsvFile(new CsvFile($polku));
 };
 
-use Sphp\MVC\FilePaginator;
+use Sphp\MVC\Filesystem\FilePaginator;
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
 
-$parseFiles = function($folder) {
-  $raw = iterator_to_array(new \FilesystemIterator($folder));
+$parseFiles = new \Sphp\MVC\Filesystem\FileParser();
 
-  $files = [];
-  foreach ($raw as $file) {
-    $index = $file->getBasename('.' . $file->getExtension());
-    //var_dump($file);
-    $files[$index] = $file;
-  }
-  ksort($files);
-  return $files;
-};
-$kalastusKilpailut = function($vuosi) use ($parseFiles) {
-  $paginator = new FilePaginator();
-  $paginator->setPageParser(function(\SplFileInfo $file, $index) {
-    $path = "kilpailut/kalastus/$index";
-    return new Page($path, $file->getBasename('.' . $file->getExtension()));
-  });
-  $paginator->setFiles($parseFiles('sivut/kilpailut/kalastus'));
-  $pagination = $paginator->createPagination();
-  try {
-    $pagination->setCurrentPage($vuosi);
-  } catch (\Exception $ex) {
-    echo $ex;
-  }
-  $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
-  $pagination->getNextPageButton()->setContent('Seuraava vuosi');
-  echo "\n";
-  $pagination->printHtml();
-  echo "\n";
-};
-
-$purjehdusKilpailutLinkit = function() use ($parseFiles) {
+$kalastusKilpailut = function() {
   $year = getenv('year');
   if (!$year) {
     $year = date('Y');
   }
   $paginator = new FilePaginator();
   $paginator->setPageParser(function(\SplFileInfo $file, $index) {
-    $path = Sphp\MVC\UrlGenerator::generate($file);
+    $path = "kilpailut/kalastus/$index";
     return new Page($path, $file->getBasename('.' . $file->getExtension()));
   });
-  $paginator->setFiles($parseFiles('sivut/kilpailut/purjehdus'));
-  $pagination = $paginator->createPagination();
+  $paginator->loadFiles('sivut/kilpailut/kalastus');
+  $pagination = $paginator->generate();
+  try {
+    $pagination->setCurrentPage($year);
+  } catch (\Exception $ex) {
+    echo $ex;
+  }
+  $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
+  $pagination->getNextPageButton()->setContent('Seuraava vuosi');
+  echo "<hr>\n";
+  $pagination->printHtml();
+  echo "\n<hr>\n";
+};
+
+$purjehdusKilpailutLinkit = function() {
+  $year = getenv('year');
+  if (!$year) {
+    $year = date('Y');
+  }
+  $paginator = new FilePaginator();
+  $paginator->setPageParser(function(\SplFileInfo $file, $index) {
+    $path = Sphp\MVC\Filesystem\UrlGenerator::generate($file);
+    return new Page($path, $file->getBasename('.' . $file->getExtension()));
+  });
+  $paginator->loadFiles('sivut/kilpailut/purjehdus');
+  $pagination = $paginator->generate();
   $pagination->setCurrentPage($year);
+  $pagination->visibleBeforeCurrent(3);
+  $pagination->visibleAfterCurrent(3);
   $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
   $pagination->getNextPageButton()->setContent('Seuraava vuosi');
   echo "\n";

@@ -23,3 +23,4 @@
 * `Syys.`: Syyspurjehdus 
 
 <?php $csvTaulu('purjehduskilpailut/2006/yht.csv') ?>
+<?php $purjehdusKilpailutLinkit(); ?>

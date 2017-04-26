@@ -140,7 +140,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     }
     $this->current = $index;
     foreach ($this->pages as $id => $page) {
-      if ($id !== $index) {
+      //var_dump( $id, $index);
+      if ($id != $index) {
         $page->setCurrent(false);
       } else {
         $page->setCurrent(true);
@@ -321,17 +322,20 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return count($this->pages);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     $cont = new Container();
     Arrays::pointToKey($this->pages, $this->current);
     $cont->append(current($this->pages));
     $before = $this->before;
-    while ($before-- >= 0 && prev($this->pages)) {
+    while ($before-- > 0 && prev($this->pages)) {
       $cont->prepend(current($this->pages));
     }
     Arrays::pointToKey($this->pages, $this->current);
     $after = $this->after;
-    while ($after-- >= 0 && next($this->pages)) {
+    while ($after-- > 0 && next($this->pages)) {
       $cont->append(current($this->pages));
     }
     $cont->prepend($this->getPreviousPageButton());

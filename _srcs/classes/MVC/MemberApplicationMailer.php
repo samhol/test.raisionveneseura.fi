@@ -24,6 +24,7 @@ class MemberApplicationMailer {
   private $receiver;
 
   /**
+   * Constructs a new instance
    * 
    * @param string $receiver
    */

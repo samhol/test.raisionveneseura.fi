@@ -5,7 +5,9 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\MVC;
+namespace Sphp\MVC\Filesystem;
+
+use SplFileInfo;
 
 /**
  * Description of UrlGenerator
@@ -33,15 +35,15 @@ class UrlGenerator {
   public function __invoke($localPath) {
     return static::generate($localPath);
   }
-  
+
   /**
    * 
-   * @param  string $localPath
+   * @param  string|SplFileInfo $localPath
    * @return string
    */
   public static function generate($localPath) {
-    if (!$localPath instanceof \SplFileInfo) {
-      $localPath = new \SplFileInfo($localPath);
+    if (!$localPath instanceof SplFileInfo) {
+      $localPath = new SplFileInfo($localPath);
     }
     $url = \Sphp\Stdlib\Path::get()->http();
     if ($localPath->isFile()) {
@@ -64,7 +66,7 @@ class UrlGenerator {
    * @param  string $extension
    * @return string
    */
-  public static function getPathForExtension($extension) {
+  protected static function getPathForExtension($extension) {
     if (array_key_exists($extension, static::$urlMap)) {
       return static::$urlMap[$extension];
     }

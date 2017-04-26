@@ -26,6 +26,7 @@ class LinkDataParser {
   private $traversed;
 
   /**
+   * Constructs a new instance
    * 
    * @param string $filepath
    */

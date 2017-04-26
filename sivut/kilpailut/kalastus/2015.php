@@ -1,4 +1,4 @@
-#KALASTUSKILPAILU 5.9.2015
+#KALASTUSKILPAILU <small>5.9.2015</small>
 
 ##"Matosarja"
  
@@ -25,3 +25,5 @@ Kiertopalkinnon voittajat: **Isabella Sorjasaari** ja **Aila Sauvolainen** (jaet
 Koko kilpailun yhteenlaskettu saalismäärä oli 14 kg 10 g 
 
 Suurin kala **Veikko Viljanen** 1250 g
+
+<?php $kalastusKilpailut(); ?>

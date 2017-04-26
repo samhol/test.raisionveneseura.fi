@@ -25,6 +25,11 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
    */
   private $currentPage;
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param type $currentPage
+   */
   public function __construct($currentPage = null) {
     parent::__construct();
     $this->currentPage = trim($currentPage, '/');
@@ -39,8 +44,7 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
 
       if (\Sphp\Stdlib\Strings::startsWith($this->currentPage, $linkData['href'])) {
         $link->setActive(true);
-      }
-      else if ($this->currentPage === $linkData['href']) {
+      } else if ($this->currentPage === $linkData['href']) {
         $link->setActive(true);
       }
     }
