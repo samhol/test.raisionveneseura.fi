@@ -55,7 +55,7 @@ $foundation-palette: (
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
-  foo: #f00,
+  red_alert: #f00,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -549,7 +549,7 @@ $table-background: $white;
 $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
-$table-hover-scale: 2%;
+$table-hover-scale: 10%;
 $table-row-hover: darken($table-background, $table-hover-scale);
 $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
 $table-is-striped: true;

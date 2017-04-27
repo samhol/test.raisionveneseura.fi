@@ -4,7 +4,10 @@ use Sphp\Html\Tables\TableBuilder;
 use Sphp\Stdlib\CsvFile;
 
 $csvTaulu = function($polku) {
-  echo TableBuilder::fromCsvFile(new CsvFile($polku));
+  $builder = TableBuilder::fromCsvFile(new CsvFile($polku));
+  $builder->setLineNumbersPosition(TableBuilder::LINENUMBERS_LEFT)
+          ->buildTable()->addCssClass('hover')
+          ->printHtml();
 };
 
 use Sphp\MVC\Filesystem\FilePaginator;
@@ -29,8 +32,8 @@ $kalastusKilpailut = function() {
   } catch (\Exception $ex) {
     echo $ex;
   }
-  $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
-  $pagination->getNextPageButton()->setContent('Seuraava vuosi');
+  $pagination->getPreviousPageButton()->setContent('Edellinen');
+  $pagination->getNextPageButton()->setContent('Seuraava');
   echo "<hr>\n";
   $pagination->printHtml();
   echo "\n<hr>\n";
@@ -51,11 +54,9 @@ $purjehdusKilpailutLinkit = function() {
   $pagination->setCurrentPage($year);
   $pagination->visibleBeforeCurrent(3);
   $pagination->visibleAfterCurrent(3);
-  $pagination->getPreviousPageButton()->setContent('Edellinen vuosi');
-  $pagination->getNextPageButton()->setContent('Seuraava vuosi');
-  echo "\n";
-  $pagination->printHtml();
-  echo "\n";
+  $pagination->getPreviousPageButton()->setContent('Edellinen');
+  $pagination->getNextPageButton()->setContent('Seuraava');
+  echo "\n<hr>\n$pagination\n<hr>\n";
 };
 
 $sivutus = function($hakemisto, $sivu) {

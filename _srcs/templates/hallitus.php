@@ -14,4 +14,4 @@ foreach ($hallitus as $member) {
   $thallitus->tbody()->appendBodyRow($member);
 }
 
-$thallitus->addCssClass('contacts')->printHtml();
+$thallitus->addCssClass('hover')->printHtml();

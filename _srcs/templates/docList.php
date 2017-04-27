@@ -11,7 +11,7 @@ dokumenttien avautuminen saattaa kestää pienen hetken, joten odota rauhassa.
 use Sphp\MVC\Filesystem\HyperlinkGenerator;
 
 $flg = new HyperlinkGenerator();
-$flg->setFile(new \SplFileInfo('dokumentit/turvallisuusasiaa.pdf'));
+$flg->setFile(new \SplFileInfo('dokumentit/RVS-saannot.pdf'));
 $flg->setDisplayName('Raision veneseuran säännöt');
 echo " * " . $flg->buildLink() . "\n";
 

@@ -19,7 +19,7 @@ foreach ($hallitus as $member) {
 TableBuilder::fromCsvFile(new CsvFile('yhteystiedot/katsastajat.csv', ';'))
         ->setLineNumbers(1, 'none')
         ->buildTable()
-        ->addCssClass('contacts')
+        ->addCssClass('hover')
         ->printHtml();
 echo 'heahehaehe';
 echo $a;

@@ -30,6 +30,11 @@ class HyperlinkGenerator implements ContentInterface {
    * @var SplFileInfo
    */
   private $file;
+
+  /**
+   *
+   * @var string 
+   */
   private $target = '_self';
 
   /**
@@ -37,21 +42,39 @@ class HyperlinkGenerator implements ContentInterface {
    * @var callable|string
    */
   private $displayName;
+
+  /**
+   *
+   * @var string 
+   */
   private $linkType = Hyperlink::class;
 
   public function __construct(SplFileInfo $file = null) {
     $this->file = $file;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getLinkType() {
     return $this->linkType;
   }
 
+  /**
+   * 
+   * @param  string $linkType
+   * @return $this
+   */
   public function setLinkType($linkType) {
     $this->linkType = $linkType;
     return $this;
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getDisplayName() {
     if (is_string($this->displayName)) {
       $name = $this->displayName;
@@ -67,7 +90,7 @@ class HyperlinkGenerator implements ContentInterface {
   /**
    * 
    * @param  callable|string $filenameText
-   * @return $this
+   * @return self for a fluent interface
    */
   public function setDisplayName($filenameText) {
     $this->displayName = $filenameText;
@@ -78,20 +101,39 @@ class HyperlinkGenerator implements ContentInterface {
     return $this->target;
   }
 
+  /**
+   * 
+   * @param  string $target
+   * @return self for a fluent interface
+   */
   public function setTarget($target) {
     $this->target = $target;
     return $this;
   }
 
+  /**
+   * 
+   * @return SplFileInfo
+   */
   public function getFile() {
     return $this->file;
   }
 
+  /**
+   * 
+   * @param  SplFileInfo $file
+   * @return self for a fluent interface
+   */
   public function setFile(SplFileInfo $file) {
     $this->file = $file;
     return $this;
   }
 
+  /**
+   * 
+   * @param  int $precision
+   * @return string
+   */
   protected function formatBytes($precision = 2) {
     $base = log($this->file->getSize(), 1024);
     $suffixes = array('t', 'Kt', 'Mt', 'Gt', 'Tt');
@@ -104,7 +146,6 @@ class HyperlinkGenerator implements ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function buildLink() {
-    //$root = 'sphp/viewerjs/#../../';
     $badge = new FiletypeBadge($this->file);
     $dpName = $this->getDisplayName();
     $linkText = "$badge $dpName";
@@ -113,23 +154,16 @@ class HyperlinkGenerator implements ContentInterface {
       $path = UrlGenerator::generate($this->file);
       $extension = $this->file->getFileInfo()->getExtension();
       if ($extension === 'php') {
-        $name = $this->file->getBasename('.php');
-        //$path = $this->urlPath . $name;
-        //$linkText = "$badge $dpName";
-        //$link = new Hyperlink($path, $linkText, $this->getTarget());      
+        $name = $this->file->getBasename('.php');   
       } else if ($extension === 'pdf') {
         $name = $this->file->getBasename('.pdf');
-        //$path = $root . $this->file->getPathname();
         $size = $this->formatBytes();
         $linkText .= " <small>($size)</small>";
-        //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
       } else if ($extension === 'xls') {
         $name = $this->file->getBasename('.xls');
-        //$path = $this->file->getPathname();
         $size = $this->formatBytes();
         $linkText .= " <small>($size)</small>";
-        //$link = new Hyperlink($path, $linkText, $this->getTarget());
         $target = $name . $size;
       } else {
         

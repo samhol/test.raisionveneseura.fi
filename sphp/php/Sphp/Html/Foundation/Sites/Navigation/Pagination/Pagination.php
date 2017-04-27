@@ -328,25 +328,33 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   public function contentToString() {
     $cont = new Container();
     Arrays::pointToKey($this->pages, $this->current);
+    $beforeKey = key($this->pages);
+    $afterKey = key($this->pages);
     $cont->append(current($this->pages));
     $before = $this->before;
-    while ($before-- > 0 && prev($this->pages)) {
+    while ($before > 0 && prev($this->pages)) {
+      //echo "before: $before, ";
+      $beforeKey = key($this->pages);
       $cont->prepend(current($this->pages));
+      $before--;
     }
     Arrays::pointToKey($this->pages, $this->current);
-    $after = $this->after;
-    while ($after-- > 0 && next($this->pages)) {
+    $after = $this->after + $before;
+    while ($after > 0 && next($this->pages)) {
+      //echo "after: $after, ";
+      $afterKey = key($this->pages);
       $cont->append(current($this->pages));
+      $after--;
+    }
+    Arrays::pointToKey($this->pages, $beforeKey);
+    while ($after > 0 && prev($this->pages)) {
+      //echo "before: $after, ";
+      $beforeKey = key($this->pages);
+      $cont->prepend(current($this->pages));
+      $after--;
     }
     $cont->prepend($this->getPreviousPageButton());
     $cont->append($this->getNextPageButton());
-    /* $first = $this->current - $this->range / 2;
-      $last = $this->current + $this->range / 2 - 1;
-      if ($first < 1) {
-      $first = 1;
-      } if ($last > $this->count()) {
-      $first = $this->count() - $this->range + 1;
-      } */
     return $cont->getHtml();
   }
 

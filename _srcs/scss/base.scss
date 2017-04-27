@@ -140,7 +140,7 @@ div.sidenav {
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
-  &.show-logo, &.katsastustoiminta, &.fishing, &.kausiohjelma {
+  &.show-logo, &.katsastustoiminta, &.fishing, &.kausiohjelma, &.jasenyys {
     background-image: url('http://raisionveneseura.fi/kuvat/tausta/logo.png');
     background-repeat: no-repeat;
     background-size:auto;
@@ -161,28 +161,33 @@ div.sidenav {
       }
     }
     ul.pagination {
-      margin-left:rem-calc(40);
+      margin-left:rem-calc(30);
       li {
-        margin-right: rem-calc(3);
+        margin-right: rem-calc(2);
         line-height: 1.6;
-        border: solid 1px #ccc;
+        border: solid 1px #ddd;
         padding: 0;
         &:hover {
-          border-color: #bbb;
+          border-color: #ccc;
         }
         &.current {
-          a:hover {
-            background: $primary-color;
+          a {
+            color: #eaeaea;
+            &:hover {
+              background: $primary-color;
+              color: #fff;
+            }
           }
         }
         a, span {
           @include border-radius(3px);
-          padding: rem-calc(5 10);
+          padding: rem-calc(5 7);
           margin: 0;
         }
       }
       li.disabled {
-        padding: rem-calc(5 10);
+        padding: rem-calc(5 7);
+        
       }
     }
   }
@@ -216,7 +221,7 @@ div.sidenav {
   dl, ul:not([class]), ol {
     margin-left: rem-calc(30);
   }
-  
+
   &.contests, &.docs {
     ul {
       list-style: none;
@@ -251,7 +256,12 @@ div.sidenav {
     td, th {
       //word-break: break-all;
       text-align: left;
-      border-bottom: solid 1px #ccc;
+      //border-bottom: solid 1px #ccc;
+    }
+    tbody {
+      tr {
+        border-bottom: solid 1px #aaa;
+      }
     }
   }
 

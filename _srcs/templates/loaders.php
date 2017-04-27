@@ -29,11 +29,8 @@ $loadPage = function ($par, $file = 'etusivu') use($loadNotFound) {
   ob_end_clean();
   echo $content;
 };
-$seasonSchedule = function ($par) use ($loadPage) {
-  $page = str_replace('/', '', $par);
-  if ($page === date('Y')) {
-    $loadPage('kausiohjelma');
-  }
+$seasonSchedule = function () use ($loadPage) {
+  $loadPage('kausiohjelma');
 };
 
 $loadIndex = function () use ($loadPage) {
