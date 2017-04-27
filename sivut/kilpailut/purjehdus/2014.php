@@ -12,10 +12,15 @@
 
 <?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 
-###Virutholmin etappikisa 1
+##Virutholmin etappikisat
 
-1. JJouko Jyrkkiö
-2. JMatti Niemelä
+<div class="row small-up-1 medium-up-2">
+  <div class="column column-block" markdown="1">
+    
+###Etappikisa I
+
+1. Jouko Jyrkkiö
+2. Matti Niemelä
 3. Matti Arpalahti
 4. Esko Micelsson
 5. Esko Salminen
@@ -24,7 +29,10 @@
 8. Calle Fredriksson
 9. Arttu Erfe
 
-###Virutholmin etappikisa 2
+  </div>
+  <div class="column column-block" markdown="1">
+
+###Etappikisa II
 
 1. Jouko Jyrkkiö
 2. Esko Micelsson
@@ -35,6 +43,9 @@
 7. Calle Fredriksson
 8. Timo Päivärinta
 9. Arttu Erfe
+
+  </div>
+</div>
 
 <?php echo TAKAISIN_KILPAILUVALIKKOON; ?>
 

@@ -7,7 +7,7 @@
 $menu-bg: #4d5158;
 $menu-area-bg: #4d5158;
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono:400,700');
 @import "compass/css3"; 
 @import "base-settings";
 @import "../../vendor/zurb/foundation/scss/foundation";
@@ -140,7 +140,7 @@ div.sidenav {
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
-  &.show-logo, &.katsastustoiminta, &.fishing {
+  &.show-logo, &.katsastustoiminta, &.fishing, &.kausiohjelma {
     background-image: url('http://raisionveneseura.fi/kuvat/tausta/logo.png');
     background-repeat: no-repeat;
     background-size:auto;
@@ -148,8 +148,8 @@ div.sidenav {
     background-position: right 30px bottom 30px;
   }
 
-  &.fishing {
-    ol, dl, ul {
+  &.competitions {
+    ol, dl, ul:not(.pagination) {
       margin-left: rem-calc(60);
     }
     ol {
@@ -160,6 +160,31 @@ div.sidenav {
         padding-bottom: rem-calc(10);
       }
     }
+    ul.pagination {
+      margin-left:rem-calc(40);
+      li {
+        margin-right: rem-calc(3);
+        line-height: 1.6;
+        border: solid 1px #ccc;
+        padding: 0;
+        &:hover {
+          border-color: #bbb;
+        }
+        &.current {
+          a:hover {
+            background: $primary-color;
+          }
+        }
+        a, span {
+          @include border-radius(3px);
+          padding: rem-calc(5 10);
+          margin: 0;
+        }
+      }
+      li.disabled {
+        padding: rem-calc(5 10);
+      }
+    }
   }
   h1, h2, h3, h4, h5, h6 {
     color: #333;
@@ -167,10 +192,6 @@ div.sidenav {
   h1 {
     padding: rem-calc(10 10 10 10);
     text-transform: uppercase;
-    //border-left: solid 1px #999;
-    //border-bottom: solid 1px #999;
-    //background-color: #efefef;
-    //@include background-image(linear-gradient(to right, #eaeaea, #fafafa));
   }
 
   h2, h3, h4, h5, h6 {
@@ -195,9 +216,7 @@ div.sidenav {
   dl, ul:not([class]), ol {
     margin-left: rem-calc(30);
   }
-  ul, ol {
-    //list-style-position: inside;
-  } 
+  
   &.contests, &.docs {
     ul {
       list-style: none;
@@ -257,28 +276,31 @@ div.sidenav {
   }
   &.kausiohjelma {
     h2{
-
       color: #333;
-      padding: rem-calc(2 10 2 10);
+      padding: rem-calc(2 10 5 15);
       margin: 0;
     }
     dl {
-      margin: rem-calc(0 20 0 30);
+      margin: rem-calc(5 20 5 20);
+      padding: 0;
+      //font-family: georgia, times, serif;
       dt {
+        font-family: $font-family-monospace;
+        float: left;
+        clear: left;
+        width: rem-calc(50);
         font-weight: bold;
-        //text-decoration: underline;
-        display: inline-block;
-        border: solid 1px #aaa;
-        background-color: #eee;
-        @include border-radius(3px);
-        padding: rem-calc(1 5 1 5);
-        //margin: rem-calc(0 20 0 30);
+        text-align: right;
       }
       dd {
-        display: list-item;
-        list-style: none;
+        margin: rem-calc(0 0 0 50);
+        padding: 0 0 0.5em 0;
+        &:before {
+          content: "- ";
+          padding-left:10px;
+          padding-right:5px;
+        }
       }
     }
   }
-
 }
