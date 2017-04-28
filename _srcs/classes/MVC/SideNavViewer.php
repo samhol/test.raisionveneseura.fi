@@ -19,8 +19,6 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
  */
 class SideNavViewer extends AbstractComponentGenerator {
 
-  use \Sphp\Html\ContentTrait;
-
   /**
    *
    * @var array 
@@ -45,8 +43,7 @@ class SideNavViewer extends AbstractComponentGenerator {
   }
 
   /**
-   * 
-   * @return \Sphp\Html\ContentInterface
+   * {@inheritdoc}
    */
   public function generate() {
     $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));

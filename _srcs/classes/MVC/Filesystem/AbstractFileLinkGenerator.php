@@ -7,6 +7,7 @@
 
 namespace Sphp\MVC\Filesystem;
 
+use Sphp\MVC\AbstractComponentGenerator;
 use Sphp\Html\ContentInterface;
 use SplFileInfo;
 
@@ -18,7 +19,7 @@ use SplFileInfo;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractFileLinkGenerator extends \Sphp\MVC\AbstractComponentGenerator {
+abstract class AbstractFileLinkGenerator extends AbstractComponentGenerator {
 
   /**
    *

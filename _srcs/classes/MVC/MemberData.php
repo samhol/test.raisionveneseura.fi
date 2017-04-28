@@ -14,13 +14,44 @@ namespace Sphp\MVC;
  */
 class MemberData {
 
+  /**
+   * @var mixed 
+   */
   private $age;
+
+  /**
+   * @var mixed 
+   */
   private $fname;
+
+  /**
+   * @var mixed 
+   */
   private $lname;
+
+  /**
+   * @var mixed 
+   */
   private $email;
+
+  /**
+   * @var mixed 
+   */
   private $phoneNumber;
+
+  /**
+   * @var mixed 
+   */
   private $street;
+
+  /**
+   * @var mixed 
+   */
   private $zipcode;
+
+  /**
+   * @var mixed 
+   */
   private $city;
 
   /**
@@ -34,18 +65,34 @@ class MemberData {
     }
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getAge() {
     return $this->age;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getFname() {
     return $this->fname;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getLname() {
     return $this->lname;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getEmail() {
     return $this->email;
   }
@@ -58,18 +105,34 @@ class MemberData {
     return is_string($this->phoneNumber);
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getPhoneNumber() {
     return $this->phoneNumber;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getStreet() {
     return $this->street;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getZipcode() {
     return $this->zipcode;
   }
 
+  /**
+   * 
+   * @return mixed
+   */
   public function getCity() {
     return $this->city;
   }

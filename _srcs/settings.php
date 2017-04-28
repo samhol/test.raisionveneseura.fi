@@ -35,6 +35,8 @@ require_once 'templates/loaders.php';
 
 $router = new Router();
 $router->route('/', $loadIndex);
+$router->route('/hallitus.html', $loadBoardMembers, 11);
+$router->route('/hallitus', $loadBoardMembers, 11);
 $router->route('/jasenhakemus.html', $loadMembershipForm, 11);
 $router->route('/kilpailut', $loadContents, 11);
 $router->route('/bb', $loadBulletingBoard, 11);

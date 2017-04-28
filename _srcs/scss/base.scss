@@ -179,6 +179,20 @@ div.sidenav {
             }
           }
         }
+        &.pdf {
+          border-color: #fa3344;
+          &:hover {
+            border-color: #ff3040;
+          }
+          a {
+            color: #300;
+            &:hover {
+              background: #ffdddd;
+
+              color: #400;
+            }
+          }
+        }
         a, span {
           @include border-radius(3px);
           padding: rem-calc(5 7);
@@ -187,7 +201,7 @@ div.sidenav {
       }
       li.disabled {
         padding: rem-calc(5 7);
-        
+
       }
     }
   }
@@ -235,13 +249,22 @@ div.sidenav {
       margin-left: rem-calc(10);
     }
   }
-  .row.board {
-    img {
-      display: block;
-      top: 0;
-      right: 0;
-      position: absolute;
+  &.board {
+    .callout {
+      @include border-radius(5px);
+      .thumbnail {
+        @include border-radius(2px);
+        img {
+          @include opacity(0.9);
+        }
+      }
+      &:hover {
+        img {
+          @include opacity(1);
+        }
+      }
     }
+
   }
   table {
     border-collapse: collapse;

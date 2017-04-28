@@ -2,14 +2,16 @@
 
 namespace Sphp\MVC\Filesystem;
 
-use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Pagination;
-use SplFileInfo;
 use Sphp\Html\Foundation\Sites\Navigation\Pagination\Page;
-use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+use SplFileInfo;
 
 class FilePaginator extends AbstractFileLinkGenerator {
 
+  /**
+   *
+   * @var callable 
+   */
   private $pageParser;
 
   /**
@@ -24,11 +26,10 @@ class FilePaginator extends AbstractFileLinkGenerator {
     if ($fileParser === null) {
       $fileParser = new FileParser();
     }
-    //$this->fileParser = $fileParser;
-    //$this->setFiles($path);
     if ($pageParser === null) {
       $pageParser = function(SplFileInfo $file, $index) {
-        return new Page("$file", $index);
+        $ext = $file->getExtension();
+        return (new Page("$file", $index))->addCssClass($ext);
       };
     }
     $this->setPageParser($pageParser);

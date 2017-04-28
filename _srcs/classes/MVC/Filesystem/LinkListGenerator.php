@@ -23,20 +23,20 @@ class LinkListGenerator extends AbstractFileLinkGenerator {
    *
    * @var HyperlinkGenerator 
    */
-  private $linkGen;
+  private $hyperlinkGenerator;
 
   /**
    * Constructs a new instance
    * 
    * @param FileParser|null $fp optional file system parser
-   * @param HyperlinkGenerator|null $fl optional hyperlink object generator
+   * @param HyperlinkGenerator|null $hl optional hyperlink object generator
    */
-  public function __construct(FileParser $fp = null, HyperlinkGenerator $fl = null) {
+  public function __construct(FileParser $fp = null, HyperlinkGenerator $hl = null) {
     parent::__construct($fp);
-    if ($fl === null) {
-      $fl = new HyperlinkGenerator();
+    if ($hl === null) {
+      $hl = new HyperlinkGenerator();
     }
-    $this->linkGen = $fl;
+    $this->hyperlinkGenerator = $hl;
   }
 
   /**
@@ -44,29 +44,28 @@ class LinkListGenerator extends AbstractFileLinkGenerator {
    * @return HyperlinkGenerator
    */
   public function getLinkGen() {
-    return $this->linkGen;
+    return $this->hyperlinkGenerator;
   }
 
   /**
    * 
-   * @param  HyperlinkGenerator $linkGen
+   * @param  HyperlinkGenerator $hl
    * @return self for a fluent interface
    */
-  public function setLinkGen(HyperlinkGenerator $linkGen) {
-    $this->linkGen = $linkGen;
+  public function setLinkGen(HyperlinkGenerator $hl) {
+    $this->hyperlinkGenerator = $hl;
     return $this;
   }
 
   /**
-   * 
-   * @return Ul
+   * {@inheritdoc}
    */
   public function generate() {
     $ul = new Ul();
     foreach ($this->getFiles() as $item) {
       if ($item->isFile()) {
-        $this->linkGen->setFile($item);
-        $ul->append($this->linkGen->buildLink());
+        $this->hyperlinkGenerator->setFile($item);
+        $ul->append($this->hyperlinkGenerator->generate());
       }
     }
     return $ul;

@@ -83,3 +83,8 @@ $loadMembershipForm = function () {
           ->addCssClass(['docs', 'page', 'form'])
           ->printHtml();
 };
+$loadBoardMembers = function () {
+  (new Div)->appendMdFile(['_srcs/templates/clubBoard.php'])
+          ->addCssClass(['page', 'board'])
+          ->printHtml();
+};

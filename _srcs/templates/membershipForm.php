@@ -48,7 +48,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 use Sphp\Security\CRSFToken;
 
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
-$ageMenu->prepend(new Option('18', 'Aikuinen', true));
+$ageMenu->prepend(new Option('18', 'Aikuinen ( yli 18-vuotta )', true));
 
 $newToken = CRSFToken::instance()->generateToken('membership');
 ?>
@@ -56,19 +56,21 @@ $newToken = CRSFToken::instance()->generateToken('membership');
 <form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
   <input type="hidden" name="membership" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
-    <p>Jäsenhakemuksesi sisältää virheitä</p>
+    Jäsenhakemuksesi sisältää virheitä
   </div>
   <fieldset class="row">
     <label>Henkilötiedot</label>
-    <div class="small-12 large-2 columns">
+    <div class="small-12 medium-6 large-4 xlarge-3 columns end">
       <label>Ikä
 <?php $ageMenu->printHtml() ?>
         <span class="form-error">
-          Anna etunimesi
+          Anna ikäsi
         </span>
       </label>
-    </div>
-    <div class="small-12 large-5 columns">
+    </div> 
+  </fieldset>
+  <fieldset class="row">
+    <div class="small-12 large-6 columns">
       <label>Etunimi <small class="alert">(pakollinen)</small>
         <input name="fname" type="text" placeholder="Etunimi" required>
         <span class="form-error">
@@ -76,7 +78,7 @@ $newToken = CRSFToken::instance()->generateToken('membership');
         </span>
       </label>
     </div>
-    <div class="small-12 large-5 columns">
+    <div class="small-12 large-6 columns">
       <label>Sukunimi <small class="alert">(pakollinen)</small>
         <input name="lname" type="text" placeholder="Sukunimi" required>
         <span class="form-error">
@@ -137,9 +139,3 @@ $newToken = CRSFToken::instance()->generateToken('membership');
     </fieldset>
   </div>
 </form>
-
-<?php
-//use Sphp\Stdlib\Path;
-//require_once(Path::get()->local('_srcs/templates/jasenlomake.php'));
-//print_r($_POST);
-

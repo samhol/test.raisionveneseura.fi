@@ -13,15 +13,15 @@ use Sphp\MVC\Filesystem\HyperlinkGenerator;
 $flg = new HyperlinkGenerator();
 $flg->setFile(new \SplFileInfo('dokumentit/RVS-saannot.pdf'));
 $flg->setDisplayName('Raision veneseuran säännöt');
-echo " * " . $flg->buildLink() . "\n";
+echo " * " . $flg->generate() . "\n";
 
 $flg->setFile(new \SplFileInfo('dokumentit/turvallisuusasiaa.pdf'));
 $flg->setDisplayName('Tietoa veneturvallisuudesta');
-echo " * " . $flg->buildLink() . "\n";
+echo " * " . $flg->generate() . "\n";
 
 $flg->setFile(new \SplFileInfo('dokumentit/eksymalaskenta.xls'));
 $flg->setDisplayName('Eksymälaskenta');
-echo " * " . $flg->buildLink() . "\n";
+echo " * " . $flg->generate() . "\n";
 
 ?>
 

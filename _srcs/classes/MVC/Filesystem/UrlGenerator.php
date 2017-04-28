@@ -21,10 +21,11 @@ class UrlGenerator {
 
   private static $urlMap = [
       'php' => '',
-      'pdf' => 'sphp/viewerjs/#../../',
-      'ods' => 'sphp/viewerjs/#../../',
-      'odp' => 'sphp/viewerjs/#../../',
-      'odt' => 'sphp/viewerjs/#../../',
+      'html' => '',
+      'pdf' => 'sphp/viewerjs/index.html#../../',
+      'ods' => 'sphp/viewerjs/index.html#../../',
+      'odp' => 'sphp/viewerjs/index.html#../../',
+      'odt' => 'sphp/viewerjs/index.html#../../',
   ];
 
   /**

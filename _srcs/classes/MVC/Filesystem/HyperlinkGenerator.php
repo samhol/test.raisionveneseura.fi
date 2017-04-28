@@ -7,11 +7,12 @@
 
 namespace Sphp\MVC\Filesystem;
 
-use Sphp\Html\ContentInterface;
+use Sphp\MVC\AbstractComponentGenerator;
 use SplFileInfo;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Media\FiletypeBadge;
+
 
 /**
  * Description of FileLinkGenerator
@@ -21,9 +22,7 @@ use Sphp\Html\Foundation\Sites\Media\FiletypeBadge;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HyperlinkGenerator implements ContentInterface {
-
-  use \Sphp\Html\ContentTrait;
+class HyperlinkGenerator extends AbstractComponentGenerator {
 
   /**
    *
@@ -145,7 +144,7 @@ class HyperlinkGenerator implements ContentInterface {
    * @return HyperlinkInterface
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function buildLink() {
+  public function generate() {
     $badge = new FiletypeBadge($this->file);
     $dpName = $this->getDisplayName();
     $linkText = "$badge $dpName";
@@ -174,10 +173,6 @@ class HyperlinkGenerator implements ContentInterface {
       throw new \Sphp\Exceptions\RuntimeException();
     }
     return $link;
-  }
-
-  public function getHtml() {
-    return $this->buildLink()->getHtml();
   }
 
 }

@@ -47,7 +47,8 @@ $purjehdusKilpailutLinkit = function() {
   $paginator = new FilePaginator();
   $paginator->setPageParser(function(\SplFileInfo $file, $index) {
     $path = Sphp\MVC\Filesystem\UrlGenerator::generate($file);
-    return new Page($path, $file->getBasename('.' . $file->getExtension()));
+    $ext = $file->getExtension();
+    return (new Page($path, $index))->addCssClass($ext);
   });
   $paginator->loadFiles('sivut/kilpailut/purjehdus');
   $pagination = $paginator->generate();
