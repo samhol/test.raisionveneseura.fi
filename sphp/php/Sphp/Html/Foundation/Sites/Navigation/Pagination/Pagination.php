@@ -50,7 +50,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @precondition $before >= 0 && $after >= 0
    * @var int
    */
-  private $before = true, $after = true;
+  private $before = PHP_INT_MAX, $after = PHP_INT_MAX;
 
   /**
    *
