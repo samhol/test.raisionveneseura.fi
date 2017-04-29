@@ -140,7 +140,7 @@ div.sidenav {
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
-  &.show-logo, &.katsastustoiminta, &.fishing, &.kausiohjelma, &.jasenyys {
+  &.show-logo, &.etusivu, &.katsastustoiminta, &.fishing, &.kausiohjelma, &.jasenyys {
     background-image: url('http://raisionveneseura.fi/kuvat/tausta/logo.png');
     background-repeat: no-repeat;
     background-size:auto;

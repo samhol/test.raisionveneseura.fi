@@ -24,7 +24,7 @@ Document::html()->setLanguage('fi')
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
-        ->addShortcutIcon(Path::get()->http('_srcs/img/logo.png'))
+        ->addShortcutIcon(Path::get()->http('kuvat/logo.png'))
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::keywords(['raisio', 'veneseura', 'veneily', 'laituripaikka']))
         ->addMeta(Meta::description('Raision veneseuran kotisivut'));
