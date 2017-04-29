@@ -1,4 +1,4 @@
-#Purjehduskilpailut 2012
+#Purjehduskilpailut <small>vuonna 2012</small>
 
 ##Hirsiluoto-Race 26.5. <small>Lähtöaika: 11:30.00</small>
 

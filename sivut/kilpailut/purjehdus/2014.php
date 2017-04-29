@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2014</small>
+#Purjehduskilpailut <small>vuonna 2014</small>
 
 ##Hirsiluoto-Race 7.6. <small>Lähtöaika: 12.30.00</small>
 

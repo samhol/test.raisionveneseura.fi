@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2009</small>
+#Purjehduskilpailut <small>vuonna 2009</small>
 
 ##Hirsiluoto-Race 6.6. <small>Lähtöaika: 11:30.00</small>
 

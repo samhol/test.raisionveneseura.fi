@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2005</small>
+#Purjehduskilpailut <small>vuonna 2005</small>
 
 ##Hirsiluoto-Race 28.5. <small>Lähtöaika: 11:30.00</small>
 

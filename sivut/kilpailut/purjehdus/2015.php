@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2015</small>
+#Purjehduskilpailut <small>vuonna 2015</small>
 
 ##Hirsiluoto-Race 6.6. <small>Lähtöaika: 10:45:00</small>
 

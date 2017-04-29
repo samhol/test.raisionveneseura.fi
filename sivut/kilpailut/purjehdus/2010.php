@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2010</small>
+#Purjehduskilpailut <small>vuonna 2010</small>
 
 ##Hirsiluoto-Race 28.5. <small>Lähtöaika: 11.00.00</small>
 

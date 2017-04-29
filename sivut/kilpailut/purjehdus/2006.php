@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2006</small>
+#Purjehduskilpailut <small>vuonna 2006</small>
 
 ##Hirsiluoto-Race 7.6. <small>Lähtöaika: 11:30.00</small>
 

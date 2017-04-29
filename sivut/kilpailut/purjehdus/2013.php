@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2013</small>
+#Purjehduskilpailut <small>vuonna 2013</small>
 
 ##Hirsiluoto-Race 25.5. <small>Lähtöaika: 11:15.00</small>
 

@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2004</small>
+#Purjehduskilpailut <small>vuonna 2004</small>
 
 ##Hirsiluoto-Race 5.6. <small>Lähtöaika: 11:15.00</small>
 

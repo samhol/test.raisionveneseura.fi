@@ -1,4 +1,4 @@
-#Purjehduskilpailut <small> vuonna 2008</small>
+#Purjehduskilpailut <small>vuonna 2008</small>
 
 ##Hirsiluoto-Race 7.6. <small>Lähtöaika: 11:15.00</small>
 
