@@ -37,7 +37,7 @@ class MemberData {
   /**
    * @var mixed 
    */
-  private $phoneNumber;
+  private $phone;
 
   /**
    * @var mixed 
@@ -53,6 +53,11 @@ class MemberData {
    * @var mixed 
    */
   private $city;
+
+  /**
+   * @var mixed 
+   */
+  private $information;
 
   /**
    * Constructs a new instance
@@ -102,7 +107,7 @@ class MemberData {
    * @return boolean
    */
   public function hasPhoneNumber() {
-    return is_string($this->phoneNumber);
+    return is_string($this->phone);
   }
 
   /**
@@ -110,7 +115,7 @@ class MemberData {
    * @return mixed
    */
   public function getPhoneNumber() {
-    return $this->phoneNumber;
+    return $this->phone;
   }
 
   /**
@@ -135,6 +140,22 @@ class MemberData {
    */
   public function getCity() {
     return $this->city;
+  }
+
+  /**
+   * 
+   * @return boolean
+   */
+  public function hasAdditionalInformation() {
+    return is_string($this->information);
+  }
+
+  /**
+   * 
+   * @return mixed
+   */
+  public function getAdditionalInformation() {
+    return $this->information;
   }
 
 }

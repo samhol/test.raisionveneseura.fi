@@ -57,23 +57,26 @@ class MemberApplicationMailer {
   protected function createMailBody(MemberData $data) {
     $mailBody = "Raision veneseuran jäsenhakemus:\n";
     $mailBody .= "----------------------\n";
-    $mailBody .= "HAKIJAN TIEDOT\n";
+    $mailBody .= "HAKIJAN TIEDOT:\n\n";
     if ($data->getAge() < 18) {
-      $age = "\tJuniori: {$data->getAge()}-vuotias\n";
+      $age = "Juniori: {$data->getAge()}-vuotias\n";
     } else {
-      $age = "\tAikuinen\n";
+      $age = "Aikuinen\n";
     }
     $mailBody .= $age;
-    $mailBody .= "\tNimi: {$data->getFname()} {$data->getLname()}\n";
-    $mailBody .= "\tOsoite: \n";
-    $mailBody .= "\t\t{$data->getStreet()}\n";
-    $mailBody .= "\t\t{$data->getZipcode()} {$data->getCity()}\n";
-    $mailBody .= "\tSähköpostiosoite: \t{$data->getEmail()}\n";
+    $mailBody .= "Nimi: {$data->getFname()} {$data->getLname()}\n";
+    $mailBody .= "Osoite: \n";
+    $mailBody .= "\t{$data->getStreet()}\n";
+    $mailBody .= "\t{$data->getZipcode()} {$data->getCity()}\n";
+    $mailBody .= "Sähköposti: \t{$data->getEmail()}\n";
     if ($data->hasPhoneNumber()) {
-      $mailBody .= "\tPuhelinnumero: \t{$data->getPhoneNumber()}\n";
+      $mailBody .= "Puhelin: \t{$data->getPhoneNumber()}\n";
+    }
+    if ($data->hasAdditionalInformation()) {
+      $mailBody .= "Lisätietoja: \n\n";
+      $mailBody .= "\n{$data->getAdditionalInformation()}\n\n";
     }
     $mailBody .= "----------------------\n";
-    $mailBody .= "\tLahetetty: {$data->getPhoneNumber()}\n";
     return $mailBody;
   }
 

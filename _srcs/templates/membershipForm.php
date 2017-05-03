@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
+
 ?>
 #Jäsenhakemus
 
@@ -49,27 +50,68 @@ use Sphp\Security\CRSFToken;
 
 $ageMenu = MenuFactory::rangeMenu(17, 0, 1, 'age');
 $ageMenu->prepend(new Option('18', 'Aikuinen ( yli 18-vuotta )', true));
-
+$age = new \Sphp\Html\Forms\Inputs\AnyTimeInput();
+$age->setDateTimeFormat('%b %e, %y');
+$now = new \DateTime();
+$year = $now->format('Y');
+$yearMenu = MenuFactory::rangeMenu($year, ($year - 18), 1, 'year');
+$monthMenu = MenuFactory::monthMenu('month');
 $newToken = CRSFToken::instance()->generateToken('membership');
+
+use Sphp\Stdlib\Path;
+
+$action = Path::get()->http() . "forms/membership.php";
+
 ?>
 
-<form data-abide novalidate method="post" action="http://test.raisionveneseura.fi/forms/membership.php">
+<form data-abide novalidate method="post" action="<?php echo $action ?>">
   <input type="hidden" name="membership" value="<?php echo $newToken; ?>">
   <div data-abide-error class="alert callout" style="display: none;">
     Jäsenhakemuksesi sisältää virheitä
   </div>
   <fieldset class="row">
-    <label>Henkilötiedot</label>
-    <div class="small-12 medium-6 large-4 xlarge-3 columns end">
-      <label>Ikä
-<?php $ageMenu->printHtml() ?>
+    <label>Syntymäaika <small class="alert">(pakollinen ainoastaan alle 18-vuotiaille)</small></label>
+    <div class="small-3 xlarge-2 columns">
+      <label for="addult">Aikuinen</label>
+      <div class="switch">
+        <input class="switch-input" id="addult" type="checkbox" name="isAddult">
+        <label class="switch-paddle" for="addult">
+          <span class="show-for-sr">Onko hakija aikuinen</span>
+          <span class="switch-active" aria-hidden="true">on</span>
+          <span class="switch-inactive" aria-hidden="true">ei</span>
+        </label>
+      </div>
+      </label>
+    </div> 
+
+    <div class="small-3 xlarge-2 columns">
+      <label>Vuosi
+        <input name="year" type="number" min="<?php echo ($year - 18); ?>" max="<?php echo $year; ?>" placeholder="vvvv" required>
         <span class="form-error">
-          Anna ikäsi
+          Anna syntymäaika
+        </span>
+      </label>
+    </div> 
+
+    <div class="small-3 xlarge-2 columns">
+      <label>Kuukausi
+        <input name="month" type="number" min="1" max="12" placeholder="kk" required>
+        <span class="form-error">
+          Anna syntymäaika
+        </span>
+      </label>
+    </div> 
+    <div class="small-3 xlarge-2 columns end">
+      <label>Päivä
+        <input name="day" type="number" min="1" max="31" placeholder="pp" required>
+        <span class="form-error">
+          Anna syntymäaika
         </span>
       </label>
     </div> 
   </fieldset>
   <fieldset class="row">
+    <label>Hakijan nimi</label>
     <div class="small-12 large-6 columns">
       <label>Etunimi <small class="alert">(pakollinen)</small>
         <input name="fname" type="text" placeholder="Etunimi" required>
@@ -127,6 +169,14 @@ $newToken = CRSFToken::instance()->generateToken('membership');
       <label>Puhelinnumero <small class="alert">(vapaaehtoinen)</small>
         <input type="text" name="phone" placeholder="012-1234567 tms.">
       </label>
+    </div>
+  </fieldset>
+
+  <fieldset class="row">
+    <label>Lisätiedot <small class="alert">(vapaaehtoinen)</small></label>
+    <div class="small-12 columns">
+      <textarea name="information" placeholder="Muuta tietoa..." rows="7"></textarea>
+
     </div>
   </fieldset>
 

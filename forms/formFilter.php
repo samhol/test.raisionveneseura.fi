@@ -11,6 +11,7 @@ $args = [
     'city' => FILTER_SANITIZE_STRING,
     'email' => FILTER_SANITIZE_STRING,
     'phone' => FILTER_SANITIZE_STRING,
+    'information' => FILTER_SANITIZE_STRING,
 ];
 
 return filter_input_array(INPUT_POST, $args);

@@ -26,7 +26,7 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
     if ($validator->isValid($inputs)) {
       $memberData = new MemberData($inputs);
       $applicantData = new MemberData($inputs);
-      $mailer = new MemberApplicationMailer(TOIMISTO_EMAIL);
+      $mailer = new MemberApplicationMailer('sami.holck@gmail.com');
       $mailer->send($applicantData);
       //  25rMxq~1VVtn
       $_SESSION[MemberData::class] = $applicantData;
@@ -36,4 +36,4 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
   }
 }
 
-(new Location($httpRoot . "jasenlomake"))->execute();
+(new Location($httpRoot . "jasenhakemus.html"))->execute();

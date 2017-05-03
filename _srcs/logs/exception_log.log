@@ -1,0 +1,153 @@
+Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\MVC\FileLinkGenerator' not found in /home/int49765/public_html/_srcs/templates/docList.php:12
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(77): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/dokumentit/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}Error: Class 'Sphp\Html\Foundation\Sites\Adapters\Equalizer' not found in /home/int49765/public_html/_srcs/templates/clubBoard.php:11
+Stack trace:
+#0 /home/int49765/public_html/sphp/php/Sphp/Stdlib/Filesystem.php(85): include()
+#1 /home/int49765/public_html/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#2 /home/int49765/public_html/_srcs/templates/loaders.php(87): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
+#4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
+#6 {main}
