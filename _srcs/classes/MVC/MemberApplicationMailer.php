@@ -28,7 +28,7 @@ class MemberApplicationMailer {
    * 
    * @param string $receiver
    */
-  public function __construct($receiver = 'toimisto@raisionveneseura.fi') {
+  public function __construct($receiver) {
     $this->receiver = $receiver;
   }
 

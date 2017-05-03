@@ -72,10 +72,16 @@ class ValidatorChain implements ValidatorInterface, Countable {
     return $this->isValid($value);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getErrors() {
     return $this->errors;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->errors->clearContent();
     $valid = true;

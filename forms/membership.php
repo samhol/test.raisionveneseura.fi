@@ -18,11 +18,15 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
   $_SESSION['invalidForm'] = 'CRSF error';
 } else {
   $inputs = require_once('formFilter.php');
+  
+  echo '<pre>' . print_r($inputs) . '</pre>';
+  
   if (!is_array($inputs)) {
     $_SESSION['invalidForm'] = 'no formdata found';
     //(new Location($httpRoot . "jasenlomake"))->execute();
   } else {
     $validator = require_once('formValidator.php');
+    
     if ($validator->isValid($inputs)) {
       $memberData = new MemberData($inputs);
       $applicantData = new MemberData($inputs);
@@ -31,9 +35,9 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
       //  25rMxq~1VVtn
       $_SESSION[MemberData::class] = $applicantData;
     } else {
+      echo '<pre>' . $validator->get('dob')->getInputErrors() . '</pre>';
       $_SESSION['invalidForm'] = $validator;
     }
   }
 }
-
 (new Location($httpRoot . "jasenhakemus.html"))->execute();

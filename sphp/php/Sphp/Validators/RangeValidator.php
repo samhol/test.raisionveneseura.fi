@@ -1,21 +1,24 @@
 <?php
 
 /**
- * GreaterThanValidator.php (UTF-8)
+ * RangeValidator.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Validators;
 
 /**
- * Description of GreaterThanValidator
+ * Description of RangeValidator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-28
+ * @since   2017-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GreaterThanValidator extends AbstractValidator {
+class RangeValidator extends AbstractValidator {
+
+  const NOT_IN_RANGE = '_not_in_range_';
+  const NOT_IN_INCLUSIVE_RANGE = '_not_in_inclusive_range_';
 
   /**
    * Whether to do inclusive comparisons, allowing equivalence to max
@@ -26,7 +29,16 @@ class GreaterThanValidator extends AbstractValidator {
    * @var boolean
    */
   private $inclusive;
+
+  /**
+   * @var float 
+   */
   private $min;
+
+  /**
+   * @var float 
+   */
+  private $max;
 
   /**
    * Constructs a new validator
@@ -35,11 +47,11 @@ class GreaterThanValidator extends AbstractValidator {
    * @param float $max the maximum value
    * @param boolean $inclusive
    */
-  public function __construct($min, $inclusive = true) {
+  public function __construct($min, $max, $inclusive = true) {
     parent::__construct();
-    $this->setMin($min)->setInclusive($inclusive);
-    $this->createMessageTemplate(static::NOT_GREATER, 'Not in range (%s-%s)');
-    $this->createMessageTemplate(static::NOT_GREATER_INCLUSIVE, 'Not in inclusive range (%s-%s)');
+    $this->setMin($min)->setMax($max)->setInclusive($inclusive);
+    $this->createMessageTemplate(static::NOT_IN_RANGE, 'Not in range (%s-%s)');
+    $this->createMessageTemplate(static::NOT_IN_INCLUSIVE_RANGE, 'Not in inclusive range (%s-%s)');
   }
 
   /**
@@ -60,10 +72,14 @@ class GreaterThanValidator extends AbstractValidator {
   }
 
   /**
+   * Returns the maximum value
    * 
-   * @param type $inclusive
-   * @return self for a fluent interface
+   * @return float the maximum value
    */
+  public function getMax() {
+    return $this->max;
+  }
+
   public function setInclusive($inclusive) {
     $this->inclusive = $inclusive;
     return $this;
@@ -81,18 +97,29 @@ class GreaterThanValidator extends AbstractValidator {
   }
 
   /**
+   * Sets the maximum value
+   * 
+   * @param  float $max the maximum value
+   * @return self for a fluent interface
+   */
+  public function setMax($max) {
+    $this->max = $max;
+    return $this;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function isValid($value) {
     $this->setValue($value);
     if ($this->inclusive) {
-      if ($this->min > $value) {
-        $this->error(self::NOT_GREATER_INCLUSIVE);
+      if ($this->min > $value || $this->max < $value) {
+        $this->error(static::NOT_IN_RANGE, [$this->min, $this->max]);
         return false;
       }
     } else {
-      if ($this->min >= $value) {
-        $this->error(self::NOT_GREATER);
+      if ($this->min >= $value || $this->max <= $value) {
+        $this->error(static::NOT_IN_INCLUSIVE_RANGE, [$this->min, $this->max]);
         return false;
       }
     }

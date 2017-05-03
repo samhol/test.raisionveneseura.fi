@@ -114,9 +114,18 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   public function fromMessageTemplate($id, $params = null) {
-
     $this->addErrorMessage($this->getMessageTemplate($id)->setParams($params)->generate());
+    return $this;
+  }
 
+  /**
+   * 
+   * @param  mixed $id
+   * @param  mixed $params
+   * @return self for a fluent interface
+   */
+  public function error($id, $params = null) {
+    $this->addErrorMessage($this->getMessageTemplate($id)->setParams($params)->generate());
     return $this;
   }
 
@@ -172,6 +181,9 @@ abstract class AbstractValidator implements ValidatorInterface {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getErrors() {
     return $this->errors;
   }

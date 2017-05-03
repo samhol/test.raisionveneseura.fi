@@ -50,6 +50,9 @@ class IsInstanceOfValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     if ($value instanceof $this->className) {

@@ -71,7 +71,7 @@ $action = Path::get()->http() . "forms/membership.php";
   </div>
   <fieldset class="row">
     <label>Syntymäaika <small class="alert">(pakollinen ainoastaan alle 18-vuotiaille)</small></label>
-    <div class="small-3 xlarge-2 columns">
+    <div class="small-3 medium-2 xxlarge-1 columns">
       <label for="addult">Aikuinen</label>
       <div class="switch">
         <input class="switch-input" id="addult" type="checkbox" name="isAddult">
@@ -86,7 +86,7 @@ $action = Path::get()->http() . "forms/membership.php";
 
     <div class="small-3 xlarge-2 columns">
       <label>Vuosi
-        <input name="year" type="number" min="<?php echo ($year - 18); ?>" max="<?php echo $year; ?>" placeholder="vvvv" required>
+        <input name="dob[y]" type="number" min="<?php echo ($year - 18); ?>" max="<?php echo $year; ?>" placeholder="vvvv" required>
         <span class="form-error">
           Anna syntymäaika
         </span>
@@ -95,7 +95,7 @@ $action = Path::get()->http() . "forms/membership.php";
 
     <div class="small-3 xlarge-2 columns">
       <label>Kuukausi
-        <input name="month" type="number" min="1" max="12" placeholder="kk" required>
+        <input name="dob[m]" type="number" min="1" max="12" placeholder="kk" required>
         <span class="form-error">
           Anna syntymäaika
         </span>
@@ -103,7 +103,7 @@ $action = Path::get()->http() . "forms/membership.php";
     </div> 
     <div class="small-3 xlarge-2 columns end">
       <label>Päivä
-        <input name="day" type="number" min="1" max="31" placeholder="pp" required>
+        <input name="dob[d]" type="number" min="1" max="31" placeholder="pp" required>
         <span class="form-error">
           Anna syntymäaika
         </span>

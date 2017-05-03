@@ -49,6 +49,9 @@ class DatetimeValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $obj = DateTime::createFromFormat($this->format, $value);

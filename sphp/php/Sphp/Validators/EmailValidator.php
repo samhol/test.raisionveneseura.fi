@@ -17,6 +17,9 @@ namespace Sphp\Validators;
  */
 class EmailValidator extends AbstractValidator {
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
       $this->createErrorMessage("Please insert a correct email address");
