@@ -21,6 +21,12 @@ use Sphp\I18n\MessageList;
 class ValidatorChain implements ValidatorInterface, Countable {
 
   /**
+   *
+   * @var array 
+   */
+  private $skippedValues = [];
+
+  /**
    * used validators
    *
    * @var mixed[]
@@ -70,6 +76,36 @@ class ValidatorChain implements ValidatorInterface, Countable {
    */
   public function __invoke($value) {
     return $this->isValid($value);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function getSkippedValues() {
+    return $this->skippedValues;
+  }
+
+  /**
+   * 
+   * @param  mixed|mixed[] $skippedValues
+   * @return self for a fluent interface
+   */
+  public function setSkippedValues($skippedValues) {
+    if(!is_array($skippedValues)) {
+      $skippedValues = [$skippedValues];
+    }
+    $this->skippedValues = $skippedValues;
+    return $this;
+  }
+  
+  /**
+   * 
+   * @return self for a fluent interface
+   */
+  public function removeSkippedValues() {
+    $this->skippedValues = [];
+    return $this;
   }
 
   /**
