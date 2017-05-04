@@ -15,20 +15,7 @@ namespace Sphp\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RangeValidator extends AbstractValidator {
-
-  const NOT_IN_RANGE = '_not_in_range_';
-  const NOT_IN_INCLUSIVE_RANGE = '_not_in_inclusive_range_';
-
-  /**
-   * Whether to do inclusive comparisons, allowing equivalence to max
-   *
-   * If false, then strict comparisons are done, and the value may equal
-   * the min option
-   *
-   * @var boolean
-   */
-  private $inclusive;
+class RangeValidator extends AbstractLimitValidator {
 
   /**
    * @var float 
@@ -48,18 +35,10 @@ class RangeValidator extends AbstractValidator {
    * @param boolean $inclusive
    */
   public function __construct($min, $max, $inclusive = true) {
-    parent::__construct();
-    $this->setMin($min)->setMax($max)->setInclusive($inclusive);
-    $this->createMessageTemplate(static::NOT_IN_RANGE, 'Not in range (%s-%s)');
-    $this->createMessageTemplate(static::NOT_IN_INCLUSIVE_RANGE, 'Not in inclusive range (%s-%s)');
-  }
-
-  /**
-   * 
-   * @return boolean
-   */
-  public function getInclusive() {
-    return $this->inclusive;
+    parent::__construct($inclusive);
+    $this->setMin($min)->setMax($max);
+    $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
+    $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
 
   /**
@@ -78,11 +57,6 @@ class RangeValidator extends AbstractValidator {
    */
   public function getMax() {
     return $this->max;
-  }
-
-  public function setInclusive($inclusive) {
-    $this->inclusive = $inclusive;
-    return $this;
   }
 
   /**
@@ -112,14 +86,14 @@ class RangeValidator extends AbstractValidator {
    */
   public function isValid($value) {
     $this->setValue($value);
-    if ($this->inclusive) {
+    if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {
-        $this->error(static::NOT_IN_RANGE, [$this->min, $this->max]);
+        $this->error(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     } else {
       if ($this->min >= $value || $this->max <= $value) {
-        $this->error(static::NOT_IN_INCLUSIVE_RANGE, [$this->min, $this->max]);
+        $this->error(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     }

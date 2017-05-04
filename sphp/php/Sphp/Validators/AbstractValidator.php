@@ -48,15 +48,22 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $m container for the error messages
    */
-  public function __construct() {
+  public function __construct($error = 'Invalid value') {
     $this->messageTemplates = [];
     $this->errors = new MessageList();
+    $this->createMessageTemplate(static::INVALID, $error);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __destruct() {
     unset($this->messageTemplates, $this->errors, $this->value);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __clone() {
     $this->errors = clone $this->errors;
     $this->messageTemplates = clone $this->messageTemplates;
@@ -170,6 +177,18 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->errors->insert($msg);
     return $this;
   }
+
+  /**
+   * Adds an error message to the validator
+   *
+   * @param  Message $msg the error message text
+   * @return self for a fluent interface
+   */
+  protected function setErrorMessage(Message $msg) {
+    $this->errors->clearContent()->append($msg);
+    return $this;
+  }
+
 
   /**
    * Resets the validator to for revalidation

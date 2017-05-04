@@ -92,13 +92,25 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * @return self for a fluent interface
    */
   public function setSkippedValues($skippedValues) {
-    if(!is_array($skippedValues)) {
+    if (!is_array($skippedValues)) {
       $skippedValues = [$skippedValues];
     }
     $this->skippedValues = $skippedValues;
     return $this;
   }
-  
+
+  /**
+   * 
+   * @param  mixed|mixed[] $skippedValues
+   * @return self for a fluent interface
+   */
+  public function addSkippedValue($skippedValues) {
+    if (!in_array($skippedValues, $this->skippedValues, true)) {
+      $this->skippedValues[] = $skippedValues;
+    }
+    return $this;
+  }
+
   /**
    * 
    * @return self for a fluent interface
@@ -121,6 +133,9 @@ class ValidatorChain implements ValidatorInterface, Countable {
   public function isValid($value) {
     $this->errors->clearContent();
     $valid = true;
+    if (in_array($value, $this->skippedValues, true)) {
+      return true;
+    }
     foreach ($this->validators as $validator) {
       $v = $validator['validator'];
       $break = $validator['break'];
