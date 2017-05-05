@@ -13,7 +13,10 @@ use Zend\Mail\Transport\Sendmail;
 /**
  * Description of MemberApplicationMailer
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2017-03-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class MemberApplicationMailer {
 
@@ -49,6 +52,23 @@ class MemberApplicationMailer {
     return $this;
   }
 
+  protected function createAgeData(MemberData $data) {
+    $output = '';
+    $dob = $data->getDateOfBirth();
+    if ($dob instanceof \DateTimeInterface) {
+      $age = $dob->diff(new \DateTime('now'));
+      if ($age->y < 18) {
+        $output .= "Juniori: {$age->y}-vuotias\n";
+      } else {
+        $output .= "Aikuinen\n";
+      }
+      $output .= 'Syntymäaika: ' . $dob->format('j.n.Y') . "\n";
+    } else {
+      $output .= "Syntymäaikaa ei annettu (Oletuksena aikuinen)\n";
+    }
+    return $output;
+  }
+
   /**
    * 
    * @param  MemberData $data
@@ -58,12 +78,7 @@ class MemberApplicationMailer {
     $mailBody = "Raision veneseuran jäsenhakemus:\n";
     $mailBody .= "----------------------\n";
     $mailBody .= "HAKIJAN TIEDOT:\n\n";
-    if ($data->getAge() < 18) {
-      $age = "Juniori: {$data->getAge()}-vuotias\n";
-    } else {
-      $age = "Aikuinen\n";
-    }
-    $mailBody .= $age;
+    $mailBody .= $this->createAgeData($data);
     $mailBody .= "Nimi: {$data->getFname()} {$data->getLname()}\n";
     $mailBody .= "Osoite: \n";
     $mailBody .= "\t{$data->getStreet()}\n";

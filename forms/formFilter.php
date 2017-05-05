@@ -1,14 +1,9 @@
 <?php
-$now = date('Y');
-echo $now;
+
 $args = [
     'fname' => FILTER_SANITIZE_STRING,
     'lname' => FILTER_SANITIZE_STRING,
-    'dob' => array(
-        'filter' => FILTER_VALIDATE_INT,
-        'flags' => FILTER_REQUIRE_ARRAY,
-        'options' => ['min_range' => 1, 'max_range' => $now]
-    ),
+    'dob' => FILTER_SANITIZE_STRING,
     'street' => FILTER_SANITIZE_STRING,
     'zipcode' => FILTER_SANITIZE_STRING,
     'city' => FILTER_SANITIZE_STRING,

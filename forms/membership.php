@@ -19,7 +19,7 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
 } else {
   $inputs = require_once('formFilter.php');
   
-  echo '<pre>' . print_r($inputs) . '</pre>';
+  //echo '<pre>' . print_r($inputs) . '</pre>';
   
   if (!is_array($inputs)) {
     $_SESSION['invalidForm'] = 'no formdata found';
@@ -35,7 +35,7 @@ if (!CRSFToken::instance()->verifyPostToken('membership')) {
       //  25rMxq~1VVtn
       $_SESSION[MemberData::class] = $applicantData;
     } else {
-      echo '<pre>' . $validator->get('dob')->getInputErrors() . '</pre>';
+     // echo '<pre>' . $validator->get('dob')->getInputErrors() . '</pre>';
       $_SESSION['invalidForm'] = $validator;
     }
   }

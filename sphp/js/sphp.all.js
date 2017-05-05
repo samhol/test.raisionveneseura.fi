@@ -214,10 +214,10 @@ if (!window.console.log) {
     if (Clipboard.isSupported()) {
       var clipboard = new Clipboard('[data-clipboard-target]');
       clipboard.on('success', function (e) {
-       var  $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
+        var $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
         console.info('Action:', e.action);
         console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);    
+        console.info('Trigger:', e.trigger);
         $container.sphpPopper({content: "Code is copied to the clipboard"});
         e.clearSelection();
       });
@@ -229,6 +229,10 @@ if (!window.console.log) {
     return this;
   };
 
+  sphp.initFoundationAbidePatters = function () {
+    //$(document).foundation();
+    Foundation.Abide.defaults.patterns['day_month_year'] = /^([1-9]|0[1-9]|[12][0-9]|3[01])[- \/.]([1-9]|0[1-9]|1[012])[- \/.]\d{4}$/;
+  };
   /**
    * Initializes all sph functionality
    *
@@ -258,7 +262,7 @@ if (!window.console.log) {
       }
     });
     $(document).foundation();
-
+sphp.initFoundationAbidePatters();
     console.log("Foundation loaded...");
     console.log(AnyTime.version);
     $ajaxLoaders.sphpAjaxLoader();
