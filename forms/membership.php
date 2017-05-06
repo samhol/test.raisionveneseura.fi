@@ -15,7 +15,7 @@ unset ($_SESSION['invalidForm']);
 $httpRoot = Path::get()->http();
 if (!CRSFToken::instance()->verifyPostToken('membership')) {
   //echo "rvgba<s";
-  $_SESSION['invalidForm'] = 'CRSF error';
+  $_SESSION['invalidForm'] = 'Lomake on vanhentunut';
 } else {
   $inputs = require_once('formFilter.php');
   

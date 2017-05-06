@@ -41,13 +41,13 @@ class MembershipRequestCallout extends AbstractComponentGenerator {
 
   protected function generateMemberData(): Dl {
     $dl = new Dl();
+    $dl->addCssClass('member-data');
     $data = $this->getMemberData();
-    $output = '';
     $dob = $data->getDateOfBirth();
     if ($dob instanceof \DateTimeInterface) {
       $age = $dob->diff(new \DateTime('now'));
       if ($age->y < 18) {
-        $dl->appendTerms("Juniori jäsen:");
+        $dl->appendTerms("Juniorijäsen:");
         $dl->appendDescriptions("<strong>Ikä: </strong>{$age->y}-vuotias");
       } else {
         $dl->appendTerms("Aikuinen");
@@ -76,18 +76,15 @@ class MembershipRequestCallout extends AbstractComponentGenerator {
   }
 
   public function generate(): \Sphp\Html\ContentInterface {
-    // print_r($_SESSION);
-    $data = $this->getMemberData();
-
-    $name = '<u>' . $data->getFname() . '</u> <u>' . $data->getLname() . '</u>';
     $callout = new Callout();
     $callout->setClosable();
     $callout->setColor('success');
+    $callout->addCssClass('membership-application small');
     $callout->appendMd('##Kiitos hakemuksestasi');
     $callout->appendMd("Käsittelemme jäsenhakemuksen mahdollisimman pian");
-    $callout->appendMd('###Hakemuksen tiedot:');
+    $callout->append('<strong>Hakemuksen tiedot:</strong>');
     $callout->append($this->generateMemberData());
-    $callout->printHtml();
+    //$callout->printHtml();
     return $callout;
   }
 

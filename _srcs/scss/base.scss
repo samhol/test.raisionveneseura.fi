@@ -135,6 +135,7 @@ div.sidenav {
 }
 
 .page {
+  @import "membership-request";
   min-height: rem-calc(400);
   border: solid 1px #666;
   @include border-radius(4px);

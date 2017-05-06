@@ -1,0 +1,61 @@
+/**
+ * _membership-request.scss (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
+ */ 
+
+.callout.membership-application {
+
+  @include border-radius(5px);
+  h2:first-child {
+    border-bottom: solid 1px #777;
+  }
+
+  dl.member-data {
+    margin: rem-calc(5 20 5 20);
+    padding: 0;
+    dt {
+      float: left;
+      clear: left;
+      width: rem-calc(130);
+      font-weight: bold;
+      text-align: right;
+    }
+    dd {
+      margin: rem-calc(0 0 0 130);
+      padding: 0 0 0.5em 0;
+      &:before {
+        content: " ";
+        padding-left:10px;
+        padding-right:5px;
+      }
+    }
+  }
+}
+&.form form {
+  background-color: #f9f9f9;
+  border: solid 1px #ccc;
+  @include border-radius(5px);
+  margin: rem-calc(15);
+  //font-size: rem-calc(16);
+  h2:first-child {
+    background-color: #f3f3f3;
+    padding: rem-calc(5 10 5 20);
+    @include border-top-radius(5px);
+    border-bottom: solid 2px #ccc;
+    margin-bottom: rem-calc(30);
+  }
+  label small {
+    margin-left: rem-calc(5);
+    font-size: rem-calc(11);
+    font-weight: bold;
+    &.required {
+      color: #cc4b37;
+      &:after {
+        content: "*";
+      }
+    }
+  }
+  .button-group {
+    margin: rem-calc(20 30 60 30);
+  }
+}
