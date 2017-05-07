@@ -69,7 +69,7 @@ const ALPHANUMERIC_ONLY = '/^([0-9a-zA-ZäöåÄÖÅ])*$/';
 const NAME = '/^([a-zA-ZäöåÄÖÅ\ \-])*$/';
 
 /**
- * Regular Expression for valid Finnish zipcode
+ * Regular Expression for valid Finnish zip code
  */
 const ZIPCODE = '/^\d{5}$/';
 

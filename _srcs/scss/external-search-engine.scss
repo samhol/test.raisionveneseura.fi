@@ -3,7 +3,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */ 
 @charset "UTF-8";
- 
+
 $menu-bg: #4d5158;
 $menu-area-bg: #4d5158;
 
@@ -12,7 +12,47 @@ $menu-area-bg: #4d5158;
 @import "base-settings";
 @import "../../vendor/zurb/foundation/scss/foundation";
 
-@include foundation-everything; 
+//@import 'foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-typography;
+//@include foundation-forms;
+@include foundation-button;
+//@include foundation-accordion;
+//@include foundation-accordion-menu;
+@include foundation-badge;
+//@include foundation-breadcrumbs;
+@include foundation-button-group;
+//@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+//@include foundation-drilldown-menu;
+//@include foundation-dropdown;
+//@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+//@include foundation-off-canvas;
+//@include foundation-orbit;
+@include foundation-pagination;
+//@include foundation-progress-bar;
+//@include foundation-slider;
+//@include foundation-sticky;
+//@include foundation-reveal;
+//@include foundation-switch;
+//@include foundation-table;
+//@include foundation-tabs;
+@include foundation-thumbnail;
+//@include foundation-title-bar;
+@include foundation-tooltip;
+//@include foundation-top-bar; 
+@include foundation-visibility-classes;
+@include foundation-float-classes;
 
 @import "../../sphp/scss/app/sphp-back-to-top-button";
 @import "../../sphp/scss/app/fa-social-media-buttons";
@@ -142,71 +182,7 @@ div.sidenav {
   background-color: #fefefe;
   padding: rem-calc(0 0 50 0);
   margin-bottom: rem-calc(20);
-  &.show-logo, &.etusivu, &.katsastustoiminta, &.fishing, &.kausiohjelma, &.jasenyys {
-    background-image: url('http://raisionveneseura.fi/kuvat/tausta/logo.png');
-    background-repeat: no-repeat;
-    background-size:auto;
-    background-attachment:scroll;
-    background-position: right 30px bottom 30px;
-  }
 
-  &.competitions {
-    ol, dl, ul:not(.pagination) {
-      margin-left: rem-calc(60);
-    }
-    ol {
-      li:first-child {
-        font-weight: bold;
-        text-decoration: underline;
-        margin-left: rem-calc(-10);
-        padding-bottom: rem-calc(10);
-      }
-    }
-    ul.pagination {
-      margin-left:rem-calc(30);
-      li {
-        margin-right: rem-calc(2);
-        line-height: 1.6;
-        border: solid 1px #ddd;
-        padding: 0;
-        &:hover {
-          border-color: #ccc;
-        }
-        &.current {
-          a {
-            color: #eaeaea;
-            &:hover {
-              background: $primary-color;
-              color: #fff;
-            }
-          }
-        }
-        &.pdf {
-          border-color: #fa3344;
-          &:hover {
-            border-color: #ff3040;
-          }
-          a {
-            color: #300;
-            &:hover {
-              background: #ffdddd;
-
-              color: #400;
-            }
-          }
-        }
-        a, span {
-          @include border-radius(3px);
-          padding: rem-calc(5 7);
-          margin: 0;
-        }
-      }
-      li.disabled {
-        padding: rem-calc(5 7);
-
-      }
-    }
-  }
   h1, h2, h3, h4, h5, h6 {
     color: #333;
   }
@@ -270,11 +246,11 @@ div.sidenav {
   }
   table {
     border-collapse: collapse;
-    border-color: #ccc;
-    font-size: rem-calc(14);
+    //border-color: #ccc;
+    //font-size: rem-calc(14);
     thead, tfoot {
       th {
-        background-color: #1779ba;
+      //  background-color: #1779ba;
         color: #fefefe;
       }
     }
@@ -285,7 +261,7 @@ div.sidenav {
     }
     tbody {
       tr {
-        border-bottom: solid 1px #aaa;
+       // border-bottom: solid 1px #aaa;
       }
     }
   }
@@ -299,42 +275,6 @@ div.sidenav {
         font-size: rem-calc(12);
         background-color: #eee;
         padding:  rem-calc(12);
-      }
-    }
-  }
-
-  div.orbit-wrapper {
-    margin-left: rem-calc(2);
-    margin-right: rem-calc(2);
-    border: solid 1px #666;
-    margin-bottom: rem-calc(30);
-  }
-  &.kausiohjelma {
-    h2{
-      color: #333;
-      padding: rem-calc(2 10 5 15);
-      margin: 0;
-    }
-    dl {
-      margin: rem-calc(5 20 5 20);
-      padding: 0;
-      //font-family: georgia, times, serif;
-      dt {
-        font-family: $font-family-monospace;
-        float: left;
-        clear: left;
-        width: rem-calc(50);
-        font-weight: bold;
-        text-align: right;
-      }
-      dd {
-        margin: rem-calc(0 0 0 50);
-        padding: 0 0 0.5em 0;
-        &:before {
-          content: "- ";
-          padding-left:10px;
-          padding-right:5px;
-        }
       }
     }
   }

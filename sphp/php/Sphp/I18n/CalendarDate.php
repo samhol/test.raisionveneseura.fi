@@ -100,7 +100,7 @@ class CalendarDate implements TranslatorAwareInterface {
    */
   public function getFiDate() {
     $time = $this->date->format('H:i.s');
-    $day = $this->date->format('d');
+    $day = $this->date->format('j');
     $year = $this->date->format('Y');
     $monthName = $this->getTranslator()->get($this->date->format('F')) . "ta";
     return "$day. $monthName $year kello $time";

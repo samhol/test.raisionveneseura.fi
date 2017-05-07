@@ -17,7 +17,7 @@ Raision veneseuran sivuista ei löytynyt hakemaasi resurssia.
 
   <div class="input-group">
     <span class="input-group-label">Anna Hakusanat:</span>
-    <input class="input-group-field" type="text" name="query" size="15" required>
+    <input class="input-group-field" type="search" name="query" required>
     <div class="input-group-button">
       <button type="submit" class="button" value="Hae" data-sphp-qtip-viewport="#freefind" data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" title="Suorita haku"><i class="fa fa-search" aria-hidden="true"></i></button>
     </div>
