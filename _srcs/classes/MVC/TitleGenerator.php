@@ -46,7 +46,6 @@ class TitleGenerator {
   }
 
   public function createTitleFor($page) {
-
     $page = trim($page, '/');
     $title = 'Raision Veneseura';
     foreach ($this->titleData as $pair) {
@@ -56,15 +55,16 @@ class TitleGenerator {
         } else {
           $title .= ': ' . $pair['link'];
         }
-        //break;
         return $title;
       }
     }
     if (Strings::startsWith($page, 'kilpailut/')) {
       //echo $page;
-      if (is_file("sivut/$page.php")) {
-        $parts = explode('/', $page);
-        $title .= ': ' . Strings::toTitleCase($parts[1]) . $parts[0] . " vuonna " . $parts[2];
+      $name = pathinfo($page, \PATHINFO_FILENAME);
+      if (Strings::startsWith($page, 'kilpailut/kalastus') && is_file("sivut/kilpailut/kalastus/$name.php")) {
+        $title .= ": Kalastuskilpailut vuonna $name";
+      } else if (is_file("sivut/kilpailut/purjehdus/$name.php")) {
+        $title .= ": Purjehduskilpailut vuonna $name";
       }
     }
     return $title;
