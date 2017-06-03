@@ -138,7 +138,7 @@ class Modal extends ContainerTag {
     return $controller;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return parent::contentToString() . $this->closeButton();
   }
 

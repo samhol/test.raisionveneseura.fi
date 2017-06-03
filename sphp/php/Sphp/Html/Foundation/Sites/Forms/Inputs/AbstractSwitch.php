@@ -199,7 +199,7 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->input->getHtml() . $this->paddle->getHtml();
   }
 

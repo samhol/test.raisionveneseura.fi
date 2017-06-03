@@ -200,7 +200,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->label->getHtml() . $this->helper;
   }
 

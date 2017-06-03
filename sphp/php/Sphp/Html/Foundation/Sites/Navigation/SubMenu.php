@@ -123,7 +123,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->rootlink . $this->menu;
   }
 

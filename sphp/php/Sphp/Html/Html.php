@@ -194,7 +194,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->count();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->head . $this->body;
   }
 

@@ -102,7 +102,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
     return '<' . $this->getTagName() . $attrs . '>';
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return Strings::toString($this->content);
   }
 

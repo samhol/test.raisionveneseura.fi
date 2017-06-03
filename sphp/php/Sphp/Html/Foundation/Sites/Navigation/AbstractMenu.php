@@ -194,7 +194,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->items->getHtml();
   }
 

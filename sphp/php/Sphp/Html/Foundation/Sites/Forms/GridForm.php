@@ -83,7 +83,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->errorLabel . parent::contentToString();
   }
 
