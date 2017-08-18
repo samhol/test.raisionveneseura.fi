@@ -150,4 +150,84 @@ Stack trace:
 #3 [internal function]: Sphp\MVC\{closure}('/hallitus/')
 #4 /home/int49765/public_html/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
 #5 /home/int49765/public_html/index.php(61): Sphp\MVC\Router->execute()
-#6 {main}
+#6 {main}Error: Call to undefined function int_val() in /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php:4
+Stack trace:
+#0 [internal function]: trimString('1999')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php(32): filter_input_array(0, Array)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(20): require_once('/home/int49765/...')
+#3 {main}TypeError: Argument 1 passed to trimString() must be of the type array, string given in /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php:3
+Stack trace:
+#0 [internal function]: trimString('1999')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php(34): filter_input_array(0, Array)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(20): require_once('/home/int49765/...')
+#3 {main}TypeError: Argument 1 passed to trimString() must be of the type array, string given in /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php:3
+Stack trace:
+#0 [internal function]: trimString('1999')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/forms/formFilter.php(34): filter_input_array(0, Array)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(20): require_once('/home/int49765/...')
+#3 {main}Error: Cannot access self:: when no class scope is active in /home/int49765/public_html/test.raisionveneseura.fi/forms/formValidator.php:5
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(28): require_once()
+#1 {main}Error: Call to undefined method Sphp\Validators\RangeValidator::error() in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/RangeValidator.php:75
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Validators\RangeValidator->isValid(1)
+#1 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Validators\FormValidator->isValid(Array)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(30): Sphp\Validators\FormValidator->isValid(Array)
+#3 {main}Sphp\Exceptions\InvalidArgumentException: Template with id: '_not_in_range_' does not exist in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/AbstractValidator.php:83
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/AbstractValidator.php(128): Sphp\Validators\AbstractValidator->getMessageTemplate('_not_in_range_')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/RangeValidator.php(75): Sphp\Validators\AbstractValidator->error('_not_in_range_')
+#2 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Validators\RangeValidator->isValid(1)
+#3 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Validators\FormValidator->isValid(Array)
+#4 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(30): Sphp\Validators\FormValidator->isValid(Array)
+#5 {main}TypeError: Argument 2 passed to Sphp\Validators\AbstractValidator::setMessageTemplate() must be an instance of Sphp\I18n\MessageTemplate, string given, called in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/RangeValidator.php on line 36 and defined in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/AbstractValidator.php:94
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/RangeValidator.php(36): Sphp\Validators\AbstractValidator->setMessageTemplate('_not_in_range_', 'Not in range (%...')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/forms/formValidator.php(6): Sphp\Validators\RangeValidator->__construct(1900, 2017, false)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(28): require_once('/home/int49765/...')
+#3 {main}Zend\Di\Exception\ClassNotFoundException: Class Sphp\MVC\FileParser could not be located in provided definitions. in /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php:305
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php(268): Zend\Di\Di->newInstance('Sphp\\MVC\\FilePa...', Array, true)
+#1 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/di.php(7): Zend\Di\Di->get('Sphp\\MVC\\FilePa...')
+#2 /home/int49765/public_html/test.raisionveneseura.fi/testi.php(8): include('/home/int49765/...')
+#3 {main}Zend\Di\Exception\ClassNotFoundException: Class Sphp\MVC\FileParser could not be located in provided definitions. in /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php:305
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php(268): Zend\Di\Di->newInstance('Sphp\\MVC\\FilePa...', Array, true)
+#1 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/di.php(7): Zend\Di\Di->get('Sphp\\MVC\\FilePa...')
+#2 /home/int49765/public_html/test.raisionveneseura.fi/testi.php(8): include('/home/int49765/...')
+#3 {main}TypeError: Argument 1 passed to Sphp\Stdlib\Arrays::getValue() must be of the type array, boolean given, called in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php on line 69 and defined in /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Stdlib/Arrays.php:301
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Stdlib\Arrays::getValue(false, 'y')
+#1 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Validators/FormValidator.php(69): Sphp\Validators\FormValidator->isValid(false)
+#2 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(30): Sphp\Validators\FormValidator->isValid(Array)
+#3 {main}Error: Class 'Sphp\MVC\DateTime' not found in /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MemberData.php:79
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MemberApplicationMailer.php(54): Sphp\MVC\MemberData->getDateOfBirth()
+#1 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MemberApplicationMailer.php(78): Sphp\MVC\MemberApplicationMailer->createAgeData(Object(Sphp\MVC\MemberData))
+#2 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MemberApplicationMailer.php(45): Sphp\MVC\MemberApplicationMailer->createMailBody(Object(Sphp\MVC\MemberData))
+#3 /home/int49765/public_html/test.raisionveneseura.fi/forms/membership.php(34): Sphp\MVC\MemberApplicationMailer->send(Object(Sphp\MVC\MemberData))
+#4 {main}Error: Class 'Sphp\MVC\Callout' not found in /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MembershipRequestCallout.php:63
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/templates/membershipForm.php(16): Sphp\MVC\MembershipRequestCallout->generate()
+#1 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Stdlib/Filesystem.php(85): include('/home/int49765/...')
+#2 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#3 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/templates/loaders.php(82): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#4 [internal function]: Sphp\MVC\{closure}('/jasenhakemus.h...')
+#5 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#6 /home/int49765/public_html/test.raisionveneseura.fi/index.php(61): Sphp\MVC\Router->execute()
+#7 {main}Error: Call to undefined method Sphp\Html\Lists\Dl::appendDesciptions() in /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MembershipRequestCallout.php:57
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/classes/MVC/MembershipRequestCallout.php(82): Sphp\MVC\MembershipRequestCallout->generateMemberData()
+#1 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/templates/membershipForm.php(16): Sphp\MVC\MembershipRequestCallout->generate()
+#2 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Stdlib/Filesystem.php(85): include('/home/int49765/...')
+#3 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString(Array)
+#4 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/templates/loaders.php(82): Sphp\Html\AbstractContainerTag->appendMdFile(Array)
+#5 [internal function]: Sphp\MVC\{closure}('/jasenhakemus.h...')
+#6 /home/int49765/public_html/test.raisionveneseura.fi/sphp/php/Sphp/MVC/Router.php(166): call_user_func_array(Object(Closure), Array)
+#7 /home/int49765/public_html/test.raisionveneseura.fi/index.php(61): Sphp\MVC\Router->execute()
+#8 {main}Zend\Di\Exception\ClassNotFoundException: Class Sphp\MVC\FileParser could not be located in provided definitions. in /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php:305
+Stack trace:
+#0 /home/int49765/public_html/test.raisionveneseura.fi/vendor/zendframework/zend-di/src/Di.php(268): Zend\Di\Di->newInstance('Sphp\\MVC\\FilePa...', Array, true)
+#1 /home/int49765/public_html/test.raisionveneseura.fi/_srcs/di.php(7): Zend\Di\Di->get('Sphp\\MVC\\FilePa...')
+#2 /home/int49765/public_html/test.raisionveneseura.fi/testi.php(8): include('/home/int49765/...')
+#3 {main}

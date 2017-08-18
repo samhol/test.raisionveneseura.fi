@@ -3,7 +3,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */ 
 @charset "UTF-8";
- 
+
 $menu-bg: #4d5158;
 $menu-area-bg: #4d5158;
 
@@ -12,7 +12,7 @@ $menu-area-bg: #4d5158;
 @import "base-settings";
 @import "../../vendor/zurb/foundation/scss/foundation";
 
-@include foundation-everything; 
+@include foundation-everything;
 
 @import "../../sphp/scss/app/sphp-back-to-top-button";
 @import "../../sphp/scss/app/fa-social-media-buttons";
