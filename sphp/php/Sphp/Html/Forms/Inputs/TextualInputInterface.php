@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
@@ -19,14 +17,6 @@ namespace Sphp\Html\Forms\Inputs;
  * @filesource
  */
 interface TextualInputInterface extends PatternValidableInputInterface {
-
-  /**
-   * Returns the value of the size attribute
-   *
-   * @return int the value of the size attribute
-   * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
-   */
-  public function getSize();
 
   /**
    * Sets the value of the size attribute
@@ -37,7 +27,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  public function setSize($size);
+  public function setSize(int $size);
 
   /**
    * Returns the value of the maxlength attribute
@@ -56,7 +46,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  public function setMaxlength($maxlength);
+  public function setMaxlength(int $maxlength);
 
   /**
    * Sets the value of the placeholder attribute
@@ -89,5 +79,5 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
-  public function autocomplete($allow = true);
+  public function autocomplete(bool $allow = true);
 }

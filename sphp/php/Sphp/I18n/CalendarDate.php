@@ -20,7 +20,7 @@ use DateTime;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CalendarDate implements TranslatorAwareInterface {
+class CalendarDate implements Translatable {
 
   use TranslatorAwareTrait;
 
@@ -100,7 +100,7 @@ class CalendarDate implements TranslatorAwareInterface {
    */
   public function getFiDate() {
     $time = $this->date->format('H:i.s');
-    $day = $this->date->format('j');
+    $day = $this->date->format('d');
     $year = $this->date->format('Y');
     $monthName = $this->getTranslator()->get($this->date->format('F')) . "ta";
     return "$day. $monthName $year kello $time";

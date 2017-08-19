@@ -41,22 +41,26 @@ class GettextData {
    * @param string $translation
    * @param string|null $flags
    */
-  public function __construct($msgid, $translation, $flags = null) {
+  public function __construct(string $msgid, string $translation, string $flags = null) {
     $this->msgid = $msgid;
     $this->translation = $translation;
     $this->flags = $flags;
   }
 
-  public function getMessageId() {
+  public function getMessageId(): string {
     return $this->msgid;
   }
 
-  public function getTranslation() {
+  public function getTranslation(): string {
     return $this->translation;
   }
 
-  public function getFlags() {
+  public function getFlags(): string {
     return $this->flags;
+  }
+  
+  public function __toString(): string {
+    return $this->translation;
   }
 
 }

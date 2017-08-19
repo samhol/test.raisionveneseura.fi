@@ -8,13 +8,17 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Forms\Inputs\TextInput;
+use Sphp\Html\Forms\Inputs\Textarea;
+use Sphp\Html\Forms\Inputs\Menus\Select;
+use Sphp\Html\Forms\Inputs\EmailInput;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -28,10 +32,7 @@ use BadMethodCallException;
  */
 class InputColumn extends AbstractComponent implements InputColumnInterface {
 
-  use ColumnTrait;
-
   /**
-   *
    * @var Label
    */
   private $label;
@@ -51,40 +52,30 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   private $errorField;
 
   /**
-   *
    * @var Paragraph
    */
   private $helper;
 
   /**
-   *
    * @var ReflectionClass 
    */
   private $reflector;
 
   /**
+   * @var ColumnLayoutManager 
+   */
+  private $layoutManager;
+
+  /**
    * Constructs a new instance
    *
    * @param  InputInterface $input the actual input component
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  string[] $layout the layout parameters
    */
-  public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct(InputInterface $input, array $layout = ['small-12']) {
     parent::__construct('div');
-    $this->cssClasses()->lock('column');
-    $widthSetter = function ($width, $sreenSize) {
-      if ($width > 0 && $width < 13) {
-        $this->cssClasses()->add("$sreenSize-$width");
-      }
-    };
-    $widthSetter($s, 'small');
-    $widthSetter($m, 'medium');
-    $widthSetter($l, 'large');
-    $widthSetter($xl, 'xlarge');
-    $widthSetter($xxl, 'xxlarge');
+    $this->layoutManager = new ColumnLayoutManager($this);
+    $this->layout()->setLayouts($layout);
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
@@ -158,9 +149,9 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   }
 
   /**
-   * Sets the visible contents of the helpaer label
+   * Sets the visible contents of the helper label
    * 
-   * @param  mixed $text the contents of the helpaer
+   * @param  mixed $text the contents of the helper
    * @return self for a fluent interface
    */
   public function setHelperText($text) {
@@ -169,12 +160,12 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->input->isEnabled();
   }
 
@@ -187,7 +178,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->input->isNamed();
   }
 
@@ -202,6 +193,64 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   public function contentToString(): string {
     return $this->label->getHtml() . $this->helper;
+  }
+
+  public function layout() {
+    return $this->layoutManager;
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $value
+   * @param array $layout
+   * @return \self
+   */
+  public static function email($name, $value = null, array $layout = ['small-12']) {
+    $input = new EmailInput($name, $value);
+    return new self($input, $layout);
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $value
+   * @param array $layout
+   * @return \self
+   */
+  public static function text($name, $value = null, array $layout = ['small-12']) {
+    $input = new TextInput($name, $value);
+    return new self($input, $layout);
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $opt
+   * @param type $selectedValues
+   * @param array $layout
+   * @return \self
+   */
+  public static function select($name, $opt, $selectedValues = null, array $layout = ['small-12']) {
+    $input = new Select($name, $opt, $selectedValues);
+    return new self($input, $layout);
+  }
+
+  /**
+   * Creates a new instance containing a textarea component
+   * 
+   * @precondition  `$rows > 0 & $cols > 0`
+   * @param  string $name name attribute value
+   * @param  string $content the content of the component
+   * @param  string $rows the value of the rows attribute (visible height of a text area)
+   * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
+   * @return self new instance containing a textarea component
+   * @link   Sphp\Html\Forms\Inputs\Textarea Textarea
+   */
+  public static function textarea($name, $content = null, $rows = 4, array $layout = ['small-12']) {
+    $input = new Textarea($name, $content, $rows);
+    return new self($input, $layout);
   }
 
 }

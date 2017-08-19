@@ -49,4 +49,45 @@ interface ButtonInterface extends ContentInterface, ColourableInterface {
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
   public function setDefaultSize();
+  
+  /**
+   * Sets the button size to default
+   * 
+   *  Removes all specified size related CSS classes
+   * 
+   * @return self for a fluent interface
+   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
+   */
+  public function setExtended(bool $extended = true);
+
+  /**
+   * Determines whether the button style is `hollow` or not
+   * 
+   * This is purely a visual style
+   * 
+   * @param boolean $hollow true for `hollow` style, otherwise false
+   * @return self for a fluent interface
+   */
+  public function isHollow(bool $hollow = true);
+
+  /**
+   * Determines whether the button style is `disabled` or not
+   * 
+   * This is purely a visual style
+   *
+   * @param  boolean $disabled true for `disabled` style, otherwise false
+   * @return self for a fluent interface
+   * @link   http://foundation.zurb.com/sites/docs/button.html#dropdown-arrows
+   */
+  public function disable(bool $disabled = true);
+
+  /**
+   * Determines whether the button style is `dropdown` or not
+   * 
+   * This is purely a visual style
+   * 
+   * @param boolean $dropdown true for `dropdown` style, otherwise false
+   * @return self for a fluent interface
+   */
+  public function isDropdown(bool $dropdown = true);
 }

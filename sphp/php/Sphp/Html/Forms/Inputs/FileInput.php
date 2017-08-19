@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="file"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -56,8 +54,8 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
-  public function multipleFiles($multiple = true) {
-    $this->attrs()->set('multiple', (bool) $multiple);
+  public function multipleFiles(bool $multiple = true) {
+    $this->attrs()->set('multiple', $multiple);
     return $this;
   }
 

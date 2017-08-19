@@ -27,7 +27,7 @@ use Sphp\Html\ContentInterface;
 interface ResponsiveEmbedInterface extends ContentInterface {
 
   /**
-   * Sets/unsets the widescreen property
+   * Sets/unsets the aspect ratio
    * 
    * Predefined aspect ratios:
    * 
@@ -39,5 +39,5 @@ interface ResponsiveEmbedInterface extends ContentInterface {
    * @param  string $ratio true for widescreen
    * @return self for a fluent interface
    */
-  public function setAspectRatio($ratio);
+  public function setAspectRatio(string $ratio);
 }

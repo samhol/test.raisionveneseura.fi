@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\EmptyTag;
 use Sphp\Stdlib\Strings;
 
@@ -17,15 +18,13 @@ use Sphp\Stdlib\Strings;
  *  external resource. The &lt;link&gt; tag is most used to link to style
  *  sheets.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_link.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Link extends EmptyTag implements HeadComponentInterface {
+class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentInterface {
 
   /**
    * Constructs a new instance
@@ -37,7 +36,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function __construct($href = '', $rel = 'stylesheet', $media = 'screen') {
+  public function __construct(string $href = '', string $rel = 'stylesheet', string $media = 'screen') {
     parent::__construct('link');
     $this->attrs()->demand('rel');
     if ($href !== null) {
@@ -63,7 +62,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
-  public function setHref($href, $encode = true) {
+  public function setHref(string $href, bool $encode = true) {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
@@ -112,7 +111,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
-  public function setRel($rel) {
+  public function setRel(string $rel) {
     $this->attrs()->set('rel', $rel);
     return $this;
   }
@@ -157,7 +156,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public function setType($type) {
+  public function setType(string $type) {
     $this->attrs()->set('type', $type);
     return $this;
   }
@@ -191,7 +190,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function setMedia($media) {
+  public function setMedia(string $media) {
     $this->attrs()->set('media', $media);
     return $this;
   }
@@ -214,14 +213,13 @@ class Link extends EmptyTag implements HeadComponentInterface {
     return $this->attrs()->get('media');
   }
 
-
   /**
    * Adds an link tag which points to a CSS stylesheet file to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media the relationship between the current document and the linked one
    * @param  string $media what media/device the target resource is optimized for
-   * @return self for a fluent interface
+   * @return self new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
@@ -234,15 +232,15 @@ class Link extends EmptyTag implements HeadComponentInterface {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $type the MIME type of the linked document
-   * @return self for a fluent interface
+   * @return self new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public static function shortcutIcon($href, $type = 'image/x-icon') {
+  public static function shortcutIcon(string $href, string $type = 'image/x-icon') {
     $link = new static($href, 'icon');
     $link->setType($type);
     return $link;
   }
-  
+
 }

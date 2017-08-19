@@ -23,14 +23,14 @@ use Sphp\Html\Adapters\QtipAdapter;
 abstract class AbstractLinker implements LinkerInterface {
 
   /**
-   * the url pointing to the API documentation root
+   * the URL pointing to the API documentation root
    *
    * @var UrlGeneratorInterface
    */
   private $urlGenerator;
 
   /**
-   * the url pointing to the API documentation root
+   * the target of the hyperlink
    *
    * @var string|null
    */
@@ -52,10 +52,12 @@ abstract class AbstractLinker implements LinkerInterface {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(UrlGeneratorInterface $urlGenerator, $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct(UrlGeneratorInterface $urlGenerator, string $defaultTarget = null, $defaultCssClasses = null) {
     $this->urlGenerator = $urlGenerator;
     $this->setDefaultCssClasses($defaultCssClasses);
-    $this->setDefaultTarget($defaultTarget);
+    if ($defaultTarget !== null) {
+      $this->setDefaultTarget($defaultTarget);
+    }
   }
 
   /**
@@ -79,11 +81,24 @@ abstract class AbstractLinker implements LinkerInterface {
     $this->urlGenerator = clone $this->urlGenerator;
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->hyperlink()->getHtml();
   }
 
-  public function urls() {
+  /**
+   * Returns a hyperlink object pointing to a linked page
+   *
+   * @param  string $url optional path from the root to the resource
+   * @param  string $content optional content of the link
+   * @param  string $title optional title of the link
+   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
+   * @return HyperlinkInterface hyperlink object pointing to an API page
+   */
+  public function __invoke($url = null, $content = null, $title = null) {
+    return $this->hyperlink($url, $content, $title);
+  }
+
+  public function urls(): UrlGeneratorInterface {
     return $this->urlGenerator;
   }
 
@@ -101,7 +116,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setDefaultTarget($target) {
+  public function setDefaultTarget(string $target) {
     $this->target = $target;
     return $this;
   }
@@ -131,12 +146,12 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Sets the default target and CSS classes to the hyperlink component
    * 
-   * @param  HyperlinkInterface $a the hyperlink component to modify
-   * @return HyperlinkInterface returns the modified component
+   * @param  Hyperlink $a the hyperlink component to modify
+   * @return Hyperlink returns the modified component
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function insertDefaults(HyperlinkInterface $a) {
+  public function insertDefaults(Hyperlink $a): Hyperlink {
     if ($this->target !== null) {
       $a->setTarget($this->target);
     }
@@ -146,16 +161,16 @@ abstract class AbstractLinker implements LinkerInterface {
     return $a;
   }
 
-  public function hyperlink($url = null, $content = null, $title = null) {
-    if ($url === null) {
-      $url = $this->urls()->getRoot();
+  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
+    if (!\Sphp\Stdlib\Strings::startsWith("$url", $this->urls()->getRoot())) {
+      $url = $this->urls()->create("$url");
     }
     if ($content === null) {
       $content = $url;
     }
     $a = new Hyperlink($url, $content);
     if ($title !== null) {
-      (new QtipAdapter($a))->setQtip($title)->setQtipPosition("bottom center", "top center");
+      (new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
     }
     $this->insertDefaults($a);
     return $a;

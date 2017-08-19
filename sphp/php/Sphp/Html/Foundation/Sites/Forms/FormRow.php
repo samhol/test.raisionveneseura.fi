@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Foundation\Sites\Grids\AbstractRow;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 use Sphp\Html\NonVisualContentInterface;
@@ -16,23 +16,19 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 /**
  * Class extends a Foundation Row for form components
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-27
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FormRow extends AbstractRow {
+class FormRow extends Row {
 
-  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function appendColumn($content, array $layout = ['small-12']) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {
-      $this->appendInput($content, $s, $m, $l, $xl, $xxl);
+      $this->appendInput($content, $layout);
     } else {
-      parent::appendColumn($content, $s, $m, $l, $xl, $xxl);
+      parent::appendColumn($content, $layout);
     }
     return $this;
   }
@@ -48,14 +44,14 @@ class FormRow extends AbstractRow {
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    * @return self for a fluent interface
    */
-  public function appendInput(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function appendInput(InputInterface $input, array $widths = ['small-12']) {
     if ($input instanceof NonVisualContentInterface) {
       $this->append($input);
     } else if ($input instanceof ColumnInterface) {
-      $input->setWidths($s, $m, $l, $xl, $xxl);
+      $input->layout()->setWidths($widths);
       $this->append($input);
     } else {
-      $this->append(new InputColumn($input, $s, $m, $l, $xl, $xxl));
+      $this->append(new InputColumn($input, $widths));
     }
     return $this;
   }

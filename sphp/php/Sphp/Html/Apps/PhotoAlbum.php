@@ -22,9 +22,7 @@ use Sphp\Html\Lists\Li;
 use Sphp\Html\Media\Img;
 
 /**
- * A photoalbum application
- *
- * {@inheritdoc}
+ * A photo album application
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-06
@@ -355,7 +353,7 @@ class PhotoAlbum extends AbstractContainerComponent {
     return $atag;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->getOpeningButton($this->buttonContent) . parent::getHtml();
   }
 

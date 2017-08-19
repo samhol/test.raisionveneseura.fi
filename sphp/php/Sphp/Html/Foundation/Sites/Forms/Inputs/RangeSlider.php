@@ -58,18 +58,18 @@ class RangeSlider extends AbstractSlider {
    * @param int $max the maximum value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($name = null, $min = 0, $max = 100, $step = 1) {
+  public function __construct($name = null, int $min = 0, int $max = 100, int $step = 1) {
     parent::__construct($min, $max, $step);
     $this->attrs()->demand('data-initial-end')
             ->set('data-initial-end', $max);
     $this->lowerHandle = new Span();
     $this->lowerHandle->cssClasses()->lock('slider-handle');
     $this->lowerHandle->attrs()
-            ->demand("data-slider-handle")
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
+            ->demand('data-slider-handle')
+            ->lock('role', 'slider')
+            ->lock('tabindex', 1);
     $this->upperHandle = new Span();
-    $this->upperHandle->cssClasses()->lock("slider-handle");
+    $this->upperHandle->cssClasses()->lock('slider-handle');
     $this->upperHandle->attrs()
             ->demand('data-slider-handle')
             ->lock('role', 'slider')
@@ -87,6 +87,7 @@ class RangeSlider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
+    
   }
 
   /**
@@ -113,7 +114,7 @@ class RangeSlider extends AbstractSlider {
    * @param  boolean $valueVisible true for visible and false for hidden
    * @return self for a fluent interface
    */
-  public function showValue($valueVisible = true) {
+  public function showValue(bool $valueVisible = true) {
     $vis = new VisibilityAdapter($this->getInnerLabel());
     $vis->setHidden(!$valueVisible);
     return $this;
@@ -136,12 +137,12 @@ class RangeSlider extends AbstractSlider {
    * @param  string $unit the unit of the value
    * @return self for a fluent interface
    */
-  public function setValueUnit($unit = "") {
-    $this->getInnerLabel()["unit"] = " $unit";
+  public function setValueUnit($unit = '') {
+    $this->getInnerLabel()['unit'] = " $unit";
     return $this;
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     parent::disable($disabled);
     $this->getStartInput()->disable($disabled);
     $this->getStopValue()->disable($disabled);
@@ -159,7 +160,7 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->getStartInput()->isNamed() && $this->getEndInput()->isNamed();
   }
 
@@ -188,8 +189,7 @@ class RangeSlider extends AbstractSlider {
     return $result;
   }
 
-  public function setStartValue($value) {
-    $value = (int) $value;
+  public function setStartValue(int $value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
@@ -198,8 +198,7 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  public function setStopValue($value) {
-    $value = (int) $value;
+  public function setStopValue(int $value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }

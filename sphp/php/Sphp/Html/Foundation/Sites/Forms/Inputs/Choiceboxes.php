@@ -7,15 +7,16 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Legend as Legend;
+use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
-use Sphp\Html\Foundation\Sites\Grids\ColumnInterface as ColumnInterface;
-use Sphp\Html\Foundation\Sites\Grids\ColumnTrait as ColumnTrait;
+use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 use Sphp\Html\Container;
-use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
+use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
 
 /**
  * A component containing multiple radio or checkbox inputs
@@ -28,8 +29,6 @@ use Sphp\Stdlib\Strings;
  * @filesource
  */
 abstract class Choiceboxes extends AbstractComponent implements InputInterface, ColumnInterface {
-
-  use ColumnTrait;
 
   /**
    * the type of the individual input component
@@ -60,6 +59,12 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   private $boxes;
 
   /**
+   *
+   * @var ColumnLayoutManager
+   */
+  private $layout;
+
+  /**
    * Constructs a new instance
    *
    * @param string $name the value of the name attribute
@@ -68,8 +73,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    */
   public function __construct($name = null, array $values = [], $legend = null) {
     parent::__construct("fieldset");
-    $this->setWidth(12, "small");
-    $this->cssClasses()->lock("columns");
     $this->legend = new Legend();
     $this->boxes = new Container();
     $this->setName($name)
@@ -77,12 +80,21 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     foreach ($values as $value => $label) {
       $this->setOption($value, $label);
     }
+    $this->layout = new ColumnLayoutManager($this);
+  }
+
+  /**
+   * 
+   * @return ColumnLayoutManagerInterface
+   */
+  public function layout(): ColumnLayoutManagerInterface {
+    return $this->layout;
   }
 
   /**
    * Sets the {@link Legend} of the fieldset component
    *
-   * @param  string|Legend $legend the legend of the fielset component
+   * @param  string|Legend $legend the legend of the fieldset component
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
    */
@@ -108,14 +120,15 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Adds a new input option to the component
    * 
    * @param  Choicebox $input
-   * @param  mixed|Label $label
+   * @param  mixed $label
    * @return self for a fluent interface
    */
   protected function setInput(Choicebox $input, $label) {
     $index = $input->getSubmitValue();
+    $label = new Label($label, $input);
     $this->options[$index] = $input;
     $this->boxes[$index] = $input;
-    $this->boxes[$index . "_label"] = $input->createLabel($label);
+    $this->boxes[$index . "_label"] = $label;
     return $this;
   }
 
@@ -134,7 +147,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  string[] $values
    * @return self for a fluent interface
    */
-  abstract public function setOption($value, $label, $checked = false);
+  abstract public function setOption($value, $label, bool $checked = false);
 
   /**
    * Returns the value of name attribute
@@ -169,7 +182,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    *
    * @return boolean true if the input has a name , otherwise false
    */
-  public function isNamed() {
+  public function isNamed(): bool {
     return !Strings::isEmpty($this->name);
   }
 
@@ -182,7 +195,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return self for a fluent interface
    */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     return $this->setAttr("disabled", $disabled);
   }
 
@@ -191,7 +204,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * 
    * @param  boolean true if the option is enabled, otherwise false
    */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->attrExists("disabled");
   }
 
@@ -206,7 +219,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
       $value = [$value];
     }
     foreach ($this->options as $opt) {
-      if (in_array($opt->getValue(), $value)) {
+      if (in_array($opt->getSubmitValue(), $value)) {
         $opt->setChecked(true);
       } else {
         $opt->setChecked(false);
@@ -230,7 +243,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     return $submission;
   }
 
-  public function count() {
+  public function count(): int {
     return $this->boxes->count();
   }
 

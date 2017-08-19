@@ -10,14 +10,11 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
-use Sphp\Html\Media\Size;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\URL;
 
 /**
  * Implements an image that acts as a hyperlink
- *
- * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-22
@@ -63,17 +60,11 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->img);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->img = clone $this->img;
     parent::__clone();
@@ -88,30 +79,21 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return self for a fluent interface
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     $this->img()->setSrc($src);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setAlt($src) {
+  public function setAlt(string $src) {
     $this->img()->setAlt($src);
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getAlt() {
+  
+  public function getAlt(): string {
     return $this->img()->getAlt();
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getSrc() {
+  public function getSrc(): string {
     return $this->img()->getSrc();
   }
 
@@ -135,71 +117,53 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     return $this->img;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setWidth($width) {
-    $this->img->setWidth($width);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getWidth() {
-    return $this->img->getWidth();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setHeight($height) {
-    $this->img->setHeight($height);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getHeight() {
-    return $this->img->getHeight();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->img->isLazy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setSize(Size $size) {
-    $this->img->setSize($size);
+  public function contentToString(): string {
+    return $this->img->getHtml();
+  }
+
+  public function setWidth(int $width) {
+    $this->img->setWidth($width);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getSize() {
-    return $this->img->getSize();
+  public function setHeight(int $height) {
+    $this->img->setHeight($height);
+    return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function contentToString(): string {
-    return $this->img->getHtml();
+  public function getHeight(): int {
+    return $this->img->getHeight();
+  }
+
+  public function getWidth(): int {
+    return $this->img->getWidth();
+  }
+
+  public function hasHeight(): bool {
+    return $this->img->hasHeight();
+  }
+
+  public function hasWidth(): bool {
+    return $this->img->hasWidth();
+  }
+
+  public function unsetHeight() {
+    $this->img->unsetHeight();
+    return $this;
+  }
+
+  public function unsetWidth() {
+    $this->img->unsetWidth();
+    return $this;
   }
 
 }

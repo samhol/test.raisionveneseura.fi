@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyLoaderInterface;
+use Sphp\Html\Media\LazyMediaInterface;
 use Sphp\Html\Media\SizeableInterface;
 
 /**
@@ -17,19 +17,16 @@ use Sphp\Html\Media\SizeableInterface;
  * This component defines a container for an external application or
  * interactive content (a plug-in).
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-15
  * @link    http://www.w3schools.com/tags/tag_embed.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
+class Embed extends EmptyTag implements LazyMediaInterface, SizeableInterface {
 
   use \Sphp\Html\Media\SizeableTrait,
-      \Sphp\Html\Media\LazyLoaderTrait;
+      \Sphp\Html\Media\LazyMediaSourceTrait;
 
   /**
    * Constructs a new instance
@@ -39,7 +36,7 @@ class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link  http://www.w3schools.com/tags/att_embed_src.asp src attribute
    * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function __construct($src = null, $type = null) {
+  public function __construct(string $src = null, string $type = null) {
     parent::__construct('embed');
     if ($src !== null) {
       $this->setSrc($src);
@@ -59,7 +56,7 @@ class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  public function setType($type) {
+  public function setType(string $type) {
     $this->attrs()->set('type', $type);
     return $this;
   }

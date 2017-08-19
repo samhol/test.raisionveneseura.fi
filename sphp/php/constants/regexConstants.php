@@ -28,7 +28,7 @@ namespace Sphp\Regex\FR;
 const ALPHABETS_ONLY = '/^[a-zA-ZàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒ]+$/';
 
 /**
- * Regular Expression for valid French alphabets
+ * Regular Expression for valid French alphanumerics
  */
 const ALPHANUMERICS_ONLY = '/^([0-9a-zA-ZàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒ])*$/';
 
@@ -69,7 +69,7 @@ const ALPHANUMERIC_ONLY = '/^([0-9a-zA-ZäöåÄÖÅ])*$/';
 const NAME = '/^([a-zA-ZäöåÄÖÅ\ \-])*$/';
 
 /**
- * Regular Expression for valid Finnish zip code
+ * Regular Expression for valid Finnish zipcode
  */
 const ZIPCODE = '/^\d{5}$/';
 

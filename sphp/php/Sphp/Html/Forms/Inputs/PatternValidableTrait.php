@@ -53,12 +53,12 @@ trait PatternValidableTrait {
   }
 
   /**
-   * Checks if a value validation pattern is set fot the component
+   * Checks if a value validation pattern is set for the component
    *
-   * @return boolean true if a value validation pattern is set fot the component, othewise false
+   * @return boolean true if a value validation pattern is set for the component, otherwise false
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
-  public function hasPattern() {
+  public function hasPattern(): bool {
     return $this->attrs()->exists("pattern");
   }
 

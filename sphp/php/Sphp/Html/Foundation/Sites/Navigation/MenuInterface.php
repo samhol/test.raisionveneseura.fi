@@ -37,16 +37,23 @@ interface MenuInterface extends ContentInterface {
   public function appendText($text);
 
   /**
+   * Appends a ruler component to the menu
+   *
+   * @param  Ruler|null $r
+   * @return self for a fluent interface
+   */
+  public function appendRuler(Ruler $r = null);
+  /**
    * Creates and appends {@link MenuLink} link object to the list
    *
-   * @param  string|URL $href the URL of the link
+   * @param  string $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = "", $target = "_self");
+  public function appendLink(string $href, string $content = "", string $target = "_self");
 
   /**
    * Adds/removes padding to the vertically oriented Menu
@@ -57,7 +64,7 @@ interface MenuInterface extends ContentInterface {
    * @return self for a fluent interface
    * @see    self::nested() 
    */
-  public function nested($nested = true);
+  public function nested(bool $nested = true);
 
   /**
    * Switches menu orientation between vertical and horizontal
@@ -65,7 +72,7 @@ interface MenuInterface extends ContentInterface {
    * @param  boolean $vertical true for vertical orientation and false for horizontal
    * @return self for a fluent interface
    */
-  public function vertical($vertical = true);
+  public function vertical(bool $vertical = true);
 
   /**
    * Sets or unsets the menu as active
@@ -73,12 +80,12 @@ interface MenuInterface extends ContentInterface {
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setActive($active = true);
+  public function setActive(bool $active = true);
 
   /**
    * Checks whether the menu is set as active or not
    *
    * @return boolean true if the menu is set as active, otherwise false
    */
-  public function isActive();
+  public function isActive(): bool;
 }

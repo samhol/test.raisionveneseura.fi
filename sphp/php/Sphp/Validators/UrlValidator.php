@@ -10,7 +10,7 @@ namespace Sphp\Validators;
 use Sphp\Stdlib\URL;
 
 /**
- * Validates an url string or an instance of {@link URL} class.
+ * Validates an URL string or an instance of {@link URL} class.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
@@ -19,15 +19,12 @@ use Sphp\Stdlib\URL;
  */
 class UrlValidator extends AbstractValidator {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($url) {
-    if (!($url instanceof URL)) {
-      $url = new URL($url);
+  public function isValid($value): bool {
+    if (!($value instanceof URL)) {
+      $value = new URL($value);
     }
-    if (!$url->exists()) {
-      $this->addErrorMessage("Please insert a valid working url");
+    if (!$value->exists()) {
+      $this->error(self::INVALID);
     }
   }
 

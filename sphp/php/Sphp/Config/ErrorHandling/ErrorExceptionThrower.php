@@ -8,43 +8,78 @@
 namespace Sphp\Config\ErrorHandling;
 
 use ErrorException;
+use Sphp\Exceptions\ErrorException as SphpErrorException;
 
 /**
- * Utility for catching PHP errors and converting them to an exception that can be caught at runtime
+ * Implements an Error Exception thrower
  * 
- * @author Jason Hinkle
+ *  An instance of this class catches PHP errors and converts them to an exception 
+ *  that can be caught at runtime.
  * 
- * @copyright  1997-2011 VerySimple, Inc.
- * @license    http://www.gnu.org/licenses/lgpl.html  LGPL
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class ErrorExceptionThrower {
 
-  static $ignoreDeprecated = true;
+  /**
+   * @var string
+   */
+  private $exceptionType;
+
+  /**
+   * Construct a new instance
+   * 
+   * @param string $exceptionType
+   */
+  public function __construct(string $exceptionType = SphpErrorException::class) {
+    $this->setExceptionType($exceptionType);
+  }
+
+  /**
+   * Returns the exception type to throw
+   * 
+   * @return string the exception type to throw
+   */
+  public function getExceptionType(): string {
+    return $this->exceptionType;
+  }
+
+  /**
+   * Sets the exception type to throw
+   * 
+   * @param  string $exceptionType
+   * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the given exception type is invalid
+   */
+  public function setExceptionType(string $exceptionType) {
+    if (!is_subclass_of($exceptionType, ErrorException::class)) {
+      var_dump($exceptionType);
+      throw new \Sphp\Exceptions\InvalidArgumentException('Invalid exception type');
+    }
+    $this->exceptionType = $exceptionType;
+    return $this;
+  }
 
   /**
    * Starts redirecting PHP errors
    * 
-   * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
+   * @param  int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
+   * @return self for a fluent interface
    */
-  public static function start($level = \E_ALL) {
-    if ($level == null) {
-      if (defined('E_DEPRECATED')) {
-        $level = E_ALL & ~E_DEPRECATED;
-      } else {
-        // php 5.2 and earlier don't support E_DEPRECATED
-        $level = E_ALL;
-        self::$ignoreDeprecated = true;
-      }
-    }
-    set_error_handler(array(self::class, 'handleError'), $level);
-    register_shutdown_function(array(self::class, 'fatalErrorShutdownHandler'));
+  public function start(int $level = \E_ALL) {
+    set_error_handler($this, $level);
+    register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
+    return $this;
   }
 
   /**
    * Stops redirecting PHP errors
+   * @return self for a fluent interface
    */
-  public static function stop() {
+  public function stop() {
     restore_error_handler();
+    return $this;
   }
 
   /**
@@ -52,11 +87,11 @@ class ErrorExceptionThrower {
    * 
    * @throws ErrorException
    */
-  public static function fatalErrorShutdownHandler() {
+  public function fatalErrorShutdownHandler() {
     $last_error = error_get_last();
     if ($last_error['type'] === \E_ERROR) {
       // fatal error
-      self::handleError(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
+      $this->handleError(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
     }
   }
 
@@ -66,20 +101,19 @@ class ErrorExceptionThrower {
    * Calling this function will always throw an exception unless `error_reporting == 0`.
    * If the PHP command is called with @ preceeding it, then it will be ignored 
    * here as well.
-   *
-   * @param  string $code 
-   * @param  string $string The Exception message to throw.
-   * @param  string $file
-   * @param  string $line
-   * @return void
+   * 
+   * @param  int $errno the level of the error raised, as an integer
+   * @param  string $errstr the error message
+   * @param  string $errfile the filename where the exception is thrown
+   * @param  int $errline the line number where the exception is thrown
    * @throws ErrorException
    */
-  public static function handleError($code, $string = '', $file = '', $line = '') {
-    // ignore supressed errors
-    if (error_reporting() == 0) {
-      return;
+  public function __invoke(int $errno, string $errstr, string $errfile, int $errline): bool {
+    if (!(error_reporting() & $errno)) {
+      return false;
     }
-    throw new ErrorException($string, $code, 0, $file, $line);
+    $type = $this->getExceptionType();
+    throw new $type($errstr, 0, $errno, $errfile, $errline);
   }
 
 }

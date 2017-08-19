@@ -10,10 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="email"&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
@@ -42,8 +38,8 @@ class EmailInput extends TextualInput {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
-  public function multiple($multiple = true) {
-    $this->attrs()->set('multiple', (bool)$multiple);
+  public function multiple(bool $multiple = true) {
+    $this->attrs()->set('multiple', $multiple);
     return $this;
   }
 

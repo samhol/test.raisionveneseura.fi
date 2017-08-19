@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\ContainerComponentInterface;
+use Sphp\Html\ContentInterface;
 
 /**
  * Defines a Row for a Grid
@@ -21,8 +21,6 @@ use Sphp\Html\ContainerComponentInterface;
  * browser environments the excessive {@link Column} components are floated to 
  * a new 'row'. **HOWEVER!** this behavior is not actively supported.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-27
  * @link    http://foundation.zurb.com/ Foundation
@@ -30,7 +28,7 @@ use Sphp\Html\ContainerComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface RowInterface extends ContainerComponentInterface {
+interface RowInterface extends ContentInterface {
 
   /**
    * Sets the columns of the row (Removes existing content)
@@ -64,14 +62,10 @@ interface RowInterface extends ContainerComponentInterface {
    * Parameter `$content` can be of any type that converts to a string or to a string[]
    *
    * @param  mixed $content the content of the column
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  array $layout column layout parameters
    * @return self for a fluent interface
    */
-  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false);
+  public function appendColumn($content, array $layout = ['small-12']);
 
   /**
    * Prepends {@link ColumnInterface} components to the row
@@ -111,11 +105,4 @@ interface RowInterface extends ContainerComponentInterface {
    * @param mixed $value the value to set
    */
   public function offsetSet($offset, $value);
-
-  /**
-   * 
-   * @param  boolean $collapse
-   * @return self for a fluent interface
-   */
-  public function collapseColumns($collapse = true);
 }

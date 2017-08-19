@@ -14,8 +14,6 @@ use Sphp\Html\Forms\Inputs\InputInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -28,12 +26,12 @@ trait InputWrapperTrait {
    */
   abstract public function getInput();
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->getInput()->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->getInput()->isEnabled();
   }
 
@@ -46,7 +44,7 @@ trait InputWrapperTrait {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->getInput()->isNamed();
   }
 

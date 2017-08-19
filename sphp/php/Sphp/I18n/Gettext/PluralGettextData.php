@@ -37,7 +37,7 @@ class PluralGettextData extends GettextData {
    * @param string $pluralTranslation
    * @param string|null $flags
    */
-  public function __construct($id, $msgString, $pluralId, $pluralTranslation, $flags = null) {
+  public function __construct(string $id, string $msgString, string $pluralId, string $pluralTranslation, string $flags = null) {
     parent::__construct($id, $msgString, $flags);
     $this->pluralMsgId = $pluralId;
     $this->pluralTranslation = $pluralTranslation;
@@ -47,7 +47,7 @@ class PluralGettextData extends GettextData {
    * 
    * @return string
    */
-  public function getPluralId() {
+  public function getPluralId(): string {
     return $this->pluralMsgId;
   }
 
@@ -55,7 +55,7 @@ class PluralGettextData extends GettextData {
    * 
    * @return string
    */
-  public function getPluralTranslation() {
+  public function getPluralTranslation(): string {
     return $this->pluralTranslation;
   }
 

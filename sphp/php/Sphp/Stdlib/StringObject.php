@@ -17,7 +17,7 @@ use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\BadMethodCallException;
 
 /**
- * Implements a chainable string class
+ * Implements a string class
  *
  * @method self append(string $str, string $stringAppend) Appends string to the end and returns a new instance
  * @method string charAt(int $index)
@@ -131,14 +131,14 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @throws \Sphp\Exceptions\InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
-  public function __construct($str = '', $encoding = null) {
+  public function __construct(string $str = '', $encoding = null) {
     if (is_array($str)) {
       throw new InvalidArgumentException('Passed value cannot be an array');
     } elseif (is_object($str) && !method_exists($str, '__toString')) {
       throw new InvalidArgumentException('Passed object must have a __toString method');
     }
     $this->str = (string) $str;
-    $this->encoding = $encoding ? : \mb_internal_encoding();
+    $this->encoding = $encoding ?: \mb_internal_encoding();
     if (static::$stringsReflector === null) {
       static::$stringsReflector = new ReflectionClass(Strings::class);
     }
@@ -149,12 +149,12 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @return string the string value of the object
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->str;
   }
 
   /**
-   * Creates a {@link self} object from given str and encoding properties
+   * Creates a string object from given str and encoding properties
    * 
    * If $encoding is not specified, it defaults to mb_internal_encoding(). It
    * then returns the initialized object.
@@ -165,7 +165,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @throws \Sphp\Exceptions\InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
-  public static function create($str = '', $encoding = null) {
+  public static function create(string $str = '', $encoding = null) {
     return new static($str, $encoding);
   }
 
@@ -227,7 +227,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @return int the length of the string
    */
-  public function count() {
+  public function count(): int {
     return $this->length();
   }
 

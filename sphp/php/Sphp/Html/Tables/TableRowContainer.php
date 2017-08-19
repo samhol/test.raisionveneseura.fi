@@ -15,8 +15,6 @@ use Sphp\Html\TraversableInterface;
 /**
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -48,7 +46,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @param AttributeManager $m
    * @param null|mixed|mixed[] $rows the row being appended
    */
-  public function __construct($tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
+  public function __construct(string $tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
     parent::__construct($tagname, $m);
     if ($rows !== null) {
       $this->fromArray($rows);
@@ -145,19 +143,6 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   }
 
   /**
-   * Count the number of inserted components in the table
-   *
-   * **`$mode` parameter values:**
-   * 
-   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
-   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
-   *
-   * @param  int $mode defines the type of the objects to count
-   * @return int number of the components in the html table
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-
-  /**
    * Count the number of inserted elements in the table
    *
    * **`$mode` parameter values:**
@@ -169,7 +154,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @return string number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = 'tr') {
+  public function count($mode = 'tr'): int {
     $num = 0;
     if ($mode === 'tr') {
       $num += $this->getInnerContainer()->count();

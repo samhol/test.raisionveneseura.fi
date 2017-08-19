@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Html\NonVisualContentInterface;
+
 /**
  * Implements an HTML &lt;meta&gt; tag
  *
@@ -21,7 +23,7 @@ namespace Sphp\Html\Head;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MetaInterface extends HeadComponentInterface {
+interface MetaInterface extends HeadComponentInterface, NonVisualContentInterface {
 
   /**
    * Checks whether the name attribute exists or not
@@ -29,7 +31,7 @@ interface MetaInterface extends HeadComponentInterface {
    * @return boolean true if the name attribute exists, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
-  public function hasNamedContent();
+  public function hasNamedContent(): bool;
 
   /**
    * Checks whether the name attribute has the given value or not
@@ -38,7 +40,7 @@ interface MetaInterface extends HeadComponentInterface {
    * @return boolean true if the name attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
-  public function hasName($name);
+  public function hasName($name): bool;
 
   /**
    * Returns the value of the name attribute
@@ -55,7 +57,7 @@ interface MetaInterface extends HeadComponentInterface {
    * @return boolean true if the http-equiv attribute exists, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    */
-  public function hasHttpEquivContent();
+  public function hasHttpEquivContent(): bool;
 
   /**
    * Checks whether the http_equiv attribute has the given value or not
@@ -64,7 +66,7 @@ interface MetaInterface extends HeadComponentInterface {
    * @return boolean true if the http_equiv attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
    */
-  public function hasHttpEquiv($http_equiv);
+  public function hasHttpEquiv($http_equiv): bool;
 
   /**
    * Returns the value of the http_equiv attribute
@@ -83,5 +85,5 @@ interface MetaInterface extends HeadComponentInterface {
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
-  public function hasPropertyContent();
+  public function hasPropertyContent(): bool;
 }

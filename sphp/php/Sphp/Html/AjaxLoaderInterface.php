@@ -34,10 +34,10 @@ interface AjaxLoaderInterface {
    * **Important note:** 
    * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return self for a fluent interface
    */
-  public function ajaxPrepend($url);
+  public function ajaxPrepend(string $url);
 
   /**
    * Appends the remote content into the component using jQuery Ajax
@@ -45,8 +45,8 @@ interface AjaxLoaderInterface {
    * **Important note:** 
    * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return self for a fluent interface
    */
-  public function ajaxAppend($url);
+  public function ajaxAppend(string $url);
 }

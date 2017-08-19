@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
@@ -37,7 +35,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  function __construct($type = 'text', $name = null, $value = null, $maxlength = null, $size = null) {
+  function __construct($type = 'text', $name = null, $value = null, int $maxlength = null, int $size = null) {
     parent::__construct($type, $name, $value);
     if ($maxlength > 0) {
       $this->setMaxlength($maxlength);
@@ -47,11 +45,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     }
   }
 
-  public function getSize() {
-    return $this->attrs()->get('size');
-  }
-
-  public function setSize($size) {
+  public function setSize(int $size) {
     $this->attrs()->set('size', $size);
     return $this;
   }
@@ -60,7 +54,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this->attrs()->get('maxlength');
   }
 
-  public function setMaxlength($maxlength) {
+  public function setMaxlength(int $maxlength) {
     $this->attrs()->set('maxlength', $maxlength);
     return $this;
   }
@@ -70,7 +64,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }

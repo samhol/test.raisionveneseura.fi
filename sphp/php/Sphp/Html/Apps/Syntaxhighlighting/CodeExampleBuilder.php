@@ -18,8 +18,8 @@ use Sphp\Exceptions\RuntimeException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-02
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -255,21 +255,22 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     return $this;
   }
 
+
+  public function getHtml(): string {
+    return $this->buildAccordion()->getHtml();
+  }
   /**
    * Prints the PHP Example code and the preferred result
    *
-   * @param  string $path the file path of the example PHP code
-   * @param string|boolean $highlightOutput the language name of the output code 
-   *        or false if highlighted output code should not be visible
-   * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @param  string $path the file path of the presented example PHP code
+   * @param  string|boolean $highlightOutput the language name of the output code 
+   *         or false if highlighted output code should not be visible
+   * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
    * @return Accordion
    */
-  public static function visualize($path, $highlightOutput = false, $outputLang = 'html5') {
-    (new static($path, $highlightOutput, $outputLang))->buildAccordion()->printHtml();
-  }
-
-  public function getHtml() {
-    return $this->buildAccordion()->getHtml();
+  public static function visualize(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true) {
+    (new static($path, $highlightOutput, $outputAsHtmlFlow))->buildAccordion()->printHtml();
   }
 
 }

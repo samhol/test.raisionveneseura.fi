@@ -69,6 +69,7 @@ trait ContainerComponentTrait {
     $this->getInnerContainer()->prepend($content);
     return $this;
   }
+
   public function setContent($content) {
     $this->getInnerContainer()->setContent($content);
     return $this;
@@ -80,7 +81,7 @@ trait ContainerComponentTrait {
    * @return int the number of elements in the container
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 
@@ -151,7 +152,7 @@ trait ContainerComponentTrait {
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return $this->getInnerContainer()->toArray();
   }
 
@@ -160,7 +161,7 @@ trait ContainerComponentTrait {
     return $this;
   }
 
-  public function exists($value) {
+  public function exists($value): bool {
     $this->getInnerContainer()->exists($value);
   }
 

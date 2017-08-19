@@ -53,7 +53,9 @@ class Document {
       'a' => Navigation\Hyperlink::class,
       'abbr' => ContainerTag::class,
       'address' => ContainerTag::class,
-      'area' => EmptyTag::class,
+      'area:rectangle' => Media\ImageMap\Rectangle::class,
+      'area:polygon' => Media\ImageMap\Polygon::class,
+      'area:circle' => Media\ImageMap\Circle::class,
       'article' => ContainerTag::class,
       'aside' => Sections\Aside::class,
       'audio' => Media\Multimedia\Audio::class,
@@ -65,9 +67,9 @@ class Document {
       'blockquote' => ContainerTag::class,
       'body' => Body::class,
       'br' => EmptyTag::class,
-      //'button:button' => Forms\Buttons\Button::class,
-      'button:reset' => Forms\Buttons\ResetButton::class,
-      'button:submit' => Forms\Buttons\SubmitButton::class,
+      'button:button' => Forms\Buttons\Button::class,
+      'button:reset' => Forms\Buttons\Resetter::class,
+      'button:submit' => Forms\Buttons\Submitter::class,
       'col' => Tables\Col::class,
       'input' => Forms\Inputs\InputTag::class,
       'input:hidden' => Forms\Inputs\HiddenInput::class,
@@ -76,6 +78,9 @@ class Document {
       'input:password' => Forms\Inputs\PasswordInput::class,
       'input:radio' => Forms\Inputs\Radiobox::class,
       'input:checkbox' => Forms\Inputs\Checkbox::class,
+      'input:number' => Forms\Inputs\NumberInput::class,
+      'input:reset' => Forms\Inputs\Buttons\Resetter::class,
+      'input:submit' => Forms\Inputs\Buttons\Submitter::class,
       'canvas' => ContainerTag::class,
       'caption' => Tables\Caption::class,
       'cite' => ContainerTag::class,
@@ -120,7 +125,7 @@ class Document {
       'legend' => Forms\Legend::class,
       'li' => Lists\Li::class,
       'link' => Head\Link::class,
-      'map' => ContainerTag::class,
+      'map' => Media\ImageMap\Map::class,
       'mark' => ContainerTag::class,
       'menu' => ContainerTag::class,
       'meta' => Head\Meta::class,
@@ -193,15 +198,6 @@ class Document {
       if ($class instanceof ContainerInterface && $content !== null) {
         $class->append($content);
       }
-    } else if (mb_substr($tagName, 0, 7) === 'button:' || mb_substr($tagName, 0, 6) === 'input:') {
-      $data = explode(':', $tagName);
-      if ($data[0] == 'input') {
-        $className = Forms\Input\Input::class;
-      } else {
-        $className = Forms\Buttons\ButtonTag::class;
-      }
-      $type = $data[1];
-      $class = new $className($type);
     } else {
       throw new \InvalidArgumentException("Proper class for object '$name' can not be found");
     }
@@ -230,7 +226,7 @@ class Document {
   /**
    * Returns the HTML version used in the application
    *
-   * @return string  HTML version used in the application
+   * @return string HTML version used in the application
    */
   public static function getHtmlVersion() {
     return self::$htmlVersion;

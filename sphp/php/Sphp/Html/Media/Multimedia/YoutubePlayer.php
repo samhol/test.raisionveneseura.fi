@@ -15,7 +15,6 @@ namespace Sphp\Html\Media\Multimedia;
  * browsers support `postMessage`, though Internet Explorer 7 does not support it.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -27,7 +26,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param string $videoId the id of the YouTube video or playlist
    * @param boolean $isPlaylist whether the videoid is a playlist or a single video
    */
-  public function __construct($videoId = null, $isPlaylist = false) {
+  public function __construct(string $videoId = null, bool $isPlaylist = false) {
     parent::__construct('https://www.youtube.com/embed/', $videoId);
     if ($isPlaylist) {
       $this->loadPlaylist($videoId);
@@ -35,7 +34,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
       
     }
     $this->cssClasses()->lock('youtube-player');
-    $this->attrs()->lock('type', 'text/html');
+    //$this->attrs()->lock('type', 'text/html');
   }
 
   /**
@@ -43,7 +42,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param  string $playlistId
    * @return self for a fluent interface
    */
-  protected function loadPlaylist($playlistId) {
+  protected function loadPlaylist(string $playlistId) {
     $this->getUrl()
             ->setPath('embed')
             ->setParam('listType', 'playlist')
@@ -61,8 +60,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param  int $autohide the value of the autohide parameter
    * @return self for a fluent interface
    */
-  public function autohide($autohide = 2) {
-    return $this->setParam('autohide', (int) $autohide);
+  public function autohide(int $autohide = 2) {
+    $this->getUrl()->setParam('autohide', $autohide);
+    return $this;
   }
 
   /**
@@ -75,15 +75,14 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * play head may seek to just before the requested time, usually no more than 
    * around two seconds.
    * 
-   * @param  int|boolean $start the start time measured from the beginning of the  
-   *                     video or `false` for playing the full video
+   * @param  int $start the start time measured from the beginning of the video
    * @return self for a fluent interface
    */
-  public function setStartTime($start = false) {
-    if ($start === false) {
-      $this->getUrl()->unsetParam('start');
+  public function setStartTime(int $start = 0) {
+    if ($start >= 0) {
+      $this->getUrl()->setParam('start', $start);
     } else {
-      $this->getUrl()->setParam('start', (int) $start);
+      $this->getUrl()->unsetParam('start');
     }
     return $this;
   }
@@ -101,15 +100,15 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * which is used in YouTube Player API functions for loading or queueing a 
    * Wvideo.
    * 
-   * @param  int|boolean $end the end time measured from the beginning of the  
+   * @param  int $end the end time measured from the beginning of the  
    *                     video or `false` for playing the full video
    * @return self for a fluent interface
    */
-  public function setEndTime($end = false) {
-    if ($end === false) {
-      $this->getUrl()->unsetParam('end');
+  public function setEndTime(int $end) {
+    if ($end >= 0) {
+      $this->getUrl()->setParam('end', $end);
     } else {
-      $this->getUrl()->setParam('end', (int) $end);
+      $this->getUrl()->unsetParam('end');
     }
     return $this;
   }

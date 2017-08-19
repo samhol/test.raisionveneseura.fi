@@ -15,8 +15,6 @@ use Traversable;
 /**
  * Implements a container for HTML components and other textual content
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-09
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -84,7 +82,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    * @return int number of elements in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return count($this->components);
   }
 
@@ -103,7 +101,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    * @param  mixed $offset an offset to check for
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->components);
   }
 
@@ -150,7 +148,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return $this->components;
   }
 
@@ -169,7 +167,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return implode('', $this->components);
   }
 

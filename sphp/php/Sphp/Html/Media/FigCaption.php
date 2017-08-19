@@ -12,10 +12,7 @@ use Sphp\Html\ContainerTag;
 /**
  * Implements an HTML &lt;figcaption&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-02-15
  * @link    http://www.w3schools.com/tags/tag_figcaption.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

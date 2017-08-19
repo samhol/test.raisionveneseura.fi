@@ -46,11 +46,11 @@ class Password implements PasswordInterface, Embeddable {
     }
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->hash;
   }
 
-  public function verify($password) {
+  public function verify($password): bool {
     return password_verify((string) $password, $this->getHash());
   }
 

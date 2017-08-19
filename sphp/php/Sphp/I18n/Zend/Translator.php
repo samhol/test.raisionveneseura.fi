@@ -36,27 +36,6 @@ class Translator extends AbstractTranslator {
   private $domain;
 
   /**
-   * the path of the translation file
-   *
-   * @var string
-   */
-  private $directory;
-
-  /**
-   * the charset of the translation file
-   *
-   * @var string
-   */
-  private $charset;
-
-  /**
-   * the charset of the translation file
-   *
-   * @var string
-   */
-  private $lang;
-
-  /**
    *
    * @var ZendTranslator 
    */
@@ -74,12 +53,12 @@ class Translator extends AbstractTranslator {
    * @param strin|null $lang optional translation language
    * @param ZendTranslator $t
    */
-  public function __construct($lang = null, ZendTranslator $t = null) {
+  public function __construct(string $lang = null, ZendTranslator $t = null) {
     if ($t === null) {
       $t = new ZendTranslator();
     }
     $this->translator = $t;
-    $this->lang = $lang;
+    $this->setLang($lang);
     $this->reflector = new ReflectionClass($this->translator);
   }
 
@@ -103,7 +82,6 @@ class Translator extends AbstractTranslator {
     }
   }
 
-  
   /**
    * 
    * @param type $type
@@ -117,7 +95,7 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
-  public function getLang() {
+  public function getLang(): string {
     return $this->translator->getLocale();
   }
 
@@ -126,7 +104,7 @@ class Translator extends AbstractTranslator {
    * @param string $lang
    * @return self for a fluent interface
    */
-  public function setLang($lang) {
+  public function setLang(string $lang) {
     $this->translator->setLocale($lang);
     return $this;
   }
@@ -168,7 +146,7 @@ class Translator extends AbstractTranslator {
     return $translation;
   }
 
-  public function getPlural($msgid1, $msgid2, $n) {
+  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null):string{
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 
@@ -177,9 +155,9 @@ class Translator extends AbstractTranslator {
    * @param type $lang
    * @param type $directory
    * @param type $domain
-   * @return self 
+   * @return self new instance
    */
-  public static function fromTranslationFilePattern($lang, $directory, $domain) {
+  public static function fromTranslationFilePattern(string $lang, string $directory, string $domain) {
     $t = new ZendTranslator();
     $t->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, $directory, $domain);
     return new static($lang, $t);

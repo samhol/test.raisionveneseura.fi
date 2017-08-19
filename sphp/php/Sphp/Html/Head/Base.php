@@ -8,6 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\EmptyTag;
+use Sphp\Html\NonVisualContentInterface;
 
 /**
  * Implements an HTML &lt;base&gt; tag
@@ -16,14 +17,12 @@ use Sphp\Html\EmptyTag;
  *  a document. There can be at maximum one &lt;base&gt; element in a document, 
  *  and it must be inside the &lt;head&gt; element.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */
-class Base extends EmptyTag implements HeadComponentInterface {
+class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentInterface {
 
   /**
    * Constructs a new instance
@@ -33,8 +32,8 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
-  public function __construct($href = null, $target = null) {
-    parent::__construct("base");
+  public function __construct(string $href = null, string $target = null) {
+    parent::__construct('base');
     if ($href !== null) {
       $this->setHref($href);
     }
@@ -50,8 +49,8 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
-  public function setHref($href) {
-    return $this->setAttr("href", $href);
+  public function setHref(string $href) {
+    return $this->setAttr('href', $href);
   }
 
   /**
@@ -62,13 +61,12 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * 1. The target attribute specifies the default target for all hyperlinks and forms in the page.
    * 2. This attribute can be overridden by using the target attribute for each hyperlink/form.
    *
-   *
    * @param  string $target target attribute's value
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
-  public function setTarget($target) {
-    return $this->setAttr("target", $target);
+  public function setTarget(string $target) {
+    return $this->setAttr('target', $target);
   }
 
 }

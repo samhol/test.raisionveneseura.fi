@@ -18,9 +18,6 @@ use Sphp\Html\ContainerInterface;
  *  This component represents a row of {@link CellInterface}
  *  components in a {@link Table}.
  *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API
@@ -73,7 +70,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @return self for a fluent interface
    */
-  public function appendTh($content, $scope = null, $colspan = 1, $rowspan = 1) {
+  public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Th($content, $scope, $colspan, $rowspan));
     return $this;
   }
@@ -103,7 +100,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    * @return self for a fluent interface
    */
-  public function appendTd($content, $colspan = 1, $rowspan = 1) {
+  public function appendTd($content, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Td($content, $colspan, $rowspan));
     return $this;
   }
@@ -168,7 +165,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return int number of the cells in the row
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

@@ -128,7 +128,7 @@ interface FormInterface extends ContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
-  public function autocomplete($allow = true);
+  public function autocomplete(bool $allow = true);
 
   /**
    * Sets the form as validable
@@ -137,7 +137,7 @@ interface FormInterface extends ContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
    */
-  public function validation($validable = true);
+  public function validation(bool $validable = true);
 
   /**
    * Sets the value of the target attribute
@@ -184,15 +184,9 @@ interface FormInterface extends ContentInterface {
    * **Important:** Works only for sigle dimensional input names
    * 
    * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, ans false otherwise
+   * @param  boolean $filter true for enabling the data filtering, and false otherwise
    * @return self for a fluent interface
    */
   public function setData(array $data = [], $filter = true);
 
-  /**
-   * Returns the data presented in the input fields of the form
-   * 
-   * @return ArrayWrapper the data object
-   */
-  public function getData();
 }

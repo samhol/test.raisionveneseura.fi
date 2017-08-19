@@ -32,7 +32,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * @param  string $tagName the tag name of the component
    * @param  Hyperlink|null $hyperlink the inner hyperlink object or null
    */
-  public function __construct($tagName, Hyperlink $hyperlink = null) {
+  public function __construct(string $tagName, Hyperlink $hyperlink = null) {
     if ($hyperlink === null) {
       $hyperlink = new Hyperlink();
     }
@@ -48,32 +48,20 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getInnerContainer();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHref() {
     return $this->getHyperlink()->getHref();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setHref($href, $encode = true) {
     $this->getHyperlink()->setHref($href, $encode);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setTarget($target) {
     $this->getHyperlink()->setTarget($target);
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function getTarget() {
     return $this->getHyperlink()->getTarget();
   }

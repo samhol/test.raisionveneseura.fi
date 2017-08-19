@@ -14,8 +14,8 @@ use Sphp\Html\Div;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-26
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/docs/components/block_grid.html Foundation Block Grid
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/grid.html#block-grids Foundation Block Grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -23,7 +23,7 @@ class BlockGridColumn extends Div implements BlockGridColumnInterface {
 
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock('column');
+    $this->cssClasses()->lock(['column', 'column-block']);
   }
 
 }

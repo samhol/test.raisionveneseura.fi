@@ -19,13 +19,10 @@ class EmailValidator extends AbstractValidator {
 
   public function __construct() {
     parent::__construct();
-    $this->createMessageTemplate(static::INVALID, 'Please insert a correct email address');
+    $this->setMessageTemplate(static::INVALID, 'Please insert a correct email address');
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
       $this->error(static::INVALID);

@@ -56,7 +56,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @return self for a fluent interface
    * @throws InvalidArgumentException
    */
-  public function showFromUp($screenType) {
+  public function showFromUp(string $screenType) {
     if (!in_array($screenType, Screen::sizes())) {
       throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
@@ -95,7 +95,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @param  string $larger
    * @return self for a fluent interface
    */
-  public function showBetweenSizes($smaller, $larger) {
+  public function showBetweenSizes(string $smaller, string $larger) {
     $this->showForAllScreenSizes();
     $upper = Screen::getNextSize($larger);
     if ($upper !== false) {
@@ -126,7 +126,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFromSize($size) {
+  public function hideOnlyFromSize(string $size) {
     $this->showForAllScreenSizes();
     if (Screen::sizeExists($size)) {
       $this->getComponent()->cssClasses()
@@ -154,7 +154,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor($screenType) {
+  public function showOnlyFor(string $screenType) {
     $onlyFor = function($size) {
       if (!Screen::sizeExists($size)) {
         throw new InvalidArgumentException("Screen type '$size' was not recognized");
@@ -212,7 +212,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForPortrait($hide = true) {
+  public function hideForPortrait(bool $hide = true) {
     $this->getComponent()->cssClasses()
             ->remove('show-for-portrait');
     if ($hide) {
@@ -231,7 +231,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForLandscape($hide = true) {
+  public function hideForLandscape(bool $hide = true) {
     $this->getComponent()->cssClasses()
             ->remove('show-for-landscape');
     if ($hide) {

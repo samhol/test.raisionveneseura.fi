@@ -10,8 +10,6 @@ namespace Sphp\Html;
 /**
  * Interface is the base for all HTML tag implementations
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -24,5 +22,5 @@ interface TagInterface extends ComponentInterface {
    *
    * @return string the tag name of the component
    */
-  public function getTagName();
+  public function getTagName(): string;
 }

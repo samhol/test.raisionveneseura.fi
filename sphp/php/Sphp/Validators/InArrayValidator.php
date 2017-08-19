@@ -22,15 +22,12 @@ use Sphp\Stdlib\Arrays;
 class InArrayValidator extends AbstractValidator {
 
   /**
-   * maximum length of the valid string
-   *
-   * @var mixed[]
+   * @var array
    */
   private $haystack;
 
   /**
-   *
-   * @var type 
+   * @var boolean 
    */
   private $strict;
 
@@ -41,25 +38,19 @@ class InArrayValidator extends AbstractValidator {
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
-    $this->createMessageTemplate(static::INVALID, 'Value %s is not in collection');
+    $this->setMessageTemplate(static::INVALID, 'Value %s is not in collection');
     $this->setHaystack($haystack);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->haystack);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->haystack = Arrays::copy($this->haystack);
   }
 
-  public function getHaystack() {
+  public function getHaystack(): array {
     return $this->haystack;
   }
 
@@ -78,7 +69,7 @@ class InArrayValidator extends AbstractValidator {
    * 
    * @return boolean
    */
-  public function isStrict() {
+  public function isStrict(): bool {
     return $this->strict;
   }
 
@@ -87,15 +78,12 @@ class InArrayValidator extends AbstractValidator {
    * @param  boolean $strict
    * @return self for a fluent interface
    */
-  public function setStrict($strict) {
+  public function setStrict(bool $strict) {
     $this->strict = $strict;
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     $valid = false;
     foreach ($this->haystack as $other) {

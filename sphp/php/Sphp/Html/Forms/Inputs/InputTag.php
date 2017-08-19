@@ -7,12 +7,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\LabelableInterface;
-
 /**
  * Implements an HTML &lt;input&gt; tag
- *
- * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-08-17
@@ -20,8 +16,7 @@ use Sphp\Html\Forms\LabelableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputTag extends AbstractInputTag implements ValidableInputInterface, LabelableInterface {
+class InputTag extends AbstractInputTag implements ValidableInputInterface {
 
-  use \Sphp\Html\Forms\LabelableTrait,
-      ValidableInputTrait;
+  use ValidableInputTrait;
 }

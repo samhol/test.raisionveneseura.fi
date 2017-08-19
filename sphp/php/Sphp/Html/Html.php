@@ -14,8 +14,6 @@ use Sphp\Html\Programming\ScriptsContainer;
 /**
  * Implements an HTML &lt;html&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-25
  * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API
@@ -27,13 +25,11 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   use TraversableTrait;
 
   /**
-   *
    * @var Head 
    */
   private $head;
 
   /**
-   *
    * @var Body 
    */
   private $body;
@@ -144,7 +140,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string
    */
-  public function getOpeningTag() {
+  public function getOpeningTag(): string {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
   }
 
@@ -152,7 +148,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string
    */
-  public function getBodyStart() {
+  public function getBodyStart(): string {
     $output = $this->getOpeningTag();
     $output .= $this->head->getHtml();
     $output .= $this->body->getOpeningTag();
@@ -172,7 +168,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string 
    */
-  public function getDocumentClose() {
+  public function getDocumentClose(): string {
     return $this->body()->close() . $this->getClosingTag();
   }
 
@@ -190,7 +186,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->getIterator();
   }
 
-  public function count() {
+  public function count(): int {
     return $this->body->count();
   }
 
@@ -203,22 +199,22 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this;
   }
 
-  public function appendMd($md) {
+  public function appendMd(string $md) {
     $this->body->appendMd($md);
     return $this;
   }
 
-  public function appendMdFile($path) {
+  public function appendMdFile(string $path) {
     $this->body->appendMdFile($path);
     return $this;
   }
 
-  public function appendPhpFile($path) {
+  public function appendPhpFile(string $path) {
     $this->body->appendPhpFile($path);
     return $this;
   }
 
-  public function appendRawFile($path) {
+  public function appendRawFile(string $path) {
     $this->body->appendRawFile($path);
     return $this;
   }

@@ -30,31 +30,26 @@ use Sphp\Stdlib\URL;
 class Head extends AbstractComponent implements NonVisualContentInterface {
 
   /**
-   *
    * @var Title 
    */
   private $title;
 
   /**
-   *
    * @var Base|null 
    */
   private $base;
 
   /**
-   *
    * @var ScriptsContainer 
    */
   private $scripts;
 
   /**
-   *
    * @var Container 
    */
   private $links;
 
   /**
-   *
    * @var MetaContainer 
    */
   private $meta;
@@ -121,7 +116,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
-  public function setBaseAddr($baseAddr, $target = '_self') {
+  public function setBaseAddr($baseAddr, string $target = '_self') {
     if (!Strings::isEmpty($baseAddr) && !Strings::isEmpty($target)) {
       $this->base = new Base($baseAddr, $target);
     } else {
@@ -183,13 +178,12 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->addCssSrc('http://vjs.zencdn.net/5.18.4/video-js.css')
-            ->appendScriptSrc('http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js');
+    $this->addCssSrc('http://vjs.zencdn.net/6.1.0/video-js.css');
     return $this;
   }
 
   /**
-   * Appends an {@link \Sphp\Html\Programming\ScriptSrc} pointing to the given `src`
+   * Appends a script component pointing to the given `src`
    *
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
@@ -197,7 +191,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendScriptSrc($src, $async = false) {
+  public function appendScriptSrc(string $src, bool $async = false) {
     $this->scripts()->appendSrc($src, $async);
     return $this;
   }
@@ -227,7 +221,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public function addShortcutIcon($href, $type = 'image/x-icon') {
+  public function addShortcutIcon(string $href, string $type = 'image/x-icon') {
     $this->addContent(Link::shortcutIcon($href, $type));
     return $this;
   }
@@ -260,7 +254,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @return MetaContainer containing all {@link Meta} components
    */
-  public function metaTags() {
+  public function metaTags(): MetaContainer {
     return $this->meta;
   }
 

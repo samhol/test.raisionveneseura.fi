@@ -60,20 +60,14 @@ class AbstractComponentAdapter implements Adapter {
    * 
    * @return ComponentInterface
    */
-  public function getComponent() {
+  public function getComponent(): ComponentInterface {
     return $this->component;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->component->getHtml();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function attrs() {
     return $this->component->attrs();
   }

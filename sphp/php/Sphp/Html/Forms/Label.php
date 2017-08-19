@@ -9,7 +9,6 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\ContainerTag;
-use Sphp\Stdlib\Strings;
 
 /**
  * Implements an HTML &lt;label&gt; tag
@@ -37,7 +36,7 @@ class Label extends ContainerTag {
    */
   public function __construct($content = null, $for = null) {
     parent::__construct('label', $content);
-    if (!Strings::isEmpty($for)) {
+    if ($for !== null) {
       $this->setFor($for);
     }
   }
@@ -101,7 +100,7 @@ class Label extends ContainerTag {
    * @return string[] the value(s) of the form attribute
    * @link  http://www.w3schools.com/tags/att_label_form.asp form attribute
    */
-  public function getForms() {
+  public function getForms(): array {
     $result = [];
     if ($this->attrs()->exists('form')) {
       $result = explode(' ', $this->attrs()->get('form'));

@@ -54,7 +54,7 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   $path = "sivut/kilpailut/purjehdus/$filename.php";
   if (is_file($path)) {
     putenv("year=$filename");
-    (new Div)->appendMdFile(['_srcs/templates/tools.php', $path])
+    (new Div)->appendMdFile('_srcs/templates/tools.php', $path)
             ->appendMd(TAKAISIN_KILPAILUVALIKKOON)
             ->addCssClass(['competitions', 'page'])
             ->printHtml();
@@ -63,28 +63,28 @@ $loadSailingCompetition = function ($path, $year) use($loadNotFound) {
   }
 };
 $loadContents = function () {
-  (new Div)->appendMdFile(['_srcs/templates/contents.php'])
+  (new Div)->appendMdFile('_srcs/templates/contents.php')
           ->addCssClass(['contests', 'page', 'show-logo'])
           ->printHtml();
 };
 
 $loadBulletingBoard = function () {
-  (new Div)->appendMdFile(['_srcs/templates/bulletingBoard.php'])
+  (new Div)->appendMdFile('_srcs/templates/bulletingBoard.php')
           ->addCssClass(['bulletingboard', 'page'])
           ->printHtml();
 };
 $loadDocLists = function () {
-  (new Div)->appendMdFile(['_srcs/templates/docList.php'])
+  (new Div)->appendMdFile('_srcs/templates/docList.php')
           ->addCssClass(['docs', 'page', 'show-logo'])
           ->printHtml();
 };
 $loadMembershipForm = function () {
-  (new Div)->appendMdFile(['_srcs/templates/membershipForm.php'])
+  (new Div)->appendMdFile('_srcs/templates/membershipForm.php')
           ->addCssClass(['docs', 'page', 'form'])
           ->printHtml();
 };
 $loadBoardMembers = function () {
-  (new Div)->appendMdFile(['_srcs/templates/clubBoard.php'])
+  (new Div)->appendMdFile('_srcs/templates/clubBoard.php')
           ->addCssClass(['page', 'board'])
           ->printHtml();
 };

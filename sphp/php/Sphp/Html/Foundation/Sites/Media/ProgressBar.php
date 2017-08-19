@@ -28,12 +28,12 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
   use ColourableTrait;
 
   /**
-   *
    * @var Span
    */
   private $progressMeter;
 
   /**
+   * Constructs a new instance
    * 
    * @param int $progress
    * @param string|null $name the name of the bar
@@ -66,9 +66,9 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    */
   public function showProgressText($show = true) {
     if ($show) {
-      $this->progressMeter['progress-meter-text']->setStyle('visibility', 'visible');
+      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'visible');
     } else {
-      $this->progressMeter['progress-meter-text']->setStyle('visibility', 'hidden');
+      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'hidden');
     }
     return $this;
   }
@@ -95,7 +95,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     if ($progressText === null) {
       $progressText = "$progress%";
     }
-    $this->attrs()
+    $this->attrs() 
             ->set('aria-valuenow', $progress)
             ->set('aria-valuetext', $progressText);
     $this->attrs()->set('title', $progressText);

@@ -215,10 +215,7 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
     return $table;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->buildTable();
   }
 

@@ -8,11 +8,11 @@
 namespace Sphp\I18n\Gettext;
 
 use Sepia\FileHandler;
-use Sepia\PoParser as SepiaPoParser;
+use Sepia\SepiaPoParser;
 use Sphp\Stdlib\Datastructures\Collection;
 
 /**
- * Iterator for po files
+ * Iterator for *.po files
  * 
  * Iterator parses a Gettext Portable file and acts as an iterator for all gettext instances in the file
  *
@@ -34,11 +34,11 @@ class PoFileIterator implements \Iterator {
    * 
    * @param string $poFilePath
    */
-  public function __construct($poFilePath) {
+  public function __construct(string $poFilePath) {
     $this->objects = $this->parseFromFile($poFilePath);
   }
 
-  protected function parseFromFile($poFilePath) {
+  protected function parseFromFile(string $poFilePath) {
     $fileHandler = new FileHandler($poFilePath);
     $poParser = new SepiaPoParser($fileHandler);
     $rawData = $poParser->parse();
@@ -132,7 +132,7 @@ class PoFileIterator implements \Iterator {
     return $this->objects->valid();
   }
 
-  public function count() {
+  public function count(): int {
     return $this->objects->count();
   }
 

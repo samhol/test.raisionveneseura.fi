@@ -80,12 +80,13 @@ class StablePriorityQueue extends SplPriorityQueue implements Arrayable, Seriali
     return false;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $array = [];
     foreach (clone $this as $item) {
       $array[] = $item;
     }
-    return $array;
+    
+    return iterator_to_array(clone $this);
   }
 
   /**

@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Validators;
+use Sphp\I18n\Messages\Message;
 
 /**
  * Description of RangeValidator
@@ -37,8 +38,8 @@ class RangeValidator extends AbstractLimitValidator {
   public function __construct($min, $max, $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min)->setMax($max);
-    $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
 
   /**
@@ -81,10 +82,7 @@ class RangeValidator extends AbstractLimitValidator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value || $this->max < $value) {

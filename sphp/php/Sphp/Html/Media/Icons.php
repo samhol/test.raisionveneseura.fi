@@ -16,7 +16,6 @@ use Sphp\Stdlib\Strings;
  * Description of Icons
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-04-17
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -61,7 +60,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function get($icon, $tagName = 'i') {
+  public static function get(string $icon, string $tagName = 'i') {
     return Document::get($tagName)->cssClasses()->lock($icon);
   }
 
@@ -72,7 +71,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function fontAwesome($iconName, $tagName = 'i') {
+  public static function fontAwesome(string $iconName, string $tagName = 'i') {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
@@ -88,7 +87,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, $tagName = 'i') {
+  public static function fileType($file, string $tagName = 'i') {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {

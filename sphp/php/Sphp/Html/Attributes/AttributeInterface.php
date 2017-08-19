@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
-use InvalidArgumentException;
-
 /**
- * Iterface defines an HTML attribute object
+ * Defines an HTML attribute object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
@@ -24,22 +22,22 @@ interface AttributeInterface {
    *
    * @return string the object as a string
    */
-  public function __toString();
+  public function __toString(): string;
 
   /**
    * Returns the name of the attribute 
    * 
    * @return string the name of the attribute
    */
-  public function getName();
+  public function getName(): string;
 
   /**
    * Sets the value of the attribute
    *
    * @param  scalar $value value to set
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the attribute value is invalid for the type of the attribute
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid for the type of the attribute
+   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
   public function set($value);
 
@@ -60,22 +58,22 @@ interface AttributeInterface {
    * 
    * @return boolean true if the attribute has a locked value and false otherwise
    */
-  public function isLocked();
+  public function isLocked(): bool;
 
   /**
    * Locks the given value to the attribute
    *
    * @param  scalar $value the value to lock to the attribute
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the attribute value is invalid
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
   public function lock($value);
 
   /**
    * Removes all non locked values from the attribute
    *
-   * @return   self for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function clear();
 
@@ -96,7 +94,7 @@ interface AttributeInterface {
    *
    * @return boolean true if the attribute is required and false otherwise
    */
-  public function isDemanded();
+  public function isDemanded(): bool;
 
   /**
    * Checks whether the attribute is visible or not
@@ -106,5 +104,5 @@ interface AttributeInterface {
    * 
    * @return boolean true if the attribute is visible and false otherwise
    */
-  public function isVisible();
+  public function isVisible(): bool;
 }

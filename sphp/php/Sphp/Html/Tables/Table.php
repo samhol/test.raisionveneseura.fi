@@ -15,10 +15,6 @@ use Sphp\Html\Container;
 /**
  * Implements an HTML &lt;table&gt; tag.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_table.asp w3schools HTML API
@@ -262,10 +258,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
    *
    * @param  int $mode defines the type of the objects to count
-   * @return string number of elements in the html table
+   * @return int number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = self::COUNT_ROWS) {
+  public function count($mode = self::COUNT_ROWS): int {
     $num = 0;
     if ($this->thead !== null) {
       $num += $this->thead->count($mode);

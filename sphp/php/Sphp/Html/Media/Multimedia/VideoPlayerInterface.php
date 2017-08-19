@@ -13,7 +13,6 @@ use Sphp\Html\Media\IframeInterface;
  * Defines properties for a videoplayer component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -25,7 +24,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * @param  boolean $allow
    * @return self for a fluent interface
    */
-  public function allowFullScreen($allow = true);
+  public function allowFullScreen(bool $allow = true);
 
   /**
    * Set autoplaying on or off
@@ -33,7 +32,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * @param  boolean $autoplay true for on and false for off
    * @return self for a fluent interface
    */
-  public function autoplay($autoplay = true);
+  public function autoplay(bool $autoplay = true);
 
   /**
    * Setx the looping on or off
@@ -41,7 +40,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * @param  boolean $loop true for on and false for off
    * @return self for a fluent interface
    */
-  public function loop($loop = true);
+  public function loop(bool $loop = true);
 
   /**
    * Setz the parameter name value pair
@@ -63,5 +62,5 @@ interface VideoPlayerInterface extends IframeInterface {
    * @param  scalar $value the value of the parameter
    * @return self for a fluent interface
    */
-  public function setParam($name, $value);
+  public function setParam(string $name, $value);
 }

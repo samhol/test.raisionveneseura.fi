@@ -60,17 +60,17 @@ class SingleAccordion extends AbstractContainerTag {
    * @param  boolean $visibility true if the content is visible, false otherwise
    * @return self for a fluent interface
    */
-  public function contentVisible($visibility = true) {
+  public function contentVisible(bool $visibility = true) {
     $this->getPane()->contentVisible($visibility);
     return $this;
   }
 
-  public function ajaxAppend($url) {
+  public function ajaxAppend(string $url) {
     $this->getPane()->ajaxAppend($url);
     return $this;
   }
 
-  public function ajaxPrepend($url) {
+  public function ajaxPrepend(string $url) {
     $this->getPane()->ajaxPrepend($url);
     return $this;
   }

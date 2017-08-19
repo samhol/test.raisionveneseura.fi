@@ -11,7 +11,8 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements an property attribute object for an HTML element
@@ -83,7 +84,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
           $parsed[trim($data[0])] = trim($data[1]);
         }
       }
-    } 
+    }
     return array_filter($parsed, function ($var) {
       return !empty($var) || $var === "0";
     }, \ARRAY_FILTER_USE_BOTH);
@@ -96,8 +97,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  scalar $value the value of the attribute
    * @return self for a fluent interface
-   * @throws AttributeException if the property is unmodifiable
-   * @throws InvalidArgumentException if the value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the value is invalid
    */
   public function set($value) {
     $this->clear();
@@ -113,12 +114,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string $property the name of the property
    * @param  string $value the value of the property
    * @return self for a fluent interface
-   * @throws AttributeException if the property is unmodifiable
-   * @throws InvalidArgumentException if either the property name or the value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if either the property name or the value is invalid
    */
-  public function setProperty($property, $value) {
+  public function setProperty(string $property, string $value) {
     if ($this->isLocked($property)) {
-      throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+      throw new RuntimeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     if (Strings::isEmpty($property)) {
       throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
@@ -138,10 +139,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * * `$props` are defined as "property" => "value" pairs.
    * * Replaces old not locked property values with the new ones
    *
-   * @param    string[] $props new property name value pairs
-   * @return   self for PHP Method Chaining
-   * @throws   AttributeException if any of the properties is already locked
-   * @throws   InvalidArgumentException if any of the property names or values is invalid
+   * @param  string[] $props new property name value pairs
+   * @return self for PHP Method Chaining
+   * @throws \Sphp\Exceptions\RuntimeException if any of the properties is already locked
+   * @throws \Sphp\Exceptions\InvalidArgumentException if any of the property names or values is invalid
    */
   public function setProperties(array $props) {
     foreach ($props as $property => $value) {
@@ -155,11 +156,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  string $name the names of the properties to remove
    * @return self for a fluent interface
-   * @throws AttributeException if the property is unmodifiable
+   * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
    */
   public function unsetProperty($name) {
     if ($this->isLocked($name)) {
-      throw new AttributeException("'" . $this->getName() . "' property '$name' is unremovable");
+      throw new RuntimeException("'" . $this->getName() . "' property '$name' is unremovable");
     } else {
       unset($this->props[$name]);
     }
@@ -171,7 +172,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  string[] $names the names of the properties to remove
    * @return self for a fluent interface
-   * @throws AttributeException if any of the properties is unmodifiable
+   * @throws RuntimeException if any of the properties is unmodifiable
    */
   public function unsetProperties(array $names) {
     foreach ($names as $name) {
@@ -192,7 +193,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string $property the name of the property
    * @return boolean true if the property exists and false otherwise
    */
-  public function hasProperty($property) {
+  public function hasProperty($property): bool {
     return array_key_exists($property, $this->props);
   }
 
@@ -218,7 +219,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *         checks if any of the stored properties are locked
    * @return boolean true if locked and false otherwise
    */
-  public function isLocked($property = null) {
+  public function isLocked($property = null): bool {
     $locked = false;
     if ($property === null) {
       $locked = !empty($this->lockedProps);
@@ -238,12 +239,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string|int $property the name of the property
    * @param  string $value the value of the property
    * @return self for a fluent interface
-   * @throws AttributeException if the property is already locked
-   * @throws InvalidArgumentException if either the property name or the value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the property is already locked
+   * @throws \Sphp\Exceptions\InvalidArgumentException if either the property name or the value is invalid
    */
   public function lockProperty($property, $value) {
     if ($this->isLocked($property)) {
-      throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+      throw new RuntimeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     $this->setProperty($property, $value);
     $this->lockedProps[] = $property;
@@ -258,10 +259,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * * `$props` are defined as "property" => "value" pairs.
    * * Replaces old not locked property values with the new ones
    *
-   * @param    string[] $props propertie as `name => value` pairs
+   * @param    string[] $props properties as `name => value` pairs
    * @return   self for PHP Method Chaining
-   * @throws   AttributeException if any of the properties is already locked
-   * @throws   InvalidArgumentException if any of the property names or values is invalid
+   * @throws   \Sphp\Exceptions\RuntimeException if any of the properties is already locked
+   * @throws   \Sphp\Exceptions\InvalidArgumentException if any of the property names or values is invalid
    */
   public function lockProperties(array $props) {
     foreach ($props as $property => $value) {
@@ -275,8 +276,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    null|string|string[] $props optional property/properties to lock
    * @return   self for PHP Method Chaining
-   * @throws   AttributeException if any of the properties is already locked
-   * @throws   InvalidArgumentException if if any of the properties has empty name or value
+   * @throws   \Sphp\Exceptions\RuntimeException if any of the properties is already locked
+   * @throws   \Sphp\Exceptions\InvalidArgumentException if if any of the properties has empty name or value
    */
   public function lock($props = null) {
     if ($props === null) {
@@ -314,7 +315,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @return int the number of the style properties stored
    */
-  public function count() {
+  public function count(): int {
     $num = 0;
     if (!empty($this->props)) {
       $num = count($this->props);
@@ -327,7 +328,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string|int $property the name of the property
    * @return boolean
    */
-  public function offsetExists($property) {
+  public function offsetExists($property): bool {
     return $this->hasProperty($property);
   }
 
@@ -344,8 +345,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * 
    * @param  string|int $property the name of the property
    * @param  string|int $value
-   * @throws AttributeException if any of the properties is already locked
-   * @throws InvalidArgumentException if if any of the properties has empty name or value
+   * @throws \Sphp\Exceptions\RuntimeException if any of the properties is already locked
+   * @throws \Sphp\Exceptions\InvalidArgumentException if if any of the properties has empty name or value
    */
   public function offsetSet($property, $value) {
     $this->setProperty($property, $value);
@@ -377,7 +378,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * 
    * @return scalar[]
    */
-  public function toArray() {
+  public function toArray(): array {
     return $this->props;
   }
 

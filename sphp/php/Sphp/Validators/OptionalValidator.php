@@ -25,10 +25,11 @@ class OptionalValidator extends ValidatorChain {
   private $allowEmptyValues = true;
 
   /**
+   * Constructs a new instance
    * 
    * @param boolean $allowEmptyValues
    */
-  public function __construct($allowEmptyValues = true) {
+  public function __construct(bool $allowEmptyValues = true) {
     parent::__construct();
     $this->allowEmptyValues($allowEmptyValues);
   }
@@ -39,7 +40,7 @@ class OptionalValidator extends ValidatorChain {
    * @param  boolean $allow true if all values are validated and false if not
    * @return self for a fluent interface
    */
-  public function allowEmptyValues($allow = true) {
+  public function allowEmptyValues(bool $allow = true) {
     $this->allowEmptyValues = $allow;
     return $this;
   }
@@ -49,7 +50,7 @@ class OptionalValidator extends ValidatorChain {
    *
    * @return boolean true if empty values are validated and false if not
    */
-  public function emptyValuesAllowed() {
+  public function emptyValuesAllowed(): bool {
     return $this->allowEmptyValues;
   }
 

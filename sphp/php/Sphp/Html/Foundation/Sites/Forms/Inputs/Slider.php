@@ -25,13 +25,11 @@ use Sphp\Html\Adapters\VisibilityAdapter;
 class Slider extends AbstractSlider {
 
   /**
-   *
    * @var Span
    */
   private $handle;
 
   /**
-   *
    * @var HiddenInput
    */
   private $input;
@@ -44,7 +42,7 @@ class Slider extends AbstractSlider {
    * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
+  public function __construct(int $start = 0, int $end = 100, int $value = 0, int $step = 1) {
     parent::__construct($start, $end, $step);
     $this->handle = new Span();
     $this->handle->cssClasses()->lock('slider-handle');
@@ -62,6 +60,7 @@ class Slider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
+    
   }
 
   /**
@@ -78,13 +77,13 @@ class Slider extends AbstractSlider {
    * 
    * @return self for a fluent interface
    */
-  public function setVertical($vertical = true) {
+  public function setVertical(bool $vertical = true) {
     if ($vertical) {
-      $this->cssClasses()->add("vertical");
-      $this->attrs()->set("data-vertical", "true");
+      $this->cssClasses()->add('vertical');
+      $this->attrs()->set('data-vertical', 'true');
     } else {
-      $this->cssClasses()->remove("vertical");
-      $this->attrs()->set("data-vertical", "false");
+      $this->cssClasses()->remove('vertical');
+      $this->attrs()->set('data-vertical', 'false');
     }
     return $this;
   }
@@ -95,7 +94,7 @@ class Slider extends AbstractSlider {
    * @param  boolean $valueVisible true for visible and false for hidden
    * @return self for a fluent interface
    */
-  public function showValue($valueVisible = true) {
+  public function showValue(bool $valueVisible = true) {
     $vis = new VisibilityAdapter($this->getInnerLabel());
     $vis->setHidden(!$valueVisible);
     return $this;
@@ -123,9 +122,9 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-  public function disable($enabled = true) {
+  public function disable(bool $disabled = true) {
     parent::disable($disabled);
-    $this->getInput()->disable($enabled);
+    $this->getInput()->disable($disabled);
     return $this;
   }
 
@@ -138,7 +137,7 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->getInput()->isNamed();
   }
 
@@ -147,8 +146,8 @@ class Slider extends AbstractSlider {
    *
    * @return int the minimum value of the slider
    */
-  public function getMin() {
-    return $this->attrs()->get("data-start");
+  public function getMin(): int {
+    return $this->attrs()->get('data-start');
   }
 
   /**
@@ -156,8 +155,8 @@ class Slider extends AbstractSlider {
    *
    * @return int the maximum value of the slider
    */
-  public function getMax() {
-    return $this->attrs()->get("data-end");
+  public function getMax(): int {
+    return $this->attrs()->get('data-end');
   }
 
   public function getSubmitValue() {
@@ -179,7 +178,7 @@ class Slider extends AbstractSlider {
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     return $this->getInput()->setRequired($required);
   }
 
@@ -188,7 +187,7 @@ class Slider extends AbstractSlider {
    *
    * @return boolean true if the input must have a value before form submission, false otherwise
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->getInput()->isRequired();
   }
 

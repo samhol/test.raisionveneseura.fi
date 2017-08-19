@@ -8,8 +8,6 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Forms\LabelableInterface;
-use Sphp\Html\Forms\LabelableTrait;
 
 /**
  * Implements an HTML &lt;textarea&gt; tag
@@ -20,11 +18,10 @@ use Sphp\Html\Forms\LabelableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends ContainerTag implements TextareaInterface, LabelableInterface {
+class Textarea extends ContainerTag implements TextareaInterface {
 
   use InputTrait,
-      ValidableInputTrait,
-      LabelableTrait;
+      ValidableInputTrait;
 
   /**
    * Constructs a new instance
@@ -38,7 +35,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function __construct($name = null, $content = null, $rows = "", $cols = "") {
+  public function __construct($name = null, $content = null, int $rows = null, int $cols = null) {
     parent::__construct('textarea', $content);
     if ($name !== null) {
       $this->setName($name);
@@ -65,12 +62,12 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
     return $this;
   }
 
-  public function setRows($rows) {
+  public function setRows(int $rows) {
     $this->attrs()->set('rows', $rows);
     return $this;
   }
 
-  public function setCols($cols) {
+  public function setCols(int $cols) {
     $this->attrs()->set('cols', $cols);
     return $this;
   }

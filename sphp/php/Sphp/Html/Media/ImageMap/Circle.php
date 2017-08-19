@@ -6,7 +6,6 @@
  */
 
 namespace Sphp\Html\Media\ImageMap;
-use Sphp\Html\EmptyTag;
 
 /**
  * Implements an HTML &lt;area shape="circle"&gt; tag
@@ -16,29 +15,21 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Circle extends EmptyTag implements AreaInterface {
+class Circle extends AbstractArea {
 
-  use AreaTrait;
 
   /**
    * Constructs a new instance
    * 
-   * @param int $x the x-coodinate of the circle center
-   * @param int $y the y-coodinate of the circle center
+   * @param int $x the x-coordinate of the circle center
+   * @param int $y the y-coordinate of the circle center
    * @param int $radius the radius of the circle
    * @param string|null $href the URL of the link
    * @param string|null $alt
    */
-  public function __construct($x, $y, $radius, $href = null, $alt = null) {
-    parent::__construct('area');
-    $this->attrs()->lock('shape', 'circle');
+  public function __construct(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) {
+    parent::__construct('circle', $href, $alt);
     $this->setCoordinates($x, $y, $radius);
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($alt !== null) {
-      $this->setHref($href);
-    }
   }
 
   /**
@@ -47,7 +38,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param  int $radius the radius of the circle
    * @return self for a fluent interface
    */
-  public function setRadius($radius) {
+  public function setRadius(int $radius) {
     $coords = split(',', $this->getCoordinates());
     $coords[2] = $radius;
     $coordsString = implode(',', $coords);
@@ -56,12 +47,12 @@ class Circle extends EmptyTag implements AreaInterface {
   }
 
   /**
-   * Sets the x-coodinate of the center of the circle region
+   * Sets the x-coordinate of the center of the circle region
    * 
-   * @param  int $x the x-coodinate of the circle center
+   * @param  int $x the x-coordinate of the circle center
    * @return self for a fluent interface
    */
-  public function setX($x) {
+  public function setX(int $x) {
     $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coordsString = implode(',', $coords);
@@ -70,12 +61,12 @@ class Circle extends EmptyTag implements AreaInterface {
   }
 
   /**
-   * Sets the y-coodinate of the center of the circle region
+   * Sets the y-coordinate of the center of the circle region
    * 
-   * @param  int $y the y-coodinate of the circle center
+   * @param  int $y the y-coordinate of the circle center
    * @return self for a fluent interface
    */
-  public function setY($y) {
+  public function setY(int $y) {
     $coords = split(',', $this->getCoordinates());
     $coords[1] = $y;
     $coordsString = implode(',', $coords);
@@ -84,14 +75,14 @@ class Circle extends EmptyTag implements AreaInterface {
   }
 
   /**
-   * Sets the coodinates and the size of the circle region
+   * Sets the coordinates and the size of the circle region
    * 
-   * @param  int $x the x-coodinate of the circle center
-   * @param  int $y the y-coodinate of the circle center
+   * @param  int $x the x-coordinate of the circle center
+   * @param  int $y the y-coordinate of the circle center
    * @param  int $radius the radius of the circle
    * @return self for a fluent interface
    */
-  public function setCoordinates($x, $y, $radius) {
+  public function setCoordinates(int $x, int $y, int $radius) {
     $coords = [$x, $y, $radius];
     $coordsString = implode(',', $coords);
     $this->attrs()->set('coords', $coordsString);

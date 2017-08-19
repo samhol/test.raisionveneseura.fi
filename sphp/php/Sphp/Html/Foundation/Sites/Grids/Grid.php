@@ -12,8 +12,6 @@ use Sphp\Html\WrappingContainer;
 /**
  * Implements a grid 
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24
  * @link    http://foundation.zurb.com/ Foundation
@@ -29,7 +27,7 @@ class Grid extends WrappingContainer implements GridInterface {
    * **Important!**
    *
    * 1. Parameter `mixed $content` can be of any type that converts to a string 
-   *    or to an array of strigs. So also objects of any type that implement magic 
+   *    or to an array of strings. So also objects of any type that implement magic 
    *    method `__toString()` are allowed.
    * 2. `mixed $content` is transformed to a @link Row} component.
    *
@@ -55,4 +53,31 @@ class Grid extends WrappingContainer implements GridInterface {
     return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 
+  /**
+   * 
+   * @param  array $rows single or two dimensional array of column data
+   * @return self new instance containing given content as rows
+   */
+  public static function from(array $rows) {
+    $grid = new Static();
+    foreach ($rows as $row) {
+      $grid->append($row);
+    }
+    return $grid;
+  }
+  
+  
+  /**
+   * Sets/ the row completely fluid
+   *
+   * @param  boolean $expanded the target screen size
+   * @return self for a fluent interface
+   */
+  public function expand($expanded = true) {
+    foreach($this as $row) {
+      $row->layout()->expand($expanded);
+    }
+    return $this;
+  }
+  
 }

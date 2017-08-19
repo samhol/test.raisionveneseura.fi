@@ -101,7 +101,7 @@ class Datetime extends \DateTime implements Comparable {
    * @return int result of the comparison
    * @throws \Sphp\Exceptions\InvalidArgumentException if the <var>$other</var> is not instance of {@link \DateTime}
    */
-  public function compareTo($other) {
+  public function compareTo($other): int {
     if (!($other instanceof Datetime)) {
       throw new InvalidArgumentException('Compared instance mustbe of type ' . Datetime::class);
     }
@@ -150,7 +150,7 @@ class Datetime extends \DateTime implements Comparable {
    *
    * @return string object as a datetime string
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->format('Y-m-d H:i:s T');
   }
 
@@ -165,7 +165,7 @@ class Datetime extends \DateTime implements Comparable {
     return $this->format('Y-m-d H:i:s T');
   }
 
-  public function equals($object) {
+  public function equals($object): bool {
     return $object == $this;
   }
 

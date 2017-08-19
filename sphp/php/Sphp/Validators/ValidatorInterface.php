@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\MessageList;
+use Sphp\I18n\Messages\TranslatableList;
 
 /**
  * The base interface for all validators
@@ -25,12 +25,12 @@ interface ValidatorInterface {
    * @param  mixed $value the value to validate
    * @return boolean true if validation was successful, false if not
    */
-  public function isValid($value);
+  public function isValid($value): bool;
 
   /**
    * Returns error messages
    *
-   * @return MessageList error messages
+   * @return TranslatableList error messages
    */
-  public function getErrors();
+  public function getErrors(): TranslatableList;
 }

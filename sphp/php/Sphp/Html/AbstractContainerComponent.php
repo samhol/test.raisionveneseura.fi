@@ -15,8 +15,6 @@ use Sphp\Html\Attributes\AttributeManager;
  * AbstractComponent makes it possible to create new HTML components by composition
  * of other existing HTML components.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -38,7 +36,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    * @param  AttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component
    */
-  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct($tagname, $attrManager);
     $this->setInnerContainer($contentContainer);
   }

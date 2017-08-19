@@ -13,8 +13,6 @@ use Sphp\Stdlib\Arrays;
 /**
  * Implements a container for HTML components and other textual content
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-09
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -88,7 +86,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
    * @return int number of elements in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return count($this->components);
   }
 
@@ -98,7 +96,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
    * @param  mixed $offset an offset to check for
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->components);
   }
 
@@ -145,7 +143,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return $this->components;
   }
 
@@ -164,11 +162,11 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return Arrays::implode($this->components);
   }
 
-  public function exists($value) {
+  public function exists($value): bool {
     $result = false;
     foreach ($this->components as $component) {
       if ($component === $value || (($component instanceof ContainerInterface)) && $component->exists($value)) {

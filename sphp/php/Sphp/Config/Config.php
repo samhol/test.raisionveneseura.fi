@@ -23,7 +23,6 @@ use InvalidArgumentException;
  * PHP array key casting. The <var>$value</var> can be of any type.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -56,11 +55,11 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @param array[] $config the domain name of the instance
    * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public function __construct(array $config = [], $readOnly = true) {
+  public function __construct(array $config = [], bool $readOnly = true) {
     foreach ($config as $k => $v) {
       $this->__set($k, $v);
     }
-    $this->readonly = (bool) $readOnly;
+    $this->readonly = $readOnly;
   }
 
   public function __destruct() {
@@ -71,9 +70,18 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Returns the singleton instance of the {@link self} object
    *
    * @param array[] $config the domain name of the instance
-   * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public static function instance($name = 0, array $data = [], $readOnly = true) {
+
+  /**
+   * 
+   * @param  string $name
+   * @param  array $data
+   * @return Config
+   */
+  public static function instance(string $name = null, array $data = []): Config {
+    if ($name === null) {
+      $name = 0;
+    }
     if (isset(self::$instances[$name])) {
       return self::$instances[$name];
     }
@@ -90,7 +98,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * 
    * @return boolean
    */
-  public function isReadOnly() {
+  public function isReadOnly(): bool {
     return $this->readonly;
   }
 
@@ -115,7 +123,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @param  mixed $varName the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function __isset($varName) {
+  public function __isset($varName): bool {
     return array_key_exists($varName, $this->data);
   }
 
@@ -190,7 +198,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $arr = [];
     foreach ($this->data as $k => $v) {
       if (!$v instanceof Config) {
@@ -243,7 +251,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    *
    * @return int the number of the configuraion parameters
    */
-  public function count() {
+  public function count(): int {
     return count($this->data);
   }
 
@@ -293,10 +301,10 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
 
   /**
    * 
-   * @param type $offset
-   * @return type
+   * @param  mixed $offset
+   * @return boolean
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->data);
   }
 

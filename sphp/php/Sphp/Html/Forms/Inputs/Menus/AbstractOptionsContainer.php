@@ -50,7 +50,7 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * @param  string $tagname the name of the tag
    * @param SelectMenuContentInterface|mixed[] $opt the content
    */
-  public function __construct($tagname, $opt = null) {
+  public function __construct(string $tagname, $opt = null) {
     parent::__construct($tagname);
     if (is_array($opt)) {
       $this->appendArray($opt);
@@ -146,7 +146,7 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * 
    * @return int the number of {@link SelectMenuContentInterface} 
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

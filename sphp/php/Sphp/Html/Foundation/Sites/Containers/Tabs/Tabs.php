@@ -57,7 +57,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * @param  int $index the index to check for
    * @return boolean true if a tab exits at the given index
    */
-  public function hasTab($index) {
+  public function hasTab(int $index) {
     return $this->tabsContent->hasTab($index);
   }
 
@@ -68,11 +68,11 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * @return TabInterface the tab at the given index
    * @throws OutOfBoundsException if the index is not set
    */
-  public function getTab($index) {
+  public function getTab(int $index) {
     return $this->tabsContent->getTab($index);
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->tabsContent->getTabButtons()->getHtml() . $this->tabsContent->getHtml();
   }
 
@@ -82,7 +82,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * @param  boolean $match true for matching heights
    * @return self for a fluent interface
    */
-  public function matchHeight($match = true) {
+  public function matchHeight(bool $match = true) {
     $this->tabsContent->matchHeight($match);
     return $this;
   }
@@ -92,7 +92,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * @param  int $index of the Tab
    * @return self for a fluent interface
    */
-  public function setActive($index) {
+  public function setActive(int $index) {
     $this->tabsContent->setActive($index);
     return $this;
   }
@@ -103,7 +103,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * @return int number of components in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->tabsContent->count();
   }
 

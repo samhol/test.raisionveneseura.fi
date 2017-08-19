@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="text"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
@@ -35,7 +33,7 @@ class TextInput extends TextualInput {
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  public function __construct($name = null, $value = null, $maxlength = null, $size = null) {
+  public function __construct($name = null, $value = null, int $maxlength = null, int $size = null) {
     parent::__construct('text', $name, $value, $maxlength, $size);
   }
 

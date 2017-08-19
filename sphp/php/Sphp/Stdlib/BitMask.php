@@ -86,7 +86,7 @@ class BitMask implements Arrayable, Embeddable {
    * @param  boolean $bit the bit value to set
    * @return self for a fluent interface
    */
-  public function set($index, $bit = true) {
+  public function set(int $index, bool $bit = true) {
     $value = intval(boolval($bit));
     if ($value === 0) {
       $this->mask &= ~(1 << $index);
@@ -100,9 +100,9 @@ class BitMask implements Arrayable, Embeddable {
    * Returns the value of the bit with the specified index
    *
    * @param  int $index the specified index
-   * @return int $bit the bit value to set
+   * @return int the value of the bit with the specified index
    */
-  public function get($index) {
+  public function get(int $index) {
     return $this->mask & (1 << $index);
   }
 
@@ -149,7 +149,7 @@ class BitMask implements Arrayable, Embeddable {
    *
    * @return int the current bitmask value as an integer
    */
-  public function toInt() {
+  public function toInt(): int {
     return $this->mask;
   }
 
@@ -176,14 +176,11 @@ class BitMask implements Arrayable, Embeddable {
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     return decbin($this->mask);
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function toArray() {
+  public function toArray(): array {
     return static::toBitArray($this->mask);
   }
 

@@ -26,8 +26,8 @@ class Checkboxes extends Choiceboxes {
    * @param scalar[] $values
    * @param mixed $mainLabel
    */
-  public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct('input:checkbox', $name, $values, $mainLabel);
+  public function __construct($name, array $values = []) {
+    parent::__construct('input:checkbox', $name, $values);
   }
 
   /**
@@ -38,8 +38,8 @@ class Checkboxes extends Choiceboxes {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function setName($name) {
-    if (!Strings::endsWith($name, "[]")) {
-      $name .= "[]";
+    if (!Strings::endsWith($name, '[]')) {
+      $name .= '[]';
     }
     parent::setName($name);
     return $this;
@@ -53,7 +53,7 @@ class Checkboxes extends Choiceboxes {
    */
   public function getName() {
     $name = parent::getName();
-    return str_replace("[]", '', $name);
+    return str_replace('[]', '', $name);
   }
 
   /**
@@ -64,7 +64,7 @@ class Checkboxes extends Choiceboxes {
    *         be checked before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     return $this->setAttr('data-required', $required);
   }
 
@@ -75,7 +75,7 @@ class Checkboxes extends Choiceboxes {
    * @return boolean true if an {@link Checkbox} component must be checked 
    *         before form submission, otherwise false
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->attrExists('data-required');
   }
 

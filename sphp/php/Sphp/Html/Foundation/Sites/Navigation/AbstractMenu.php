@@ -26,7 +26,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   private $defaultTarget = '_self';
 
   /**
-   *
    * @var ContainerInterface 
    */
   private $items;
@@ -38,7 +37,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @param AttributeManager $attrManager
    * @param ContainerInterface $contentContainer
    */
-  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     if ($contentContainer === null) {
       $contentContainer = new Container();
     }
@@ -47,17 +46,11 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     $this->cssClasses()->lock('menu');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->items);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->items = clone $this->items;
     parent::__clone();
@@ -73,9 +66,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getDefaultTarget() {
     return $this->defaultTarget;
   }
@@ -101,7 +91,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = '', $target = '_self') {
+  public function appendLink(string $href, string $content = '', string $target = '_self') {
     if ($target === null) {
       $target = $this->getDefaultTarget();
     }
@@ -137,9 +127,19 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   }
 
   /**
-   * {@inheritdoc}
+   * Appends a menu label text component to the menu
+   *
+   * @return self for a fluent interface
    */
-  public function nested($nested = true) {
+  public function appendRuler(Ruler $r = null) {
+    if ($r === null) {
+      $r = new Ruler;
+    }
+    $this->append(new Ruler);
+    return $this;
+  }
+
+  public function nested(bool $nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
     } else {
@@ -148,10 +148,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function vertical($vertical = true) {
+  public function vertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
     } else {
@@ -160,10 +157,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isVertical() {
+  public function isVertical(): bool {
     return $this->cssClasses()->contains('vertical');
   }
 
@@ -173,7 +167,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setActive($active = true) {
+  public function setActive(bool $active = true) {
     if ($active) {
       $this->addCssClass('is-active');
     } else {
@@ -187,13 +181,10 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    *
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
-  public function isActive() {
+  public function isActive(): bool {
     return $this->hasCssClass('is-active');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return $this->items->getHtml();
   }

@@ -23,7 +23,10 @@ use Sphp\Html\Div;
  */
 class Column extends Div implements ColumnInterface {
 
-  use ColumnTrait;
+  /**
+   * @var ColumnLayoutManager 
+   */
+  private $layoutManager;
 
   /**
    * Constructs a new instance
@@ -34,26 +37,17 @@ class Column extends Div implements ColumnInterface {
    * So also an object of any class that implements magic method `__toString()` 
    * is allowed.
    *
-   * @param  mixed $content the content of the column
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param mixed $content the content of the column
+   * @param string $layout optional layout parameters
    */
-  public function __construct($content = null, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct($content = null, array $layout = ['small-12']) {
     parent::__construct($content);
-    $this->cssClasses()->lock('columns');
-    $widthSetter = function ($width, $sreenSize) {
-      if ($width > 0 && $width < 13) {
-        $this->cssClasses()->add("$sreenSize-$width");
-      }
-    };
-    $widthSetter($s, 'small');
-    $widthSetter($m, 'medium');
-    $widthSetter($l, 'large');
-    $widthSetter($xl, 'xlarge');
-    $widthSetter($xxl, 'xxlarge');
+    $this->layoutManager = new ColumnLayoutManager($this);
+    $this->layout()->setLayouts($layout);
+  }
+
+  public function layout(): ColumnLayoutManagerInterface {
+    return $this->layoutManager;
   }
 
 }

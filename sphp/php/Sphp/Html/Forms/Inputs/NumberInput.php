@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="number"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
@@ -20,8 +18,6 @@ namespace Sphp\Html\Forms\Inputs;
  * @filesource
  */
 class NumberInput extends InputTag implements NumberInputInterface {
-
-  use ValidableInputTrait;
 
   /**
    * Constructs a new instance
@@ -44,21 +40,21 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this;
   }
 
-  public function getMinimum() {
-    return $this->attrs()->get('min');
+  public function getMinimum(): int {
+    return (int) $this->attrs()->get('min');
   }
 
-  public function setMinimum($min) {
-    $this->attrs()->set('min', (int) $min);
+  public function setMinimum(int $min) {
+    $this->attrs()->set('min', $min);
     return $this;
   }
 
-  public function getMaximum() {
-    return $this->attrs()->get('max');
+  public function getMaximum(): int {
+    return (int) $this->attrs()->get('max');
   }
 
-  public function setMaximum($max) {
-    $this->attrs()->set('max', (int) $max);
+  public function setMaximum(int $max) {
+    $this->attrs()->set('max', $max);
     return $this;
   }
 
@@ -66,8 +62,8 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this->attrs()->get('step');
   }
 
-  public function setStep($step) {
-    $this->attrs()->set('step', (int) $step);
+  public function setStep(int $step) {
+    $this->attrs()->set('step', $step);
     return $this;
   }
 
@@ -76,7 +72,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this;
   }
 
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }

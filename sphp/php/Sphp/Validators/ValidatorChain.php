@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Countable;
-use Sphp\I18n\MessageList;
+use Sphp\I18n\Messages\TranslatableList;
 
 /**
  * A validator container for validating a value against multiple validators
@@ -44,7 +44,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    */
   public function __construct() {
     $this->validators = [];
-    $this->errors = new MessageList();
+    $this->errors = new TranslatableList();
   }
 
   /**
@@ -119,18 +119,12 @@ class ValidatorChain implements ValidatorInterface, Countable {
     $this->skippedValues = [];
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getErrors() {
+  
+  public function getErrors(): TranslatableList {
     return $this->errors;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->errors->clearContent();
     $valid = true;
     if (in_array($value, $this->skippedValues, true)) {
@@ -171,7 +165,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    *
    * @return int the number of the {@link ValidatorInterface} objects
    */
-  public function count() {
+  public function count(): int {
     return count($this->validators);
   }
 

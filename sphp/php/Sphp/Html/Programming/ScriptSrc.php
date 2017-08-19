@@ -8,7 +8,6 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\AbstractTag;
-use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
@@ -33,12 +32,12 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * 
    * This component points to an external script file through the src attribute.
    * 
-   * @param  string|URL $src the url of the script file
+   * @param  string $src the url of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function __construct($src = '', $async = false) {
+  public function __construct(string $src = '', bool $async = false) {
     parent::__construct('script');
     $this->setSrc($src)->setAsync($async);
   }
@@ -52,7 +51,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType($type) {
+  public function setType(string $type) {
     return $this->setAttr('type', $type);
   }
 
@@ -66,7 +65,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function setAsync($async = true) {
+  public function setAsync(bool $async = true) {
     return $this->setAttr('async', (bool) $async);
   }
 
@@ -77,7 +76,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     $this->attrs()->set('src', $src);
     return $this;
   }
@@ -92,7 +91,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
     return $this->attrs()->get('src');
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     $attrs = '' . $this->attrs();
     if ($attrs != '') {
       $attrs = ' ' . $attrs;

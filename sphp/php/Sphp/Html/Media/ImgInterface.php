@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Stdlib\URL;
-
 /**
  * Implements an HTML &lt;img&gt; tag
  *
@@ -18,16 +16,14 @@ use Sphp\Stdlib\URL;
  *
  * **Notes:**
  *
- * 1. The {@link self} component tag defines an image in an HTML page.
- * 2. The {@link self} component tag has two required attributes: src and alt.
+ * 1. This component defines an image in an HTML page.
+ * 2. This component has two required attributes: src and alt.
  * 3. Images are not technically inserted into an HTML page, images are linked to HTML pages.
- * 4. The {@link self} component tag creates a holding space for the referenced image.
+ * 4. This component creates a holding space for the referenced image.
  *
  * **Definition and Usage**
  *
  * The alt attribute specifies an alternate text for an image, if the image cannot be displayed.
- *
- * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-02-15
@@ -36,24 +32,7 @@ use Sphp\Stdlib\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
-
-  /**
-   * Sets the path to the track source (The URL of the track file)
-   *
-   * @param  string|URL $src the path to the track source (The URL of the track file)
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
-   */
-  public function setSrc($src);
-
-  /**
-   * Returns the URL of the track file
-   * 
-   * @return string the URL of the track file
-   * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
-   */
-  public function getSrc();
+interface ImgInterface extends MediaSourceInterface, SizeableInterface, LazyMediaInterface {
 
   /**
    * Sets the alt attribute (an alternate text for an image).
@@ -74,7 +53,7 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function setAlt($alt);
+  public function setAlt(string $alt);
 
   /**
    * Returns the alt attribute (an alternate text for an image).
@@ -84,5 +63,5 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    * @return string the value of the alt attribute
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function getAlt();
+  public function getAlt(): string;
 }

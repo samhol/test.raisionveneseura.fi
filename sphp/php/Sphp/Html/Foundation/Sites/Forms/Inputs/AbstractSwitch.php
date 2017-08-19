@@ -8,12 +8,12 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
+use Sphp\Html\Forms\Inputs\ChoiceboxInterface;
 
 /**
  * Implements an abstract foundation based switch
@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements LabelableInterface, ScreenReaderLabelable {
+class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, ScreenReaderLabelable {
 
   /**
    * CSS classes corresponding to the size constants
@@ -37,19 +37,16 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
   ];
 
   /**
-   *
    * @var Choicebox 
    */
   private $input;
 
   /**
-   *
    * @var Label 
    */
   private $paddle;
 
   /**
-   *
    * @var ScreenReaderLabel
    */
   private $screenReaderLabel;
@@ -143,12 +140,12 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this;
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->input->isEnabled();
   }
 
@@ -161,12 +158,8 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->input->isNamed();
-  }
-
-  public function getValue() {
-    return $this->input->getValue();
   }
 
   public function setValue($value) {
@@ -180,7 +173,7 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     $this->input->setRequired($required);
     return $this;
   }
@@ -190,17 +183,26 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
    *
    * @return boolean true if the input must have a value before form submission, false otherwise
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->input->isRequired();
   }
 
-  public function createLabel($label = null) {
-    $this->input->createLabel($label);
-    return $this;
+  public function createLabel($content = null) {
+    $label = new Label($content, $this->input);
+    return $label;
   }
 
   public function contentToString(): string {
     return $this->input->getHtml() . $this->paddle->getHtml();
+  }
+
+  public function getSubmitValue() {
+    $this->input->getSubmitValue();
+  }
+
+  public function setChecked(bool $checked = true) {
+    $this->input->setChecked($checked);
+    return $this;
   }
 
 }

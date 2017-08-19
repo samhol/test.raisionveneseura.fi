@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\SliderInterface;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -30,53 +30,53 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
    * @param int $end the end value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $step = 1) {
+  public function __construct(int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct('div');
-    $this->cssClasses()->lock("slider");
+    $this->cssClasses()->lock('slider');
     $this->attrs()
-            ->demand("data-start")
-            ->set("data-start", $start)
-            ->demand("data-end")
-            ->set("data-end", $end)
-            ->demand("data-step")
-            ->set("data-step", $step)
-            ->demand("data-initial-start")
-            ->set("data-initial-start", $start)
-            ->demand("data-slider");
+            ->demand('data-start')
+            ->set('data-start', $start)
+            ->demand('data-end')
+            ->set('data-end', $end)
+            ->demand('data-step')
+            ->set('data-step', $step)
+            ->demand('data-initial-start')
+            ->set('data-initial-start', $start)
+            ->demand('data-slider');
     $this->setStepLength($step);
   }
 
-  public function setStepLength($step) {
+  public function setStepLength(int $step = 1) {
     if ($step <= 0) {
-      throw new InvalidArgumentException("The step value is not positive");
+      throw new InvalidArgumentException('The step value is not positive');
     }
     $length = $this->getMax() - $this->getMin();
     if ($step > $length) {
       throw new InvalidArgumentException("The step value '$step' exceeds the maximun value '$length'");
     }
-    $this->attrs()->set("data-step", $step);
+    $this->attrs()->set('data-step', $step);
     return $this;
   }
 
-  public function getMin() {
-    return $this->attrs()->get("data-start");
+  public function getMin(): int {
+    return (int) $this->attrs()->get('data-start');
   }
 
-  public function getMax() {
-    return $this->attrs()->get("data-end");
+  public function getMax(): int {
+    return (int) $this->attrs()->get('data-end');
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     if ($disabled) {
-      $this->removeCssClass("disabled");
+      $this->removeCssClass('disabled');
     } else {
-      $this->addCssClass("disabled");
+      $this->addCssClass('disabled');
     }
     return $this;
   }
 
-  public function isEnabled() {
-    return !$this->cssClasses()->contains("disabled");
+  public function isEnabled(): bool {
+    return !$this->cssClasses()->contains('disabled');
   }
 
 }

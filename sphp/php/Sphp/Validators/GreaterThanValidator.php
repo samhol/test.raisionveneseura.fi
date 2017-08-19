@@ -32,8 +32,8 @@ class GreaterThanValidator extends AbstractLimitValidator {
   public function __construct($min, $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min);
-    $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
 
   /**
@@ -56,10 +56,7 @@ class GreaterThanValidator extends AbstractLimitValidator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->min > $value) {

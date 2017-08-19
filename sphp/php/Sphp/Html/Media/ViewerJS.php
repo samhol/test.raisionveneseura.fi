@@ -13,7 +13,6 @@ namespace Sphp\Html\Media;
  * The {@link self} component represents a nested browsing context.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-07-14
  * @link    http://www.w3schools.com/tags/tag_iframe.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-iframe-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -28,7 +27,7 @@ class ViewerJS extends Iframe {
    * @param  string $name the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct($src = null) {
+  public function __construct(string $src = null) {
     parent::__construct();
     if ($src !== null) {
       $this->setSrc($src);
@@ -44,7 +43,7 @@ class ViewerJS extends Iframe {
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return LazyLoaderInterface for PHP Method Chaining
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     parent::setSrc("sphp/viewerjs/#../../$src");
     return $this;
   }
@@ -57,7 +56,7 @@ class ViewerJS extends Iframe {
    * 
    * @return string the path to the image source (The URL of the image file)
    */
-  public function getSrc() {
+  public function getSrc(): string {
     $src = parent::getSrc();
     $src = \Sphp\Stdlib\Strings::trimLeft($src, 'sphp/viewerjs/#../../');
     return $src;
