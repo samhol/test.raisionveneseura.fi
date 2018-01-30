@@ -147,7 +147,7 @@ class Slider extends AbstractSlider {
    * @return int the minimum value of the slider
    */
   public function getMin(): int {
-    return $this->attrs()->get('data-start');
+    return $this->attrs()->getValue('data-start');
   }
 
   /**
@@ -156,7 +156,7 @@ class Slider extends AbstractSlider {
    * @return int the maximum value of the slider
    */
   public function getMax(): int {
-    return $this->attrs()->get('data-end');
+    return $this->attrs()->getValue('data-end');
   }
 
   public function getSubmitValue() {

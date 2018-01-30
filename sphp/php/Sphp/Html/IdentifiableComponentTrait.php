@@ -166,7 +166,7 @@ trait IdentifiableComponentTrait {
    * @return mixed the value of the attribute
    */
   public function getAttr(string $name) {
-    return $this->attrs()->get($name);
+    return $this->attrs()->getValue($name);
   }
 
   /**

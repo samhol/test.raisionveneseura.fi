@@ -149,11 +149,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   }
 
   public function getMax(): int {
-    return (int) $this->attrs()->get('data-max');
+    return (int) $this->attrs()->getValue('data-max');
   }
 
   public function getMin(): int {
-    return (int) $this->attrs()->get('data-min');
+    return (int) $this->attrs()->getValue('data-min');
   }
 
 }
